@@ -1,0 +1,990 @@
+/* ==================== EPIC LIVESTREAM - QUANTUM DIMENSION EDITION FIXED ==================== */
+/* FULLY FUNCTIONAL CYBERPUNK LIVESTREAM EXPERIENCE */
+
+/* ===== GLOBAL QUANTUM RESET ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ===== CSS VARIABLES - THE QUANTUM PALETTE ===== */
+:root {
+  /* Quantum Colors */
+  --quantum-cyan: #00ffff;
+  --quantum-pink: #ff00ff;
+  --quantum-purple: #9c27b0;
+  --quantum-blue: #2196f3;
+  --quantum-red: #ff0040;
+  --quantum-gold: #ffd700;
+  
+  /* Dark Matter Backgrounds */
+  --dark-void: #000000;
+  --dark-space: #0a0012;
+  --dark-nebula: #130019;
+  --dark-matter: #1a0033;
+  
+  /* Plasma Gradients */
+  --plasma-primary: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%);
+  --plasma-secondary: linear-gradient(135deg, #2196f3 0%, #ff0040 100%);
+  --plasma-tertiary: linear-gradient(135deg, #9c27b0 0%, #ffd700 100%);
+  
+  /* Spacing Matrix */
+  --space-quantum: 4px;
+  --space-nano: 8px;
+  --space-micro: 12px;
+  --space-normal: 16px;
+  --space-macro: 24px;
+  --space-mega: 32px;
+  --space-giga: 48px;
+  
+  /* Animation Timing */
+  --quantum-fast: 0.3s;
+  --quantum-normal: 0.5s;
+  --quantum-slow: 1s;
+}
+
+/* ===== MAIN CONTAINER - FIXED LAYOUT ===== */
+.epic-livestream-container {
+  position: fixed;
+  left: 280px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, #0a0012 0%, #000000 50%, #0a0012 100%);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Background pattern */
+.epic-livestream-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 280px;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.06) 0%, transparent 40%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 100px,
+      rgba(0, 255, 255, 0.01) 100px,
+      rgba(0, 255, 255, 0.01) 101px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===== SIDEBAR - FIXED LEFT ===== */
+.epic-sidebar,
+.sidebar-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 280px;
+  height: 100vh;
+  background: linear-gradient(180deg, 
+    rgba(0, 255, 255, 0.05) 0%, 
+    rgba(255, 0, 255, 0.03) 50%, 
+    rgba(0, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(0, 255, 255, 0.3);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+/* ===== MAIN GRID SYSTEM - SCROLLABLE ===== */
+.epic-grid {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: var(--space-normal);
+  z-index: 10;
+}
+
+/* ===== EPIC HEADER ===== */
+.epic-header {
+  position: relative;
+  padding: var(--space-normal) var(--space-macro);
+  margin-bottom: var(--space-normal);
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 255, 0.1) 0%, 
+    rgba(255, 0, 255, 0.05) 100%);
+  backdrop-filter: blur(20px);
+  border: 2px solid transparent;
+  border-image: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff) 1;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px;
+  box-shadow: 0 10px 40px rgba(0, 255, 255, 0.2);
+}
+
+.epic-logo {
+  font-size: 2rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  animation: gradientShift 3s linear infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.header-actions {
+  display: flex;
+  gap: var(--space-micro);
+}
+
+.header-btn {
+  padding: var(--space-nano) var(--space-macro);
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+  border: 2px solid var(--quantum-cyan);
+  border-radius: 25px;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all var(--quantum-fast);
+  backdrop-filter: blur(10px);
+}
+
+.header-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
+  box-shadow: 0 5px 20px rgba(0, 255, 255, 0.4);
+}
+
+/* ===== CONTROL PANELS GRID ===== */
+.control-panels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-normal);
+  margin-bottom: var(--space-macro);
+}
+
+@media (max-width: 1400px) {
+  .control-panels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .control-panels-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== SECTION CARDS ===== */
+.section-card {
+  background: linear-gradient(135deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: var(--space-macro);
+  transition: all var(--quantum-fast);
+}
+
+.section-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--quantum-cyan);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+}
+
+/* ===== VIDEO CHAT SECTION ===== */
+.video-chat-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-macro);
+  margin-bottom: var(--space-macro);
+}
+
+/* ===== PREVIEW STAGE - VIDEO CONTAINER ===== */
+.preview-stage {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  background: linear-gradient(135deg, #000000 0%, #0a0012 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, #00ffff, #ff00ff, #00ffff) 1;
+  box-shadow: 0 0 60px rgba(0, 255, 255, 0.2);
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, 
+    rgba(0, 255, 255, 0.05) 0%, 
+    transparent 50%);
+}
+
+/* Video placeholder text */
+.video-wrapper > div {
+  text-align: center;
+  color: var(--quantum-cyan);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px currentColor;
+}
+
+/* ===== FLOATING CHAT OVERLAY - TIKTOK STYLE ===== */
+.floating-chat-overlay {
+  position: absolute;
+  bottom: 80px;
+  left: 20px;
+  width: 400px;
+  max-width: 40%;
+  height: 300px;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.floating-chat-messages {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-nano);
+  padding: var(--space-normal);
+  mask-image: linear-gradient(to top, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 80%, transparent 100%);
+}
+
+.floating-chat-message {
+  background: linear-gradient(90deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 15px;
+  padding: var(--space-nano) var(--space-micro);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  animation: slideIn 0.5s ease-out;
+  max-width: 100%;
+  word-wrap: break-word;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.floating-chat-message:hover {
+  transform: translateX(5px);
+  border-color: var(--quantum-cyan);
+  box-shadow: 0 4px 30px rgba(0, 255, 255, 0.3);
+}
+
+.floating-chat-user {
+  font-weight: 700;
+  color: var(--quantum-cyan);
+  margin-right: var(--space-nano);
+  font-size: 0.9rem;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.floating-chat-text {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Special message types */
+.floating-chat-message.gift {
+  background: linear-gradient(90deg,
+    rgba(255, 215, 0, 0.2) 0%,
+    rgba(255, 0, 255, 0.1) 100%);
+  border-color: var(--quantum-gold);
+}
+
+.floating-chat-message.super {
+  background: linear-gradient(135deg,
+    rgba(255, 0, 64, 0.3) 0%,
+    rgba(0, 255, 255, 0.2) 100%);
+  border: 2px solid var(--quantum-pink);
+}
+
+/* ===== CHAT INPUT AREA ===== */
+.floating-chat-input-wrapper {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  gap: var(--space-nano);
+  z-index: 101;
+}
+
+.floating-chat-input {
+  flex: 1;
+  padding: var(--space-micro) var(--space-normal);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  border-radius: 25px;
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.floating-chat-input:focus {
+  border-color: var(--quantum-cyan);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.floating-chat-send {
+  padding: var(--space-micro) var(--space-macro);
+  background: var(--plasma-primary);
+  border: none;
+  border-radius: 25px;
+  color: black;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--quantum-fast);
+}
+
+.floating-chat-send:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+/* ===== STREAM INFO OVERLAY ===== */
+.stream-info-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-normal);
+  background: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    transparent 100%);
+  z-index: 50;
+}
+
+.stream-stats {
+  display: flex;
+  gap: var(--space-macro);
+  align-items: center;
+  font-size: 0.95rem;
+  color: white;
+}
+
+.stream-stats span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-quantum);
+  padding: var(--space-quantum) var(--space-micro);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+/* ===== LIVE INDICATOR ===== */
+.live-indicator {
+  position: absolute;
+  top: var(--space-normal);
+  right: var(--space-normal);
+  background: linear-gradient(135deg, #ff0040, #ff00ff);
+  color: white;
+  padding: var(--space-nano) var(--space-normal);
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-nano);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: pulse 2s ease-in-out infinite;
+  z-index: 51;
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  animation: blink 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ===== VIEWER REACTIONS ===== */
+.viewer-reactions {
+  position: absolute;
+  right: 20px;
+  bottom: 80px;
+  width: 80px;
+  height: 300px;
+  pointer-events: none;
+  z-index: 102;
+}
+
+.reaction {
+  position: absolute;
+  font-size: 2rem;
+  animation: float 4s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0% {
+    bottom: 0;
+    opacity: 1;
+    transform: translateX(0) scale(0);
+  }
+  20% {
+    transform: translateX(0) scale(1.2);
+  }
+  100% {
+    bottom: 300px;
+    opacity: 0;
+    transform: translateX(30px) scale(0.5);
+  }
+}
+
+/* ===== MODERATION SECTION ===== */
+.moderation-section {
+  margin-top: var(--space-macro);
+}
+
+.moderation-center {
+  background: linear-gradient(135deg,
+    rgba(156, 39, 176, 0.1) 0%,
+    rgba(0, 0, 0, 0.7) 100%);
+  border-color: var(--quantum-purple);
+}
+
+/* ===== PANEL GRID BOTTOM ===== */
+.panel-grid-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-normal);
+  margin-top: var(--space-macro);
+  margin-bottom: var(--space-macro);
+}
+
+@media (max-width: 1200px) {
+  .panel-grid-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== BUTTONS ===== */
+button, .epic-btn, .Button {
+  padding: var(--space-micro) var(--space-macro);
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 255, 0.1) 0%, 
+    rgba(255, 0, 255, 0.1) 100%);
+  border: 2px solid var(--quantum-cyan);
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--quantum-fast);
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button:hover, .epic-btn:hover, .Button:hover {
+  transform: translateY(-2px);
+  border-color: var(--quantum-pink);
+  box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
+}
+
+/* ===== FORM ELEMENTS ===== */
+input, select, textarea {
+  width: 100%;
+  padding: var(--space-micro) var(--space-normal);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--quantum-cyan);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+/* Range Slider Styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+input[type="range"]::-webkit-slider-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00ffff, #ff00ff);
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+  transition: all 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00ffff, #ff00ff);
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+}
+
+/* Option elements for selects */
+option {
+  background: var(--dark-space);
+  color: white;
+}
+
+/* ===== LABELS ===== */
+label, .form-label {
+  display: block;
+  color: var(--quantum-cyan);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: var(--space-quantum);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ffff, #ff00ff);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #00ffff, #ffffff, #ff00ff);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1400px) {
+  .epic-livestream-container {
+    left: 240px;
+  }
+  
+  .epic-sidebar,
+  .sidebar-container {
+    width: 240px;
+  }
+  
+  .epic-livestream-container::before {
+    left: 240px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .epic-livestream-container {
+    left: 200px;
+  }
+  
+  .epic-sidebar,
+  .sidebar-container {
+    width: 200px;
+  }
+  
+  .epic-livestream-container::before {
+    left: 200px;
+  }
+  
+  .floating-chat-overlay {
+    width: 300px;
+    max-width: 35%;
+  }
+}
+
+@media (max-width: 768px) {
+  .epic-livestream-container {
+    left: 0;
+  }
+  
+  .epic-sidebar,
+  .sidebar-container {
+    display: none;
+  }
+  
+  .epic-livestream-container::before {
+    left: 0;
+  }
+  
+  .floating-chat-overlay {
+    width: calc(100% - 40px);
+    max-width: none;
+    left: 20px;
+    right: 20px;
+    height: 200px;
+  }
+  
+  .control-panels-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .panel-grid-bottom {
+    grid-template-columns: 1fr;
+  }
+  
+  .epic-logo {
+    font-size: 1.2rem;
+  }
+}
+
+/* ===== FIXES FOR COMMON ISSUES ===== */
+
+/* Ensure proper stacking */
+.epic-livestream-container > * {
+  position: relative;
+}
+
+/* Fix for overlapping elements */
+.section-card {
+  position: relative;
+  z-index: auto;
+}
+
+/* Ensure visibility of all panels */
+.device-panel,
+.effects-panel,
+.size-controls-panel,
+.poll-panel {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  padding: var(--space-normal);
+  border-radius: 10px;
+}
+
+/* Chat section specific */
+.chat-stage {
+  position: relative;
+}
+
+.chat-actions {
+  display: flex;
+  gap: var(--space-micro);
+  margin-bottom: var(--space-normal);
+}
+
+/* Stats bar */
+.epic-statsbar {
+  padding: var(--space-normal);
+  background: linear-gradient(90deg,
+    rgba(0, 255, 255, 0.05) 0%,
+    rgba(255, 0, 255, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+/* Animation performance */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- kompaktere Abstände NUR in Gerät- & Effekt-Panel --- */
+.device-panel,
+.effects-panel {
+  display: grid;              /* sichere, einfache vertikale Staffelung */
+  row-gap: 10px;              /* enger als global */
+}
+
+/* Innen-Padding der Karten nur in diesen beiden Panels reduzieren */
+.device-panel.section-card,
+.effects-panel.section-card {
+  padding: 12px;              /* vorher var(--space-macro) */
+}
+
+/* Labels knapper */
+:is(.device-panel, .effects-panel) label {
+  margin-bottom: 4px;
+}
+
+/* Vertikale Abstände zwischen Elementen in den Panels weiter verkleinern */
+:is(.device-panel, .effects-panel) > * + * {
+  margin-top: 8px;
+}
+
+/* Falls es Formgruppen gibt, ebenfalls enger stacken */
+:is(.device-panel, .effects-panel) .form-group + .form-group,
+:is(.device-panel, .effects-panel) .control-group + .control-group,
+:is(.device-panel, .effects-panel) .form-row + .form-row {
+  margin-top: 8px;
+}
+
+/* --- PANIC-Button: rot leuchtend --- */
+/* Trifft gängige Varianten; wenn dein Button noch keine Klasse hat,
+   gib ihm z.B. class="panic-btn" oder id="panicButton". */
+button#panic,
+button#panicButton,
+.panic-btn,
+.panic-button,
+.btn-panic,
+.epic-btn.panic,
+.Button.panic,
+.danger {
+  background: linear-gradient(135deg, #ff1744, #d50000);
+  border-color: #ff1744;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(0,0,0,0.6);
+  box-shadow:
+    0 0 16px rgba(255, 23, 68, 0.65),
+    0 0 36px rgba(255, 0, 0, 0.35);
+  animation: panicPulse 1.6s ease-in-out infinite;
+}
+
+/* Hover/Active etwas kräftiger */
+button#panic:hover,
+button#panicButton:hover,
+.panic-btn:hover,
+.panic-button:hover,
+.btn-panic:hover,
+.epic-btn.panic:hover,
+.Button.panic:hover,
+.danger:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 0 22px rgba(255, 23, 68, 0.85),
+    0 0 48px rgba(255, 0, 0, 0.5);
+}
+
+/* Puls-Effekt */
+@keyframes panicPulse {
+  0% {
+    filter: saturate(1);
+    box-shadow:
+      0 0 12px rgba(255, 23, 68, 0.5),
+      0 0 24px rgba(255, 0, 0, 0.25);
+  }
+  50% {
+    filter: saturate(1.3);
+    box-shadow:
+      0 0 26px rgba(255, 23, 68, 0.9),
+      0 0 60px rgba(255, 0, 0, 0.45);
+  }
+  100% {
+    filter: saturate(1);
+    box-shadow:
+      0 0 12px rgba(255, 23, 68, 0.5),
+      0 0 24px rgba(255, 0, 0, 0.25);
+  }
+}
+
+/* --- nur Device- & Effects-Panel enger machen --- */
+.device-panel,
+.effects-panel {
+  padding: 12px !important;          /* weniger Innenabstand */
+  row-gap: 8px !important;           /* falls Grid aktiv ist */
+}
+
+/* direkte Kinder enger staffeln */
+.device-panel > * + *,
+.effects-panel > * + * {
+  margin-top: 8px !important;
+}
+
+/* typische Gruppen/Zeilen in den Panels zusammendrücken */
+.device-panel .form-group,
+.effects-panel .form-group,
+.device-panel .control-group,
+.effects-panel .control-group,
+.device-panel .form-row,
+.effects-panel .form-row,
+.device-panel .slider-row,
+.effects-panel .slider-row {
+  margin-top: 8px !important;
+  margin-bottom: 0 !important;
+  gap: 8px !important;               /* falls flex/grid benutzt wird */
+}
+
+/* Labels schmaler Abstand zum Feld */
+.device-panel label,
+.effects-panel label {
+  margin-bottom: 4px !important;
+}
+
+/* Inputs/Selects ohne Zusatzmargen in diesen Panels */
+.device-panel input,
+.device-panel select,
+.device-panel textarea,
+.effects-panel input,
+.effects-panel select,
+.effects-panel textarea {
+  margin: 0 !important;
+}
+
+/* Falls innerhalb der Panels noch kleine Karten liegen */
+.device-panel .section-card,
+.effects-panel .section-card {
+  padding: 10px !important;
+}
+
+
+/* ===== Noch enger NUR in den zwei Panels ===== */
+.device-panel,
+.effects-panel {
+  padding: 8px !important;           /* Innenraum kleiner */
+  row-gap: 6px !important;           /* falls Grid aktiv */
+}
+
+/* Direkte Kinder dichter stapeln */
+.device-panel > * + *,
+.effects-panel > * + * {
+  margin-top: 6px !important;
+}
+
+/* Übliche Gruppen/Zeilen – noch kompakter */
+.device-panel :is(.form-group,.control-group,.form-row,.row,.grid,.stack),
+.effects-panel :is(.form-group,.control-group,.form-row,.row,.grid,.stack) {
+  gap: 6px !important;
+  margin-top: 6px !important;
+  margin-bottom: 0 !important;
+}
+
+/* Karten/Abschnitte in den Panels enger */
+.device-panel .section-card,
+.effects-panel .section-card {
+  padding: 8px !important;
+  margin: 0 !important;
+}
+
+/* Labels & Inputs extra dicht */
+.device-panel label,
+.effects-panel label {
+  margin-bottom: 2px !important;
+  line-height: 1.2 !important;
+}
+
+.device-panel :is(input,select,textarea),
+.effects-panel :is(input,select,textarea) {
+  margin: 0 !important;
+}
+
+/* Slider-/Regler-Zeilen enger (deckt viele Libraries ab) */
+.device-panel :is(.slider-row,.slider,.range,.rc-slider,.MuiSlider-root) + * ,
+.effects-panel :is(.slider-row,.slider,.range,.rc-slider,.MuiSlider-root) + * {
+  margin-top: 6px !important;
+}
+
+.device-panel :is(.slider-row,.slider,.range,.rc-slider,.MuiSlider-root),
+.effects-panel :is(.slider-row,.slider,.range,.rc-slider,.MuiSlider-root) {
+  margin: 2px 0 !important;
+}
+
+/* Button-Reihen in den Panels */
+.device-panel :is(.btn-row,.button-row),
+.effects-panel :is(.btn-row,.button-row) {
+  gap: 8px !important;
+  margin-top: 6px !important;
+}
+
+/* Falls irgendwo noch Standardabstände versteckt sind */
+.device-panel .mb,
+.effects-panel .mb { margin-bottom: 6px !important; }
+.device-panel .mt,
+.effects-panel .mt { margin-top: 6px !important; }
+
+/* --- Optional: Ultra-kompakt (falls du noch dichter willst)
+.device-panel > * + *, .effects-panel > * + * { margin-top: 4px !important; }
+.device-panel :is(.form-group,.control-group,.form-row,.row,.grid,.stack),
+.effects-panel :is(.form-group,.control-group,.form-row,.row,.grid,.stack) { gap: 4px !important; }
+*/
+

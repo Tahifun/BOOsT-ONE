@@ -1,0 +1,841 @@
+/* ===== EPIC SIDEBAR ULTIMATE - Die Zukunft der Navigation ===== */
+
+/* Root Variables & Setup */
+.epic-sidebar {
+  --panel-bg: linear-gradient(135deg, 
+    rgba(255,255,255,0.08) 0%, 
+    rgba(255,255,255,0.03) 40%,
+    rgba(0,255,255,0.02) 100%);
+  --panel-border: rgba(255,255,255,0.15);
+  --txt: #eef2ff;
+  --muted: rgba(238,242,255,0.7);
+  --glow-primary: #00ffff;
+  --glow-secondary: #a855f7;
+  --glow-tertiary: #3b82f6;
+  
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  color: var(--txt);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  position: relative;
+  isolation: isolate;
+}
+
+/* === ULTIMATE Theme === */
+.theme-epic .epic-sidebar,
+.epic-sidebar.theme-epic {
+  background: 
+    linear-gradient(180deg,
+      rgba(5, 5, 8, 0.98) 0%,
+      rgba(10, 12, 20, 0.95) 20%,
+      rgba(15, 18, 35, 0.93) 50%,
+      rgba(10, 12, 20, 0.95) 80%,
+      rgba(5, 5, 8, 0.98) 100%
+    );
+  backdrop-filter: blur(40px) saturate(200%) brightness(1.1);
+  border-right: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+/* Animated Border Gradient */
+.theme-epic .epic-sidebar::before,
+.epic-sidebar.theme-epic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(
+    45deg,
+    var(--glow-primary),
+    var(--glow-secondary),
+    var(--glow-tertiary),
+    var(--glow-primary)
+  );
+  background-size: 400% 400%;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+  animation: borderFlow 8s ease infinite;
+  pointer-events: none;
+  border-radius: 0;
+}
+
+@keyframes borderFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Multiple Layer Effects */
+.theme-epic .epic-sidebar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 10%, var(--glow-primary) 0%, transparent 25%),
+    radial-gradient(circle at 80% 30%, var(--glow-secondary) 0%, transparent 25%),
+    radial-gradient(circle at 50% 90%, var(--glow-tertiary) 0%, transparent 30%),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.02) 0%, transparent 40%);
+  opacity: 0.15;
+  mix-blend-mode: screen;
+  animation: galaxyPulse 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes galaxyPulse {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg);
+    filter: blur(40px);
+  }
+  25% { 
+    transform: scale(1.1) rotate(90deg);
+    filter: blur(50px);
+  }
+  50% { 
+    transform: scale(0.95) rotate(180deg);
+    filter: blur(35px);
+  }
+  75% { 
+    transform: scale(1.05) rotate(270deg);
+    filter: blur(45px);
+  }
+}
+
+/* Floating Particles */
+.epic-sidebar::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle, rgba(0,255,255,0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(168,85,247,0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(59,130,246,0.8) 1px, transparent 1px);
+  background-size: 100px 100px, 150px 150px, 200px 200px;
+  background-position: 0 0, 40px 60px, 130px 270px;
+  animation: particleFloat 60s linear infinite;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-100%) translateX(-50px); }
+}
+
+/* === ENHANCED Panels === */
+.sb-panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  padding: 16px;
+  position: relative;
+  overflow: visible;
+  flex-shrink: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  backdrop-filter: blur(10px);
+}
+
+/* 3D Hover Effect */
+.sb-panel:hover {
+  transform: translateZ(10px) rotateX(-2deg);
+  box-shadow: 
+    0 20px 40px rgba(0,255,255,0.15),
+    0 10px 20px rgba(168,85,247,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* Panel Glow Lines */
+.sb-panel::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    transparent,
+    var(--glow-primary),
+    transparent,
+    var(--glow-secondary),
+    transparent
+  );
+  border-radius: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: rotateGlow 4s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.sb-panel:hover::before {
+  opacity: 0.5;
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Holographic Shimmer */
+.sb-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,255,255,0.1) 50%,
+    transparent 60%
+  );
+  border-radius: 24px;
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+  pointer-events: none;
+}
+
+.sb-panel:hover::after {
+  transform: translateX(100%);
+}
+
+.panel-title {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, var(--muted), var(--txt), var(--muted));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerText 3s linear infinite;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+@keyframes shimmerText {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* === AVATAR with Pulse === */
+.avatar-wrap {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--glow-primary), var(--glow-secondary));
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.avatar-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: inherit;
+  border-radius: 20px;
+  filter: blur(20px);
+  opacity: 0.5;
+  animation: avatarPulse 2s ease-in-out infinite;
+}
+
+@keyframes avatarPulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+.avatar-wrap:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 
+    0 0 40px var(--glow-primary),
+    0 0 60px var(--glow-secondary);
+}
+
+/* ==== Avatar-Fix (Auto-Zuschnitt) ==== */
+.epic-sidebar .avatar-wrap {
+  /* feste, quadratische Box */
+  width: 96px;
+  height: 96px;
+  aspect-ratio: 1 / 1;
+
+  border-radius: 16px;          /* oder 50% für Kreis */
+  overflow: hidden;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(10, 14, 26, 0.6);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 6px 16px rgba(0,0,0,0.35);
+  flex-shrink: 0;               /* nicht zusammendrücken */
+}
+
+.epic-sidebar .avatar-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  /* Zauber: füllt den Frame ohne Verzerrung, zentriert */
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Fallback-Buchstabe passend skalieren */
+.epic-sidebar .avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 32px;
+  color: #fff;
+  background: linear-gradient(135deg, #1a2040 0%, #121a2c 100%);
+}
+
+/* Upload-Icon sauber im Eck halten */
+.epic-sidebar .avatar-upload {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  padding: 6px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+}
+
+/* kompakter auf Mobile */
+@media (max-width: 640px) {
+  .epic-sidebar .avatar-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 12px;
+  }
+  .epic-sidebar .avatar-fallback { font-size: 26px; }
+}
+
+
+/* === CONNECT Buttons with Liquid Effect === */
+.connect-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: 
+    linear-gradient(135deg, 
+      rgba(255,255,255,0.05) 0%, 
+      rgba(255,255,255,0.02) 100%);
+  color: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  isolation: isolate;
+}
+
+/* Liquid Background */
+.connect-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(0,255,255,0.4) 0%, 
+    rgba(168,85,247,0.3) 50%, 
+    transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: -1;
+}
+
+.connect-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.connect-btn:hover {
+  transform: translateY(-3px) translateZ(20px) rotateX(-5deg);
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 
+    0 10px 30px rgba(0,255,255,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* Platform Specific Glows */
+.connect-btn.tiktok:hover {
+  box-shadow: 
+    0 0 40px rgba(255,0,80,0.4),
+    0 0 50px rgba(0,240,255,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.connect-btn.spotify:hover {
+  box-shadow: 
+    0 0 40px rgba(29,185,84,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* === FUNCTION Buttons with Neon === */
+.functions-panel .func-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, 
+    rgba(255,255,255,0.03) 0%, 
+    transparent 100%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  color: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Neon Border Animation */
+.functions-panel .func-btn::before,
+.functions-panel .func-btn::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    var(--glow-primary),
+    transparent,
+    var(--glow-secondary),
+    transparent
+  );
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: neonRotate 3s linear infinite;
+  z-index: -1;
+}
+
+.functions-panel .func-btn::after {
+  animation-delay: -1.5s;
+}
+
+@keyframes neonRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.functions-panel .func-btn:hover::before,
+.functions-panel .func-btn:hover::after {
+  opacity: 0.7;
+}
+
+.functions-panel .func-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: var(--glow-primary);
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.functions-panel .func-btn.active {
+  background: linear-gradient(135deg, 
+    rgba(0,255,255,0.2) 0%, 
+    rgba(168,85,247,0.15) 100%);
+  border-color: var(--glow-primary);
+  box-shadow: 
+    0 0 30px rgba(0,255,255,0.4),
+    inset 0 0 20px rgba(0,255,255,0.1);
+  animation: activePulse 2s ease-in-out infinite;
+}
+
+@keyframes activePulse {
+  0%, 100% { 
+    box-shadow: 
+      0 0 30px rgba(0,255,255,0.4),
+      inset 0 0 20px rgba(0,255,255,0.1);
+  }
+  50% { 
+    box-shadow: 
+      0 0 50px rgba(0,255,255,0.6),
+      inset 0 0 30px rgba(0,255,255,0.2);
+  }
+}
+
+/* === MODE Switch - Quantum Style === */
+.mode-panel .mode-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 8px 0;
+  position: relative;
+}
+
+.mode-chip {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--muted);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.mode-chip.on {
+  color: #fff;
+  border-color: var(--glow-primary);
+  background: linear-gradient(135deg, 
+    rgba(0,255,255,0.2) 0%, 
+    rgba(168,85,247,0.1) 100%);
+  box-shadow: 
+    0 0 20px rgba(0,255,255,0.3),
+    inset 0 0 10px rgba(0,255,255,0.1);
+  animation: chipGlow 2s ease-in-out infinite;
+}
+
+@keyframes chipGlow {
+  0%, 100% { 
+    box-shadow: 
+      0 0 20px rgba(0,255,255,0.3),
+      inset 0 0 10px rgba(0,255,255,0.1);
+  }
+  50% { 
+    box-shadow: 
+      0 0 30px rgba(0,255,255,0.5),
+      inset 0 0 15px rgba(0,255,255,0.2);
+  }
+}
+
+/* Quantum Switch */
+.switch {
+  position: relative;
+  width: 60px;
+  height: 32px;
+  display: inline-block;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch i {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(255,255,255,0.05) 0%, 
+    rgba(0,0,0,0.2) 100%);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Quantum Particles in Switch */
+.switch i::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(0,255,255,0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(168,85,247,0.3) 0%, transparent 50%);
+  opacity: 0.5;
+  animation: quantumFlow 3s ease-in-out infinite;
+}
+
+@keyframes quantumFlow {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+.switch i::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--glow-primary), var(--glow-secondary));
+  box-shadow: 
+    0 0 20px var(--glow-primary),
+    inset 0 0 10px rgba(255,255,255,0.3);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: orbRotate 2s linear infinite;
+}
+
+@keyframes orbRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.switch input:checked + i::before {
+  left: 31px;
+  background: linear-gradient(135deg, var(--glow-secondary), var(--glow-tertiary));
+  box-shadow: 
+    0 0 25px var(--glow-secondary),
+    inset 0 0 10px rgba(255,255,255,0.4);
+}
+
+/* === PRO Panel - Premium Glass === */
+.pro-panel {
+  margin-top: auto;
+  background: linear-gradient(135deg, 
+    rgba(249,115,22,0.1) 0%, 
+    rgba(239,68,68,0.05) 100%);
+  border-color: rgba(249,115,22,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.pro-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(249,115,22,0.05) 10px,
+      rgba(249,115,22,0.05) 20px
+    );
+  animation: stripeMove 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes stripeMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(28px); }
+}
+
+.btn-upgrade {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, #ef4444, #f97316, #ef4444);
+  background-size: 200% 200%;
+  border: 1px solid rgba(255,255,255,0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: fireGradient 3s ease infinite;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+@keyframes fireGradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.btn-upgrade::before {
+  content: '✨';
+  position: absolute;
+  font-size: 40px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.btn-upgrade:hover::before {
+  opacity: 0.3;
+  animation: sparkleFloat 1s ease infinite;
+}
+
+@keyframes sparkleFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-50px) rotate(360deg); }
+}
+
+.btn-upgrade:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 15px 40px rgba(249,115,22,0.5),
+    0 5px 20px rgba(239,68,68,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+/* === Scrollbar - Holographic === */
+.epic-sidebar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.epic-sidebar::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, 
+    rgba(0,0,0,0.2) 0%, 
+    rgba(0,0,0,0.1) 100%);
+  border-radius: 5px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+}
+
+.epic-sidebar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, 
+    var(--glow-primary), 
+    var(--glow-secondary), 
+    var(--glow-tertiary));
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 
+    0 0 10px var(--glow-primary),
+    inset 0 0 5px rgba(255,255,255,0.3);
+  background-size: 100% 200%;
+  animation: scrollbarPulse 3s ease infinite;
+}
+
+@keyframes scrollbarPulse {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 0% 100%; }
+}
+
+.epic-sidebar::-webkit-scrollbar-thumb:hover {
+  box-shadow: 
+    0 0 20px var(--glow-primary),
+    0 0 30px var(--glow-secondary),
+    inset 0 0 10px rgba(255,255,255,0.5);
+}
+
+/* === Performance Optimizations === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* === Easter Egg - Rainbow Mode === */
+.epic-sidebar.rainbow-mode {
+  animation: rainbowBackground 10s ease infinite;
+}
+
+@keyframes rainbowBackground {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(180deg); }
+}
+
+/* === Responsive Magic === */
+@media (max-width: 1024px) {
+  .epic-sidebar {
+    gap: 12px;
+    padding: 14px;
+  }
+  
+  .sb-panel {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .epic-sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    z-index: 9999;
+    transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .epic-sidebar.mobile-open {
+    left: 0;
+    box-shadow: 
+      0 0 50px rgba(0,255,255,0.5),
+      0 0 100px rgba(168,85,247,0.3);
+  }
+}
+
+
+/* File-Input komplett unsichtbar/offscreen (kein "Durchsuchen" mehr) */
+.sr-only-file {
+  position: fixed !important;
+  left: -99999px !important;
+  top: -99999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+}
+
+/* Avatar-Container & Bild (falls noch nicht gesetzt) */
+.epic-sidebar .avatar-wrap {
+  width: 96px;
+  height: 96px;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 14, 26, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 6px 16px rgba(0,0,0,0.35);
+  cursor: pointer;
+}
+
+.epic-sidebar .avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* füllt den Rahmen */
+  object-position: center;
+  display: block;
+}
+
+.epic-sidebar .avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 32px;
+  color: #fff;
+  background: linear-gradient(135deg, #1a2040 0%, #121a2c 100%);
+}
+
+/* Sichtbares kleines Upload-Icon unten rechts */
+.epic-sidebar .avatar-upload {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  padding: 6px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}

@@ -1,0 +1,31 @@
+# MODE-HINWEIS: Nicht parallel zu Docker+Nginx verwenden.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Diese werden aus Netlify Environment Variables gelesen
+  VITE_API_URL = "${VITE_API_URL}"
+  VITE_STRIPE_PUBLISHABLE_KEY = "${VITE_STRIPE_PUBLISHABLE_KEY}"
+
+# Proxy API calls to backend (use environment variable)
+[[redirects]]
+  from = "/api/*"
+  to = "${BACKEND_URL}/api/:splat"
+  status = 200
+  force = true
+
+# SPA fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "no-referrer"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"

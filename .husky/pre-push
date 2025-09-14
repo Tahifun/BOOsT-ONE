@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# npx --no-install tsc -p ./backend/tsconfig.json --noEmit
+# npx --no-install tsc -p ./frontend/tsconfig.json --noEmit
+exit 0

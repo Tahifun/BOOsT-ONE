@@ -1,0 +1,241 @@
+/* Background.css - Animierter Gradient & Glas-Layer */
+
+.background-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout paint;
+}
+
+/* Gradient Background Layers */
+.gradient-background {
+  position: absolute;
+  inset: 0;
+  opacity: calc(1 * var(--intensity, 1));
+  will-change: transform, opacity;
+}
+
+.gradient-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0.8;
+}
+
+/* Primary Gradient - Main animated background */
+.gradient-primary {
+  background: linear-gradient(
+    125deg,
+    #020617 0%,
+    #0f172a 25%,
+    #1e293b 50%,
+    #0f172a 75%,
+    #020617 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+}
+
+/* Secondary Gradient - Color accents */
+.gradient-secondary {
+  background:
+    radial-gradient(ellipse at top left, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+  animation: gradientRotate 30s ease infinite;
+}
+
+/* Tertiary Gradient - Additional depth */
+.gradient-tertiary {
+  background: radial-gradient(circle at center, transparent 0%, rgba(15, 23, 42, 0.4) 100%);
+}
+
+/* Time-based theme variations */
+[data-time="morning"] .gradient-primary {
+  background: linear-gradient(125deg, #1e293b 0%, #334155 25%, #475569 50%, #334155 75%, #1e293b 100%);
+  background-size: 400% 400%;
+}
+
+[data-time="evening"] .gradient-primary {
+  background: linear-gradient(125deg, #1e1b4b 0%, #312e81 25%, #4c1d95 50%, #312e81 75%, #1e1b4b 100%);
+  background-size: 400% 400%;
+}
+
+[data-time="night"] .gradient-primary {
+  background: linear-gradient(125deg, #020617 0%, #0c0a1d 25%, #1e1b4b 50%, #0c0a1d 75%, #020617 100%);
+  background-size: 400% 400%;
+}
+
+/* PRO Theme */
+[data-theme="pro"] .gradient-primary {
+  background: linear-gradient(125deg, #1a1a0a 0%, #2d2d15 25%, #404020 50%, #2d2d15 75%, #1a1a0a 100%);
+  background-size: 400% 400%;
+}
+
+[data-theme="pro"] .gradient-secondary {
+  background:
+    radial-gradient(ellipse at top left, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(255, 237, 78, 0.15) 0%, transparent 50%);
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes gradientRotate {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Glass Morphism Layers */
+.glass-layers {
+  position: absolute;
+  inset: 0;
+}
+
+.glass-layer {
+  position: absolute;
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+}
+
+.glass-layer-1 {
+  width: 60%;
+  height: 60%;
+  top: -20%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+  animation: floatGlass1 25s ease-in-out infinite;
+}
+
+.glass-layer-2 {
+  width: 50%;
+  height: 50%;
+  bottom: -15%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+  animation: floatGlass2 20s ease-in-out infinite;
+}
+
+.glass-layer-3 {
+  width: 40%;
+  height: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.03) 0%, transparent 70%);
+  animation: floatGlass3 30s ease-in-out infinite;
+}
+
+@keyframes floatGlass1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(50px, -30px) scale(1.1); }
+  66% { transform: translate(-30px, 20px) scale(0.9); }
+}
+
+@keyframes floatGlass2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, -40px) scale(1.2); }
+}
+
+@keyframes floatGlass3 {
+  0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  50% { transform: translate(-50%, -50%) scale(1.1) rotate(180deg); }
+}
+
+/* Particle Canvas */
+.particle-canvas {
+  position: absolute;
+  inset: 0;
+  opacity: 0.8;
+}
+
+/* Animated Orbs */
+.orb-container { position: absolute; inset: 0; }
+.orb { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.4; }
+
+.orb-1 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.4), transparent);
+  top: 10%; left: 10%;
+  animation: orbFloat1 20s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.4), transparent);
+  bottom: 20%; right: 15%;
+  animation: orbFloat2 25s ease-in-out infinite;
+}
+
+.orb-3 {
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.3), transparent);
+  top: 60%; left: 60%;
+  animation: orbFloat3 30s ease-in-out infinite;
+}
+
+.orb-4 {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.3), transparent);
+  top: 30%; right: 30%;
+  animation: orbFloat4 22s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 { 0%,100% { transform: translate(0,0) scale(1);} 33% { transform: translate(100px,-50px) scale(1.2);} 66% { transform: translate(-50px,100px) scale(0.8);} }
+@keyframes orbFloat2 { 0%,100% { transform: translate(0,0) scale(1);} 50% { transform: translate(-100px,-100px) scale(1.3);} }
+@keyframes orbFloat3 { 0%,100% { transform: translate(0,0) scale(1);} 25% { transform: translate(50px,50px) scale(0.9);} 50% { transform: translate(-100px,0) scale(1.1);} 75% { transform: translate(0,-50px) scale(1);} }
+@keyframes orbFloat4 { 0%,100% { transform: translate(0,0) scale(1);} 50% { transform: translate(80px,-80px) scale(1.15);} }
+
+/* Noise Texture Overlay */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Grid Pattern */
+.grid-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.02;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 60s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* Reduced Motion Support */
+.gradient-background.reduced-motion,
+.gradient-background.reduced-motion .gradient-layer,
+.gradient-background.reduced-motion ~ .glass-layers .glass-layer,
+.gradient-background.reduced-motion ~ .orb-container .orb,
+.gradient-background.reduced-motion ~ .grid-pattern {
+  animation: none !important;
+}
+
+.gradient-background.reduced-motion { opacity: 0.8; }
+
+/* Performance Optimizations */
+@media (max-width: 768px) {
+  .orb-container { display: none; }
+  .glass-layers { opacity: 0.5; }
+  .particle-canvas { opacity: 0.5; }
+}
+
+/* High Performance Mode */
+@media (prefers-reduced-data: reduce) {
+  .noise-overlay, .grid-pattern { display: none; }
+}

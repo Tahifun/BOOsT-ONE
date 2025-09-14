@@ -1,0 +1,1449 @@
+/* BOT MANAGER PAGE - QUANTUM REALITY EDITION */
+/* The most advanced bot management interface in the multiverse */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+/* ============================================
+   QUANTUM VARIABLES & COSMIC CONSTANTS
+   ============================================ */
+:root {
+  --quantum-void: #000000;
+  --neural-purple: #8a2be2;
+  --plasma-cyan: #00ffff;
+  --cosmic-pink: #ff00ff;
+  --matrix-green: #00ff00;
+  --reality-tear: #ff00aa;
+  --dimension-blue: #0099ff;
+  --quantum-gold: #ffd700;
+  --dark-matter: #0a0015;
+  --nebula-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #c471f5 75%, #fa71cd 100%);
+  --quantum-field: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+  --neural-pulse: 0 0 40px rgba(138, 43, 226, 0.8);
+  --cosmic-glow: 0 0 100px rgba(0, 255, 255, 0.5);
+}
+
+/* ============================================
+   MAIN CONTAINER - REALITY MATRIX
+   ============================================ */
+.bot-manager-page {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: 
+    linear-gradient(180deg, #000000 0%, #0a0015 50%, #1a0033 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(138, 43, 226, 0.03) 2px,
+      rgba(138, 43, 226, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 255, 0.03) 2px,
+      rgba(0, 255, 255, 0.03) 4px
+    );
+  position: relative;
+  overflow-x: hidden;
+  animation: quantum-breathe 10s ease-in-out infinite;
+}
+
+/* Quantum particles floating */
+.bot-manager-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent);
+  background-size: 200px 200px;
+  animation: quantum-drift 60s linear infinite;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================
+   HEADER - NEURAL COMMAND CENTER
+   ============================================ */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, transparent, var(--plasma-cyan), transparent) 1;
+  animation: neural-pulse-border 3s ease-in-out infinite;
+  position: relative;
+  z-index: 10;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neural-purple), transparent);
+  animation: scan-line 3s linear infinite;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.header-icon {
+  width: 50px;
+  height: 50px;
+  color: #8a2be2;
+  filter: drop-shadow(0 0 20px var(--neural-purple));
+  animation: icon-float 3s ease-in-out infinite;
+}
+
+.header-content h1 {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 0.2rem;
+  background: linear-gradient(
+    45deg,
+    #00ffff 0%,
+    #8a2be2 25%,
+    #ff00ff 50%,
+    #00ffff 75%,
+    #8a2be2 100%
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: 
+    quantum-shift 5s ease-in-out infinite,
+    text-glitch 8s step-end infinite;
+  margin: 0;
+  text-shadow: 
+    0 0 40px rgba(138, 43, 226, 0.8),
+    0 0 80px rgba(0, 255, 255, 0.5);
+  position: relative;
+}
+
+.header-content h1::before,
+.header-content h1::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+}
+
+.header-content h1::before {
+  animation: glitch-1 0.5s infinite;
+  z-index: -1;
+}
+
+.header-content h1::after {
+  animation: glitch-2 0.5s infinite;
+  z-index: -2;
+}
+
+.header-content p {
+  font-family: 'Orbitron', monospace;
+  color: var(--plasma-cyan);
+  margin: 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+  opacity: 0.9;
+  animation: fade-pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   QUANTUM BUTTON - REALITY ACTUATOR
+   ============================================ */
+.quantum-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: 
+    linear-gradient(135deg, rgba(138, 43, 226, 0.3) 0%, rgba(0, 255, 255, 0.3) 100%),
+    rgba(10, 0, 21, 0.9);
+  color: white;
+  border: 2px solid;
+  border-image: linear-gradient(135deg, var(--neural-purple), var(--plasma-cyan)) 1;
+  border-radius: 12px;
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.quantum-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.quantum-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.quantum-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 10px 40px rgba(138, 43, 226, 0.6),
+    0 0 60px rgba(0, 255, 255, 0.4),
+    inset 0 0 30px rgba(255, 255, 255, 0.1);
+  border-image: linear-gradient(135deg, var(--cosmic-pink), var(--matrix-green)) 1;
+  animation: button-quantum-state 0.5s ease-in-out;
+}
+
+.quantum-button:active {
+  transform: scale(0.95);
+  animation: reality-ripple 0.6s ease-out;
+}
+
+/* ============================================
+   BOT STATUS GRID - NEURAL NETWORK
+   ============================================ */
+.bot-status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.bot-status-card {
+  background: 
+    linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%),
+    rgba(10, 0, 21, 0.95);
+  border: 2px solid;
+  border-image: linear-gradient(135deg, var(--neural-purple), var(--plasma-cyan)) 1;
+  border-radius: 15px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: card-float 6s ease-in-out infinite;
+}
+
+.bot-status-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, transparent 70%);
+  animation: quantum-rotate 10s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bot-status-card:hover::before {
+  opacity: 1;
+}
+
+.bot-status-card.status-active {
+  border-color: var(--matrix-green);
+  box-shadow: 
+    0 0 30px rgba(0, 255, 127, 0.3),
+    inset 0 0 20px rgba(0, 255, 127, 0.1);
+  animation: 
+    card-float 6s ease-in-out infinite,
+    active-pulse 2s ease-in-out infinite;
+}
+
+.bot-status-card.status-inactive {
+  opacity: 0.6;
+  border-color: rgba(255, 68, 68, 0.3);
+  animation: card-float 6s ease-in-out infinite;
+}
+
+.bot-status-card:hover {
+  transform: translateY(-10px) scale(1.02) rotateX(5deg);
+  box-shadow: 
+    0 20px 60px rgba(138, 43, 226, 0.5),
+    0 0 100px rgba(0, 255, 255, 0.3),
+    inset 0 0 50px rgba(255, 0, 255, 0.1);
+  border-image: linear-gradient(135deg, var(--cosmic-pink), var(--matrix-green)) 1;
+}
+
+.bot-status-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.platform-icon {
+  width: 30px;
+  height: 30px;
+  color: var(--plasma-cyan);
+  filter: drop-shadow(0 0 10px currentColor);
+  animation: icon-spin 4s linear infinite;
+}
+
+.bot-status-header h3 {
+  flex: 1;
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  animation: text-glow 3s ease-in-out infinite;
+}
+
+.connection-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, transparent 70%),
+    rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(138, 43, 226, 0.5);
+  color: var(--plasma-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.connection-toggle::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #8a2be2, #ff00ff);
+  border-radius: 50%;
+  opacity: 0;
+  z-index: -1;
+  animation: rotate-gradient 3s linear infinite;
+  transition: opacity 0.3s ease;
+}
+
+.connection-toggle:hover::before {
+  opacity: 1;
+}
+
+.connection-toggle.connected {
+  background: 
+    radial-gradient(circle, rgba(0, 255, 127, 0.5) 0%, transparent 70%),
+    rgba(0, 255, 127, 0.2);
+  border-color: var(--matrix-green);
+  color: var(--matrix-green);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 127, 0.6),
+    inset 0 0 10px rgba(0, 255, 127, 0.3);
+  animation: connection-pulse 1.5s ease-in-out infinite;
+}
+
+.connection-toggle:hover {
+  transform: scale(1.2) rotate(180deg);
+  box-shadow: 0 0 30px currentColor;
+}
+
+.bot-status-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--matrix-green);
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  animation: status-flicker 3s ease-in-out infinite;
+}
+
+.bot-status-card.status-inactive .status-indicator {
+  color: #ff4444;
+  animation: warning-pulse 1s ease-in-out infinite;
+}
+
+.status-indicator svg {
+  width: 16px;
+  height: 16px;
+  filter: drop-shadow(0 0 5px currentColor);
+  animation: icon-pulse 2s ease-in-out infinite;
+}
+
+.status-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--plasma-cyan);
+  font-size: 0.85rem;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.status-stat:hover {
+  opacity: 1;
+  transform: translateX(5px);
+  color: white;
+}
+
+.status-stat svg {
+  width: 14px;
+  height: 14px;
+  color: var(--neural-purple);
+  animation: stat-float 4s ease-in-out infinite;
+}
+
+/* ============================================
+   TABS - DIMENSION SWITCHER
+   ============================================ */
+.bot-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  background: rgba(10, 0, 21, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  position: relative;
+  z-index: 10;
+}
+
+.bot-tabs::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.1), transparent);
+  animation: scan-line 4s linear infinite;
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+.bot-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--plasma-cyan);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.bot-tabs button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.bot-tabs button:hover::before {
+  left: 100%;
+}
+
+.bot-tabs button:hover {
+  color: white;
+  background: rgba(138, 43, 226, 0.2);
+  border-color: var(--neural-purple);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 5px 20px rgba(138, 43, 226, 0.4),
+    inset 0 0 20px rgba(138, 43, 226, 0.1);
+}
+
+.bot-tabs button.active {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.3) 0%, rgba(0, 255, 255, 0.3) 100%);
+  color: white;
+  border: 1px solid var(--plasma-cyan);
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.5),
+    inset 0 0 20px rgba(138, 43, 226, 0.3);
+  animation: tab-active-pulse 2s ease-in-out infinite;
+}
+
+.bot-tabs button svg {
+  width: 18px;
+  height: 18px;
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+/* ============================================
+   CONTENT AREA - QUANTUM FIELD
+   ============================================ */
+.bot-content {
+  min-height: 400px;
+  position: relative;
+  z-index: 10;
+  animation: content-fade-in 1s ease-out;
+}
+
+/* ============================================
+   OVERVIEW GRID - DATA MATRIX
+   ============================================ */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: 
+    linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%),
+    rgba(10, 0, 21, 0.9);
+  border: 2px solid;
+  border-image: linear-gradient(135deg, var(--neural-purple), var(--plasma-cyan)) 1;
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: stat-breathe 4s ease-in-out infinite;
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: 
+    repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg,
+      rgba(138, 43, 226, 0.05) 20deg,
+      transparent 40deg
+    );
+  animation: cosmic-sweep 20s linear infinite;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 15px 40px rgba(138, 43, 226, 0.4),
+    0 0 60px rgba(0, 255, 255, 0.2),
+    inset 0 0 30px rgba(255, 0, 255, 0.05);
+}
+
+.stat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-header svg {
+  width: 24px;
+  height: 24px;
+  color: var(--plasma-cyan);
+  filter: drop-shadow(0 0 10px currentColor);
+  animation: icon-rotate 6s linear infinite;
+}
+
+.stat-header h3 {
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.9rem;
+  color: var(--plasma-cyan);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.stat-value {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, white, var(--plasma-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+  animation: value-pulse 2s ease-in-out infinite;
+  text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+.stat-change {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.85rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-change.positive {
+  color: var(--matrix-green);
+  text-shadow: 0 0 10px currentColor;
+  animation: positive-glow 2s ease-in-out infinite;
+}
+
+.stat-change.negative {
+  color: #ff4444;
+  text-shadow: 0 0 10px currentColor;
+  animation: negative-glow 2s ease-in-out infinite;
+}
+
+.stat-change::before {
+  content: '▲';
+  display: inline-block;
+  animation: arrow-bounce 1s ease-in-out infinite;
+}
+
+.stat-change.negative::before {
+  content: '▼';
+}
+
+/* ============================================
+   COMMANDS SECTION - NEURAL COMMANDS
+   ============================================ */
+.commands-section {
+  background: 
+    radial-gradient(ellipse at center, rgba(138, 43, 226, 0.1) 0%, transparent 70%),
+    rgba(10, 0, 21, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 2px solid rgba(138, 43, 226, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.commands-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--plasma-cyan), var(--neural-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  animation: title-shimmer 3s linear infinite;
+}
+
+.add-button, .settings-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.3) 0%, rgba(0, 255, 255, 0.3) 100%);
+  color: white;
+  border: 2px solid var(--plasma-cyan);
+  border-radius: 8px;
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.add-button::before, .settings-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease;
+}
+
+.add-button:hover::before, .settings-button:hover::before {
+  width: 150%;
+  height: 150%;
+}
+
+.add-button:hover, .settings-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 10px 30px rgba(138, 43, 226, 0.5),
+    0 0 40px rgba(0, 255, 255, 0.3);
+  border-color: var(--cosmic-pink);
+}
+
+.commands-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.command-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  background: 
+    linear-gradient(135deg, rgba(138, 43, 226, 0.05) 0%, rgba(0, 255, 255, 0.05) 100%),
+    rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(138, 43, 226, 0.3);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.command-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.2), transparent);
+  transition: left 0.8s ease;
+}
+
+.command-item:hover::before {
+  left: 100%;
+}
+
+.command-item:hover {
+  border-color: var(--plasma-cyan);
+  background: 
+    linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%),
+    rgba(0, 0, 0, 0.6);
+  transform: translateX(5px);
+  box-shadow: 
+    -5px 0 20px rgba(138, 43, 226, 0.3),
+    inset 0 0 30px rgba(0, 255, 255, 0.05);
+}
+
+.command-item.disabled {
+  opacity: 0.4;
+  animation: disabled-pulse 3s ease-in-out infinite;
+}
+
+.command-trigger {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  color: var(--plasma-cyan);
+  font-size: 1.1rem;
+  text-shadow: 0 0 10px currentColor;
+  animation: command-glow 3s ease-in-out infinite;
+}
+
+.command-level {
+  padding: 0.3rem 0.7rem;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(255, 0, 255, 0.3));
+  color: white;
+  border: 1px solid var(--neural-purple);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  animation: level-pulse 2s ease-in-out infinite;
+}
+
+.command-response {
+  color: #e0e0e0;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.command-item:hover .command-response {
+  color: white;
+  opacity: 1;
+}
+
+.command-stats {
+  display: flex;
+  gap: 1.5rem;
+  color: var(--plasma-cyan);
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.command-stats span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.3s ease;
+}
+
+.command-stats span:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.command-stats svg {
+  width: 14px;
+  height: 14px;
+  filter: drop-shadow(0 0 3px currentColor);
+}
+
+.toggle-button, .edit-button, .delete-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 2px solid rgba(138, 43, 226, 0.3);
+  background: rgba(10, 0, 21, 0.8);
+  color: var(--plasma-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.toggle-button::before,
+.edit-button::before,
+.delete-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, currentColor, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.toggle-button:hover::before,
+.edit-button:hover::before,
+.delete-button:hover::before {
+  opacity: 0.2;
+}
+
+.toggle-button:hover {
+  background: rgba(0, 255, 127, 0.2);
+  border-color: var(--matrix-green);
+  color: var(--matrix-green);
+  transform: rotate(180deg) scale(1.1);
+  box-shadow: 0 0 20px currentColor;
+}
+
+.edit-button:hover {
+  background: rgba(138, 43, 226, 0.2);
+  border-color: var(--neural-purple);
+  color: var(--neural-purple);
+  transform: rotate(15deg) scale(1.1);
+  box-shadow: 0 0 20px currentColor;
+}
+
+.delete-button:hover {
+  background: rgba(255, 68, 68, 0.2);
+  border-color: #ff4444;
+  color: #ff4444;
+  transform: rotate(-15deg) scale(1.1);
+  box-shadow: 0 0 20px currentColor;
+  animation: delete-shake 0.5s ease;
+}
+
+/* ============================================
+   MODERATION SECTION - QUANTUM SHIELD
+   ============================================ */
+.moderation-section {
+  background: 
+    linear-gradient(135deg, rgba(255, 0, 255, 0.05) 0%, rgba(0, 255, 255, 0.05) 100%),
+    rgba(10, 0, 21, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 2px solid;
+  border-image: linear-gradient(45deg, var(--cosmic-pink), var(--plasma-cyan), var(--neural-purple)) 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.moderation-section::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+  animation: shield-rotate 15s linear infinite;
+}
+
+.mod-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.mod-rule-card {
+  background: 
+    linear-gradient(135deg, rgba(138, 43, 226, 0.08) 0%, rgba(0, 255, 255, 0.08) 100%),
+    rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(138, 43, 226, 0.3);
+  border-radius: 12px;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: rule-float 5s ease-in-out infinite;
+}
+
+.mod-rule-card:hover {
+  border-color: var(--plasma-cyan);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 10px 30px rgba(138, 43, 226, 0.4),
+    0 0 40px rgba(0, 255, 255, 0.2),
+    inset 0 0 20px rgba(255, 0, 255, 0.05);
+}
+
+.mod-rule-card.disabled {
+  opacity: 0.4;
+  border-color: rgba(255, 68, 68, 0.3);
+}
+
+.rule-header h3 {
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.1rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  animation: text-shimmer 4s linear infinite;
+}
+
+.toggle-switch {
+  width: 52px;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(138, 43, 226, 0.3);
+  border-radius: 13px;
+  padding: 2px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.toggle-switch.active {
+  background: linear-gradient(135deg, var(--neural-purple), var(--plasma-cyan));
+  border-color: var(--plasma-cyan);
+  box-shadow: 
+    0 0 20px rgba(138, 43, 226, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.toggle-slider {
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(135deg, white, #e0e0e0);
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: absolute;
+  left: 2px;
+  top: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-switch.active .toggle-slider {
+  transform: translateX(26px);
+  background: linear-gradient(135deg, var(--plasma-cyan), white);
+  box-shadow: 
+    0 2px 10px rgba(0, 255, 255, 0.5),
+    0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.toggle-switch:hover {
+  transform: scale(1.05);
+}
+
+.severity-bar {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.severity-level {
+  width: 24px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.severity-level.active {
+  background: linear-gradient(135deg, var(--neural-purple), var(--cosmic-pink));
+  border-color: var(--plasma-cyan);
+  box-shadow: 0 0 10px currentColor;
+  animation: severity-pulse 1.5s ease-in-out infinite;
+}
+
+.severity-level.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: severity-scan 2s linear infinite;
+}
+
+/* ============================================
+   FOOTER - QUANTUM NEXUS
+   ============================================ */
+.bot-footer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid;
+  border-image: linear-gradient(90deg, transparent, var(--plasma-cyan), transparent) 1;
+  position: relative;
+  animation: footer-fade-in 1s ease-out;
+}
+
+.bot-footer::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neural-purple), transparent);
+  animation: scan-line 3s linear infinite;
+}
+
+.stats-button, .refresh-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  background: 
+    linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(0, 255, 255, 0.2) 100%),
+    rgba(10, 0, 21, 0.9);
+  color: white;
+  border: 2px solid;
+  border-image: linear-gradient(135deg, var(--neural-purple), var(--plasma-cyan)) 1;
+  border-radius: 12px;
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.stats-button::before, .refresh-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.stats-button:hover::before, .refresh-button:hover::before {
+  left: 100%;
+}
+
+.stats-button:hover, .refresh-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 10px 40px rgba(138, 43, 226, 0.5),
+    0 0 60px rgba(0, 255, 255, 0.3),
+    inset 0 0 30px rgba(255, 255, 255, 0.1);
+  border-image: linear-gradient(135deg, var(--cosmic-pink), var(--matrix-green)) 1;
+}
+
+.stats-button svg, .refresh-button svg {
+  width: 18px;
+  height: 18px;
+  filter: drop-shadow(0 0 5px currentColor);
+  animation: icon-spin 4s linear infinite;
+}
+
+/* ============================================
+   EPIC ANIMATIONS - QUANTUM EFFECTS
+   ============================================ */
+
+@keyframes quantum-breathe {
+  0%, 100% { background-position: 0% 0%, 0px 0px, 0px 0px; }
+  50% { background-position: 100% 100%, 10px 10px, -10px -10px; }
+}
+
+@keyframes quantum-drift {
+  from { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
+@keyframes quantum-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes text-glitch {
+  0%, 100% { 
+    text-shadow: 0 0 40px rgba(138, 43, 226, 0.8), 0 0 80px rgba(0, 255, 255, 0.5);
+  }
+  20% {
+    text-shadow: -2px 0 40px rgba(255, 0, 255, 0.8), 2px 0 80px rgba(0, 255, 0, 0.5);
+  }
+  40% {
+    text-shadow: 2px 0 40px rgba(0, 255, 255, 0.8), -2px 0 80px rgba(255, 0, 0, 0.5);
+  }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { opacity: 0; }
+  33% { opacity: 1; transform: translateX(2px) translateY(-2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { opacity: 0; }
+  66% { opacity: 1; transform: translateX(-2px) translateY(2px); }
+}
+
+@keyframes neural-pulse-border {
+  0%, 100% { border-image-source: linear-gradient(90deg, transparent, var(--plasma-cyan), transparent); }
+  50% { border-image-source: linear-gradient(90deg, transparent, var(--neural-purple), transparent); }
+}
+
+@keyframes scan-line {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes icon-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(5deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(5px) rotate(-5deg); }
+}
+
+@keyframes fade-pulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 1; }
+}
+
+@keyframes button-quantum-state {
+  0% { transform: translateY(-3px) scale(1.05) rotateX(0deg); }
+  50% { transform: translateY(-3px) scale(1.05) rotateX(180deg); }
+  100% { transform: translateY(-3px) scale(1.05) rotateX(360deg); }
+}
+
+@keyframes reality-ripple {
+  0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.8); }
+  100% { box-shadow: 0 0 0 40px rgba(138, 43, 226, 0); }
+}
+
+@keyframes card-float {
+  0%, 100% { transform: translateY(0px); }
+  33% { transform: translateY(-5px); }
+  66% { transform: translateY(5px); }
+}
+
+@keyframes quantum-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes active-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 30px rgba(0, 255, 127, 0.3), inset 0 0 20px rgba(0, 255, 127, 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 50px rgba(0, 255, 127, 0.5), inset 0 0 30px rgba(0, 255, 127, 0.2);
+  }
+}
+
+@keyframes icon-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes text-glow {
+  0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+  50% { text-shadow: 0 0 20px rgba(138, 43, 226, 0.8); }
+}
+
+@keyframes connection-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(0, 255, 127, 0.6), inset 0 0 10px rgba(0, 255, 127, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(0, 255, 127, 0.8), inset 0 0 20px rgba(0, 255, 127, 0.5);
+  }
+}
+
+@keyframes status-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.6; }
+  94% { opacity: 1; }
+  96% { opacity: 0.7; }
+}
+
+@keyframes warning-pulse {
+  0%, 100% { color: #ff4444; text-shadow: 0 0 10px currentColor; }
+  50% { color: #ff6666; text-shadow: 0 0 20px currentColor; }
+}
+
+@keyframes icon-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes stat-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes tab-active-pulse {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(1.05); }
+}
+
+@keyframes content-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes stat-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.01); }
+}
+
+@keyframes cosmic-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes icon-rotate {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes value-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes positive-glow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+@keyframes negative-glow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.3); }
+}
+
+@keyframes arrow-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes title-shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes disabled-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes command-glow {
+  0%, 100% { text-shadow: 0 0 10px currentColor; }
+  50% { text-shadow: 0 0 20px currentColor, 0 0 30px currentColor; }
+}
+
+@keyframes level-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes delete-shake {
+  0%, 100% { transform: rotate(-15deg) scale(1.1); }
+  25% { transform: rotate(-20deg) scale(1.15); }
+  75% { transform: rotate(-10deg) scale(1.05); }
+}
+
+@keyframes shield-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes rule-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes severity-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes severity-scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes footer-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes rotate-gradient {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ============================================
+   RESPONSIVE QUANTUM ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+  .bot-manager-page { padding: 1rem; }
+  .page-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .header-content h1 { font-size: 1.8rem; }
+  .bot-status-grid { grid-template-columns: 1fr; }
+  .bot-tabs { overflow-x: auto; gap: 0.25rem; }
+  .bot-tabs button { padding: 0.5rem 0.75rem; font-size: 0.85rem; }
+  .overview-grid { grid-template-columns: 1fr; }
+  .command-item { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .command-actions { width: 100%; justify-content: flex-end; }
+  .mod-rules-grid { grid-template-columns: 1fr; }
+  .bot-footer { flex-direction: column; }
+  .stats-button, .refresh-button { width: 100%; justify-content: center; }
+}
+
+/* ============================================
+   SPECIAL EFFECTS - REALITY OVERRIDE
+   ============================================ */
+.bot-manager-page::after {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: reality-tear 4s ease-in-out infinite;
+  background: 
+    radial-gradient(circle, transparent 30%, rgba(255, 0, 255, 0.1) 50%, transparent 70%),
+    conic-gradient(from 0deg, #ff00ff, #00ffff, #8a2be2, #ff00ff);
+  border-radius: 50%;
+  opacity: 0.2;
+  mix-blend-mode: screen;
+  z-index: 0;
+}
+
+@keyframes reality-tear {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1) rotate(180deg);
+    opacity: 0.2;
+  }
+}
+
+/* MAXIMUM QUANTUM STATE */
+.bot-manager-page.max-quantum-mode {
+  animation: 
+    quantum-breathe 5s ease-in-out infinite,
+    reality-distortion 10s linear infinite;
+  filter: hue-rotate(0deg);
+}
+
+@keyframes reality-distortion {
+  0% { filter: hue-rotate(0deg) contrast(100%) brightness(100%); }
+  50% { filter: hue-rotate(180deg) contrast(150%) brightness(110%); }
+  100% { filter: hue-rotate(360deg) contrast(100%) brightness(100%); }
+}

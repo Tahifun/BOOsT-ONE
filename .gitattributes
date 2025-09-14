@@ -1,0 +1,7 @@
+﻿# Always use LF for shell scripts and Husky hooks
+*.sh text eol=lf
+.husky/* text eol=lf
+# Konsistent LF auch für Konfigs
+*.json text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf

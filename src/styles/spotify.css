@@ -1,0 +1,265 @@
+/* src/styles/spotify.css */
+
+/* ===== Card-Basis (Profil & Now-Playing teilen sich den Look) ===== */
+.spotify-profile-card,
+.spotify-now-card {
+  --sp-bg: rgba(16, 24, 32, 0.6);
+  --sp-border: rgba(255, 255, 255, 0.08);
+  --sp-border-strong: rgba(24, 255, 230, 0.22);
+  --sp-text: #eafefe;
+  --sp-subtext: rgba(234, 254, 254, 0.8);
+  --sp-link: #9ff;
+  --sp-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  --sp-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+  position: relative;
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  color: var(--sp-text);
+  background: linear-gradient(180deg, var(--sp-bg), rgba(10, 16, 24, 0.6));
+  border: 1px solid var(--sp-border);
+  box-shadow: var(--sp-shadow);
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+/* Stabil: gleiche Mindesthöhe, verhindert Layout-Shifts */
+.spotify-now-card {
+  min-height: 120px;
+}
+
+.spotify-profile-card:hover,
+.spotify-now-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--sp-shadow-hover);
+  border-color: var(--sp-border-strong);
+}
+.spotify-profile-card:focus-within,
+.spotify-now-card:focus-within {
+  outline: none;
+  border-color: #1fffc3;
+  box-shadow: 0 0 0 2px rgba(31, 255, 195, 0.25), var(--sp-shadow-hover);
+}
+
+/* ===== Header ===== */
+.spotify-profile-card .sp-header,
+.spotify-now-card .sp-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 28px;
+}
+.spotify-profile-card .sp-header h3,
+.spotify-now-card .sp-header h3 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.spotify-profile-card .sp-badge,
+.spotify-now-card .sp-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background: conic-gradient(from 220deg, #1db954, #1aa34a, #0f7a34, #1db954);
+  display: grid;
+  place-items: center;
+  color: #0a141a;
+  font-weight: 800;
+  box-shadow: inset 0 0 0 1px rgba(10, 20, 24, 0.35), 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== Profil-spezifisch ===== */
+.spotify-profile-card .sp-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.spotify-profile-card .sp-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+.spotify-profile-card .sp-name {
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.2px;
+}
+
+/* ===== Now Playing-spezifisch ===== */
+.spotify-now-card .np-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;              /* <- deckungsgleich mit Cover */
+}
+.spotify-now-card .np-cover {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  flex: 0 0 auto;
+  display: block;
+}
+.spotify-now-card .np-title {
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.2px;
+}
+.spotify-now-card .np-artist {
+  font-size: 12px;
+  color: var(--sp-subtext);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.spotify-now-card .np-progress {
+  position: relative;
+  margin-top: 10px;
+  height: 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.spotify-now-card .np-progress > span {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #18ffe6, #13a2ff);
+  box-shadow: 0 0 8px rgba(24, 255, 230, 0.35);
+}
+
+/* ===== Links, Zustände, Skeleton ===== */
+.spotify-profile-card .sp-sub,
+.spotify-now-card .sp-sub {
+  font-size: 12px;
+  color: var(--sp-subtext);
+  margin-top: 2px;
+}
+.spotify-profile-card .sp-link,
+.spotify-now-card .sp-link {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--sp-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 120ms ease, color 120ms ease;
+}
+.spotify-profile-card .sp-link:hover,
+.spotify-now-card .sp-link:hover {
+  opacity: 0.9;
+  color: #c2f4ff;
+}
+.spotify-profile-card .sp-error,
+.spotify-now-card .sp-error { color: #ffb3c1; }
+.spotify-profile-card .sp-muted,
+.spotify-now-card .sp-muted { color: var(--sp-subtext); }
+
+/* Skeleton: .is-loading + .sp-skeleton */
+.spotify-profile-card.is-loading .sp-skeleton,
+.spotify-now-card.is-loading .sp-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+}
+.spotify-profile-card.is-loading .sp-skeleton::after,
+.spotify-now-card.is-loading .sp-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: sp-shimmer 1.1s infinite;
+  will-change: transform;
+}
+@keyframes sp-shimmer { to { transform: translateX(100%); } }
+
+/* Spotify-Steuerleiste (unter der Card) */
+.spotify-controls {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Kompakt */
+@media (max-width: 640px) {
+  .spotify-profile-card, .spotify-now-card { padding: 10px; border-radius: 12px; }
+  .spotify-profile-card .sp-avatar,
+  .spotify-now-card .np-cover { width: 48px; height: 48px; }
+}
+
+/* Light-Mode */
+@media (prefers-color-scheme: light) {
+  .spotify-profile-card, .spotify-now-card {
+    --sp-bg: rgba(250, 250, 255, 0.7);
+    --sp-border: rgba(10, 20, 24, 0.08);
+    --sp-text: #0a141a;
+    --sp-subtext: rgba(10, 20, 24, 0.7);
+    --sp-link: #0f7a9a;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .spotify-profile-card, .spotify-now-card { transition: none !important; }
+  .spotify-profile-card.is-loading .sp-skeleton::after,
+  .spotify-now-card.is-loading .sp-skeleton::after { animation: none; }
+}
+
+/* Neon-Hover für Badge */
+.spotify-profile-card:hover .sp-badge,
+.spotify-now-card:hover .sp-badge {
+  box-shadow:
+    0 0 0 2px rgba(21, 248, 255, 0.25),
+    inset 0 0 0 1px rgba(10, 20, 24, 0.35),
+    0 1px 10px rgba(21, 248, 255, 0.22);
+}
+
+/* ===== Hintergrund-Animationen aus dem Layout nehmen ===== */
+/* Diese Klassen kommen von deiner Dashboard-Seite. So drücken sie nicht mehr das Layout. */
+.neural-network,
+.particle-field,
+.matrix-rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.epic-dashboard .dashboard-grid,
+.epic-dashboard .dashboard-header,
+.epic-dashboard .grid-section {
+  position: relative;
+  z-index: 1;
+}
+
+.spotify-stack { display: grid; gap: 12px; }
+.spotify-playlist-picker { display: grid; gap: 6px; }
+.sp-pl-item {
+  display:flex; align-items:center; gap:10px; width:100%;
+  background: transparent; border:1px solid rgba(255,255,255,.08);
+  padding:8px; border-radius:10px; cursor:pointer; color:inherit;
+}
+.sp-pl-item:hover { border-color: rgba(24,255,230,.22); }
+.sp-pl-text { flex:1; min-width:0; }
+.sp-pl-name { font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.sp-pl-sub { font-size:12px; opacity:.7; }
+.sp-pl-play { opacity:.9; }

@@ -1,0 +1,56 @@
+﻿name: Backend Imports Check (NodeNext ESM)
+
+on:
+  pull_request:
+  push:
+    branches: [ main, develop ]
+
+jobs:
+  backend-imports-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Check Backend imports only
+        shell: pwsh
+        run: |
+          Write-Host "🔍 Checking Backend imports (ESM requires .js extensions)" -ForegroundColor Cyan
+          ./scripts/check-imports.ps1 -Scope backend
+      
+      - name: Verify Frontend unchanged
+        shell: bash
+        run: |
+          echo "🔍 Verifying Frontend imports remain extensionless..."
+          # Count .js imports in Frontend - should be 0 or only for actual .js files
+          JS_IMPORTS=$(grep -r "from.*\.js['\"]" src --include="*.tsx" --include="*.ts" | grep -v "// @ts-ignore" | wc -l)
+          if [ "$JS_IMPORTS" -gt "5" ]; then
+            echo "❌ ERROR: Found $JS_IMPORTS .js imports in Frontend (should be <5)"
+            echo "Frontend uses Vite and should NOT have .js extensions in TS imports!"
+            exit 1
+          fi
+          echo "✅ Frontend imports look correct"
+
+  frontend-type-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: TypeScript check Frontend
+        run: npx tsc --noEmit --project tsconfig.json
+      
+      - name: ESLint check
+        run: npx eslint src --ext .ts,.tsx --max-warnings 0

@@ -1,0 +1,110 @@
+# =====================================
+# SECRETS - NIEMALS COMMITTEN!
+# =====================================
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.local
+.env.local
+
+# Backend secrets
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Private keys & certificates
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+private/
+secrets/
+
+# =====================================
+# Dependencies
+# =====================================
+node_modules/
+.pnp
+.pnp.js
+
+# =====================================
+# Build outputs
+# =====================================
+dist/
+build/
+out/
+.next/
+backend/dist/
+*.tsbuildinfo
+
+# =====================================
+# Logs & Debug
+# =====================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.npm
+
+# =====================================
+# Testing
+# =====================================
+coverage/
+.nyc_output/
+*.lcov
+
+# =====================================
+# IDE & OS
+# =====================================
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json.example
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =====================================
+# Uploads & Temporary files
+# =====================================
+uploads/
+temp/
+tmp/
+quarantine/
+*.tmp
+*.temp
+
+# =====================================
+# Cache
+# =====================================
+.cache/
+.parcel-cache/
+.turbo/
+.vercel/
+.netlify/
+
+# =====================================
+# Database
+# =====================================
+*.sqlite
+*.sqlite3
+*.db
+data/
+
+# =====================================
+# Miscellaneous
+# =====================================
+.eslintcache
+.stylelintcache
+*.bak
+*.orig
+.history/
+# Local env
+CLiP_BOOsT/.env.local

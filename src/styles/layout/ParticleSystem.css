@@ -1,0 +1,28 @@
+/* ParticleSystem.css - Schwebende Partikel-Engine Styles */
+.particle-system {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+/* Performance optimization for mobile */
+@media (max-width: 768px) {
+  .particle-system { opacity: 0.5; }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .particle-system { display: none; }
+}
+
+/* Low-end device optimization */
+@media (max-width: 768px) and (max-height: 768px) {
+  .particle-system { opacity: 0.3; }
+}
+
+/* Print styles */
+@media print {
+  .particle-system { display: none; }
+}

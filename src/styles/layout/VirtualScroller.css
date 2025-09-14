@@ -1,0 +1,68 @@
+/* VirtualScroller.css - Performance Virtual Scrolling Styles */
+
+.virtual-scroller {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  will-change: scroll-position;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+}
+
+/* Smooth scrolling */
+.virtual-scroller { scroll-behavior: smooth; }
+
+/* Scrolling state */
+.virtual-scroller.scrolling { pointer-events: none; }
+.virtual-scroller.scrolling .virtual-item { will-change: transform; }
+
+/* Content container */
+.virtual-scroller-content { position: relative; width: 100%; }
+
+/* Virtual items */
+.virtual-item { position: absolute; width: 100%; contain: layout style paint; will-change: auto; }
+
+/* Loading indicator */
+.virtual-scroller-loading {
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+}
+
+.loading-spinner {
+  width: 30px; height: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg);} }
+
+/* Custom Scrollbar */
+.virtual-scroller::-webkit-scrollbar { width: 12px; background: transparent; }
+.virtual-scroller::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); border-radius: 6px; margin: 10px 0; }
+.virtual-scroller::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(129, 140, 248, 0.3));
+  border-radius: 6px; border: 2px solid transparent; background-clip: padding-box; transition: all 0.3s ease;
+}
+.virtual-scroller::-webkit-scrollbar-thumb:hover { background: linear-gradient(135deg, rgba(99, 102, 241, 0.5), rgba(129, 140, 248, 0.5)); }
+.virtual-scroller::-webkit-scrollbar-thumb:active { background: linear-gradient(135deg, rgba(99, 102, 241, 0.7), rgba(129, 140, 248, 0.7)); }
+
+/* Firefox Scrollbar */
+.virtual-scroller { scrollbar-width: thin; scrollbar-color: rgba(99, 102, 241, 0.3) rgba(255, 255, 255, 0.02); }
+
+/* Performance optimizations */
+.virtual-item > * { contain: layout style paint; }
+
+/* Smooth fade-in for items */
+.virtual-item { animation: itemFadeIn 0.3s ease-out; }
+@keyframes itemFadeIn { from { opacity: 0;} to { opacity: 1;} }
+
+/* Responsive */
+@media (max-width: 768px) { .virtual-scroller::-webkit-scrollbar { width: 8px; } }
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .virtual-scroller { scroll-behavior: auto; }
+  .virtual-item { animation: none; }
+  .loading-spinner { animation: none; border-color: #6366f1; }
+}

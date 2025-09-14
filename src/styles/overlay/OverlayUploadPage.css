@@ -1,0 +1,902 @@
+/* ========== QUANTUM OVERLAY UPLOAD - NEXT LEVEL EXPERIENCE ========== */
+
+:root {
+  /* Quantum Color System */
+  --quantum-primary: #00ffff;
+  --quantum-secondary: #a855f7;
+  --quantum-tertiary: #ec4899;
+  --quantum-accent: #10b981;
+  --quantum-gold: #ffd700;
+  --quantum-error: #ff4757;
+  
+  /* Dimensional Variables */
+  --dimension-shift: 0deg;
+  --consciousness-level: 30;
+  --quantum-blur: 20px;
+  --portal-rotation: 0deg;
+  
+  /* Animation Timings */
+  --quantum-transition: cubic-bezier(0.4, 0, 0.2, 1);
+  --portal-spin: 20s;
+  --particle-float: 15s;
+}
+
+/* ========== MAIN CONTAINER ========== */
+
+.quantum-upload-page {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+  color: #fff;
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ========== QUANTUM CANVAS BACKGROUND ========== */
+
+.quantum-canvas-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.quantum-effects-container {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.quantum-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: grid-shift 10s linear infinite;
+}
+
+@keyframes grid-shift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+.consciousness-field {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+  animation: consciousness-pulse 4s ease-in-out infinite;
+}
+
+@keyframes consciousness-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 0.6; }
+}
+
+/* ========== HEADER ========== */
+
+.quantum-upload-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.quantum-back-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  border-radius: 50px;
+  color: var(--quantum-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s var(--quantum-transition);
+  overflow: hidden;
+}
+
+.quantum-back-btn:hover {
+  transform: translateX(-5px);
+  border-color: var(--quantum-primary);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+}
+
+.back-icon {
+  font-size: 1.5rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.quantum-back-btn:hover .back-icon {
+  transform: translateX(-3px);
+}
+
+.btn-quantum-trail {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.quantum-back-btn:hover .btn-quantum-trail {
+  left: 100%;
+}
+
+.consciousness-meter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 30px;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.meter-label {
+  font-size: 0.9rem;
+  color: var(--quantum-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.meter-bar {
+  width: 150px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--quantum-primary), var(--quantum-secondary), var(--quantum-tertiary));
+  border-radius: 4px;
+  transition: width 0.5s var(--quantum-transition);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+.meter-value {
+  font-weight: 900;
+  color: var(--quantum-primary);
+  min-width: 45px;
+  text-align: right;
+}
+
+/* ========== MAIN UPLOAD CONTAINER ========== */
+
+.quantum-upload-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.quantum-upload-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title-prefix {
+  font-size: 1.2rem;
+  color: var(--quantum-secondary);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  opacity: 0.8;
+  animation: fade-in-down 0.8s ease;
+}
+
+.title-main {
+  font-size: 4rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #00ffff, #a855f7, #ec4899, #00ffff);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-flow 5s linear infinite, fade-in-up 0.8s ease;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% center; }
+  100% { background-position: 300% center; }
+}
+
+@keyframes fade-in-down {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 0.8; transform: translateY(0); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.title-suffix {
+  font-size: 1.5rem;
+  color: var(--quantum-gold);
+  font-weight: 300;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  animation: fade-in-down 0.8s ease 0.2s both;
+}
+
+.quantum-upload-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 3rem;
+  animation: fade-in 1s ease 0.4s both;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========== MEDIA TYPE SELECTOR ========== */
+
+.quantum-type-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.type-btn {
+  position: relative;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s var(--quantum-transition);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  color: #fff;
+}
+
+.type-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--type-color) 20%, transparent), 
+    transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.type-btn:hover::before,
+.type-btn.active::before {
+  opacity: 1;
+}
+
+.type-btn:hover,
+.type-btn.active {
+  transform: translateY(-5px);
+  border-color: var(--type-color);
+  box-shadow: 0 20px 40px color-mix(in srgb, var(--type-color) 30%, transparent);
+}
+
+.type-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 20px var(--type-color));
+}
+
+.type-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.type-desc {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.type-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: var(--type-color);
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.type-btn.active .type-glow {
+  opacity: 1;
+}
+
+/* ========== QUANTUM DROPZONE ========== */
+
+.quantum-dropzone {
+  position: relative;
+  min-height: 400px;
+  margin-bottom: 2rem;
+  border: 3px dashed rgba(0, 255, 255, 0.3);
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(10, 10, 20, 0.5) 100%);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s var(--quantum-transition);
+  overflow: hidden;
+}
+
+.quantum-dropzone.dragging {
+  border-color: var(--quantum-primary);
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+  box-shadow: 0 0 50px rgba(0, 255, 255, 0.3);
+}
+
+.quantum-dropzone.has-file {
+  border-style: solid;
+  border-color: var(--quantum-accent);
+}
+
+.dropzone-portal {
+  position: relative;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.portal-rings {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.ring {
+  position: absolute;
+  border: 2px solid;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.ring-1 {
+  width: 200px;
+  height: 200px;
+  border-color: var(--quantum-primary);
+  animation: portal-rotate 15s linear infinite;
+}
+
+.ring-2 {
+  width: 250px;
+  height: 250px;
+  border-color: var(--quantum-secondary);
+  animation: portal-rotate 20s linear infinite reverse;
+}
+
+.ring-3 {
+  width: 300px;
+  height: 300px;
+  border-color: var(--quantum-tertiary);
+  animation: portal-rotate 25s linear infinite;
+}
+
+@keyframes portal-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.dropzone-content {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+.drop-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.drop-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--quantum-primary);
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.drop-formats {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Preview Container */
+.preview-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.preview-image,
+.preview-video {
+  width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.preview-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  padding: 1.5rem;
+  border-radius: 0 0 15px 15px;
+}
+
+.preview-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.file-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.file-size {
+  font-size: 0.9rem;
+  color: var(--quantum-primary);
+}
+
+/* Quantum Progress */
+.quantum-progress {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.progress-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.progress-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-track {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.progress-fill {
+  stroke: url(#progress-gradient);
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.3s ease;
+  filter: drop-shadow(0 0 10px var(--quantum-primary));
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--quantum-primary);
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+/* Upload Phases */
+.phase-analyzing .portal-rings {
+  animation: phase-pulse 1s ease-in-out infinite;
+}
+
+.phase-quantum-processing .portal-rings {
+  animation: phase-spin 0.5s linear infinite;
+}
+
+.phase-materializing .dropzone-portal {
+  animation: phase-materialize 1s ease-in-out;
+}
+
+@keyframes phase-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes phase-spin {
+  from { transform: rotate(0deg) scale(1.05); }
+  to { transform: rotate(360deg) scale(1.05); }
+}
+
+@keyframes phase-materialize {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.5) saturate(1.5); }
+  100% { filter: brightness(1); }
+}
+
+/* ========== METADATA FIELDS ========== */
+
+.quantum-metadata {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.metadata-field {
+  position: relative;
+}
+
+.field-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: var(--quantum-primary);
+}
+
+.label-icon {
+  font-size: 1.2rem;
+}
+
+.label-required {
+  color: var(--quantum-error);
+  font-weight: 900;
+}
+
+.label-optional {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+.quantum-input,
+.quantum-textarea {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  border-radius: 15px;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.quantum-input:focus,
+.quantum-textarea:focus {
+  outline: none;
+  border-color: var(--quantum-primary);
+  background: rgba(0, 255, 255, 0.05);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+.quantum-textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+.input-glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: 15px;
+  background: linear-gradient(45deg, var(--quantum-primary), var(--quantum-secondary), var(--quantum-tertiary));
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.quantum-input:focus ~ .input-glow,
+.quantum-textarea:focus ~ .input-glow {
+  opacity: 0.3;
+}
+
+/* ========== ACTION BUTTONS ========== */
+
+.quantum-actions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.action-btn {
+  position: relative;
+  padding: 1.2rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s var(--quantum-transition);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.upload-btn {
+  background: linear-gradient(135deg, var(--quantum-primary) 0%, var(--quantum-secondary) 100%);
+  color: #000;
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+}
+
+.upload-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 255, 255, 0.5);
+}
+
+.upload-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+.reset-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.reset-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--quantum-primary);
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  font-size: 1.3rem;
+}
+
+.btn-energy {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.action-btn:hover .btn-energy {
+  transform: translateX(100%);
+}
+
+/* ========== MESSAGES ========== */
+
+.quantum-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.2rem 2rem;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  animation: message-slide-in 0.5s ease;
+}
+
+@keyframes message-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-message {
+  background: linear-gradient(135deg, rgba(255, 71, 87, 0.1) 0%, rgba(255, 71, 87, 0.05) 100%);
+  border: 2px solid var(--quantum-error);
+  color: var(--quantum-error);
+}
+
+.success-message {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+  border: 2px solid var(--quantum-accent);
+  color: var(--quantum-accent);
+}
+
+.message-icon {
+  font-size: 1.5rem;
+}
+
+/* ========== STATS DISPLAY ========== */
+
+.quantum-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--quantum-primary);
+}
+
+.status-active {
+  color: var(--quantum-accent);
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+/* ========== FLOATING PARTICLES ========== */
+
+.floating-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--quantum-primary);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: particle-float var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+  left: var(--x);
+  top: var(--y);
+}
+
+@keyframes particle-float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-100px) translateX(50px);
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.6;
+  }
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+@media (max-width: 768px) {
+  .quantum-upload-header {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .title-main {
+    font-size: 2.5rem;
+  }
+
+  .quantum-type-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .quantum-dropzone {
+    min-height: 300px;
+  }
+
+  .quantum-actions {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .quantum-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== ACCESSIBILITY ========== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========== PRINT STYLES ========== */
+
+@media print {
+  .quantum-upload-page {
+    background: white;
+    color: black;
+  }
+  
+  .quantum-canvas-bg,
+  .quantum-effects-container,
+  .floating-particles {
+    display: none;
+  }
+}

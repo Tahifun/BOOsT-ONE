@@ -1,0 +1,144 @@
+
+/* DropZone.css - Drag & Drop Upload Zone Styles */
+
+.drop-zone {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 60px 40px;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s, border-color 0.3s;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.drop-zone:hover:not(.disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(129, 140, 248, 0.3);
+  transform: translateY(-2px);
+}
+
+.drop-zone:focus-visible {
+  outline: 2px solid #818cf8;
+  outline-offset: 2px;
+}
+
+/* Dragging State */
+.drop-zone.dragging {
+  border-color: #6366f1;
+  background: rgba(99, 102, 241, 0.1);
+  transform: scale(1.02);
+  animation: dragPulse 0.5s ease-out;
+}
+
+@keyframes dragPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1.02); }
+}
+
+/* Disabled State */
+.drop-zone.disabled { opacity: 0.5; cursor: not-allowed; }
+.drop-zone.disabled .select-files-btn { cursor: not-allowed; }
+
+/* Validating State */
+.drop-zone.validating { pointer-events: none; }
+
+/* Hidden File Input */
+.file-input-hidden {
+  position: absolute;
+  left: -9999px; opacity: 0; width: 0; height: 0;
+}
+
+/* Drop Zone Content */
+.drop-zone-content { position: relative; z-index: 1; }
+
+/* Background Effects */
+.drop-zone-background { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+
+.drop-zone-pulse {
+  position: absolute; top: 50%; left: 50%; width: 100px; height: 100px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2), transparent);
+  border-radius: 50%; transform: translate(-50%, -50%);
+  animation: pulse 3s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+
+.drop-zone-glow {
+  position: absolute; inset: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(129, 140, 248, 0.1) 50%, transparent 70%);
+  transform: translateX(-100%); transition: transform 0.6s;
+}
+.drop-zone:hover:not(.disabled) .drop-zone-glow {
+  transform: translateX(100%); animation: glowSlide 2s ease-in-out infinite;
+}
+@keyframes glowSlide { 0% { transform: translateX(-100%);} 100% { transform: translateX(100%);} }
+
+/* Icon */
+.drop-zone-icon { font-size: 4em; margin-bottom: 20px; position: relative; display: inline-block; }
+.icon-upload, .icon-dropping { display: inline-block; animation: iconFloat 2s ease-in-out infinite; }
+@keyframes iconFloat { 0%, 100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
+.icon-dropping { animation: iconDrop 0.5s ease-out; }
+@keyframes iconDrop { 0% { transform: translateY(-20px) scale(0.8); opacity: 0;} 50% { transform: translateY(5px) scale(1.1);} 100% { transform: translateY(0) scale(1); opacity: 1;} }
+
+/* Validating Spinner */
+.validating-spinner {
+  width: 60px; height: 60px; border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #6366f1; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;
+}
+@keyframes spin { to { transform: rotate(360deg);} }
+
+/* Text */
+.drop-zone-text h3 { font-size: 1.5em; font-weight: 600; margin: 0 0 10px; color: #f8fafc; }
+.drop-zone-text p { margin: 10px 0; color: rgba(248, 250, 252, 0.6); }
+
+/* Select Files Button */
+.select-files-btn {
+  margin-top: 20px; padding: 12px 30px; background: linear-gradient(135deg, #6366f1, #818cf8);
+  color: white; border: none; border-radius: 10px; font-size: 1em; font-weight: 600; cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; text-transform: uppercase; letter-spacing: 1px;
+}
+.select-files-btn::before {
+  content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s;
+}
+.select-files-btn:hover::before { width: 300px; height: 300px; }
+.select-files-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4); }
+.select-files-btn:active:not(:disabled) { transform: translateY(0); }
+
+/* Info Section */
+.drop-zone-info { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.info-text { font-size: 0.9em; color: rgba(248, 250, 252, 0.5); margin: 5px 0; }
+.info-highlight { color: rgba(248, 250, 252, 0.8); font-weight: 600; }
+
+/* Drag Indicator */
+.drag-indicator { position: absolute; inset: 10px; pointer-events: none; animation: indicatorFadeIn 0.3s ease-out; }
+@keyframes indicatorFadeIn { from { opacity: 0; transform: scale(0.95);} to { opacity: 1; transform: scale(1);} }
+.drag-border { position: absolute; inset: 0; border: 2px solid #6366f1; border-radius: 18px; animation: borderPulse 1s ease-in-out infinite; }
+@keyframes borderPulse { 0%, 100% { opacity: 0.5;} 50% { opacity: 1;} }
+.drag-corners { position: absolute; inset: 0; }
+.corner { position: absolute; width: 20px; height: 20px; border: 3px solid #818cf8; }
+.corner.top-left { top: -2px; left: -2px; border-right: none; border-bottom: none; border-top-left-radius: 18px; }
+.corner.top-right { top: -2px; right: -2px; border-left: none; border-bottom: none; border-top-right-radius: 18px; }
+.corner.bottom-left { bottom: -2px; left: -2px; border-right: none; border-top: none; border-bottom-left-radius: 18px; }
+.corner.bottom-right { bottom: -2px; right: -2px; border-left: none; border-top: none; border-bottom-right-radius: 18px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .drop-zone { padding: 40px 20px; }
+  .drop-zone-icon { font-size: 3em; }
+  .drop-zone-text h3 { font-size: 1.2em; }
+  .select-files-btn { padding: 10px 24px; font-size: 0.9em; }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .drop-zone, .select-files-btn, .icon-upload, .icon-dropping, .drop-zone-pulse, .drop-zone-glow, .drag-border {
+    animation: none !important;
+    transition: opacity 0.2s ease !important;
+  }
+}

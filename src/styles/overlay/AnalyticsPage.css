@@ -1,0 +1,17 @@
+/* ============ ANALYTICS PAGE STYLES ============ */
+.analytics-page {
+  min-height: 100vh;
+  padding: 24px;
+  color: #fff;
+  background: linear-gradient(135deg, #0b0f17, #111827);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.analytics-toolbar {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  padding: 10px 12px;
+  backdrop-filter: blur(8px);
+  margin-bottom: 16px;
+}

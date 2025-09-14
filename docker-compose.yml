@@ -1,0 +1,134 @@
+# docker-compose.yml (ERWEITERT)
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: clip-boost-mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-changeme}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE:-clipboost}
+    volumes:
+      - mongo-data:/data/db
+      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/init.js:ro
+    ports:
+      - "27017:27017  # DEV-ONLY: remove for production"
+    networks:
+      - clipboost-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+          profiles: ["infra"]
+
+      retries: 5
+          
+
+
+  redis:
+    image: redis:7-alpine
+    container_name: clip-boost-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-changeme}
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - clipboost-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+          profiles: ["infra"]
+
+      retries: 5
+
+  clamav:
+    image: clamav/clamav:stable
+    container_name: clip-boost-clamav
+    restart: unless-stopped
+    volumes:
+      - clamav-data:/var/lib/clamav
+    ports:
+      - "3310:3310"
+    networks:
+      - clipboost-network
+    healthcheck:
+      test: ["CMD", "clamdscan", "--ping", "3310"]
+      interval: 60s
+      timeout: 10s
+          profiles: ["infra"]
+
+      retries: 3
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: production
+    container_name: clip-boost-api
+    restart: unless-stopped
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      clamav:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 4001
+      MONGODB_URI: mongodb://${MONGO_ROOT_USER:-admin}:${MONGO_ROOT_PASSWORD:-changeme}@mongodb:27017/${MONGO_DATABASE:-clipboost}?authSource=admin
+      REDIS_URL: redis://:${REDIS_PASSWORD:-changeme}@redis:6379
+      CLAMAV_HOST: clamav
+      CLAMAV_PORT: 3310
+    env_file:
+      - ./backend/.env.production
+    volumes:
+      - ./uploads:/app/uploads
+      - ./logs:/app/logs
+    ports:
+      - "4001:4001"
+    networks:
+      - clipboost-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+      args:
+        VITE_BACKEND_URL: ${VITE_BACKEND_URL:-http://localhost:4001}
+    container_name: clip-boost-frontend
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "3000:80"
+    networks:
+      - clipboost-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  mongo-data:
+  redis-data:
+  clamav-data:
+
+networks:
+  clipboost-network:
+    driver: bridge
+secrets:
+  mongo_root_password:
+    file: ./secrets/mongo_root_password.txt
