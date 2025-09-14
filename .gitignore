@@ -108,3 +108,7 @@ data/
 .history/
 # Local env
 CLiP_BOOsT/.env.local
+pnpm-debug.log*
+.nuxt/
+.output/
+.svelte-kit/
