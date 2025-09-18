@@ -19,7 +19,7 @@ import env from './utils/validateEnv.js';
 import { ensureSubscriptionIndexes } from './services/subscriptionStateService.js';
 import { initSentry } from './sentry.js';
 
-// Early routers
+// Early routers (we’ll mount AFTER session)
 import mockAuthRoutes from './routes/auth.mock.routes.js';
 import sessionRoutes from './routes/session.js';
 import featureFlagsRoutes from './routes/featureFlags.js';
@@ -45,12 +45,15 @@ import subscriptionStatusRouter from './routes/subscriptionStatus.routes.js';
 import tiktokLiveRouter from './routes/tiktokLive.routes.js';
 import tiktokOAuthRouter from './routes/tiktokOAuth.routes.js';
 
+// Minimal logger
 const logger = {
   debug: console.debug,
   info: console.info,
   warn: console.warn,
   error: console.error,
 };
+
+// -----------------------------------------------------------------------------
 
 const app = express();
 initSentry();
@@ -71,14 +74,17 @@ assertTikTokConfig();
 
 /* -------------------------- Security & Core Middlewares -------------------------- */
 
+// Trust proxy (ok in dev; notwendig hinter Proxy/CDN)
 app.set('trust proxy', 1);
 
+// Helmet (CSP in Dev aus, sonst nervig)
 app.use(
   helmet({
     contentSecurityPolicy: isProduction ? undefined : false,
   }),
 );
 
+// map session.user -> req.user (Komfort)
 app.use((req, _res, next) => {
   const s: unknown = (req as any).session;
   if ((s as any)?.user) {
@@ -87,17 +93,17 @@ app.use((req, _res, next) => {
   next();
 });
 
-// CORS (serverseitig über ENV steuerbar)
-const allowedOrigins = (() => {
-  // Bevorzugt: ALLOWED_ORIGINS (z. B. in Render/Vercel gesetzt)
-  const raw = process.env.ALLOWED_ORIGINS || env.CLIENT_ORIGIN || '';
-  const list = raw
+// CORS VOR allen Routen, mit Credentials
+const rawOrigins = process.env.ALLOWED_ORIGINS ?? (env as any).CLIENT_ORIGIN ?? '';
+const allowedOrigins =
+  String(rawOrigins)
     .split(',')
     .map((s) => s.trim())
-    .filter(Boolean);
+    .filter(Boolean) || [];
 
-  return list.length ? list : ['http://localhost:5173'];
-})();
+if (!allowedOrigins.length) {
+  allowedOrigins.push('http://localhost:5173');
+}
 
 app.use(
   cors({
@@ -109,10 +115,11 @@ app.use(
 // Logging
 app.use(morgan(isProduction ? 'combined' : 'dev'));
 
-// Cookies
+// Cookies (signing mit SECRET)
 app.use(cookieParser(env.COOKIE_SECRET));
 
 /* -------------------------- Stripe Webhook (RAW body) --------------------------- */
+// Muss VOR express.json() kommen!
 app.use(
   '/api/stripe/webhook',
   bodyParser.raw({ type: 'application/json' }) as RequestHandler,
@@ -121,8 +128,10 @@ app.use(
 
 /* -------------------------- Body Parser & Sessions ------------------------------ */
 
+// JSON-Parser
 app.use(express.json({ limit: '1mb' }));
 
+// Sessions: immer aktiv (Prod mit MongoStore)
 app.use(
   session({
     name: 'clipboost.sid',
@@ -133,7 +142,7 @@ app.use(
       secure: isProduction,
       httpOnly: true,
       sameSite: isProduction ? 'strict' : 'lax',
-      maxAge: 24 * 60 * 60 * 1000,
+      maxAge: 24 * 60 * 60 * 1000, // 24h
     },
     store:
       isProduction && env.MONGODB_URI
@@ -148,10 +157,12 @@ app.use(
 
 /* -------------------------- Small conveniences --------------------------------- */
 
+// Optionaler Alias: /api/subscription → /api/subscription/status
 app.get('/api/subscription', (_req, res) => {
   res.redirect(308, '/api/subscription/status');
 });
 
+// Rate Limiting (global)
 app.use(
   rateLimit({
     windowMs: 60_000,
@@ -159,6 +170,7 @@ app.use(
   }),
 );
 
+// Spezifisches Limit für Auth-Endpoints
 app.use(
   '/api/auth/login',
   rateLimit({
@@ -178,10 +190,12 @@ app.use(
 
 /* -------------------------- API Routes (nach Session!) -------------------------- */
 
+// Erste einfache APIs
 app.use('/api', featureFlagsRoutes);
 app.use('/api', sessionRoutes);
 app.use('/api', mockAuthRoutes);
 
+// Domain-Router
 app.use('/api/admin', adminRouter);
 app.use('/api/billing', billingRouter);
 app.use('/api/bot', botRouter);
@@ -225,7 +239,7 @@ app.use((_req, res) => {
   res.status(404).json({ success: false, error: 'Not Found' });
 });
 
-// ⚠️ _next entfernt, damit ESLint nicht meckert
+// eslint-friendly (kein ungenutztes _next)
 app.use((err: unknown, _req: express.Request, res: express.Response) => {
   console.error('Unhandled error:', err);
   const message =
@@ -239,7 +253,6 @@ app.use((err: unknown, _req: express.Request, res: express.Response) => {
 
 (async () => {
   try {
-    // in Promise hüllen, damit ESLint kein await-thenable meldet
     await Promise.resolve(ensureSubscriptionIndexes());
     logger.debug('✅ Database indexes ensured');
   } catch (err) {
