@@ -58,8 +58,13 @@ const logger = {
 const app = express();
 initSentry();
 
-const PORT = Number(env.PORT || 4001);
+// Port/Host so wählen, dass Deploy-Provider sie setzen kann:
+const PORT = Number(process.env.PORT ?? env.PORT ?? 4001);
+const HOST = process.env.HOST || '0.0.0.0';
 const isProduction = env.NODE_ENV === 'production';
+
+// Optional: öffentliche Basis-URL für Logs (in Prod setzen)
+const PUBLIC_BASE_URL = process.env.BACKEND_URL ?? `http://localhost:${PORT}`;
 
 function assertTikTokConfig() {
   const req = ['TIKTOK_CLIENT_ID', 'TIKTOK_CLIENT_SECRET', 'TIKTOK_REDIRECT_URI'];
@@ -267,10 +272,15 @@ app.use((err: unknown, _req: express.Request, res: express.Response) => {
     console.error('⚠️ SendGrid initialization failed:', err);
   }
 
-  app.listen(PORT, () => {
+  app.listen(PORT, HOST, () => {
     logger.debug(`🚀 CLiP BOOsT API running in ${env.NODE_ENV} mode`);
-    logger.debug(`📡 API listening on http://localhost:${PORT}`);
-    logger.debug(`📚 Docs: http://localhost:${PORT}/docs`);
+    logger.debug(`📡 API listening on http://${HOST}:${PORT}`);
+    if (PUBLIC_BASE_URL) {
+      logger.debug(`🌐 Public base URL: ${PUBLIC_BASE_URL}`);
+      logger.debug(`📚 Docs: ${PUBLIC_BASE_URL.replace(/\/+$/,'')}/docs`);
+    } else {
+      logger.debug(`📚 Docs: http://${HOST}:${PORT}/docs`);
+    }
     logger.debug(`💳 Stripe Webhook: POST /api/stripe/webhook`);
   });
 })();
