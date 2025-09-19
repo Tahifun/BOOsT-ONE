@@ -1,15 +1,12 @@
-
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, URL } from 'node:url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
+// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
-  // Backend-Ziel: bevorzugt VITE_API_URL, sonst VITE_BACKEND_URL, sonst localhost:4001
+  // Backend-Ziel: bevorzugt VITE_API_URL, sonst VITE_BACKEND_URL, sonst Localhost
   const apiTarget =
     env.VITE_API_URL ||
     env.VITE_BACKEND_URL ||
@@ -20,15 +17,15 @@ export default defineConfig(({ mode }) => {
 
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src'),
-        '@components': path.resolve(__dirname, './src/components'),
-        '@pages': path.resolve(__dirname, './src/pages'),
-        '@contexts': path.resolve(__dirname, './src/contexts'),
-        '@hooks': path.resolve(__dirname, './src/hooks'),
-        '@services': path.resolve(__dirname, './src/services'),
-        '@utils': path.resolve(__dirname, './src/utils'),
-        '@types': path.resolve(__dirname, './src/types'),
-      },
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+        '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
+        '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
+        '@contexts': fileURLToPath(new URL('./src/contexts', import.meta.url)),
+        '@hooks': fileURLToPath(new URL('./src/hooks', import.meta.url)),
+        '@services': fileURLToPath(new URL('./src/services', import.meta.url)),
+        '@utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
+        '@types': fileURLToPath(new URL('./src/types', import.meta.url))
+      }
     },
 
     server: {
@@ -47,13 +44,13 @@ export default defineConfig(({ mode }) => {
             proxy.on('proxyReq', (_proxyReq, req) =>
               console.debug('[proxy:/api] →', req.method, req.url)
             );
-          },
+          }
         },
 
         // 2) Swagger/Dokumentation
         '/docs': {
           target: apiTarget,
-          changeOrigin: true,
+          changeOrigin: true
         },
 
         // 3) Kurzpfad: /session → /api/session
@@ -66,7 +63,7 @@ export default defineConfig(({ mode }) => {
             proxy.on('proxyReq', (_proxyReq, req) =>
               console.debug('[proxy:/session→/api/session] →', req.method, req.url)
             );
-          },
+          }
         },
 
         // 4) 🔐 Auth-Endpunkte ohne /api-Präfix → /api/auth/*
@@ -79,10 +76,10 @@ export default defineConfig(({ mode }) => {
             proxy.on('proxyReq', (_proxyReq, req) =>
               console.debug('[proxy:/auth→/api/auth] →', req.method, req.url)
             );
-          },
+          }
         },
 
-        // 5) Optional: /subscription → /api/subscription (falls das Frontend das so aufruft)
+        // 5) Optional: /subscription → /api/subscription
         '/subscription': {
           target: apiTarget,
           changeOrigin: true,
@@ -92,9 +89,9 @@ export default defineConfig(({ mode }) => {
             proxy.on('proxyReq', (_proxyReq, req) =>
               console.debug('[proxy:/subscription→/api/subscription] →', req.method, req.url)
             );
-          },
-        },
-      },
+          }
+        }
+      }
     },
 
     build: {
@@ -105,14 +102,14 @@ export default defineConfig(({ mode }) => {
             vendor: ['react', 'react-dom', 'react-router-dom'],
             ui: ['framer-motion', 'lucide-react'],
             charts: ['recharts', 'd3'],
-            three: ['three'],
-          },
-        },
-      },
+            three: ['three']
+          }
+        }
+      }
     },
 
     optimizeDeps: {
-      include: ['react', 'react-dom', 'react-router-dom'],
-    },
+      include: ['react', 'react-dom', 'react-router-dom']
+    }
   };
 });
