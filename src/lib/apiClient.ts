@@ -1,5 +1,5 @@
 // src/lib/apiClient.ts
-import { API_BASE_URL, BACKEND_URL } from "../env";
+import { API_BASE_URL, BACKEND_URL, SOCKET_URL } from '@/env';
 
 /**
  * Ermittelt die Basis-URL für die API:
