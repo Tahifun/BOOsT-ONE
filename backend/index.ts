@@ -56,6 +56,10 @@ const logger = {
 // -----------------------------------------------------------------------------
 
 const app = express();
+app.get('/_whoami', (_req, res) => {
+  res.json({ entry: 'index.ts', ok: true });
+});
+
 initSentry();
 
 // Port/Host so wählen, dass Deploy-Provider sie setzen kann:
