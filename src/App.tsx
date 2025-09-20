@@ -118,13 +118,21 @@ const AppShell: React.FC = () => {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Homepage />} />
 
-          {/* Rechtliches */}
+          {/* Rechtliches – EN */}
           <Route path="/imprint" element={<Imprint />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/withdrawal" element={<Withdrawal />} />
           <Route path="/guidelines" element={<CommunityGuidelines />} />
           <Route path="/licenses" element={<Licenses />} />
+
+          {/* Rechtliches – DE Aliasse */}
+          <Route path="/impressum" element={<Imprint />} />
+          <Route path="/agb" element={<Terms />} />
+          <Route path="/datenschutz" element={<Privacy />} />
+          <Route path="/widerruf" element={<Withdrawal />} />
+          <Route path="/richtlinien" element={<CommunityGuidelines />} />
+          <Route path="/lizenzen" element={<Licenses />} />
 
           {/* OAuth / Callbacks / Sonstiges */}
           <Route path="/auth/tiktok" element={<TikTokCallback />} />
