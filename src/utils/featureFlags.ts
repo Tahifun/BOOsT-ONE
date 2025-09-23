@@ -1,15 +1,14 @@
 import { logger } from '@/lib/logger';
+import React from "react";
+import { API_BASE } from "@/env";
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 // -------------------------------------------------------------
-// Feature Flags & Remote Config Manager (robust construction)
-// - Fix: detectUserContext() verwendet KEIN this.userContext mehr
-// - Fix: readStoredSegment() zum sicheren Lesen aus localStorage
-// - Fix: Guards via ensureUserContext() in evaluate/getValue/loadRemoteFlags
-// - Fix: keine doppelten getUserSegment-Definitionen mit Konflikt
+// Feature Flags & Remote Config Manager
+// – nutzt jetzt ABSOLUTE API-URL aus env (API_BASE)
+// – POST auf `${API_BASE}/feature-flags` mit credentials
 // -------------------------------------------------------------
-
-import React from "react";
 
 // Types
 export type UserSegment = 'free' | 'pro' | 'beta' | 'admin' | 'developer';
@@ -64,10 +63,6 @@ class FeatureFlagManager {
   private lastRemoteUpdate = 0;
   private updateInterval: number | null = null;
 
-  /**
-   * Read user segment from localStorage with validation.
-   * This avoids accessing this.userContext during construction.
-   */
   private readStoredSegment(): UserSegment {
     try {
       const v = localStorage.getItem('epicstream_user_segment') as UserSegment | null;
@@ -102,7 +97,6 @@ class FeatureFlagManager {
       rolloutPercentage: 90,
       conditions: {}
     },
-    // … weitere Flags bei Bedarf …
   };
 
   constructor() {
@@ -132,7 +126,7 @@ class FeatureFlagManager {
     }
   }
 
-  // -------- Context detection (NO access to this.userContext inside!) --------
+  // -------- Context detection --------
   private detectUserContext(): UserContext {
     const userAgent = navigator.userAgent.toLowerCase();
 
@@ -157,7 +151,7 @@ class FeatureFlagManager {
 
     return {
       userId: this.getUserId(),
-      segment: this.readStoredSegment(), // << wichtig: KEIN Zugriff auf this.userContext
+      segment: this.readStoredSegment(),
       version: this.getAppVersion(),
       platform,
       browser,
@@ -215,8 +209,9 @@ class FeatureFlagManager {
   public async loadRemoteFlags(): Promise<void> {
     this.ensureUserContext();
     try {
-      const response = await fetch('/api/feature-flags', {
+      const response = await fetch(`${API_BASE}/feature-flags`, {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           userId: this.userContext.userId,
@@ -268,7 +263,6 @@ class FeatureFlagManager {
   }
 
   private reevaluateFlags(): void {
-    // noop here; hooks below re-check on 'performanceAdjustment' event
     window.dispatchEvent(new Event('featureFlagsReevaluated'));
   }
 
@@ -335,7 +329,6 @@ class FeatureFlagManager {
     return Math.abs(hash);
   }
 
-  // Keep public method name for external callers
   public getUserSegment(): UserSegment {
     return this.userContext?.segment ?? 'free';
   }
@@ -383,12 +376,16 @@ export function useFeatureFlag(flagName: string): {
   const [loading] = React.useState(false);
 
   React.useEffect(() => {
-    const handlePerformanceChange = () => {
+    const handle = () => {
       setEnabled(isFeatureEnabled(flagName));
       setValue(getFeatureValue(flagName));
     };
-    window.addEventListener('performanceAdjustment', handlePerformanceChange);
-    return () => window.removeEventListener('performanceAdjustment', handlePerformanceChange);
+    window.addEventListener('performanceAdjustment', handle);
+    window.addEventListener('featureFlagsReevaluated', handle);
+    return () => {
+      window.removeEventListener('performanceAdjustment', handle);
+      window.removeEventListener('featureFlagsReevaluated', handle);
+    };
   }, [flagName]);
 
   return { enabled, value, loading };
@@ -398,13 +395,17 @@ export function useFeatureFlags(flagNames: string[]) {
   const [flags, setFlags] = React.useState<Record<string, boolean>>({});
 
   React.useEffect(() => {
-    const updateFlags = () => {
+    const update = () => {
       const result: Record<string, boolean> = {};
       flagNames.forEach(name => { result[name] = isFeatureEnabled(name); });
       setFlags(result);
     };
-    window.addEventListener('performanceAdjustment', updateFlags);
-    return () => window.removeEventListener('performanceAdjustment', updateFlags);
+    window.addEventListener('performanceAdjustment', update);
+    window.addEventListener('featureFlagsReevaluated', update);
+    return () => {
+      window.removeEventListener('performanceAdjustment', update);
+      window.removeEventListener('featureFlagsReevaluated', update);
+    };
   }, [flagNames]);
 
   return flags;
