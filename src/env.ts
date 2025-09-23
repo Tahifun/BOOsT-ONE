@@ -1,17 +1,39 @@
 // src/env.ts
-export const API_BASE_URL   = import.meta.env.VITE_API_BASE_URL   as string | undefined;
-export const BACKEND_URL    = import.meta.env.VITE_BACKEND_URL    as string | undefined;
-export const SOCKET_URL     = import.meta.env.VITE_SOCKET_URL     as string | undefined;
 
-export const SPOTIFY_REDIRECT_URI = import.meta.env.VITE_SPOTIFY_REDIRECT_URI as string | undefined;
-export const SPOTIFY_CLIENT_ID    = import.meta.env.VITE_SPOTIFY_CLIENT_ID    as string | undefined;
+// Helper liest ENV mit und ohne Bindestrich
+const read = (k: string) => (import.meta.env as any)?.[k] as string | undefined;
 
-export const TIKTOK_REDIRECT_URI  = import.meta.env.VITE_TIKTOK_REDIRECT_URI  as string | undefined;
+export const API_BASE =
+  read("VITE_API_BASE_URL") ??
+  read("VITE-API-BASE-URL") ??
+  "https://api.clip-boost.online/api";
 
-// Fallbacks/Validierung für lokale Devs (optional)
+// Kompatibilität: alter Name weiter exportiert
+export const API_BASE_URL = API_BASE;
+
+export const BACKEND_URL =
+  read("VITE_BACKEND_URL") ??
+  read("VITE-BACKEND-URL") ??
+  "https://api.clip-boost.online";
+
+export const SOCKET_URL =
+  read("VITE_SOCKET_URL") ??
+  read("VITE-SOCKET-URL");
+
+export const SPOTIFY_REDIRECT_URI =
+  read("VITE_SPOTIFY_REDIRECT_URI") ??
+  read("VITE-SPOTIFY-REDIRECT-URI");
+
+export const SPOTIFY_CLIENT_ID =
+  read("VITE_SPOTIFY_CLIENT_ID") ??
+  read("VITE-SPOTIFY-CLIENT-ID");
+
+export const TIKTOK_REDIRECT_URI =
+  read("VITE_TIKTOK_REDIRECT_URI") ??
+  read("VITE-TIKTOK-REDIRECT-URI");
+
+// Warnungen nur in Prod, damit du Misskonfiguration siehst
 if (import.meta.env.PROD) {
-  // In PROD lieber failen, wenn etwas Wichtiges fehlt:
-  if (!API_BASE_URL)   console.warn("VITE_API_BASE_URL ist nicht gesetzt");
-  if (!BACKEND_URL)    console.warn("VITE_BACKEND_URL ist nicht gesetzt");
-  if (!SOCKET_URL)     console.warn("VITE_SOCKET_URL ist nicht gesetzt");
+  if (!API_BASE)   console.warn("VITE_API_BASE_URL / VITE-API-BASE-URL fehlt. Fallback wird genutzt.");
+  if (!BACKEND_URL) console.warn("VITE_BACKEND_URL / VITE-BACKEND-URL fehlt. Fallback wird genutzt.");
 }
