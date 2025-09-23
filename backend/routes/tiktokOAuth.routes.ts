@@ -34,27 +34,26 @@ const TIKTOK_SCOPE = process.env.TIKTOK_OAUTH_SCOPE ?? 'user.info.basic';
 const STATE_SECRET = process.env.TIKTOK_OAUTH_STATE_SECRET ?? 'dev_state_secret';
 
 /** Utils */
-function base64url(buf: Buffer) {
+function b64url(buf: Buffer) {
   return buf.toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
 }
-function randomString(len = 64) {
-  return base64url(crypto.randomBytes(Math.ceil((len * 3) / 4))).slice(0, len);
+function rand(len = 64) {
+  return b64url(crypto.randomBytes(Math.ceil((len * 3) / 4))).slice(0, len);
 }
-function sha256Base64Url(input: string) {
+function sha256b64url(input: string) {
   const hash = crypto.createHash('sha256').update(input).digest();
-  return base64url(hash);
+  return b64url(hash);
 }
 
-/** Gemeinsamer Start-Handler */
+/** gemeinsamer Start-Handler */
 function startAuth(req: Request, res: Response) {
   if (!TIKTOK_CLIENT_ID || !TIKTOK_CLIENT_SECRET || !TIKTOK_REDIRECT_URI) {
     return res.status(500).json({ error: 'tiktok_not_configured' });
   }
-  const codeVerifier = randomString(64);
-  const codeChallenge = sha256Base64Url(codeVerifier);
-  const state = base64url(
-    crypto.createHmac('sha256', STATE_SECRET).update(randomString(16)).digest(),
-  );
+
+  const codeVerifier = rand(64);
+  const codeChallenge = sha256b64url(codeVerifier);
+  const state = b64url(crypto.createHmac('sha256', STATE_SECRET).update(rand(16)).digest());
 
   (req.session as any).tiktok = { codeVerifier, state, createdAt: Date.now() };
 
@@ -68,16 +67,14 @@ function startAuth(req: Request, res: Response) {
     code_challenge_method: 'S256',
   });
 
-  const authUrl = `https://www.tiktok.com/v2/auth/authorize?${params.toString()}`;
-  return res.redirect(authUrl);
+  res.redirect(`https://www.tiktok.com/v2/auth/authorize?${params.toString()}`);
 }
 
-/** GET /api/oauth/tiktok  (alias) */
-router.get('/', startAuth);
-/** GET /api/oauth/tiktok/auth  (bevorzugt) */
-router.get('/auth', startAuth);
+/** Aliasse */
+router.get('/', startAuth);       // /api/oauth/tiktok
+router.get('/auth', startAuth);   // /api/oauth/tiktok/auth
 
-/** GET /api/oauth/tiktok/callback */
+/** Callback */
 router.get('/callback', async (req: Request, res: Response) => {
   try {
     const { code, state, error, error_description } = req.query as Record<string, string | undefined>;
@@ -101,8 +98,11 @@ router.get('/callback', async (req: Request, res: Response) => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
       body,
     });
+
     const data = await resp.json();
-    if (!resp.ok) return res.status(502).json({ success: false, error: 'token_exchange_failed', details: data });
+    if (!resp.ok) {
+      return res.status(502).json({ success: false, error: 'token_exchange_failed', details: data });
+    }
 
     (req.session as any).tiktokTokens = {
       access_token: (data as any).access_token,
@@ -111,8 +111,8 @@ router.get('/callback', async (req: Request, res: Response) => {
       obtained_at: Date.now(),
     };
 
-    const frontendBase = FRONTEND_URL.replace(/\/+$/, '');
-    return res.redirect(`${frontendBase}/settings?connected=tiktok`);
+    const fe = FRONTEND_URL.replace(/\/+$/, '');
+    return res.redirect(`${fe}/settings?connected=tiktok`);
   } catch (e: any) {
     return res.status(500).json({ success: false, error: 'callback_error', message: e?.message });
   }
