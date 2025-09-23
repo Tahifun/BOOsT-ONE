@@ -1,10 +1,10 @@
-﻿// src/components/shared/Sidebar.tsx
+// src/components/shared/Sidebar.tsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useSubscription } from "@/contexts/SubscriptionContext";
 import {
   User as UserIcon,
-  UploadCloud,            // <- Upload-Icon (sichtbar)
+  UploadCloud,
   Radio as StreamIcon,
   Rocket as ProIcon,
   Gamepad2 as GamesIcon,
@@ -19,9 +19,9 @@ import {
   Clock,
 } from "lucide-react";
 
-import { useAuth } from '../../contexts/AuthContext';
-import { useTheme } from '../../hooks/useTheme';
-import "../../styles/shared/Sidebar.css";
+import { useAuth } from "@/contexts/AuthContext";
+import { useTheme } from "@/hooks/useTheme";
+import "@/styles/shared/Sidebar.css";
 import "@/styles/TierUI.css";
 
 const FUNCTION_PAGES = [
@@ -33,8 +33,15 @@ const FUNCTION_PAGES = [
   { to: "/analytics", label: "Analytics", icon: <AnalyticsIcon size={18} /> },
 ] as const;
 
-const SPOTIFY_LOGIN_URL = "/api/spotify/login";
-const TIKTOK_LOGIN_URL  = "/api/oauth/tiktok";
+/** API-Basis: liest beide ENV-Varianten (Unterstrich oder Bindestrich). Fallback = Prod-URL. */
+const API_BASE =
+  import.meta.env.VITE_API_BASE_URL ??
+  import.meta.env["VITE-API-BASE-URL"] ??
+  "https://api.clip-boost.online/api";
+
+/** Externe Flows immer absolut über das Backend routen. */
+const SPOTIFY_LOGIN_URL = `${API_BASE}/spotify/login`;
+const TIKTOK_LOGIN_URL  = `${API_BASE}/oauth/tiktok/auth`;
 const UPGRADE_ROUTE = "/subscribe";
 
 export default function Sidebar() {
@@ -86,11 +93,11 @@ export default function Sidebar() {
 
         {token ? (
           <div className="profile-card">
-            {/* Avatar: nur Bild sichtbar, kleines Upload-Icon behalten */}
+            {/* Avatar */}
             <button
               className="avatar-wrap"
               onClick={onPickAvatar}
-              title="Profilbild Ã¤ndern"
+              title="Profilbild ändern"
               type="button"
             >
               {avatarUrl ? (
@@ -99,12 +106,10 @@ export default function Sidebar() {
                 <div className="avatar-fallback">{avatarInitial}</div>
               )}
 
-              {/* kleines Upload-Icon unten rechts */}
               <span className="avatar-upload" aria-hidden="true">
                 <UploadCloud size={16} />
               </span>
 
-              {/* File-Input komplett unsichtbar/offscreen */}
               <input
                 ref={fileInputRef}
                 type="file"
@@ -137,11 +142,11 @@ export default function Sidebar() {
       <section className="sb-panel connect-panel">
         <div className="panel-title">Verbindungen</div>
         <div className="connect-grid">
-          <a href={TIKTOK_LOGIN_URL} className="connect-btn tiktok" rel="noopener">
+          <a href={TIKTOK_LOGIN_URL} className="connect-btn tiktok" rel="noopener noreferrer">
             <TikTokIcon size={18} />
             <span>Verbinden mit TikTok</span>
           </a>
-          <a href={SPOTIFY_LOGIN_URL} className="connect-btn spotify" rel="noopener">
+          <a href={SPOTIFY_LOGIN_URL} className="connect-btn spotify" rel="noopener noreferrer">
             <SpotifyIcon size={18} />
             <span>Verbinden mit Spotify</span>
           </a>
@@ -173,7 +178,7 @@ export default function Sidebar() {
         ))}
       </section>
 
-      {/* EINZIGER Day-Pass Bereich */}
+      {/* Day-Pass */}
       {!isPro && (
         <section className="sb-panel daypass-panel">
           {!isDayPass ? (
@@ -186,7 +191,7 @@ export default function Sidebar() {
               <Clock size={14} />
               <span>
                 Day-Pass aktiv
-                {typeof msRemaining === "number" ? ` â€“ ${formatHMS(msRemaining)} Ã¼brig` : ""}
+                {typeof msRemaining === "number" ? ` – ${formatHMS(msRemaining)} übrig` : ""}
               </span>
             </div>
           )}
@@ -209,4 +214,3 @@ export default function Sidebar() {
     </aside>
   );
 }
-
