@@ -8,9 +8,8 @@
   "scripts": {
     "dev": "tsx watch index.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "build": "rimraf dist && tsc -p tsconfig.json --pretty false --skipLibCheck --noEmit false --noEmitOnError false || true",
-    "build:clean": "rimraf dist && npm run build",
-    "start": "node --enable-source-maps dist/index.js || node --loader tsx ./index.ts",
+    "build": "rimraf dist && tsc -p tsconfig.json --pretty false --skipLibCheck",
+    "start": "node --enable-source-maps dist/index.js",
     "clean": "rimraf dist",
     "test": "vitest"
   },
