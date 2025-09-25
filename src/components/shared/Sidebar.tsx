@@ -33,11 +33,21 @@ const FUNCTION_PAGES = [
   { to: "/analytics", label: "Analytics", icon: <AnalyticsIcon size={18} /> },
 ] as const;
 
-/** API-Basis: liest beide ENV-Varianten (Unterstrich oder Bindestrich). Fallback = Prod-URL. */
-const API_BASE =
+/**
+ * API-Basis:
+ * - Liest beide ENV-Varianten (Unterstrich oder Bindestrich).
+ * - Normalisiert die Basis und hängt sicher `/api` an.
+ * - Fallback ist die Produktionsdomain ohne `/api`.
+ */
+const RAW_API_BASE =
   import.meta.env.VITE_API_BASE_URL ??
   import.meta.env["VITE-API-BASE-URL"] ??
-  "https://api.clip-boost.online/api";
+  "https://api.clip-boost.online";
+
+const API_BASE = (() => {
+  const base = String(RAW_API_BASE).replace(/\/+$/, "");
+  return base.endsWith("/api") ? base : `${base}/api`;
+})();
 
 /** Externe Flows immer absolut über das Backend routen. */
 const SPOTIFY_LOGIN_URL = `${API_BASE}/spotify/login`;
