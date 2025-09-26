@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+/* src/styles/TierUI.css */
+.tier-badge,
+.pro-badge-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1;
+  user-select: none;
+}
+
+.tier-badge.pro,
+.pro-badge-inline:not(.muted) {
+  border: 1px solid var(--border, #2a2a2a);
+  background: linear-gradient(180deg, rgba(140, 120, 255, 0.16), rgba(140, 120, 255, 0.06));
+  color: var(--pro-fg, #e6e1ff);
+  padding: 6px 8px;
+  border-radius: 8px;
+}
+
+.tier-badge.free,
+.pro-badge-inline.muted {
+  border: 1px dashed var(--border, #2a2a2a);
+  background: var(--panel, #0e0e10);
+  color: var(--muted-foreground, #9aa0a6);
+  padding: 6px 8px;
+  border-radius: 8px;
+}
+
+.badge-countdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.35);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.95;
+}
+
+.btn-daypass {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border, #2a2a2a);
+  background: linear-gradient(180deg, rgba(60,60,60,0.25), rgba(30,30,30,0.25));
+  color: var(--foreground, #e8e8e8);
+  text-decoration: none;
+  transition: transform .04s ease, border-color .15s ease, background .15s ease;
+}
+.btn-daypass:hover {
+  border-color: rgba(140, 120, 255, 0.6);
+  background: linear-gradient(180deg, rgba(140,120,255,0.15), rgba(40,40,40,0.4));
+}
+.btn-daypass:active {
+  transform: translateY(1px);
+}
+
+.pro-panel .daypass-info {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted-foreground, #a6a6a6);
+}

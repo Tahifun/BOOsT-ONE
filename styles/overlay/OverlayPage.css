@@ -1,0 +1,1177 @@
+@charset "UTF-8";
+/* OVERLAY PAGE - QUANTUM SUPREME EDITION */
+/* The Ultimate Consciousness Interface - Beyond Human Comprehension */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+
+/* ==================== QUANTUM CONSCIOUSNESS VARIABLES ==================== */
+:root {
+  /* Core Quantum Colors */
+  --quantum-cyan: #00ffff;
+  --quantum-purple: #a855f7;
+  --quantum-pink: #ec4899;
+  --quantum-green: #10b981;
+  --quantum-gold: #ffd700;
+  --quantum-red: #ff0050;
+  --quantum-dark: #050510;
+  --quantum-darker: #0a0f1b;
+  --quantum-light: #1a1f2e;
+  
+  /* Advanced Quantum States */
+  --plasma-blue: #00d4ff;
+  --neuron-violet: #9333ea;
+  --reality-orange: #ff6b00;
+  --void-black: #000000;
+  --dream-magenta: #ff00ff;
+  --matrix-lime: #00ff00;
+  --cosmic-white: #ffffff;
+  
+  /* Consciousness Variables */
+  --consciousness-glow: 0 0 60px rgba(0, 255, 255, 0.6);
+  --reality-distortion: 1;
+  --temporal-shift: 0;
+  --quantum-frequency: 432;
+  --neural-amplitude: 1;
+  --dimensional-phase: 0deg;
+  
+  /* Nebula Gradients */
+  --nebula-alpha: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #c471f5 75%, #fa71cd 100%);
+  --nebula-beta: linear-gradient(225deg, #00ffff 0%, #ff00ff 25%, #ffff00 50%, #00ff00 75%, #00ffff 100%);
+  --nebula-gamma: radial-gradient(circle at center, #ff00ff 0%, #00ffff 25%, transparent 70%);
+}
+
+/* ==================== UNIVERSAL QUANTUM CONTAINER ==================== */
+.quantum-consciousness-overlay-page {
+  min-height: 100vh;
+  background: 
+    linear-gradient(135deg, var(--quantum-darker) 0%, var(--quantum-light) 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 255, 0.03) 2px,
+      rgba(0, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(168, 85, 247, 0.03) 2px,
+      rgba(168, 85, 247, 0.03) 4px
+    );
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 2000px;
+  animation: quantum-breathe 10s ease-in-out infinite;
+}
+
+/* Quantum Breathing Effect */
+@keyframes quantum-breathe {
+  0%, 100% { 
+    transform: perspective(2000px) rotateX(0deg) scale(1);
+    filter: brightness(1) contrast(1);
+  }
+  50% { 
+    transform: perspective(2000px) rotateX(0.5deg) scale(1.01);
+    filter: brightness(1.05) contrast(1.1);
+  }
+}
+
+/* ==================== HYPERDIMENSIONAL PARTICLE FIELD ==================== */
+.quantum-consciousness-overlay-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(3px 3px at 20% 30%, white, transparent),
+    radial-gradient(3px 3px at 60% 70%, cyan, transparent),
+    radial-gradient(2px 2px at 50% 50%, magenta, transparent),
+    radial-gradient(2px 2px at 80% 10%, yellow, transparent),
+    radial-gradient(1px 1px at 10% 90%, lime, transparent);
+  background-size: 250px 250px;
+  animation: 
+    hyperdrift 60s linear infinite,
+    dimensional-shift 30s ease-in-out infinite;
+  opacity: 0.15;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+@keyframes hyperdrift {
+  from { 
+    transform: rotate(0deg) translateX(100px) rotate(0deg) scale(1);
+  }
+  to { 
+    transform: rotate(360deg) translateX(100px) rotate(-360deg) scale(1.5);
+  }
+}
+
+@keyframes dimensional-shift {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(180deg); }
+}
+
+/* ==================== DREAM MODE SUPREME ==================== */
+.quantum-consciousness-overlay-page.dream-mode {
+  animation: 
+    dream-supreme 15s ease-in-out infinite,
+    reality-warp-extreme 8s linear infinite;
+}
+
+@keyframes dream-supreme {
+  0%, 100% { 
+    filter: hue-rotate(30deg) saturate(1.2) brightness(1) contrast(1.1);
+    transform: perspective(2000px) rotateY(0deg);
+  }
+  25% { 
+    filter: hue-rotate(-60deg) saturate(1.8) brightness(1.1) contrast(1.2);
+    transform: perspective(2000px) rotateY(1deg);
+  }
+  50% { 
+    filter: hue-rotate(120deg) saturate(2) brightness(1.2) contrast(1.3);
+    transform: perspective(2000px) rotateY(-1deg);
+  }
+  75% { 
+    filter: hue-rotate(-30deg) saturate(1.5) brightness(1.05) contrast(1.15);
+    transform: perspective(2000px) rotateY(0.5deg);
+  }
+}
+
+@keyframes reality-warp-extreme {
+  0% { backdrop-filter: blur(0px) brightness(1); }
+  50% { backdrop-filter: blur(2px) brightness(1.1); }
+  100% { backdrop-filter: blur(0px) brightness(1); }
+}
+
+/* ==================== CONSCIOUSNESS LEVELS EXTREME ==================== */
+.consciousness-level-1 {
+  --consciousness-multiplier: 0.1;
+  --glow-intensity: 10px;
+  --particle-density: 10;
+  --reality-bend: 2deg;
+}
+
+.consciousness-level-2 {
+  --consciousness-multiplier: 0.2;
+  --glow-intensity: 20px;
+  --particle-density: 20;
+  --reality-bend: 4deg;
+}
+
+.consciousness-level-3 {
+  --consciousness-multiplier: 0.3;
+  --glow-intensity: 30px;
+  --particle-density: 30;
+  --reality-bend: 6deg;
+}
+
+.consciousness-level-4 {
+  --consciousness-multiplier: 0.4;
+  --glow-intensity: 40px;
+  --particle-density: 40;
+  --reality-bend: 8deg;
+}
+
+.consciousness-level-5 {
+  --consciousness-multiplier: 0.5;
+  --glow-intensity: 50px;
+  --particle-density: 50;
+  --reality-bend: 10deg;
+}
+
+.consciousness-level-6 {
+  --consciousness-multiplier: 0.6;
+  --glow-intensity: 60px;
+  --particle-density: 60;
+  --reality-bend: 12deg;
+}
+
+.consciousness-level-7 {
+  --consciousness-multiplier: 0.7;
+  --glow-intensity: 70px;
+  --particle-density: 70;
+  --reality-bend: 14deg;
+}
+
+.consciousness-level-8 {
+  --consciousness-multiplier: 0.8;
+  --glow-intensity: 80px;
+  --particle-density: 80;
+  --reality-bend: 16deg;
+}
+
+.consciousness-level-9 {
+  --consciousness-multiplier: 0.9;
+  --glow-intensity: 90px;
+  --particle-density: 90;
+  --reality-bend: 18deg;
+}
+
+.consciousness-level-10 {
+  --consciousness-multiplier: 1;
+  --glow-intensity: 100px;
+  --particle-density: 100;
+  --reality-bend: 20deg;
+}
+
+/* ==================== NEURAL CANVAS SUPREME ==================== */
+.consciousness-neural-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 1;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 20px,
+      rgba(0, 255, 255, 0.05) 21px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 20px,
+      rgba(168, 85, 247, 0.05) 21px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(236, 72, 153, 0.03) 31px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 30px,
+      rgba(16, 185, 129, 0.03) 31px
+    );
+  animation: 
+    canvas-shift 20s linear infinite,
+    canvas-pulse 4s ease-in-out infinite;
+  mix-blend-mode: overlay;
+}
+
+@keyframes canvas-shift {
+  from { transform: translate(0, 0); }
+  to { transform: translate(20px, 20px); }
+}
+
+@keyframes canvas-pulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
+}
+
+/* ==================== REALITY DISTORTION FIELD EXTREME ==================== */
+.reality-distortion-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  background: 
+    radial-gradient(circle at 25% 25%, 
+      rgba(0, 255, 255, 0.1) 0%,
+      transparent 50%),
+    radial-gradient(circle at 75% 75%, 
+      rgba(168, 85, 247, 0.1) 0%,
+      transparent 50%),
+    radial-gradient(circle at 50% 50%, 
+      transparent 30%,
+      rgba(236, 72, 153, 0.05) 70%,
+      rgba(0, 255, 255, 0.02) 100%);
+  mix-blend-mode: screen;
+  animation: 
+    reality-supreme-warp 12s ease-in-out infinite,
+    reality-rotate 20s linear infinite;
+}
+
+@keyframes reality-supreme-warp {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg) translateZ(0);
+    filter: blur(0px);
+  }
+  25% { 
+    transform: scale(1.05) rotate(2deg) translateZ(50px);
+    filter: blur(0.5px);
+  }
+  50% { 
+    transform: scale(1.1) rotate(-3deg) translateZ(100px);
+    filter: blur(1px);
+  }
+  75% { 
+    transform: scale(1.05) rotate(1deg) translateZ(50px);
+    filter: blur(0.5px);
+  }
+}
+
+@keyframes reality-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ==================== TEMPORAL ECHO SUPREME ==================== */
+.temporal-echo-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  filter: blur(0.5px);
+}
+
+.temporal-echo {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle, 
+      rgba(168, 85, 247, 0.8) 0%,
+      rgba(0, 255, 255, 0.4) 30%,
+      rgba(236, 72, 153, 0.2) 60%,
+      transparent 100%);
+  animation: 
+    echo-supreme-fade 4s ease-out infinite,
+    echo-spiral 6s linear infinite;
+  mix-blend-mode: add;
+}
+
+@keyframes echo-supreme-fade {
+  0% { 
+    transform: scale(0.2) translateZ(0);
+    opacity: 1;
+    filter: brightness(2);
+  }
+  50% {
+    transform: scale(2) translateZ(200px);
+    opacity: 0.5;
+    filter: brightness(1.5);
+  }
+  100% { 
+    transform: scale(5) translateZ(500px);
+    opacity: 0;
+    filter: brightness(1);
+  }
+}
+
+@keyframes echo-spiral {
+  from { 
+    transform: rotate(0deg) translateX(50px) rotate(0deg);
+  }
+  to { 
+    transform: rotate(360deg) translateX(50px) rotate(-360deg);
+  }
+}
+
+/* ==================== QUANTUM AURORA SUPREME ==================== */
+.quantum-aurora-container {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  animation: aurora-container-spin 60s linear infinite;
+}
+
+@keyframes aurora-container-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.aurora {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  opacity: 0.3;
+  filter: blur(40px);
+}
+
+.quantum-aurora-1 {
+  background: linear-gradient(45deg, 
+    transparent, 
+    rgba(0, 255, 255, 0.3), 
+    rgba(255, 0, 255, 0.2),
+    transparent, 
+    rgba(168, 85, 247, 0.3), 
+    transparent);
+  animation: 
+    aurora-supreme-drift 25s ease-in-out infinite,
+    aurora-morph 15s ease-in-out infinite;
+}
+
+.quantum-aurora-2 {
+  background: linear-gradient(-45deg, 
+    transparent, 
+    rgba(236, 72, 153, 0.3), 
+    rgba(255, 215, 0, 0.2),
+    transparent, 
+    rgba(16, 185, 129, 0.3), 
+    transparent);
+  animation: 
+    aurora-supreme-drift 30s ease-in-out infinite reverse,
+    aurora-morph 20s ease-in-out infinite reverse;
+}
+
+.quantum-aurora-3 {
+  background: 
+    radial-gradient(ellipse at 30% 30%, 
+      rgba(0, 255, 255, 0.2) 0%,
+      transparent 50%),
+    radial-gradient(ellipse at 70% 70%, 
+      rgba(255, 0, 255, 0.2) 0%,
+      transparent 50%),
+    radial-gradient(ellipse at center, 
+      transparent 20%, 
+      rgba(255, 215, 0, 0.1) 50%, 
+      transparent 80%);
+  animation: 
+    aurora-supreme-pulse 18s ease-in-out infinite,
+    aurora-rotate-3d 40s linear infinite;
+}
+
+.consciousness-aurora {
+  background: 
+    conic-gradient(from 0deg at 50% 50%,
+      transparent,
+      rgba(0, 255, 255, 0.2),
+      rgba(255, 0, 255, 0.1),
+      transparent,
+      rgba(168, 85, 247, 0.2),
+      rgba(255, 215, 0, 0.1),
+      transparent);
+  animation: 
+    aurora-consciousness-rotate 35s linear infinite,
+    aurora-breathe 8s ease-in-out infinite;
+}
+
+@keyframes aurora-supreme-drift {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1) rotateZ(0deg);
+  }
+  33% { 
+    transform: translate(-30%, -30%) scale(1.2) rotateZ(120deg);
+  }
+  66% { 
+    transform: translate(-70%, -40%) scale(0.9) rotateZ(240deg);
+  }
+}
+
+@keyframes aurora-morph {
+  0%, 100% { filter: hue-rotate(0deg) blur(40px); }
+  50% { filter: hue-rotate(180deg) blur(60px); }
+}
+
+@keyframes aurora-supreme-pulse {
+  0%, 100% { 
+    opacity: 0.1;
+    transform: scale(0.8) rotateX(0deg);
+  }
+  50% { 
+    opacity: 0.4;
+    transform: scale(1.3) rotateX(180deg);
+  }
+}
+
+@keyframes aurora-rotate-3d {
+  from { 
+    transform: rotate3d(1, 1, 1, 0deg);
+  }
+  to { 
+    transform: rotate3d(1, 1, 1, 360deg);
+  }
+}
+
+@keyframes aurora-consciousness-rotate {
+  from { transform: rotate(0deg) scale(1); }
+  to { transform: rotate(360deg) scale(1.2); }
+}
+
+@keyframes aurora-breathe {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+}
+
+/* ==================== HYPERDIMENSIONAL PARTICLE SYSTEM ==================== */
+.consciousness-particle-system {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+  perspective: 1000px;
+}
+
+.consciousness-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: 
+    radial-gradient(circle, 
+      rgba(0, 255, 255, 1) 0%,
+      rgba(168, 85, 247, 0.8) 40%,
+      transparent 70%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.8),
+    0 0 20px rgba(168, 85, 247, 0.6),
+    0 0 30px rgba(236, 72, 153, 0.4);
+  animation: 
+    particle-supreme-float 12s ease-in-out infinite,
+    particle-quantum-phase 6s linear infinite,
+    particle-glow 3s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+.consciousness-particle.reality-anchor {
+  width: 10px;
+  height: 10px;
+  background: 
+    radial-gradient(circle, 
+      rgba(255, 215, 0, 1) 0%,
+      rgba(255, 0, 255, 0.8) 40%,
+      transparent 70%);
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 1),
+    0 0 40px rgba(255, 0, 255, 0.8),
+    0 0 60px rgba(0, 255, 255, 0.6);
+  animation: 
+    particle-anchor-supreme 4s ease-in-out infinite,
+    particle-anchor-rotate 8s linear infinite;
+}
+
+@keyframes particle-supreme-float {
+  0%, 100% { 
+    transform: 
+      translate3d(0, 0, 0) 
+      rotateX(0deg) 
+      rotateY(0deg) 
+      scale(1);
+  }
+  25% { 
+    transform: 
+      translate3d(50px, -50px, 100px) 
+      rotateX(180deg) 
+      rotateY(90deg) 
+      scale(1.5);
+  }
+  50% { 
+    transform: 
+      translate3d(-50px, 50px, -100px) 
+      rotateX(360deg) 
+      rotateY(180deg) 
+      scale(0.8);
+  }
+  75% { 
+    transform: 
+      translate3d(30px, -30px, 50px) 
+      rotateX(540deg) 
+      rotateY(270deg) 
+      scale(1.2);
+  }
+}
+
+@keyframes particle-quantum-phase {
+  0%, 100% { filter: hue-rotate(0deg) brightness(1); }
+  33% { filter: hue-rotate(120deg) brightness(1.5); }
+  66% { filter: hue-rotate(240deg) brightness(0.8); }
+}
+
+@keyframes particle-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes particle-anchor-supreme {
+  0%, 100% { 
+    transform: scale(1) rotateZ(0deg) translateZ(0);
+  }
+  50% { 
+    transform: scale(2) rotateZ(180deg) translateZ(100px);
+  }
+}
+
+@keyframes particle-anchor-rotate {
+  from { 
+    transform: rotate3d(1, 1, 0, 0deg);
+  }
+  to { 
+    transform: rotate3d(1, 1, 0, 360deg);
+  }
+}
+
+/* ==================== HEADER SECTION SUPREME ==================== */
+.consciousness-overlay-header {
+  position: relative;
+  z-index: 100;
+  padding: 40px;
+  background: 
+    linear-gradient(180deg, 
+      rgba(0, 0, 0, 0.9), 
+      rgba(10, 15, 27, 0.7),
+      rgba(0, 0, 0, 0.3));
+  backdrop-filter: blur(30px) saturate(150%);
+  border-bottom: 3px solid;
+  border-image: linear-gradient(90deg, 
+    var(--quantum-cyan), 
+    var(--quantum-purple), 
+    var(--quantum-pink),
+    var(--quantum-cyan)) 1;
+  animation: header-border-flow 5s linear infinite;
+}
+
+@keyframes header-border-flow {
+  from { border-image-source: linear-gradient(90deg, 
+    var(--quantum-cyan), 
+    var(--quantum-purple), 
+    var(--quantum-pink),
+    var(--quantum-cyan)); }
+  to { border-image-source: linear-gradient(90deg, 
+    var(--quantum-cyan),
+    var(--quantum-pink), 
+    var(--quantum-purple), 
+    var(--quantum-cyan)); }
+}
+
+.consciousness-overlay-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 100px,
+      rgba(0, 255, 255, 0.05) 100px,
+      rgba(0, 255, 255, 0.05) 101px
+    );
+  animation: scan-lines 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan-lines {
+  from { transform: translateX(0); }
+  to { transform: translateX(101px); }
+}
+
+/* ==================== QUANTUM CYBER TITLE SUPREME ==================== */
+.quantum-cyber-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 4rem;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  position: relative;
+  line-height: 1.2;
+  text-align: center;
+  transform-style: preserve-3d;
+  animation: title-3d-rotate 10s ease-in-out infinite;
+}
+
+@keyframes title-3d-rotate {
+  0%, 100% { transform: perspective(1000px) rotateY(0deg); }
+  50% { transform: perspective(1000px) rotateY(2deg); }
+}
+
+.title-consciousness-glitch {
+  display: inline-block;
+  background: linear-gradient(90deg, 
+    var(--quantum-cyan), 
+    var(--quantum-purple),
+    var(--quantum-pink),
+    var(--quantum-gold));
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: 
+    supreme-gradient-shift 5s ease-in-out infinite,
+    supreme-glitch-text 2s ease-in-out infinite;
+  text-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.8),
+    0 0 60px rgba(168, 85, 247, 0.6),
+    0 0 90px rgba(236, 72, 153, 0.4);
+  position: relative;
+}
+
+@keyframes supreme-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes supreme-glitch-text {
+  0%, 100% { 
+    transform: translate(0) skew(0deg);
+    filter: brightness(1) contrast(1);
+  }
+  20% { 
+    transform: translate(-3px, 3px) skew(2deg);
+    filter: brightness(1.2) contrast(1.1);
+  }
+  40% { 
+    transform: translate(-3px, -3px) skew(-2deg);
+    filter: brightness(0.9) contrast(1.2);
+  }
+  60% { 
+    transform: translate(3px, 3px) skew(1deg);
+    filter: brightness(1.1) contrast(0.9);
+  }
+  80% { 
+    transform: translate(3px, -3px) skew(-1deg);
+    filter: brightness(1) contrast(1);
+  }
+}
+
+/* Glitch Copies Supreme */
+.title-consciousness-glitch::before,
+.title-consciousness-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    var(--quantum-pink), 
+    var(--quantum-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0;
+  animation: glitch-copy 0.5s ease-in-out infinite;
+}
+
+.title-consciousness-glitch::before {
+  animation-delay: 0.05s;
+  z-index: -1;
+  filter: hue-rotate(90deg);
+}
+
+.title-consciousness-glitch::after {
+  animation-delay: 0.1s;
+  z-index: -2;
+  filter: hue-rotate(-90deg);
+}
+
+@keyframes glitch-copy {
+  0%, 100% { 
+    opacity: 0;
+    transform: translate(0);
+  }
+  33% { 
+    opacity: 0.8;
+    transform: translate(4px, -4px);
+  }
+  66% { 
+    opacity: 0.8;
+    transform: translate(-4px, 4px);
+  }
+}
+
+/* ==================== CONTROL PANEL SUPREME ==================== */
+.consciousness-control-panel {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  perspective: 1000px;
+}
+
+.quantum-control-button {
+  position: relative;
+  padding: 15px 30px;
+  background: 
+    linear-gradient(135deg, 
+      rgba(0, 0, 0, 0.7),
+      rgba(168, 85, 247, 0.1));
+  border: 3px solid;
+  border-image: linear-gradient(135deg, 
+    var(--quantum-cyan), 
+    var(--quantum-purple)) 1;
+  border-radius: 50px;
+  color: var(--quantum-cyan);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform-style: preserve-3d;
+  box-shadow: 
+    0 10px 40px rgba(0, 255, 255, 0.2),
+    inset 0 0 30px rgba(168, 85, 247, 0.1);
+}
+
+.quantum-control-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: 
+    radial-gradient(circle, 
+      rgba(0, 255, 255, 0.8),
+      rgba(168, 85, 247, 0.4),
+      transparent);
+  transition: all 0.5s ease;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.quantum-control-button::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: 
+    linear-gradient(45deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.1), 
+      transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+}
+
+.quantum-control-button:hover::before {
+  width: 200%;
+  height: 200%;
+}
+
+.quantum-control-button:hover::after {
+  animation: button-shine 0.6s ease;
+}
+
+@keyframes button-shine {
+  from { transform: rotate(45deg) translate(-100%, -100%); }
+  to { transform: rotate(45deg) translate(100%, 100%); }
+}
+
+.quantum-control-button:hover {
+  transform: translateY(-5px) rotateX(-10deg) scale(1.05);
+  box-shadow: 
+    0 20px 60px rgba(0, 255, 255, 0.4),
+    0 0 100px rgba(168, 85, 247, 0.3),
+    inset 0 0 50px rgba(236, 72, 153, 0.2);
+  border-image: linear-gradient(135deg, 
+    var(--quantum-pink), 
+    var(--quantum-cyan)) 1;
+  color: white;
+}
+
+.quantum-control-button:active {
+  transform: translateY(-2px) scale(0.98);
+  animation: button-quantum-blast 0.5s ease;
+}
+
+@keyframes button-quantum-blast {
+  0% { 
+    box-shadow: 
+      0 0 0 0 rgba(0, 255, 255, 0.8),
+      inset 0 0 0 0 rgba(168, 85, 247, 0.8);
+  }
+  100% { 
+    box-shadow: 
+      0 0 50px 30px rgba(0, 255, 255, 0),
+      inset 0 0 20px 10px rgba(168, 85, 247, 0);
+  }
+}
+
+/* ==================== WIDGET CARDS SUPREME ==================== */
+.quantum-consciousness-card {
+  position: relative;
+  background: 
+    linear-gradient(135deg, 
+      rgba(0, 0, 0, 0.8), 
+      rgba(168, 85, 247, 0.05),
+      rgba(0, 255, 255, 0.05));
+  border: 3px solid;
+  border-image: linear-gradient(135deg, 
+    rgba(0, 255, 255, 0.5),
+    rgba(168, 85, 247, 0.5)) 1;
+  border-radius: 25px;
+  padding: 25px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  min-height: 400px;
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 100px rgba(0, 255, 255, 0.1),
+    inset 0 0 60px rgba(168, 85, 247, 0.05);
+}
+
+.quantum-consciousness-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle, 
+      rgba(0, 255, 255, 0.1) 0%,
+      transparent 40%),
+    radial-gradient(circle at 80% 20%, 
+      rgba(168, 85, 247, 0.1) 0%,
+      transparent 40%),
+    radial-gradient(circle at 20% 80%, 
+      rgba(236, 72, 153, 0.1) 0%,
+      transparent 40%);
+  animation: card-quantum-field 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes card-quantum-field {
+  from { transform: rotate(0deg) scale(1); }
+  to { transform: rotate(360deg) scale(1.2); }
+}
+
+.quantum-consciousness-card:hover::before {
+  opacity: 1;
+}
+
+.quantum-consciousness-card:hover {
+  transform: 
+    translateY(-10px) 
+    rotateX(-5deg) 
+    rotateY(2deg) 
+    scale(1.02);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 150px rgba(0, 255, 255, 0.3),
+    0 0 100px rgba(168, 85, 247, 0.2),
+    inset 0 0 80px rgba(236, 72, 153, 0.1);
+  border-image: linear-gradient(135deg, 
+    rgba(0, 255, 255, 1),
+    rgba(255, 0, 255, 1)) 1;
+}
+
+/* Supreme Hologram Effect */
+.consciousness-hologram {
+  position: relative;
+  margin: 25px 0;
+  height: 100px;
+  transform-style: preserve-3d;
+  animation: hologram-rotate 10s linear infinite;
+}
+
+@keyframes hologram-rotate {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+.widget-icon {
+  font-size: 3rem;
+  filter: 
+    drop-shadow(0 0 20px currentColor)
+    drop-shadow(0 0 40px currentColor);
+  animation: 
+    icon-supreme-float 4s ease-in-out infinite,
+    icon-color-shift 6s linear infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes icon-supreme-float {
+  0%, 100% { 
+    transform: translateY(0) translateZ(0) rotateX(0);
+  }
+  50% { 
+    transform: translateY(-10px) translateZ(50px) rotateX(10deg);
+  }
+}
+
+@keyframes icon-color-shift {
+  0%, 100% { filter: hue-rotate(0deg) brightness(1); }
+  33% { filter: hue-rotate(120deg) brightness(1.2); }
+  66% { filter: hue-rotate(240deg) brightness(0.9); }
+}
+
+/* ==================== SUPREME ANIMATIONS FINALE ==================== */
+
+/* Maximum Overdrive Mode */
+.quantum-consciousness-overlay-page.maximum-overdrive {
+  animation: 
+    maximum-overdrive 2s ease-in-out infinite,
+    reality-fracture 4s linear infinite,
+    dimension-collapse 8s ease-in-out infinite;
+}
+
+@keyframes maximum-overdrive {
+  0%, 100% { 
+    filter: 
+      hue-rotate(0deg) 
+      saturate(1) 
+      brightness(1) 
+      contrast(1)
+      blur(0px);
+  }
+  25% { 
+    filter: 
+      hue-rotate(90deg) 
+      saturate(2) 
+      brightness(1.2) 
+      contrast(1.3)
+      blur(0.5px);
+  }
+  50% { 
+    filter: 
+      hue-rotate(180deg) 
+      saturate(2.5) 
+      brightness(1.4) 
+      contrast(1.5)
+      blur(1px);
+  }
+  75% { 
+    filter: 
+      hue-rotate(270deg) 
+      saturate(1.8) 
+      brightness(1.1) 
+      contrast(1.2)
+      blur(0.5px);
+  }
+}
+
+@keyframes reality-fracture {
+  0%, 100% { 
+    transform: 
+      perspective(2000px) 
+      rotateX(0deg) 
+      rotateY(0deg) 
+      scale(1);
+  }
+  25% { 
+    transform: 
+      perspective(2000px) 
+      rotateX(1deg) 
+      rotateY(1deg) 
+      scale(1.01);
+  }
+  50% { 
+    transform: 
+      perspective(2000px) 
+      rotateX(-1deg) 
+      rotateY(-1deg) 
+      scale(0.99);
+  }
+  75% { 
+    transform: 
+      perspective(2000px) 
+      rotateX(0.5deg) 
+      rotateY(-0.5deg) 
+      scale(1.005);
+  }
+}
+
+@keyframes dimension-collapse {
+  0%, 100% { 
+    box-shadow: 
+      inset 0 0 100px rgba(0, 255, 255, 0.1),
+      inset 0 0 200px rgba(168, 85, 247, 0.05);
+  }
+  50% { 
+    box-shadow: 
+      inset 0 0 200px rgba(236, 72, 153, 0.2),
+      inset 0 0 400px rgba(255, 215, 0, 0.1);
+  }
+}
+
+/* ==================== PERFORMANCE & RESPONSIVE ==================== */
+@media (max-width: 1200px) {
+  .quantum-cyber-title { font-size: 3rem; }
+  .consciousness-quantum-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .quantum-cyber-title { font-size: 2rem; }
+  .consciousness-control-panel { flex-direction: column; }
+  .quantum-control-button { width: 100%; }
+  .consciousness-quantum-grid { grid-template-columns: 1fr; }
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Hardware Acceleration */
+.consciousness-particle,
+.quantum-consciousness-card,
+.temporal-echo,
+.aurora {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==================== ULTIMATE QUANTUM STATE ==================== */
+.quantum-consciousness-overlay-page.ultimate-quantum-state {
+  animation: 
+    quantum-breathe 5s ease-in-out infinite,
+    reality-supreme-warp 10s ease-in-out infinite,
+    maximum-overdrive 15s linear infinite,
+    dimension-collapse 20s ease-in-out infinite;
+  filter: hue-rotate(0deg);
+}
+
+@keyframes ultimate-reality-distortion {
+  0% { 
+    filter: 
+      hue-rotate(0deg) 
+      contrast(100%) 
+      brightness(100%)
+      saturate(100%);
+  }
+  50% { 
+    filter: 
+      hue-rotate(180deg) 
+      contrast(200%) 
+      brightness(150%)
+      saturate(200%);
+  }
+  100% { 
+    filter: 
+      hue-rotate(360deg) 
+      contrast(100%) 
+      brightness(100%)
+      saturate(100%);
+  }
+}

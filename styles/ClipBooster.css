@@ -1,0 +1,98 @@
+@charset "UTF-8";
+/* ===========================
+   ClipBooster
+   =========================== */
+
+:root {
+  /* Fallbacks, falls du schon Tokens definiert hast, greifen diese hier nicht störend ein */
+  --cb-surface: #ffffff;
+  --cb-border: #e5e7eb;
+  --cb-text: #111827;
+  --cb-text-sub: #4b5563;
+  --cb-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cb-surface: rgba(20, 24, 38, 0.9);
+    --cb-border: rgba(110, 120, 170, 0.25);
+    --cb-text: #e5e7eb;
+    --cb-text-sub: #cbd5e1;
+    --cb-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.clip-booster {
+  background: var(--cb-surface);
+  border: 1px solid var(--cb-border);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--cb-shadow);
+}
+
+.cb-header {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.cb-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: var(--cb-text);
+}
+
+.cb-subtitle {
+  margin: 0;
+  color: var(--cb-text-sub);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.cb-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0 8px;
+}
+
+/* Liste der Features */
+.cb-feature-list {
+  margin: 8px 0 0;
+  padding-left: 1.1rem;
+  color: var(--cb-text-sub);
+  font-size: 0.95rem;
+}
+
+.cb-feature-list li {
+  margin: 4px 0;
+  line-height: 1.35;
+}
+
+.cb-feature-list code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.9em;
+}
+
+/* Kleine Motion-Verbesserung, respektiert OS-Einstellung */
+@media (prefers-reduced-motion: no-preference) {
+  .clip-booster {
+    transition: box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+  }
+  .clip-booster:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Mobile Tweaks */
+@media (max-width: 640px) {
+  .clip-booster { padding: 14px; }
+  .cb-actions { flex-wrap: wrap; }
+  .cb-subtitle { font-size: 0.92rem; }
+}

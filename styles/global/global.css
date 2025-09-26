@@ -1,0 +1,491 @@
+@charset "UTF-8";
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL CSS - FIXED LAYOUT MIT GRID (Scroll im Main-Bereich)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Root Variables ─────────────────────────────────────────── */
+:root {
+  --sidebar-width: 280px;
+  --bg: #0b1220;
+  --bg-elev: rgba(255,255,255,0.04);
+  --fg: #e8ecff;
+  --fg-muted: rgba(232,236,255,0.7);
+  --color-accent: #00ffff;
+  --color-accent-secondary: #00e5ff;
+  --color-purple: #a855f7;
+  --color-pink: #ec4899;
+}
+
+/* ─── Reset ──────────────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Verhindert doppelte Scrollbars (Scrollen passiert in .main-view) */
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HAUPTLAYOUT MIT CSS GRID - FIXED!
+   ═══════════════════════════════════════════════════════════════ */
+/* ⚠️ GEÄNDERT: grid-template-rows hinzugefügt, damit Footer sichtbar bleibt */
+.app-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr); /* minmax verhindert Überlappung */
+  grid-template-rows: 1fr auto; /* Inhalt + Footer */
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ─── Sidebar Container ────────────────────────────────────────── */
+/* ⚠️ GEÄNDERT: Höhe relativ zum Grid statt 100vh, damit Footer nicht überlappt */
+.sidebar-container {
+  grid-column: 1;
+  grid-row: 1; /* nur im Inhalts-Row, Footer liegt in Row 2 */
+  width: 280px; /* Feste Breite */
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background:
+    radial-gradient(600px 300px at 100% 20%, rgba(0, 255, 255, 0.15), transparent 40%),
+    radial-gradient(400px 400px at 0% 80%, rgba(168, 85, 247, 0.15), transparent 40%),
+    linear-gradient(180deg, 
+      rgba(10, 10, 15, 0.98) 0%, 
+      rgba(16, 20, 35, 0.95) 50%,
+      rgba(10, 10, 15, 0.98) 100%
+    );
+  border-right: 1px solid rgba(0, 255, 255, 0.1);
+  position: relative;
+  z-index: 100; /* Höher für Sidebar */
+}
+
+/* ─── Main Content Area ────────────────────────────────────────── */
+/* ⚠️ GEÄNDERT: Höhe nicht mehr 100vh; min-height:0 für sauberes Scrollen im Grid */
+.main-view {
+  grid-column: 2;
+  grid-row: 1;
+  height: 100%;
+  min-height: 0;
+  width: 100%; /* Nimmt volle Breite der Grid-Spalte */
+  position: relative;
+  background: #0a0a0f;
+
+  /* ▼ Scroll erlauben – vertikal UND horizontal */
+  overflow-y: auto;
+  overflow-x: auto; /* vorher: hidden */
+
+  /* Optional: verhindert Browser-Bounce-Effekt bei Touchpads */
+  overscroll-behavior: contain;
+}
+
+/* Scrollbar Styling für Main View */
+.main-view::-webkit-scrollbar {
+  width: 10px;
+  height: 10px; /* sichtbare horizontale Scrollbar */
+}
+
+.main-view::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.main-view::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-accent), var(--color-purple));
+  border-radius: 5px;
+}
+
+.main-view::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-accent-secondary), var(--color-pink));
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER STYLES (dezent, konsistent)
+   ═══════════════════════════════════════════════════════════════ */
+.app-footer {
+  grid-column: 1 / -1; /* über gesamte Breite (auch unter der Sidebar) */
+  grid-row: 2;         /* zweite Zeile des Grids */
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(0, 255, 255, 0.1);
+  text-align: center;
+  padding: 12px 16px;
+  color: var(--fg-muted);
+  backdrop-filter: saturate(120%) blur(4px);
+}
+
+.app-footer .app-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-footer a {
+  color: var(--fg-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.app-footer a:hover {
+  color: var(--color-accent);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SIDEBAR STYLES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Profil Section */
+.sidebar-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.sidebar-profile:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 255, 255, 0.3);
+}
+
+.sidebar-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-purple));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #0a0a0f;
+  font-size: 16px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+.sidebar-usertext {
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar-usertext .primary {
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-usertext .secondary {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2px;
+}
+
+/* Brand Connect Buttons */
+.brand-connect-buttons {
+  padding: 0 16px;
+  margin-bottom: 24px;
+}
+
+.brand-connect-buttons button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-tiktok {
+  background: linear-gradient(135deg, #ff0050, #00f2ea);
+  color: white;
+}
+
+.btn-spotify {
+  background: linear-gradient(135deg, #1DB954, #1ed760);
+  color: white;
+}
+
+.brand-connect-buttons button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.brand-connect-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Navigation Links */
+.sidebar {
+  padding: 0 12px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-bottom: 6px;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.sidebar-link:hover::before {
+  left: 100%;
+}
+
+.sidebar-link:hover {
+  color: var(--color-accent);
+  background: rgba(0, 255, 255, 0.05);
+}
+
+.sidebar-link.active {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.15), rgba(0, 229, 255, 0.15));
+  color: var(--color-accent);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  font-weight: 600;
+}
+
+/* Livestream Mode Toggle */
+.livestream-modus {
+  margin: 24px 16px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.livestream-modus h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+}
+
+.mode-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.mode-toggle button {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mode-toggle button.active {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-purple));
+  color: #0a0a0f;
+  border-color: transparent;
+  font-weight: 600;
+}
+
+/* Upgrade Card */
+.sidebar-procard {
+  margin: 24px 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(168, 85, 247, 0.05));
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-procard::before {
+  content: '✨';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.sidebar-procard .pro-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.sidebar-procard .pro-subtext {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.btn-pro {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-purple));
+  color: #0a0a0f;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.btn-pro:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+}
+
+/* Sidebar Scrollbar */
+.sidebar-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.sidebar-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-accent), var(--color-purple));
+  border-radius: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE DESIGN
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .app-layout {
+    grid-template-columns: 80px minmax(0, 1fr); /* Rows bleiben: 1fr auto */
+  }
+  
+  .sidebar-container {
+    width: 80px;
+  }
+  
+  .sidebar-usertext,
+  .sidebar-link span,
+  .brand-connect-buttons button span,
+  .sidebar-procard .pro-text,
+  .sidebar-procard .pro-subtext,
+  .livestream-modus h3 {
+    display: none;
+  }
+  
+  .sidebar-profile {
+    justify-content: center;
+    padding: 12px;
+  }
+  
+  .sidebar-link {
+    justify-content: center;
+    padding: 12px;
+  }
+  
+  .brand-connect-buttons button {
+    padding: 12px;
+    font-size: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .app-layout {
+    grid-template-columns: 1fr; /* Rows bleiben: 1fr auto */
+  }
+  
+  .sidebar-container {
+    display: none; /* Sidebar komplett verstecken auf Mobile */
+  }
+  
+  .main-view {
+    grid-column: 1;
+    width: 100vw;
+  }
+
+  /* Footer-Links untereinander, falls wenig Platz */
+  .app-footer .app-footer-inner {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════ */
+
+.page-content {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* WICHTIG:
+   Diese Regel wurde entfernt, damit horizontales Scrollen möglich ist.
+   Früher: .main-view > * { width: 100%; }
+*/

@@ -1,0 +1,1232 @@
+@charset "UTF-8";
+/* QUANTUM COMMAND BUILDER - REALITY-BREAKING CSS */
+/* The most advanced neural-quantum interface ever created */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+/* ============================================
+   QUANTUM VARIABLES & COSMIC CONSTANTS
+   ============================================ */
+:root {
+  --quantum-void: #000000;
+  --neural-purple: #8a2be2;
+  --plasma-cyan: #00ffff;
+  --cosmic-pink: #ff00ff;
+  --matrix-green: #00ff00;
+  --reality-tear: #ff00aa;
+  --dimension-blue: #0099ff;
+  --quantum-gold: #ffd700;
+  --dark-matter: #0a0015;
+  --nebula-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #c471f5 75%, #fa71cd 100%);
+  --quantum-field: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+  --neural-pulse: 0 0 40px rgba(138, 43, 226, 0.8);
+  --cosmic-glow: 0 0 100px rgba(0, 255, 255, 0.5);
+}
+
+/* ============================================
+   NEURAL COMMAND MATRIX CONTAINER
+   ============================================ */
+.quantum-command-builder {
+  min-height: 100vh;
+  background: 
+    linear-gradient(180deg, #000000 0%, #0a0015 50%, #1a0033 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(138, 43, 226, 0.03) 2px,
+      rgba(138, 43, 226, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 255, 0.03) 2px,
+      rgba(0, 255, 255, 0.03) 4px
+    );
+  position: relative;
+  overflow-x: hidden;
+  animation: quantum-breathe 10s ease-in-out infinite;
+}
+
+/* Quantum particles floating in background */
+.quantum-command-builder::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent);
+  background-size: 200px 200px;
+  animation: quantum-drift 60s linear infinite;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* ============================================
+   NEURAL HEADER - CONSCIOUSNESS INTERFACE
+   ============================================ */
+.neural-header {
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  background: 
+    radial-gradient(ellipse at top, rgba(138, 43, 226, 0.2) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(0, 255, 255, 0.05) 0%, transparent 100%);
+  border-bottom: 1px solid;
+  border-image: linear-gradient(90deg, transparent, var(--plasma-cyan), transparent) 1;
+  animation: neural-pulse-border 3s ease-in-out infinite;
+}
+
+.matrix-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: 0.3rem;
+  margin: 0;
+  background: linear-gradient(
+    45deg,
+    #00ffff 0%,
+    #8a2be2 25%,
+    #ff00ff 50%,
+    #00ffff 75%,
+    #8a2be2 100%
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: 
+    quantum-shift 5s ease-in-out infinite,
+    text-glitch 8s step-end infinite;
+  text-shadow: 
+    0 0 40px rgba(138, 43, 226, 0.8),
+    0 0 80px rgba(0, 255, 255, 0.5);
+  position: relative;
+}
+
+/* Glitch effect copies */
+.matrix-title::before,
+.matrix-title::after {
+  content: 'NEURAL COMMAND MATRIX';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+}
+
+.matrix-title::before {
+  animation: glitch-1 0.5s infinite;
+  z-index: -1;
+}
+
+.matrix-title::after {
+  animation: glitch-2 0.5s infinite;
+  z-index: -2;
+}
+
+.quantum-subtitle {
+  font-family: 'Orbitron', monospace;
+  color: var(--plasma-cyan);
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+  animation: fade-pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   STATUS INDICATORS - QUANTUM STATES
+   ============================================ */
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
+  margin: 1rem 2rem;
+}
+
+.status-indicator {
+  background: 
+    linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%),
+    rgba(10, 0, 21, 0.8);
+  border: 1px solid;
+  border-image: linear-gradient(135deg, var(--neural-purple), var(--plasma-cyan)) 1;
+  border-radius: 12px;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.status-indicator::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #8a2be2, #ff00ff);
+  border-radius: 12px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  animation: rotate-gradient 3s linear infinite;
+}
+
+.status-indicator:hover::before {
+  opacity: 1;
+}
+
+.status-indicator:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 10px 40px rgba(138, 43, 226, 0.4),
+    0 0 60px rgba(0, 255, 255, 0.3),
+    inset 0 0 30px rgba(255, 0, 255, 0.1);
+}
+
+.status-label {
+  font-size: 0.75rem;
+  color: var(--plasma-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.status-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 0 20px currentColor;
+  animation: value-flicker 5s ease-in-out infinite;
+}
+
+.status-value.active {
+  color: var(--matrix-green);
+  animation: 
+    value-flicker 5s ease-in-out infinite,
+    neon-pulse 1.5s ease-in-out infinite;
+}
+
+/* ============================================
+   COSMIC ENERGY BAR - REALITY METER
+   ============================================ */
+.energy-container {
+  margin: 2rem;
+  padding: 1rem;
+  background: rgba(10, 0, 21, 0.6);
+  border-radius: 20px;
+  position: relative;
+}
+
+.energy-label {
+  color: var(--plasma-cyan);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1rem;
+  animation: text-shimmer 3s linear infinite;
+}
+
+.energy-bar-wrapper {
+  height: 40px;
+  background: 
+    linear-gradient(90deg, rgba(138, 43, 226, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%),
+    rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(138, 43, 226, 0.3);
+  border-radius: 20px;
+  padding: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.energy-bar-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: energy-scan 3s linear infinite;
+}
+
+.energy-bar {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #8a2be2 0%,
+    #00ffff 25%,
+    #ff00ff 50%,
+    #00ffff 75%,
+    #8a2be2 100%
+  );
+  background-size: 400% 100%;
+  border-radius: 17px;
+  position: relative;
+  animation: 
+    quantum-flow 3s linear infinite,
+    energy-pulse 1.5s ease-in-out infinite;
+  box-shadow: 
+    0 0 20px rgba(138, 43, 226, 0.8),
+    inset 0 0 20px rgba(0, 255, 255, 0.5);
+  transition: width 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.energy-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 17px;
+}
+
+.energy-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  animation: particle-flow 2s linear infinite;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   CONTROL BUTTONS - QUANTUM ACTUATORS
+   ============================================ */
+.control-panel {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.quantum-button {
+  padding: 1rem 2rem;
+  background: 
+    linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(0, 255, 255, 0.2) 100%),
+    rgba(10, 0, 21, 0.9);
+  border: 2px solid;
+  border-image: linear-gradient(135deg, var(--neural-purple), var(--plasma-cyan)) 1;
+  color: white;
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quantum-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.quantum-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.quantum-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 10px 40px rgba(138, 43, 226, 0.6),
+    0 0 60px rgba(0, 255, 255, 0.4),
+    inset 0 0 30px rgba(255, 255, 255, 0.1);
+  border-image: linear-gradient(135deg, var(--cosmic-pink), var(--matrix-green)) 1;
+  animation: button-quantum-state 0.5s ease-in-out;
+}
+
+.quantum-button:active {
+  transform: scale(0.95);
+  animation: reality-ripple 0.6s ease-out;
+}
+
+.quantum-button.primary {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.4) 0%, rgba(255, 0, 255, 0.4) 100%);
+  animation: primary-glow 2s ease-in-out infinite;
+}
+
+/* ============================================
+   MODE SELECTOR TABS - DIMENSION SWITCHER
+   ============================================ */
+.mode-selector {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: rgba(10, 0, 21, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.mode-tab {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  color: var(--plasma-cyan);
+  font-family: 'Orbitron', monospace;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+}
+
+.mode-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.mode-tab:hover::before {
+  left: 100%;
+}
+
+.mode-tab:hover {
+  color: white;
+  border-color: var(--neural-purple);
+  transform: translateX(5px);
+  box-shadow: 
+    -5px 0 20px rgba(138, 43, 226, 0.5),
+    inset 0 0 20px rgba(138, 43, 226, 0.2);
+}
+
+.mode-tab.active {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.3) 0%, rgba(0, 255, 255, 0.3) 100%);
+  color: white;
+  border-color: var(--plasma-cyan);
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.5),
+    inset 0 0 20px rgba(138, 43, 226, 0.3);
+  animation: tab-active-pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   QUANTUM BLOCKS - NODE SYSTEM
+   ============================================ */
+.quantum-blocks-container {
+  padding: 2rem;
+  min-height: 400px;
+  position: relative;
+}
+
+.blocks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  position: relative;
+}
+
+.quantum-block {
+  background: 
+    linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%),
+    rgba(10, 0, 21, 0.95);
+  border: 2px solid;
+  border-image: linear-gradient(135deg, var(--neural-purple), var(--plasma-cyan)) 1;
+  border-radius: 15px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  cursor: move;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: block-float 6s ease-in-out infinite;
+}
+
+.quantum-block::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, transparent 70%);
+  animation: quantum-rotate 10s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.quantum-block:hover::before {
+  opacity: 1;
+}
+
+.quantum-block:hover {
+  transform: translateY(-10px) scale(1.02) rotateX(5deg);
+  box-shadow: 
+    0 20px 60px rgba(138, 43, 226, 0.5),
+    0 0 100px rgba(0, 255, 255, 0.3),
+    inset 0 0 50px rgba(255, 0, 255, 0.1);
+  border-image: linear-gradient(135deg, var(--cosmic-pink), var(--matrix-green)) 1;
+}
+
+.block-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+}
+
+.block-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--neural-purple), var(--plasma-cyan));
+  border-radius: 50%;
+  animation: icon-spin 4s linear infinite;
+}
+
+.block-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  flex: 1;
+  animation: text-glow 3s ease-in-out infinite;
+}
+
+.block-add-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(138, 43, 226, 0.2);
+  border: 1px solid var(--neural-purple);
+  color: var(--plasma-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.block-add-btn:hover {
+  background: rgba(138, 43, 226, 0.4);
+  transform: rotate(90deg) scale(1.2);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+}
+
+.block-content {
+  color: var(--plasma-cyan);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.functionality-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(0, 255, 255, 0.2) 100%);
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  border-radius: 20px;
+  color: white;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  margin-top: 1rem;
+  animation: tag-pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   QUANTUM CONTROLS SECTION
+   ============================================ */
+.controls-section {
+  padding: 2rem;
+  background: 
+    radial-gradient(ellipse at center, rgba(138, 43, 226, 0.1) 0%, transparent 70%),
+    rgba(10, 0, 21, 0.6);
+  backdrop-filter: blur(10px);
+  margin: 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+}
+
+.controls-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--plasma-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  animation: title-flicker 4s ease-in-out infinite;
+}
+
+.control-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.control-item {
+  padding: 0.5rem 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  position: relative;
+  padding-left: 2rem;
+  animation: fade-in-left 0.5s ease-out backwards;
+}
+
+.control-item::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--neural-purple);
+  animation: arrow-pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   COSMIC INTELLIGENCE CARDS
+   ============================================ */
+.intelligence-card {
+  background: 
+    linear-gradient(135deg, rgba(255, 0, 255, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%),
+    rgba(10, 0, 21, 0.95);
+  border: 2px solid;
+  border-image: linear-gradient(45deg, var(--cosmic-pink), var(--plasma-cyan), var(--neural-purple)) 1;
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.intelligence-card::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: 
+    repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg,
+      rgba(138, 43, 226, 0.1) 20deg,
+      transparent 40deg
+    );
+  animation: cosmic-sweep 20s linear infinite;
+}
+
+.intelligence-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: float-rotate 5s ease-in-out infinite;
+}
+
+.intelligence-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  animation: text-quantum-shift 3s ease-in-out infinite;
+}
+
+.intelligence-description {
+  color: var(--plasma-cyan);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.implement-button {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, var(--neural-purple), var(--cosmic-pink));
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.implement-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 50%);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  z-index: -1;
+}
+
+.implement-button:hover::before {
+  width: 200%;
+  height: 200%;
+}
+
+.implement-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 10px 30px rgba(255, 0, 255, 0.4),
+    0 0 60px rgba(138, 43, 226, 0.3);
+  animation: button-reality-warp 0.6s ease;
+}
+
+/* ============================================
+   CONNECTION LINES - NEURAL PATHWAYS
+   ============================================ */
+.neural-connection {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, var(--plasma-cyan), transparent);
+  height: 2px;
+  transform-origin: left center;
+  animation: neural-flow 2s linear infinite;
+  box-shadow: 0 0 10px var(--plasma-cyan);
+  pointer-events: none;
+}
+
+.neural-node {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, white 0%, var(--neural-purple) 50%, transparent 70%);
+  border-radius: 50%;
+  animation: node-pulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+}
+
+/* ============================================
+   EPIC ANIMATIONS - REALITY BENDING
+   ============================================ */
+
+@keyframes quantum-breathe {
+  0%, 100% { 
+    background-position: 0% 0%, 0px 0px, 0px 0px; 
+  }
+  50% { 
+    background-position: 100% 100%, 10px 10px, -10px -10px; 
+  }
+}
+
+@keyframes quantum-drift {
+  from {
+    transform: rotate(0deg) translateX(50px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(50px) rotate(-360deg);
+  }
+}
+
+@keyframes quantum-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes text-glitch {
+  0%, 100% { 
+    text-shadow: 
+      0 0 40px rgba(138, 43, 226, 0.8),
+      0 0 80px rgba(0, 255, 255, 0.5);
+  }
+  20% {
+    text-shadow: 
+      -2px 0 40px rgba(255, 0, 255, 0.8),
+      2px 0 80px rgba(0, 255, 0, 0.5);
+  }
+  40% {
+    text-shadow: 
+      2px 0 40px rgba(0, 255, 255, 0.8),
+      -2px 0 80px rgba(255, 0, 0, 0.5);
+  }
+}
+
+@keyframes glitch-1 {
+  0%, 100% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 1;
+    transform: translateX(2px) translateY(-2px);
+  }
+}
+
+@keyframes glitch-2 {
+  0%, 100% {
+    opacity: 0;
+  }
+  66% {
+    opacity: 1;
+    transform: translateX(-2px) translateY(2px);
+  }
+}
+
+@keyframes neural-pulse-border {
+  0%, 100% {
+    border-image-source: linear-gradient(90deg, transparent, var(--plasma-cyan), transparent);
+  }
+  50% {
+    border-image-source: linear-gradient(90deg, transparent, var(--neural-purple), transparent);
+  }
+}
+
+@keyframes rotate-gradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes value-flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor;
+  }
+  50% {
+    text-shadow: 
+      0 0 20px currentColor,
+      0 0 40px currentColor,
+      0 0 60px currentColor;
+  }
+}
+
+@keyframes text-shimmer {
+  0% {
+    background-position: -100%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+@keyframes energy-scan {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes quantum-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes energy-pulse {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.1);
+  }
+}
+
+@keyframes particle-flow {
+  0% {
+    left: 0;
+    top: 50%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    top: 50%;
+    opacity: 0;
+  }
+}
+
+@keyframes button-quantum-state {
+  0% {
+    transform: translateY(-3px) scale(1.05) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.05) rotateX(180deg);
+  }
+  100% {
+    transform: translateY(-3px) scale(1.05) rotateX(360deg);
+  }
+}
+
+@keyframes reality-ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 0 40px rgba(138, 43, 226, 0);
+  }
+}
+
+@keyframes primary-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(138, 43, 226, 0.6),
+      inset 0 0 20px rgba(255, 0, 255, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 40px rgba(255, 0, 255, 0.8),
+      inset 0 0 30px rgba(138, 43, 226, 0.3);
+  }
+}
+
+@keyframes tab-active-pulse {
+  0%, 100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(1.05);
+  }
+}
+
+@keyframes block-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  33% {
+    transform: translateY(-5px);
+  }
+  66% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes quantum-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes text-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  }
+}
+
+@keyframes tag-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes title-flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.6;
+  }
+  94% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes arrow-pulse {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes cosmic-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float-rotate {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(0) rotate(180deg);
+  }
+  75% {
+    transform: translateY(10px) rotate(270deg);
+  }
+}
+
+@keyframes text-quantum-shift {
+  0%, 100% {
+    color: white;
+  }
+  33% {
+    color: var(--plasma-cyan);
+  }
+  66% {
+    color: var(--cosmic-pink);
+  }
+}
+
+@keyframes button-reality-warp {
+  0% {
+    transform: translateY(-3px) scale(1.05) perspective(100px) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.1) perspective(100px) rotateY(180deg);
+  }
+  100% {
+    transform: translateY(-3px) scale(1.05) perspective(100px) rotateY(360deg);
+  }
+}
+
+@keyframes neural-flow {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes node-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  }
+  50% {
+    transform: scale(1.3);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 1);
+  }
+}
+
+@keyframes fade-pulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   RESPONSIVE QUANTUM ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+  .matrix-title {
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+  }
+  
+  .quantum-blocks-container {
+    padding: 1rem;
+  }
+  
+  .blocks-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .control-panel {
+    flex-direction: column;
+  }
+  
+  .quantum-button {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   SPECIAL EFFECTS - REALITY OVERRIDE
+   ============================================ */
+.reality-tear-effect {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: reality-tear 3s ease-in-out infinite;
+  background: 
+    radial-gradient(circle, transparent 30%, rgba(255, 0, 255, 0.2) 50%, transparent 70%),
+    conic-gradient(from 0deg, #ff00ff, #00ffff, #8a2be2, #ff00ff);
+  border-radius: 50%;
+  opacity: 0.3;
+  mix-blend-mode: screen;
+}
+
+@keyframes reality-tear {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1) rotate(180deg);
+    opacity: 0.3;
+  }
+}
+
+/* Quantum particles for ultimate effect */
+.quantum-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.quantum-particle {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: quantum-particle-life 10s infinite;
+}
+
+@keyframes quantum-particle-life {
+  0% {
+    transform: translate(0, 100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100vw, -100vh) scale(1);
+    opacity: 0;
+  }
+}
+
+/* FINAL OVERRIDE - MAXIMUM QUANTUM STATE */
+.max-quantum-mode {
+  animation: 
+    quantum-breathe 5s ease-in-out infinite,
+    reality-distortion 10s linear infinite;
+  filter: hue-rotate(0deg);
+}
+
+@keyframes reality-distortion {
+  0% {
+    filter: hue-rotate(0deg) contrast(100%) brightness(100%);
+  }
+  50% {
+    filter: hue-rotate(180deg) contrast(150%) brightness(110%);
+  }
+  100% {
+    filter: hue-rotate(360deg) contrast(100%) brightness(100%);
+  }
+}

@@ -1,0 +1,177 @@
+@charset "UTF-8";
+/* UploadProgress.css - Upload Progress Component Styles */
+
+.upload-progress { width: 100%; position: relative; }
+
+/* Size Variants */
+.upload-progress.tiny .progress-track { height: 4px; }
+.upload-progress.small .progress-track { height: 8px; }
+.upload-progress.medium .progress-track { height: 24px; }
+.upload-progress.large .progress-track { height: 32px; }
+
+/* Progress Header */
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.progress-label { font-size: 0.9em; font-weight: 500; color: #f8fafc; }
+.progress-stats { display: flex; gap: 15px; font-size: 0.85em; color: rgba(248, 250, 252, 0.6); }
+.progress-speed, .progress-time, .progress-bytes { display: flex; align-items: center; gap: 5px; }
+.progress-speed::before { content: '⚡'; font-size: 0.9em; }
+.progress-time::before { content: '⏱️'; font-size: 0.9em; }
+
+/* Progress Container */
+.progress-container { position: relative; }
+
+/* Progress Track */
+.progress-track {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Progress Glow */
+.progress-glow {
+  position: absolute;
+  top: -20px; left: 0; right: 0; bottom: -20px;
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent);
+  filter: blur(20px);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Progress Fill */
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #818cf8, #6366f1);
+  background-size: 200% 100%;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.progress-fill.animated { animation: gradientShift 3s linear infinite; }
+@keyframes gradientShift { 0%{background-position:0% 50%;} 100%{background-position:200% 50%;} }
+
+/* Variant Colors */
+.progress-fill.success,
+.progress-fill.complete {
+  background: linear-gradient(90deg, #10b981, #34d399, #10b981);
+}
+.progress-fill.warning {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b);
+}
+.progress-fill.error {
+  background: linear-gradient(90deg, #ef4444, #f87171, #ef4444);
+}
+/* Dynamic "intensity" variants used when variant === default */
+.progress-fill.high {
+  background: linear-gradient(90deg, #10b981, #6366f1, #10b981);
+}
+.progress-fill.medium {
+  background: linear-gradient(90deg, #818cf8, #6366f1, #818cf8);
+}
+.progress-fill.low {
+  background: linear-gradient(90deg, #6366f1, #818cf8, #6366f1);
+}
+
+/* Animated Stripes */
+.progress-stripes {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.1) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 20px 20px;
+  animation: stripeMove 1s linear infinite;
+}
+@keyframes stripeMove { 0%{background-position:0 0;} 100%{background-position:20px 20px;} }
+
+/* Leading Edge Glow */
+.progress-edge {
+  position: absolute; right: -2px; top: 0; bottom: 0; width: 4px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8));
+  filter: blur(4px);
+  animation: edgePulse 1.5s ease-in-out infinite;
+}
+@keyframes edgePulse { 0%,100%{opacity:0.5;} 50%{opacity:1;} }
+
+/* Progress Text */
+.progress-text {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-size: 0.85em; font-weight: 600; color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3); z-index: 1;
+}
+.upload-progress.tiny .progress-text, .upload-progress.small .progress-text { display: none; }
+
+/* Complete State */
+.progress-complete {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: completePopIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+@keyframes completePopIn {
+  0% { transform: translate(-50%, -50%) scale(0) rotate(-180deg); opacity: 0; }
+  50% { transform: translate(-50%, -50%) scale(1.2) rotate(10deg); }
+  100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
+}
+.complete-icon {
+  display: inline-flex; width: 24px; height: 24px; background: white; color: #10b981;
+  border-radius: 50%; align-items: center; justify-content: center; font-weight: bold;
+  box-shadow: 0 2px 8px rgba(16,185,129,0.3);
+}
+.upload-progress.tiny .complete-icon, .upload-progress.small .complete-icon {
+  width: 16px; height: 16px; font-size: 0.7em;
+}
+
+/* Progress Particles */
+.progress-particles { position: absolute; top:0; left:0; right:0; bottom:0; pointer-events: none; }
+.particle {
+  position: absolute; width: 4px; height: 4px; background: rgba(255,255,255,0.8);
+  border-radius: 50%; top: 50%; animation: particleFloat 2s linear infinite;
+}
+.particle-1 { left: 10%; animation-delay: 0s; }
+.particle-2 { left: 50%; animation-delay: 0.7s; }
+.particle-3 { left: 90%; animation-delay: 1.4s; }
+@keyframes particleFloat {
+  0% { transform: translateY(-50%) translateX(0) scale(0); opacity: 0; }
+  10% { transform: translateY(-50%) translateX(10px) scale(1); opacity: 1; }
+  90% { transform: translateY(-50%) translateX(100px) scale(1); opacity: 1; }
+  100% { transform: translateY(-50%) translateX(110px) scale(0); opacity: 0; }
+}
+
+/* Progress Footer */
+.progress-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 8px; font-size: 0.85em; color: rgba(248, 250, 252, 0.6);
+}
+.progress-details { display: flex; gap: 5px; }
+.uploaded { color: #818cf8; font-weight: 500; }
+.separator { opacity: 0.5; }
+.total { color: rgba(248, 250, 252, 0.8); }
+.progress-estimate { text-align: right; }
+.remaining { font-size: 0.9em; color: rgba(248, 250, 252, 0.6); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .progress-header { flex-direction: column; align-items: flex-start; gap: 5px; }
+  .progress-stats { font-size: 0.8em; }
+  .upload-progress.large .progress-track { height: 24px; }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill, .progress-stripes, .progress-edge, .particle, .progress-complete {
+    animation: none !important;
+  }
+  .progress-fill { transition: width 0.5s ease !important; }
+}

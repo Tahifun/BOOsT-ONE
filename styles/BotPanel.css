@@ -1,0 +1,254 @@
+@charset "UTF-8";
+/* === BotPanel.css – Next-Level Neon UI für Bot & Games (2025) === */
+
+/* ---------- Grundpanel & Schatten ---------- */
+.cb-bot-manager-page, .cb-games-panel-main, .cb-stats-panel-main {
+  max-width: 1300px;
+  margin: 44px auto 0 auto;
+  padding: 48px 32px 56px 32px;
+  background: linear-gradient(135deg,#1b232c 80%, #232f37 100%);
+  border-radius: 38px;
+  box-shadow:
+    0 0 80px #18ffe666,
+    0 16px 48px #0d1724,
+    0 0 0 6px #13efd222 inset;
+  min-height: 78vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Schwebender Glow-Effekt um das Panel herum */
+.cb-bot-manager-page::before,
+.cb-games-panel-main::before,
+.cb-stats-panel-main::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: 45px;
+  z-index: 0;
+  pointer-events: none;
+  box-shadow: 0 0 80px 22px #13efd255;
+  opacity: 0.42;
+}
+
+/* Glas-Reflex-Effekt oben */
+.cb-bot-manager-page::after,
+.cb-games-panel-main::after,
+.cb-stats-panel-main::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 80px;
+  border-radius: 40px 40px 0 0;
+  background: linear-gradient(180deg,rgba(255,255,255,0.20) 0%,transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.28;
+}
+
+/* ---------- Top-Navigation Tabs ---------- */
+.cb-bot-games-tabnav {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-bottom: 36px;
+  margin-top: -30px;
+  z-index: 2;
+  position: relative;
+}
+.cb-bot-games-tab {
+  padding: 16px 54px 15px 54px;
+  border-radius: 20px;
+  background: linear-gradient(90deg,#18ffe6 45%,#1fffc3 100%);
+  color: #191f27;
+  font-size: 1.25em;
+  font-weight: 800;
+  border: none;
+  box-shadow:
+    0 4px 40px #18ffe655,
+    0 2px 7px #0b243855;
+  cursor: pointer;
+  transition: 
+    background 0.18s, 
+    color 0.13s, 
+    box-shadow 0.19s, 
+    transform 0.12s;
+  margin-bottom: 10px;
+  text-shadow: 0 0 14px #fff4, 0 2px 10px #15b0ff55;
+  letter-spacing: 0.8px;
+  filter: drop-shadow(0 0 22px #15ffe6cc);
+  position: relative;
+}
+.cb-bot-games-tab.active,
+.cb-bot-games-tab:focus {
+  background: linear-gradient(90deg,#1fffc3 90%,#18ffe6 100%);
+  color: #161e2a;
+  box-shadow: 0 0 54px #18ffe6ee, 0 2px 15px #18ffe6bb;
+  transform: scale(1.04);
+}
+.cb-bot-games-tab:hover {
+  filter: brightness(1.08) drop-shadow(0 0 30px #18ffe6aa);
+  background: linear-gradient(90deg,#2bfed9 80%,#18ffe6 100%);
+  color: #191f27;
+}
+
+/* --------- Haupttitel Neon --------- */
+.cb-bot-manager-title,
+.cb-games-panel-title,
+.cb-stats-panel-title {
+  font-size: 2.7rem;
+  color: #18ffe6;
+  font-weight: 900;
+  margin-bottom: 32px;
+  margin-top: 12px;
+  text-align: center;
+  text-shadow:
+    0 0 32px #18ffe6,
+    0 2px 32px #1eeed9,
+    0 0 6px #12c3aa44;
+  letter-spacing: 1.7px;
+  z-index: 2;
+  position: relative;
+}
+
+/* ---------- Unterseiten-Tabs (Bot, Games, Stats) ---------- */
+.cb-bot-tab-nav, .cb-games-tab-nav, .cb-stats-tab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 36px;
+  z-index: 2;
+  position: relative;
+}
+
+.cb-bot-tab-btn, .cb-games-tab-btn, .cb-stats-tab-btn {
+  background: linear-gradient(90deg,#18ffe6 60%,#1fffc3 100%);
+  color: #191f27;
+  font-weight: bold;
+  border-radius: 18px;
+  padding: 12px 34px;
+  border: none;
+  box-shadow: 0 2px 17px #18ffe655;
+  font-size: 1.15em;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: background 0.17s, box-shadow 0.16s, color 0.13s, transform 0.13s;
+  text-shadow: 0 0 9px #fff3;
+  filter: drop-shadow(0 0 18px #13efd266);
+}
+.cb-bot-tab-btn.active, .cb-bot-tab-btn:focus,
+.cb-games-tab-btn.active, .cb-games-tab-btn:focus,
+.cb-stats-tab-btn.active, .cb-stats-tab-btn:focus {
+  background: linear-gradient(90deg,#1fffc3 80%,#18ffe6 100%);
+  color: #12181e;
+  box-shadow: 0 0 33px #18ffe699;
+  transform: scale(1.03);
+}
+.cb-bot-tab-btn:hover,
+.cb-games-tab-btn:hover,
+.cb-stats-tab-btn:hover {
+  filter: brightness(1.08) drop-shadow(0 0 16px #18ffe6bb);
+  box-shadow: 0 0 26px #18ffe6bb;
+  background: linear-gradient(90deg,#20f8d0 70%,#18ffe6 100%);
+}
+
+/* ---------- Panel Content ---------- */
+.cb-bot-tab-content, .cb-games-tab-content, .cb-stats-tab-content {
+  margin: 0 auto;
+  padding: 40px 28px 36px 28px;
+  background: rgba(21, 27, 31, 0.96);
+  border-radius: 26px;
+  box-shadow: 0 0 55px #18ffe633, 0 10px 30px #111e2a;
+  max-width: 1050px;
+  min-height: 370px;
+  position: relative;
+  z-index: 1;
+  /* Leichter Blur für Glas-Panel-Effekt */
+  backdrop-filter: blur(1.5px);
+}
+
+.cb-bot-settings-panel h2,
+.cb-bot-tab-content h2 {
+  color: #18ffe6;
+  font-size: 1.45em;
+  font-weight: 700;
+  margin-bottom: 14px;
+  text-shadow: 0 0 14px #18ffe677;
+}
+
+/* Glowing Section Divider */
+.cb-section-divider {
+  width: 100%;
+  border: none;
+  height: 3px;
+  background: linear-gradient(90deg,transparent 0%,#18ffe6 55%,transparent 100%);
+  margin: 40px 0 30px 0;
+  filter: blur(0.5px);
+  opacity: 0.56;
+}
+
+/* ---------- Inputs ---------- */
+.cb-bot-settings-panel label,
+.cb-bot-tab-content label {
+  font-weight: 600;
+  color: #1fffc3;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.cb-bot-settings-panel input[type="text"],
+.cb-bot-settings-panel input[type="number"],
+.cb-bot-tab-content input[type="text"],
+.cb-bot-tab-content input[type="number"],
+.cb-bot-tab-content select {
+  border: none;
+  border-radius: 12px;
+  background: #1a2129;
+  color: #fff;
+  font-size: 1.09em;
+  padding: 12px 13px;
+  box-shadow: 0 0 11px #18ffe622;
+  outline: none;
+  margin-bottom: 12px;
+  transition: box-shadow 0.16s, border 0.15s;
+}
+.cb-bot-settings-panel input:focus,
+.cb-bot-tab-content input:focus,
+.cb-bot-tab-content select:focus {
+  box-shadow: 0 0 22px #18ffe6c7;
+  background: #191f27;
+}
+
+.cb-bot-settings-panel .cb-bot-status {
+  color: #36ffa3;
+  font-weight: bold;
+  margin-left: 10px;
+  font-size: 1.04em;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .cb-bot-manager-page, .cb-games-panel-main, .cb-stats-panel-main {
+    padding: 12px 2vw 14px 2vw;
+    border-radius: 18px;
+  }
+  .cb-bot-tab-content, .cb-games-tab-content, .cb-stats-tab-content {
+    padding: 16px 4vw 20px 4vw;
+    border-radius: 12px;
+  }
+  .cb-bot-manager-title, .cb-games-panel-title, .cb-stats-panel-title {
+    font-size: 1.28em;
+  }
+  .cb-bot-games-tab {
+    padding: 12px 22px;
+    font-size: 1em;
+    border-radius: 13px;
+  }
+  .cb-bot-tab-btn, .cb-games-tab-btn, .cb-stats-tab-btn {
+    padding: 10px 18px;
+    font-size: 1em;
+    border-radius: 9px;
+  }
+}
+

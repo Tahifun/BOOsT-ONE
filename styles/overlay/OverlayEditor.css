@@ -1,0 +1,310 @@
+@charset "UTF-8";
+/* src/styles/overlay/OverlayEditor.css  —  scoped & cleaned */
+
+/* ---------- Design Tokens ---------- */
+:root {
+  --quantum-cyan: #00ffff;
+  --quantum-purple: #a855f7;
+  --quantum-pink: #ec4899;
+  --quantum-green: #10b981;
+  --quantum-gold: #ffd700;
+  --quantum-dark: #0a0f1b;
+  --quantum-darker: #050510;
+  --quantum-light: #1a1f2e;
+  --quantum-border: rgba(0, 255, 255, 0.2);
+  --quantum-glow: 0 0 20px rgba(0, 255, 255, 0.3);
+  --consciousness-gradient: linear-gradient(90deg, var(--quantum-cyan), var(--quantum-purple));
+}
+
+/* ---------- Hard kill für alte Floating-Buttons (falls noch im DOM) ---------- */
+.floating-actions,
+.fab-btn {
+  display: none !important;
+}
+
+/* ==================== MAIN CONTAINER (Loading/Error Screens) ==================== */
+.quantum-overlay-editor {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--quantum-dark) 0%, var(--quantum-light) 100%);
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+.quantum-overlay-editor[data-theme="classic"] {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+/* ==================== HEADER ==================== */
+.overlay-editor-page .editor-header {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--quantum-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 100;
+  animation: slideDown 0.5s ease-out;
+}
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+.overlay-editor-page .editor-title-section { display: flex; flex-direction: column; gap: 8px; }
+.overlay-editor-page .editor-title { font-size: 2rem; font-weight: 800; letter-spacing: 2px; margin: 0; text-transform: uppercase; }
+.overlay-editor-page .title-quantum {
+  background: var(--consciousness-gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; animation: gradient-flow 3s ease infinite;
+}
+@keyframes gradient-flow { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+.overlay-editor-page .title-overlay { color: #ffffff; }
+.overlay-editor-page .title-editor  { color: var(--quantum-pink); }
+.overlay-editor-page .editor-subtitle { font-size: .85rem; color: rgba(255,255,255,.7); letter-spacing: 1px; text-transform: uppercase; }
+.overlay-editor-page .editor-controls { display: flex; gap: 10px; }
+.overlay-editor-page .editor-btn {
+  padding: 10px 20px; background: rgba(0,0,0,.4); border: 1px solid var(--quantum-border);
+  border-radius: 8px; color: var(--quantum-cyan); font-weight: 600; letter-spacing: 1px; cursor: pointer;
+  transition: all .3s ease; backdrop-filter: blur(10px); text-transform: uppercase; position: relative; overflow: hidden;
+}
+.overlay-editor-page .editor-btn::before {
+  content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0;
+  background: radial-gradient(circle, var(--quantum-cyan), transparent);
+  transition: width .3s, height .3s; transform: translate(-50%, -50%); border-radius: 50%;
+}
+.overlay-editor-page .editor-btn:hover::before { width: 100%; height: 100%; }
+.overlay-editor-page .editor-btn:hover { transform: translateY(-2px); box-shadow: var(--quantum-glow); border-color: var(--quantum-cyan); }
+.overlay-editor-page .editor-btn.active { background: rgba(0,255,255,.1); border-color: var(--quantum-cyan); box-shadow: var(--quantum-glow); }
+.overlay-editor-page .editor-btn.primary { background: linear-gradient(90deg, rgba(0,255,255,.2), rgba(168,85,247,.2)); border-color: var(--quantum-cyan); }
+
+/* ==================== MAIN LAYOUT ==================== */
+.overlay-editor-page .editor-main {
+  display: grid; grid-template-columns: 400px 1fr; gap: 20px; padding: 20px;
+  height: calc(100vh - 100px); position: relative; z-index: 10;
+}
+@media (max-width: 1024px) {
+  .overlay-editor-page .editor-main { grid-template-columns: 1fr; }
+}
+
+/* ==================== SIDEBAR ==================== */
+.overlay-editor-page .editor-sidebar {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid var(--quantum-border);
+  padding: 20px;
+  overflow-y: auto;
+  animation: slideInLeft .5s ease-out;
+}
+@keyframes slideInLeft { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+.overlay-editor-page .overlay-widget-selector { display: flex; flex-direction: column; gap: 20px; }
+.overlay-editor-page .widget-search-section { position: relative; }
+.overlay-editor-page .widget-search-input {
+  width: 100%; padding: 12px 15px 12px 40px; background: rgba(0,0,0,.4);
+  border: 1px solid var(--quantum-border); border-radius: 8px; color:#fff; font-size:.9rem; outline: none; transition: all .3s ease;
+}
+.overlay-editor-page .widget-search-input::placeholder { color: rgba(255,255,255,.5); }
+.overlay-editor-page .widget-search-input:focus { border-color: var(--quantum-cyan); box-shadow: 0 0 10px rgba(0,255,255,.2); }
+.overlay-editor-page .widget-category-tabs { display: flex; gap: 5px; flex-wrap: wrap; }
+.overlay-editor-page .category-tab {
+  padding: 8px 12px; background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px; color: rgba(255,255,255,.6); font-size:.75rem; font-weight:600; letter-spacing:1px; cursor:pointer; transition: all .2s ease; display:flex; align-items:center; gap:5px;
+}
+.overlay-editor-page .category-tab:hover { background: rgba(0,255,255,.05); color: var(--quantum-cyan); border-color: var(--quantum-border); }
+.overlay-editor-page .category-tab.active { background: rgba(0,255,255,.1); border-color: var(--quantum-cyan); color: var(--quantum-cyan); box-shadow: 0 0 10px rgba(0,255,255,.2); }
+.overlay-editor-page .category-icon { font-size: 1rem; }
+
+.overlay-editor-page .widget-list { display: flex; flex-direction: column; gap: 10px; }
+.overlay-editor-page .widget-card {
+  background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.1); border-radius: 10px; padding: 15px;
+  cursor: pointer; transition: all .3s ease; position: relative; overflow: hidden;
+}
+.overlay-editor-page .widget-card::before {
+  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,255,255,.1), transparent); transition: left .5s ease;
+}
+.overlay-editor-page .widget-card:hover::before { left: 100%; }
+.overlay-editor-page .widget-card:hover { transform: translateX(5px); border-color: var(--quantum-border); box-shadow: 0 5px 15px rgba(0,0,0,.3); }
+.overlay-editor-page .widget-card.active { background: rgba(0,255,255,.05); border-color: var(--quantum-cyan); box-shadow: var(--quantum-glow); }
+.overlay-editor-page .widget-card.locked { opacity: .5; cursor: not-allowed; }
+.overlay-editor-page .widget-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.overlay-editor-page .widget-icon { font-size: 1.5rem; }
+.overlay-editor-page .widget-name { flex: 1; font-weight: 700; font-size: .9rem; letter-spacing: .5px; text-transform: uppercase; }
+.overlay-editor-page .pro-badge {
+  padding: 2px 8px; background: linear-gradient(90deg, var(--quantum-gold), #ffed4e); color: #000;
+  border-radius: 4px; font-size: .65rem; font-weight: 800; animation: pulse-glow 2s ease-in-out infinite;
+}
+@keyframes pulse-glow { 0%,100% { box-shadow: 0 0 5px rgba(255,215,0,.5); } 50% { box-shadow: 0 0 15px rgba(255,215,0,.8); } }
+.overlay-editor-page .widget-description { font-size: .8rem; color: rgba(255,255,255,.6); margin-bottom: 10px; line-height: 1.4; }
+
+.overlay-editor-page .consciousness-bar { height: 4px; background: rgba(255,255,255,.1); border-radius: 2px; overflow: hidden; margin-bottom: 8px; }
+.overlay-editor-page .consciousness-fill { height: 100%; background: var(--consciousness-gradient); transition: width .5s ease; position: relative; overflow: hidden; }
+.overlay-editor-page .consciousness-fill::after {
+  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent); animation: shimmer 2s infinite;
+}
+@keyframes shimmer { 0% { left: -100%; } 100% { left: 100%; } }
+
+.overlay-editor-page .widget-meta { display: flex; justify-content: space-between; font-size: .7rem; color: rgba(255,255,255,.5); margin-bottom: 10px; }
+.overlay-editor-page .meta-item { display: flex; gap: 5px; }
+.overlay-editor-page .meta-label { opacity: .7; }
+.overlay-editor-page .meta-value { color: var(--quantum-cyan); font-weight: 600; }
+
+.overlay-editor-page .widget-emotions { display: flex; gap: 10px; margin-bottom: 10px; }
+.overlay-editor-page .emotion-indicator { display: flex; align-items: center; gap: 5px; font-size: .65rem; text-transform: uppercase; }
+.overlay-editor-page .emotion-dot { width: 8px; height: 8px; border-radius: 50%; box-shadow: 0 0 5px currentColor; }
+
+.overlay-editor-page .widget-toggle { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.overlay-editor-page .widget-checkbox { width: 18px; height: 18px; cursor: pointer; accent-color: var(--quantum-cyan); }
+.overlay-editor-page .toggle-label { font-size: .75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+.overlay-editor-page .toggle-locked { display: flex; align-items: center; gap: 5px; color: var(--quantum-gold); font-size: .75rem; font-weight: 700; }
+
+.overlay-editor-page .entanglement-indicator {
+  position: absolute; top: 10px; right: 10px; display: flex; align-items: center; gap: 5px;
+  padding: 3px 8px; background: rgba(168,85,247,.2); border: 1px solid rgba(168,85,247,.5); border-radius: 4px; font-size: .65rem; text-transform: uppercase;
+}
+.overlay-editor-page .temporal-badge {
+  position: absolute; bottom: 10px; right: 10px; padding: 3px 8px; background: rgba(0,0,0,.5);
+  border: 1px solid rgba(255,255,255,.2); border-radius: 4px; font-size: .65rem; font-weight: 600; text-transform: uppercase;
+}
+.overlay-editor-page .temporal-badge.phase-past    { border-color: rgba(255,165,0,.5);  color: #ffa500; }
+.overlay-editor-page .temporal-badge.phase-present { border-color: rgba(0,255,255,.5);  color: var(--quantum-cyan); }
+.overlay-editor-page .temporal-badge.phase-future  { border-color: rgba(168,85,247,.5); color: var(--quantum-purple); }
+.overlay-editor-page .temporal-badge.phase-all-time{ border-color: rgba(236,72,153,.5); color: var(--quantum-pink); }
+
+.overlay-editor-page .widget-summary {
+  padding: 15px; background: rgba(0,0,0,.3); border-radius: 8px; border: 1px solid var(--quantum-border);
+  display: flex; justify-content: space-between; margin-top: 20px;
+}
+.overlay-editor-page .summary-item { display: flex; flex-direction: column; gap: 5px; }
+.overlay-editor-page .summary-label { font-size: .7rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1px; }
+.overlay-editor-page .summary-value { font-size: 1.2rem; font-weight: 700; color: var(--quantum-cyan); }
+
+/* ==================== PREVIEW PANEL ==================== */
+.overlay-editor-page .editor-preview-panel {
+  background: rgba(0,0,0,.3); backdrop-filter: blur(10px); border-radius: 12px; border: 1px solid var(--quantum-border);
+  padding: 20px; display: flex; flex-direction: column; animation: slideInRight .5s ease-out;
+}
+@keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+.overlay-editor-page .editor-preview-area { height: 100%; display: flex; flex-direction: column; gap: 20px; }
+.overlay-editor-page .preview-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.overlay-editor-page .preview-header h2 { margin: 0; font-size: 1.1rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--quantum-cyan); }
+.overlay-editor-page .preview-controls { display: flex; gap: 10px; align-items: center; }
+.overlay-editor-page .preview-status { font-size: .8rem; color: rgba(255,255,255,.7); padding: 5px 10px; background: rgba(0,0,0,.2); border-radius: 5px; }
+
+.overlay-editor-page .preview-canvas {
+  flex: 1; background: rgba(0,0,0,.2); border-radius: 8px; border: 1px solid rgba(255,255,255,.05);
+  position: relative; overflow: hidden; min-height: 400px;
+}
+.overlay-editor-page .preview-widget {
+  position: absolute; background: rgba(0,0,0,.4); border: 1px solid var(--quantum-border);
+  border-radius: 8px; padding: 10px; backdrop-filter: blur(5px); transition: all .3s ease; cursor: move;
+}
+.overlay-editor-page .preview-widget:hover { box-shadow: 0 5px 20px rgba(0,255,255,.3); border-color: var(--quantum-cyan); transform: translateZ(10px); }
+.overlay-editor-page .preview-widget.dragging { opacity: .7; cursor: grabbing; z-index: 1000; box-shadow: 0 10px 40px rgba(0,255,255,.5); }
+.overlay-editor-page .widget-content { height: 100%; display: flex; flex-direction: column; gap: 10px; }
+.overlay-editor-page .widget-header { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: .9rem; }
+.overlay-editor-page .widget-visualization { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px; }
+.overlay-editor-page .widget-stats { display: flex; justify-content: space-between; font-size: .7rem; color: rgba(255,255,255,.6); }
+
+.overlay-editor-page .quantum-status { background: rgba(0,0,0,.2); border-radius: 8px; padding: 15px; margin-top: auto; }
+.overlay-editor-page .quantum-status h3 {
+  margin: 0 0 15px 0; font-size: .9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--quantum-purple);
+}
+.overlay-editor-page .emotional-bars { display: flex; flex-direction: column; gap: 8px; }
+.overlay-editor-page .emotion-bar { display: flex; align-items: center; gap: 10px; }
+.overlay-editor-page .emotion-label { font-size: .7rem; width: 80px; color: rgba(255,255,255,.6); letter-spacing: 1px; text-transform: uppercase; }
+.overlay-editor-page .emotion-track { flex: 1; height: 6px; background: rgba(255,255,255,.05); border-radius: 3px; overflow: hidden; position: relative; }
+.overlay-editor-page .emotion-fill { height: 100%; transition: width .5s ease; border-radius: 3px; position: relative; overflow: hidden; }
+.overlay-editor-page .emotion-fill::after {
+  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
+  animation: emotion-pulse 3s infinite;
+}
+@keyframes emotion-pulse {
+  0% { left: -100%; } 100% { left: 100%; }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .overlay-editor-page .editor-header { flex-direction: column; gap: 15px; }
+  .overlay-editor-page .editor-controls { flex-wrap: wrap; }
+  .overlay-editor-page .editor-title { font-size: 1.5rem; }
+  .overlay-editor-page .editor-main { grid-template-columns: 1fr; }
+  .overlay-editor-page .editor-sidebar { max-height: 300px; }
+}
+
+/* ==================== SCROLLBAR ==================== */
+.overlay-editor-page .editor-sidebar::-webkit-scrollbar,
+.overlay-editor-page .widget-list::-webkit-scrollbar { width: 8px; }
+.overlay-editor-page .editor-sidebar::-webkit-scrollbar-track,
+.overlay-editor-page .widget-list::-webkit-scrollbar-track { background: rgba(0,0,0,.2); border-radius: 4px; }
+.overlay-editor-page .editor-sidebar::-webkit-scrollbar-thumb,
+.overlay-editor-page .widget-list::-webkit-scrollbar-thumb { background: var(--quantum-border); border-radius: 4px; }
+.overlay-editor-page .editor-sidebar::-webkit-scrollbar-thumb:hover,
+.overlay-editor-page .widget-list::-webkit-scrollbar-thumb:hover { background: var(--quantum-cyan); }
+
+/* ==================== LOADING STATES ==================== */
+.overlay-editor-page .loading-spinner,
+.quantum-overlay-editor .loading-spinner {
+  width: 40px; height: 40px; border: 3px solid rgba(0,255,255,.1);
+  border-top-color: var(--quantum-cyan); border-radius: 50%; animation: spin .8s linear infinite; margin: 20px auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ==================== TOOLTIPS (scoped) ==================== */
+.overlay-editor-page .tooltip {
+  position: absolute; background: rgba(0,0,0,.9); color: #fff; padding: 5px 10px; border-radius: 4px;
+  font-size: .75rem; white-space: nowrap; pointer-events: none; z-index: 10000; opacity: 0; transition: opacity .3s;
+}
+.overlay-editor-page .tooltip.visible { opacity: 1; }
+
+/* ==================== SPECIAL EFFECTS (scoped) ==================== */
+.overlay-editor-page .quantum-glow {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 200%; height: 200%; background: radial-gradient(circle, rgba(0,255,255,.1), transparent 70%);
+  pointer-events: none; animation: quantum-expand 3s ease-in-out infinite;
+}
+@keyframes quantum-expand {
+  0%,100% { transform: translate(-50%, -50%) scale(.8); opacity: .3; }
+  50%     { transform: translate(-50%, -50%) scale(1.2); opacity: .8; }
+}
+
+/* ===== Stoppt Overlay-Preview außerhalb des Editors ===== */
+body:not(.is-overlay-editor) .editor-preview-panel,
+body:not(.is-overlay-editor) .preview-header,
+body:not(.is-overlay-editor) .overlay-preview,
+body:not(.is-overlay-editor) .active-modules-preview,
+body:not(.is-overlay-editor) .active-modules-list,
+body:not(.is-overlay-editor) .preview-modules,
+body:not(.is-overlay-editor) .modules-preview,
+body:not(.is-overlay-editor) .overlay-preview-title,
+body:not(.is-overlay-editor) [data-overlay-preview],
+body:not(.is-overlay-editor) [id^="overlay-preview"],
+body:not(.is-overlay-editor) [class*="overlay-preview"],
+body:not(.is-overlay-editor) [class*="active-modules"],
+body:not(.is-overlay-editor) [class*="preview-list"] {
+  display: none !important;
+  visibility: hidden !important;
+  position: static !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Nur im Editor sichtbar */
+.is-overlay-editor .editor-preview-panel,
+.is-overlay-editor .preview-header,
+.is-overlay-editor .overlay-preview,
+.is-overlay-editor .active-modules-preview,
+.is-overlay-editor .active-modules-list,
+.is-overlay-editor .preview-modules,
+.is-overlay-editor .modules-preview,
+.is-overlay-editor .overlay-preview-title,
+.is-overlay-editor [data-overlay-preview] {
+  display: initial !important;
+  visibility: visible !important;
+  height: auto !important;
+}
