@@ -1,4 +1,4 @@
-﻿// backend/middleware/corsConfig.ts
+// backend/middleware/corsConfig.ts
 import cors from 'cors';
 
 const allowedOrigins = (process.env.CORS_ORIGINS || '')

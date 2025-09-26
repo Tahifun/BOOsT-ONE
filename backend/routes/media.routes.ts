@@ -1,4 +1,4 @@
-﻿// backend/routes/media.routes.ts
+// backend/routes/media.routes.ts
 import { Router, Request, Response, NextFunction } from "express";
 import multer, { MulterError } from "multer";
 import path from "path";

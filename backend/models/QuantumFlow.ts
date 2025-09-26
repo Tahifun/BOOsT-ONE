@@ -1,4 +1,4 @@
-﻿// backend/models/QuantumFlow.ts
+// backend/models/QuantumFlow.ts
 import mongoose, { Schema, type Document, type Model } from "mongoose";
 
 export type NodeType =

@@ -1,4 +1,4 @@
-﻿// routes/botRoutes.ts
+// routes/botRoutes.ts
 import { Router } from "express";
 import { runCommand, getStatus } from "../controllers/botController.js";
 

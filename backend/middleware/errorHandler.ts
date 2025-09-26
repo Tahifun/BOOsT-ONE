@@ -1,4 +1,4 @@
-﻿// backend/middleware/errorHandler.ts
+// backend/middleware/errorHandler.ts
 import type { Request, Response, NextFunction } from "express";
 import { MulterError } from "multer";
 // Wenn du logger hast:
@@ -33,7 +33,7 @@ export function errorHandler(
     // Zod-Validierung
     if (isZodError(err)) {
       return res.status(400).json({
-        message: "UngÃ¼ltige Eingabe.",
+        message: "Ungültige Eingabe.",
         issues: err.issues,
       });
     }
@@ -49,13 +49,13 @@ export function errorHandler(
     // JWT
     if (err?.name === "JsonWebTokenError" || err?.name === "TokenExpiredError") {
       return res.status(401).json({
-        message: "UngÃ¼ltiges oder abgelaufenes Token.",
+        message: "Ungültiges oder abgelaufenes Token.",
       });
     }
 
     // Mongoose: CastError / ValidationError
     if (err?.name === "CastError") {
-      return res.status(400).json({ message: "UngÃ¼ltige ID." });
+      return res.status(400).json({ message: "Ungültige ID." });
     }
     if (err?.name === "ValidationError") {
       return res.status(400).json({

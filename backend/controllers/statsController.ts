@@ -1,4 +1,4 @@
-﻿// controllers/statsController.ts
+// controllers/statsController.ts
 import type { Request, Response } from "express";
 
 /** Helper: UserId aus req ziehen, egal ob user.id oder user.userId */

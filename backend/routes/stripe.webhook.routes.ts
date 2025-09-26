@@ -1,4 +1,4 @@
-﻿// routes/stripe.webhook.routes.ts
+// routes/stripe.webhook.routes.ts
 import { Router, type Request, type Response } from "express";
 import WebhookEvent from "../models/WebhookEvent.js";
 import SubscriptionStateModel from "../models/SubscriptionState.js";

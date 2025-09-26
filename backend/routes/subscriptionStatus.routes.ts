@@ -1,4 +1,4 @@
-﻿// backend/routes/subscriptionStatus.routes.ts
+// backend/routes/subscriptionStatus.routes.ts
 import { Router, Request, Response, NextFunction } from "express";
 
 const router = Router();

@@ -1,5 +1,5 @@
-﻿// backend/openapi.ts
-// OpenAPI 3.0 Spec als Plain-Object (keine AbhÃ¤ngigkeit zu swagger-jsdoc nÃ¶tig)
+// backend/openapi.ts
+// OpenAPI 3.0 Spec als Plain-Object (keine Abhängigkeit zu swagger-jsdoc nötig)
 import "dotenv/config";
 
 type AnyObj = Record<string, any>;
@@ -17,7 +17,7 @@ export function buildOpenApiSpec(): AnyObj {
       title: "CLiP_ALffA API",
       version: "1.0.0",
       description:
-        "REST API fÃ¼r Auth, Abos (PRO/DayPass), Checkout (EU-Consent), Billing-Portal und Overlays.",
+        "REST API für Auth, Abos (PRO/DayPass), Checkout (EU-Consent), Billing-Portal und Overlays.",
       contact: { name: "CLiP_ALffA" }
     },
     servers: [
@@ -122,7 +122,7 @@ export function buildOpenApiSpec(): AnyObj {
             product: "day_pass",
             consent: true,
             consentText:
-              "Ich stimme zu, dass der digitale Inhalt sofort verfÃ¼gbar ist und ich mein Widerrufsrecht verliere.",
+              "Ich stimme zu, dass der digitale Inhalt sofort verfügbar ist und ich mein Widerrufsrecht verliere.",
             consentVersion: "2025-09-01"
           }
         },
@@ -279,7 +279,7 @@ export function buildOpenApiSpec(): AnyObj {
           tags: ["checkout"],
           summary: "Stripe Webhook (RAW body, keine Auth)",
           description:
-            "âš ï¸ Der Body **muss** unverÃ¤ndert (RAW) sein. Signatur-Verifikation via `STRIPE_WEBHOOK_SECRET`.",
+            "️ Der Body **muss** unverändert (RAW) sein. Signatur-Verifikation via `STRIPE_WEBHOOK_SECRET`.",
           requestBody: {
             required: true,
             content: {
@@ -288,7 +288,7 @@ export function buildOpenApiSpec(): AnyObj {
           },
           responses: {
             "200": { description: "ok (oder duplicate ignored)" },
-            "400": { description: "Signatur ungÃ¼ltig / Missing header" },
+            "400": { description: "Signatur ungültig / Missing header" },
             "500": { description: "Fehler in Verarbeitung" }
           }
         }

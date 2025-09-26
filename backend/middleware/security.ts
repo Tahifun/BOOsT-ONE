@@ -1,4 +1,4 @@
-﻿// backend/middleware/security.ts
+// backend/middleware/security.ts
 import helmet from 'helmet';
 
 export const securityMiddleware = (isProduction: boolean) => {
@@ -14,7 +14,7 @@ export const securityMiddleware = (isProduction: boolean) => {
         defaultSrc: ["'self'"],
         scriptSrc: [
           "'self'",
-          "'unsafe-inline'", // Nur wenn wirklich nÃ¶tig
+          "'unsafe-inline'", // Nur wenn wirklich nötig
           "https://cdnjs.cloudflare.com",
           "https://unpkg.com"
         ],

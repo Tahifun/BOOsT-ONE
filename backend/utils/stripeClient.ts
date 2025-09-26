@@ -1,4 +1,4 @@
-﻿// utils/stripeClient.ts
+// utils/stripeClient.ts
 import Stripe from "stripe";
 import env from "./validateEnv.js";
 

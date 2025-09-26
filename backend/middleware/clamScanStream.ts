@@ -1,4 +1,4 @@
-﻿// middleware/clamScanStream.ts
+// middleware/clamScanStream.ts
 import type { Request, Response, NextFunction } from "express";
 
 /**

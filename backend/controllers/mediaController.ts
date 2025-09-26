@@ -1,4 +1,4 @@
-﻿import { Request, Response } from "express";
+import { Request, Response } from "express";
 import Media from "../models/Media.js";
 import { AuthenticatedRequest } from "../types/auth.js";
 
@@ -43,7 +43,7 @@ export async function deleteMediaFile(req: Request, res: Response) {
   const doc = await Media.findById(id);
   if (!doc) return res.status(404).json({ error: "Datei nicht gefunden" });
 
-  await doc.deleteOne(); // <â€” statt .remove()
+  await doc.deleteOne(); // < statt .remove()
   return res.json({ success: true });
 }
 

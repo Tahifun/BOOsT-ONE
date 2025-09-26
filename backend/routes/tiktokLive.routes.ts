@@ -1,4 +1,4 @@
-﻿// backend/routes/tiktokLive.routes.ts
+// backend/routes/tiktokLive.routes.ts
 import { Router } from "express";
 import { requireAuth } from "../middleware/auth.js";
 import { requireTier } from "../middleware/requireTier.js";

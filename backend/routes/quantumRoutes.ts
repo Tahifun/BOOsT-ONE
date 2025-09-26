@@ -1,4 +1,4 @@
-﻿// routes/quantumRoutes.ts
+// routes/quantumRoutes.ts
 import { Router } from "express";
 import { requireAuth } from "../middleware/auth.js";
 import { RateLimits } from "../middleware/rateLimiting.js";

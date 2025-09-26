@@ -1,4 +1,4 @@
-﻿// routes/overlayTemplates.routes.ts
+// routes/overlayTemplates.routes.ts
 import { Router } from "express";
 import { attachUserFromHeaders, requireAuth, requireTier } from "../middleware/auth.js";
 import {

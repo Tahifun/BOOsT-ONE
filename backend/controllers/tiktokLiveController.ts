@@ -1,4 +1,4 @@
-﻿// controllers/tiktokLiveController.ts
+// controllers/tiktokLiveController.ts
 import type { Request, Response } from "express";
 import liveHub from "../services/liveHub.js";
 

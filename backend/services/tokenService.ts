@@ -1,4 +1,4 @@
-﻿// services/tokenService.ts
+// services/tokenService.ts
 import jwt from "jsonwebtoken";
 
 type JWTPayload = Record<string, any>;

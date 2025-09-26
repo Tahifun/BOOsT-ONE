@@ -1,4 +1,4 @@
-﻿import { Router } from "express";
+import { Router } from "express";
 import upload from "../middleware/upload.js";
 import clamScan from "../middleware/clamScan.js";
 import { uploadOverlay, getOverlays, getCategories } from "../controllers/overlayController.js";

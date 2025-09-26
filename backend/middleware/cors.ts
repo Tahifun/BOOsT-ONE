@@ -1,4 +1,4 @@
-﻿import cors from "cors";
+import cors from "cors";
 
 export function buildCors() {
   const origin = process.env.CLIENT_ORIGIN?.split(",").map(s => s.trim());

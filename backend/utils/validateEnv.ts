@@ -1,4 +1,4 @@
-﻿// backend/utils/validateEnv.ts
+// backend/utils/validateEnv.ts
 import dotenv from "dotenv";
 import path from "path";
 import { envSchema } from "../config/envSchema.js";

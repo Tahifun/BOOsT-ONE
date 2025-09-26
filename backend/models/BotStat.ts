@@ -1,11 +1,11 @@
-﻿// backend/models/BotStat.ts
-// Mongooseâ€‘Schema fÃ¼r Botâ€‘Metriken (pro Streamâ€‘Session oder global aggregiert)
+// backend/models/BotStat.ts
+// MongooseSchema für BotMetriken (pro StreamSession oder global aggregiert)
 
 import { Schema, model, Document } from "mongoose";
 
 export interface IBotStat extends Document {
   botName: string; // Referenz / Anzeigename des Bots
-  sessionId?: string; // optional: Streamâ€‘Session
+  sessionId?: string; // optional: StreamSession
   filteredMessages: number;
   autoShoutouts: number;
   activeTimers: number;

@@ -1,4 +1,4 @@
-﻿// backend/routes/statsRoutes.ts
+// backend/routes/statsRoutes.ts
 import { Router, type Request, type Response } from 'express';
 import { requireAuth } from '../middleware/auth.js';
 import { requireTier } from '../middleware/requireTier.js';

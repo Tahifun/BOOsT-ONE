@@ -1,4 +1,4 @@
-﻿// services/liveHub.ts
+// services/liveHub.ts
 export type LiveEventType = "status" | "chat" | "gift" | "like" | "metrics";
 export type StreamStatus = { live?: boolean; [k: string]: unknown };
 

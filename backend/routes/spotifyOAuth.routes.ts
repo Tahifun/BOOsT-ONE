@@ -1,4 +1,4 @@
-﻿// routes/spotifyOAuth.routes.ts
+// routes/spotifyOAuth.routes.ts
 import { Router, Request, Response } from "express";
 import axios from "axios";
 import qs from "qs";

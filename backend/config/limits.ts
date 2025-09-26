@@ -1,12 +1,12 @@
-﻿// backend/config/limits.ts
-// Zentrale Free/Pro-Limits (GrÃ¶ÃŸe, Anzahl, Quoten) + Helper
+// backend/config/limits.ts
+// Zentrale Free/Pro-Limits (Gröe, Anzahl, Quoten) + Helper
 
 export type TierName = "FREE" | "PRO" | "ENTERPRISE";
 
 export interface Limits {
   /** Max. Anzahl Overlay-Vorlagen */
   templatesMax: number;
-  /** Max. UploadgrÃ¶ÃŸe in Bytes (fÃ¼r /media/upload u.Ã¤.) */
+  /** Max. Uploadgröe in Bytes (für /media/upload u.ä.) */
   uploadMaxBytes: number;
   /** Gleichzeitige Ressourcennutzung */
   concurrent: {
@@ -33,7 +33,7 @@ const envInt = (name: string, fallback: number) => {
 };
 
 /**
- * Default-Limits (kÃ¶nnen via ENV Ã¼berschrieben werden)
+ * Default-Limits (können via ENV überschrieben werden)
  * ENV-Keys:
  *  - LIMIT_TEMPLATES_FREE / _PRO / _ENT
  *  - LIMIT_UPLOAD_FREE_MB / _PRO_MB / _ENT_MB
@@ -97,14 +97,14 @@ export const LIMITS: Record<TierName, Limits> = {
 
 /**
  * PRO-gleich behandeln?
- * - Day-Pass zÃ¤hlt als PRO.
+ * - Day-Pass zählt als PRO.
  * - SUPERUSER kann (optional) wie ENTERPRISE behandelt werden.
  */
 export function isProLike(tier: TierName, active: boolean): boolean {
   return active && tier !== "FREE";
 }
 
-/** Effektive Limits fÃ¼r einen Nutzer (mit SUPERUSER-Lift) */
+/** Effektive Limits für einen Nutzer (mit SUPERUSER-Lift) */
 export function getLimitsForUser(user?: {
   role?: "USER" | "SUPERUSER";
   tier?: TierName;
@@ -112,7 +112,7 @@ export function getLimitsForUser(user?: {
   validUntil?: Date | string | null; // optional (Day-Pass)
 }): Limits {
   if (user?.role === "SUPERUSER") {
-    // SUPERUSER = groÃŸzÃ¼gigste Limits
+    // SUPERUSER = grozügigste Limits
     return LIMITS.ENTERPRISE;
   }
 
@@ -125,7 +125,7 @@ export function getLimitsForUser(user?: {
   return tier === "ENTERPRISE" ? LIMITS.ENTERPRISE : LIMITS.PRO;
 }
 
-/** Nur die Upload-Grenze (Bytes) â€“ z. B. fÃ¼r Multer/Limits */
+/** Nur die Upload-Grenze (Bytes)  z. B. für Multer/Limits */
 export function getUploadByteLimitForUser(user?: {
   role?: "USER" | "SUPERUSER";
   tier?: TierName;

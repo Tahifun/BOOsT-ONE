@@ -1,4 +1,4 @@
-﻿const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 const MediaSchema = new mongoose.Schema({
   type: { type: String, required: true },

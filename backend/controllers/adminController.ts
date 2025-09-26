@@ -1,4 +1,4 @@
-﻿// controllers/adminController.ts
+// controllers/adminController.ts
 import type { Request, Response } from "express";
 import mongoose from "mongoose";
 import redisLiveHub from "../services/redisLiveHub.js";

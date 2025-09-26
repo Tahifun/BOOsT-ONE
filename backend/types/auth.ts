@@ -1,4 +1,4 @@
-﻿// backend/types/auth.ts
+// backend/types/auth.ts
 import { Request } from "express";
 
 export type Tier = "FREE" | "PRO" | "ENTERPRISE";

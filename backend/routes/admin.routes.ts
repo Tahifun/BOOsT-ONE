@@ -1,4 +1,4 @@
-﻿// backend/routes/admin.routes.ts
+// backend/routes/admin.routes.ts
 import { Router } from "express";
 import { requireAuth } from "../middleware/auth.js";
 import { requireAdminOnly } from "../middleware/requireAdmin.js";

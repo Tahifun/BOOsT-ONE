@@ -1,4 +1,4 @@
-﻿// middleware/auth.ts
+// middleware/auth.ts
 import type { Request, Response, NextFunction, RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 import env from "../utils/validateEnv.js";

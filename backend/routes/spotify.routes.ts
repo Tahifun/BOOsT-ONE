@@ -1,4 +1,4 @@
-﻿// routes/spotify.routes.ts
+// routes/spotify.routes.ts
 import express, { type Request, type Response, type RequestHandler } from "express";
 import crypto from "crypto";
 

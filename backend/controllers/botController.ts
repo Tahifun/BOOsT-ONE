@@ -1,4 +1,4 @@
-﻿// controllers/botController.ts
+// controllers/botController.ts
 import type { Request, Response } from "express";
 
 /** Fängt generische Bot-Kommandos ab (Platzhalter) */

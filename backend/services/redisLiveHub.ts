@@ -1,4 +1,4 @@
-﻿// services/redisLiveHub.ts
+// services/redisLiveHub.ts
 import { Redis } from "ioredis";
 
 type Status = { connected: boolean; disabled?: boolean };

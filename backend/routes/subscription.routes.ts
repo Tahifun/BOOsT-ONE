@@ -1,4 +1,4 @@
-﻿// backend/routes/subscription.routes.ts
+// backend/routes/subscription.routes.ts
 import { Router } from "express";
 import { attachUserFromHeaders, requireAuth } from "../middleware/auth.js";
 import {

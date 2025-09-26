@@ -1,4 +1,4 @@
-﻿// backend/controllers/overlayTemplatesController.ts
+// backend/controllers/overlayTemplatesController.ts
 import { Response } from "express";
 import logger from "../utils/logger.js";
 import OverlayTemplate from "../models/OverlayTemplate.js";
@@ -72,7 +72,7 @@ export async function updateTemplate(req: unknown, res: Response) {
     return res.json({ item: doc });
   } catch (e) {
     logger.error("[overlayTemplates] update", e);
-    return res.status(500).json({ message: "Vorlage konnte nicht geÃ¤ndert werden." });
+    return res.status(500).json({ message: "Vorlage konnte nicht geändert werden." });
   }
 }
 
@@ -88,7 +88,7 @@ export async function deleteTemplate(req: unknown, res: Response) {
     return res.json({ ok: true });
   } catch (e) {
     logger.error("[overlayTemplates] delete", e);
-    return res.status(500).json({ message: "Vorlage konnte nicht gelÃ¶scht werden." });
+    return res.status(500).json({ message: "Vorlage konnte nicht gelöscht werden." });
   }
 }
 

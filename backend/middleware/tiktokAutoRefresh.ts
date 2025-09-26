@@ -1,4 +1,4 @@
-﻿// backend/middleware/tiktokAutoRefresh.ts
+// backend/middleware/tiktokAutoRefresh.ts
 import { Request, Response, NextFunction } from "express";
 import axios from "axios";
 import qs from "qs";
@@ -21,12 +21,12 @@ export default async function ensureTikTokAccessToken(req: Request, res: Respons
     const atExp = Number(req.cookies?.["tt_at_exp"] || 0);
     const rt = req.cookies?.["tt_rt"];
 
-    // gÃ¼ltig?
+    // gültig?
     if (at && atExp && Date.now() < atExp) {
       return next();
     }
 
-    // kein Refresh vorhanden â†’ 401
+    // kein Refresh vorhanden  401
     if (!rt) {
       return res.status(401).json({ error: "no_refresh_token" });
     }

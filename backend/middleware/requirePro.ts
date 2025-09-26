@@ -1,4 +1,4 @@
-﻿// backend/middleware/requirePro.ts
+// backend/middleware/requirePro.ts
 import type { RequestHandler } from "express";
 
 const requirePro: RequestHandler = (req, res, next) => {

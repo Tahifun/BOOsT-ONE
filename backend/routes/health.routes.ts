@@ -1,4 +1,4 @@
-﻿// routes/health.routes.ts
+// routes/health.routes.ts
 import { Router, Request, Response } from "express";
 import mongoose from "mongoose";
 import redisLiveHub from "../services/redisLiveHub.js";

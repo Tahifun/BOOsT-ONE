@@ -1,4 +1,4 @@
-﻿// middleware/clamScan.ts
+// middleware/clamScan.ts
 import type { Request, Response, NextFunction } from "express";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";

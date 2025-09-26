@@ -1,4 +1,4 @@
-﻿import mongoose, { Schema, model, type Model, type InferSchemaType } from "mongoose";
+import mongoose, { Schema, model, type Model, type InferSchemaType } from "mongoose";
 
 const OverlayTemplateSchema = new Schema(
   {

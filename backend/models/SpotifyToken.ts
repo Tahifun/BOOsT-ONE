@@ -1,4 +1,4 @@
-﻿// backend/models/SpotifyToken.ts
+// backend/models/SpotifyToken.ts
 import { Schema, model } from "mongoose";
 
 const SpotifyTokenSchema = new Schema(

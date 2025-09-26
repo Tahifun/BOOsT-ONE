@@ -1,4 +1,4 @@
-﻿// backend/models/ConsentLog.ts
+// backend/models/ConsentLog.ts
 import mongoose, { Schema, InferSchemaType, Model } from "mongoose";
 
 const ConsentLogSchema = new Schema({

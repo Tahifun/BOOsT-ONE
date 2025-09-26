@@ -1,4 +1,4 @@
-﻿// backend/middleware/requireAdmin.ts
+// backend/middleware/requireAdmin.ts
 import type { Request, Response, NextFunction } from "express";
 import { requireAuth } from "./auth.js";
 

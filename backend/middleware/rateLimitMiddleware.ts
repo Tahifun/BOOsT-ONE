@@ -1,5 +1,5 @@
 import logger from '../utils/logger.js'
-﻿// Express Rate Limit v7 â€“ kein onLimitReached im Options-Objekt.
+// Express Rate Limit v7  kein onLimitReached im Options-Objekt.
 // Optionaler Redis-Store via dynamischem Import; Fallback: Memory.
 
 import rateLimit, { RateLimitRequestHandler } from 'express-rate-limit';
@@ -40,7 +40,7 @@ export interface RateLimitOptions {
   skip?: (req: Request) => boolean;
   /** Emulation von onLimitReached per custom handler */
   onLimitReached?: (req: Request, res: Response) => void;
-  /** Eigener Handler Ã¼berschreibt Emulation */
+  /** Eigener Handler überschreibt Emulation */
   handler?: (request: unknown, response: unknown, next: unknown, options: unknown) => void;
   standardHeaders?: boolean | 'draft-6' | 'draft-7' | 'combined';
   legacyHeaders?: boolean;
@@ -196,7 +196,7 @@ export const createTierBasedRateLimit = (base: {
 }) => {
   return rateLimitMiddleware({
     windowMs: base.windowMs,
-    limit: base.freeMax, // Default (free) â€“ Upgrade-Handling kann spÃ¤ter dynamisch werden
+    limit: base.freeMax, // Default (free)  Upgrade-Handling kann später dynamisch werden
     message: base.message,
     keyGenerator: (req: unknown) => {
       const tier = req.user?.tier || req.user?.subscriptionTier || 'free';

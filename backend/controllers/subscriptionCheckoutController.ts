@@ -1,4 +1,4 @@
-﻿// controllers/subscriptionCheckoutController.ts
+// controllers/subscriptionCheckoutController.ts
 import type { Request, Response } from "express";
 import stripe from "../utils/stripeClient.js";
 import env from "../utils/validateEnv.js";

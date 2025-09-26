@@ -1,4 +1,4 @@
-﻿// routes/subscriptionCheckout.routes.ts
+// routes/subscriptionCheckout.routes.ts
 import { Router } from "express";
 import { requireAuth } from "../middleware/auth.js";
 import stripe from "../utils/stripeClient.js";

@@ -1,4 +1,4 @@
-﻿// backend/models/WebhookEvent.ts
+// backend/models/WebhookEvent.ts
 import mongoose, { Schema, type Model } from "mongoose";
 
 export interface IWebhookEvent {

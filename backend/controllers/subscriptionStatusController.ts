@@ -1,8 +1,8 @@
-﻿// backend/controllers/subscriptionStatusController.ts
+// backend/controllers/subscriptionStatusController.ts
 import type { Request, Response } from "express";
 import { getState } from "../services/subscriptionStateService.js";
 
-// => Named export (und unten zusÃ¤tzlich ein default-Export-Wrapper)
+// => Named export (und unten zusätzlich ein default-Export-Wrapper)
 export const getMySubscriptionStatus = async (req: Request, res: Response) => {
   try {
     const user = (req as any).user;

@@ -1,4 +1,4 @@
-﻿// backend/config/envSchema.ts
+// backend/config/envSchema.ts
 import { z } from "zod";
 
 export const envSchema = z.object({
@@ -43,7 +43,7 @@ export const envSchema = z.object({
   SPOTIFY_CLIENT_SECRET: z.string().optional(),
 
 }).refine(v => !!(v.MONGODB_URI || v.MONGO_URI), {
-  message: "MONGODB_URI oder MONGO_URI wird benÃ¶tigt."
+  message: "MONGODB_URI oder MONGO_URI wird benötigt."
 }).transform(data => {
   // Normalize MongoDB URI
   if (!data.MONGODB_URI && data.MONGO_URI) {

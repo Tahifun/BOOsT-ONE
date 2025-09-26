@@ -1,10 +1,10 @@
-﻿// backend/models/StripeCustomer.ts
+// backend/models/StripeCustomer.ts
 import mongoose, { Schema, type Model } from "mongoose";
 
 /**
  * Persistentes Mapping userId <-> stripeCustomerId
  * - verhindert E-Mail-Verwechslungen
- * - macht Webhook-AuflÃ¶sung stabil
+ * - macht Webhook-Auflösung stabil
  */
 export interface IStripeCustomer {
   userId: string;               // App-User-ID (unique)

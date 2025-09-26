@@ -1,4 +1,4 @@
-﻿import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
 export type Role = "USER" | "SUPERUSER";
 export type Tier = "FREE" | "PRO" | "ENTERPRISE";
