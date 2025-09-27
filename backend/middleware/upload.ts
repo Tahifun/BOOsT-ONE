@@ -13,12 +13,12 @@ if (!fs.existsSync(uploadRoot)) {
   fs.mkdirSync(uploadRoot, { recursive: true });
 }
 
-// MIME-Whitelist (ENV überschreibt optional)
+// MIME-Whitelist (ENV �berschreibt optional)
 const DEFAULT_ALLOWED = ["image/png", "image/jpeg", "image/webp", "image/svg+xml"];
 const ALLOWED = (process.env.UPLOAD_MIME_WHITELIST || DEFAULT_ALLOWED.join(","))
   .split(",").map(s => s.trim()).filter(Boolean);
 
-// 20MB Default (per ENV überschreibbar)
+// 20MB Default (per ENV �berschreibbar)
 const MAX_MB = Number(process.env.MAX_UPLOAD_MB || 20);
 
 const storage = multer.diskStorage({
@@ -42,7 +42,7 @@ export const upload = multer({
   },
 });
 
-// Für Controller/Listing nützlich
+// F�r Controller/Listing n�tzlich
 export const UPLOAD_ROOT_ABS = uploadRoot;
 
 export default upload;

@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSpotifyPlayer } from '../hooks/useSpotifyPlayer';
 
 const API =
@@ -36,7 +36,7 @@ export default function SpotifyPlaylists() {
     });
   };
 
-  if (loading) return <div>Playlists ladenâ€¦</div>;
+  if (loading) return <div>Playlists laden�?�</div>;
 
   return (
     <div style={{ display:"grid", gap:16, gridTemplateColumns:"repeat(auto-fill, minmax(220px,1fr))" }}>
@@ -52,7 +52,7 @@ export default function SpotifyPlaylists() {
             onClick={() => playPlaylist(pl)}
             style={{ width:"100%", padding:"8px 12px", borderRadius:8, border:0, background: ready ? "#1DB954" : "#555", color:"#fff" }}
           >
-            â–¶ï¸Ž Abspielen
+            �-��Z Abspielen
           </button>
         </div>
       ))}

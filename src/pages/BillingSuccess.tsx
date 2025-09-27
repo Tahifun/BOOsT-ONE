@@ -1,4 +1,4 @@
-﻿// src/pages/BillingSuccess.tsx
+// src/pages/BillingSuccess.tsx
 import { useEffect, useMemo, useState } from "react";
 import { api } from '../lib/apiClient';
 
@@ -17,7 +17,7 @@ export default function BillingSuccess() {
   const sessionId = qs.get("session_id") || "";
 
   useEffect(() => {
-    // optional: Session-ID an dein Backend posten, falls du dafÃ¼r einen Endpunkt hast.
+    // optional: Session-ID an dein Backend posten, falls du dafür einen Endpunkt hast.
     // Wir zeigen hier einfach den aktuellen Status.
     const run = async () => {
       try {
@@ -41,18 +41,18 @@ export default function BillingSuccess() {
         <div style={{ marginTop: 16 }}>
           <p>
             Status: <strong>{status.tier}</strong>{" "}
-            {status.active ? "âœ… aktiv" : "âŒ inaktiv"}
+            {status.active ? "�o. aktiv" : "�O inaktiv"}
             {status.source ? ` (Quelle: ${status.source})` : null}
           </p>
           {status.dayPass?.active && status.dayPass.validUntil && (
-            <p>DayPass gÃ¼ltig bis: {new Date(status.dayPass.validUntil).toLocaleString()}</p>
+            <p>DayPass gültig bis: {new Date(status.dayPass.validUntil).toLocaleString()}</p>
           )}
         </div>
       ) : (
-        <p>Lade Statusâ€¦</p>
+        <p>Lade Status�?�</p>
       )}
 
-      <a href="/">ZurÃ¼ck zur Startseite</a>
+      <a href="/">Zurück zur Startseite</a>
     </div>
   );
 }

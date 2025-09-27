@@ -359,7 +359,7 @@ export function useModeration() {
       id: Date.now().toString(),
       type: 'warn',
       user: winner.user,
-      reason: '🎉 Won the giveaway!',
+      reason: '?? Won the giveaway!',
       moderator: 'System',
       timestamp: Date.now()
     };

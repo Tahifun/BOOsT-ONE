@@ -642,13 +642,13 @@
 }
 
 .stat-change::before {
-  content: '▲';
+  content: '?';
   display: inline-block;
   animation: arrow-bounce 1s ease-in-out infinite;
 }
 
 .stat-change.negative::before {
-  content: '▼';
+  content: '?';
 }
 
 /* ============================================

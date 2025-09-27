@@ -162,13 +162,13 @@ export const BatchActions: React.FC<BatchActionsProps> = ({
                   onSelectAll?.();
                 }
               }}
-              aria-label="Alle auswählen"
+              aria-label="Alle ausw�hlen"
             />
           </div>
           
           <div className="selection-info">
             <span className="selection-count">
-              {selectedCount} ausgewählt
+              {selectedCount} ausgew�hlt
             </span>
             {selectedCount < totalCount && (
               <span className="selection-total">
@@ -183,7 +183,7 @@ export const BatchActions: React.FC<BatchActionsProps> = ({
               <button
                 className="selection-btn"
                 onClick={onSelectAll}
-                aria-label="Alle auswählen"
+                aria-label="Alle ausw�hlen"
                 type="button"
               >
                 Alle
@@ -230,7 +230,7 @@ export const BatchActions: React.FC<BatchActionsProps> = ({
               <span className="action-icon">{action.icon}</span>
               <span className="action-label">{action.label}</span>
               {action.requiresConfirm && (
-                <span className="action-warning">⚠️</span>
+                <span className="action-warning">??</span>
               )}
             </button>
           ))}
@@ -245,7 +245,7 @@ export const BatchActions: React.FC<BatchActionsProps> = ({
                 aria-expanded={showMoreActions}
                 type="button"
               >
-                <span className="action-icon">⋯</span>
+                <span className="action-icon">?</span>
               </button>
 
               {showMoreActions && (
@@ -280,10 +280,10 @@ export const BatchActions: React.FC<BatchActionsProps> = ({
         <button
           className="batch-close"
           onClick={onDeselectAll}
-          aria-label="Auswahl aufheben und schließen"
+          aria-label="Auswahl aufheben und schlie�en"
           type="button"
         >
-          ✖️
+          ??
         </button>
       </div>
 
@@ -292,11 +292,11 @@ export const BatchActions: React.FC<BatchActionsProps> = ({
         <div className="batch-confirm-overlay" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
           <div className="batch-confirm-dialog">
             <div className="confirm-icon">
-              {pendingAction.variant === 'danger' ? '⚠️' : '❓'}
+              {pendingAction.variant === 'danger' ? '??' : '?'}
             </div>
-            <h3 id="confirm-title" className="confirm-title">Aktion bestätigen</h3>
+            <h3 id="confirm-title" className="confirm-title">Aktion best�tigen</h3>
             <p className="confirm-message">
-              Möchten Sie "{pendingAction.label}" für {selectedCount} {selectedCount === 1 ? 'Element' : 'Elemente'} ausführen?
+              M�chten Sie "{pendingAction.label}" f�r {selectedCount} {selectedCount === 1 ? 'Element' : 'Elemente'} ausf�hren?
             </p>
             <div className="confirm-actions">
               <button
@@ -304,7 +304,7 @@ export const BatchActions: React.FC<BatchActionsProps> = ({
                 onClick={() => executeAction(pendingAction)}
                 type="button"
               >
-                {pendingAction.icon} Ja, ausführen
+                {pendingAction.icon} Ja, ausf�hren
               </button>
               <button
                 className="confirm-btn confirm-no"

@@ -34,13 +34,13 @@ async function sendVerificationEmail(to: string, token: string) {
   const msg = {
     to,
     from: process.env.SENDGRID_FROM || "no-reply@yourapp.local",
-    subject: "Bitte bestätige deine E-Mail",
+    subject: "Bitte best�tige deine E-Mail",
     html: `
       <div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif">
-        <h2>E-Mail bestätigen</h2>
-        <p>Danke für deine Registrierung. Bitte bestätige deine E-Mail-Adresse:</p>
-        <p><a href="${verifyUrl}" style="display:inline-block;padding:10px 16px;border-radius:6px;background:#111;color:#fff;text-decoration:none">E-Mail bestätigen</a></p>
-        <p>Oder öffne diesen Link: <br/><code>${verifyUrl}</code></p>
+        <h2>E-Mail best�tigen</h2>
+        <p>Danke f�r deine Registrierung. Bitte best�tige deine E-Mail-Adresse:</p>
+        <p><a href="${verifyUrl}" style="display:inline-block;padding:10px 16px;border-radius:6px;background:#111;color:#fff;text-decoration:none">E-Mail best�tigen</a></p>
+        <p>Oder �ffne diesen Link: <br/><code>${verifyUrl}</code></p>
       </div>
     `,
   };
@@ -96,7 +96,7 @@ function signJwt(
     isDayPass: ent.isDayPass,
   };
 
-  // issuer/audience mitgeben  deine middleware/auth prüft das
+  // issuer/audience mitgeben  deine middleware/auth pr�ft das
   const token = jwt.sign(payload, JWT_SECRET, {
     expiresIn: "7d",
     issuer: JWT_ISSUER,
@@ -141,9 +141,9 @@ export async function register(req: Request, res: Response) {
     await VerificationTokenModel.create({ userId: (user as any)._id, token });
     await sendVerificationEmail(email, token);
 
-    return res.json({ message: "Verifizierungs-Mail versandt. Bitte prüfe dein Postfach." });
+    return res.json({ message: "Verifizierungs-Mail versandt. Bitte pr�fe dein Postfach." });
   } catch (err: unknown) {
-    logger?.error?.("️ Fehler in /api/auth/register:", err);
+    logger?.error?.("? Fehler in /api/auth/register:", err);
     return res.status(500).json({ error: "Interner Serverfehler bei der Registrierung." });
   }
 }
@@ -160,10 +160,10 @@ export async function login(req: Request, res: Response) {
     if (!user) return res.status(404).json({ error: "Benutzer nicht gefunden." });
 
     const ok = await bcrypt.compare(password, (user as any).password);
-    if (!ok) return res.status(401).json({ error: "Ungültige Zugangsdaten." });
+    if (!ok) return res.status(401).json({ error: "Ung�ltige Zugangsdaten." });
 
     if (!(user as any).isVerified) {
-      return res.status(403).json({ error: "Bitte bestätige zuerst deine E-Mail-Adresse." });
+      return res.status(403).json({ error: "Bitte best�tige zuerst deine E-Mail-Adresse." });
     }
 
     const ent = await resolveEntitlements(user);
@@ -183,7 +183,7 @@ export async function login(req: Request, res: Response) {
       },
     });
   } catch (err) {
-    logger?.error?.("️ Fehler in /api/auth/login:", err);
+    logger?.error?.("? Fehler in /api/auth/login:", err);
     return res.status(500).json({ error: "Interner Serverfehler beim Login." });
   }
 }
@@ -195,7 +195,7 @@ export async function verifyEmail(req: Request, res: Response) {
     if (!token) return res.status(400).json({ error: "Token fehlt." });
 
     const rec = await VerificationTokenModel.findOne({ token }).exec();
-    if (!rec) return res.status(400).json({ error: "Ungültiger oder abgelaufener Token." });
+    if (!rec) return res.status(400).json({ error: "Ung�ltiger oder abgelaufener Token." });
 
     const user = (await UserModel.findById((rec as any).userId).exec()) as any as IUser | null;
     if (!user) return res.status(404).json({ error: "Benutzer nicht gefunden." });
@@ -204,10 +204,10 @@ export async function verifyEmail(req: Request, res: Response) {
     await (user as any).save();
     await VerificationTokenModel.deleteMany({ userId: (user as any)._id }).exec();
 
-    return res.json({ message: "E-Mail erfolgreich bestätigt." });
+    return res.json({ message: "E-Mail erfolgreich best�tigt." });
   } catch (err) {
-    logger?.error?.("️ Fehler in /api/auth/verify:", err);
-    return res.status(500).json({ error: "Interner Serverfehler bei der Bestätigung." });
+    logger?.error?.("? Fehler in /api/auth/verify:", err);
+    return res.status(500).json({ error: "Interner Serverfehler bei der Best�tigung." });
   }
 }
 
@@ -216,16 +216,16 @@ export async function resendVerification(req: Request, res: Response) {
   try {
     const user = (await UserModel.findOne({ email: req.body.email }).exec()) as any as IUser | null;
     if (!user) return res.status(404).json({ error: "Benutzer nicht gefunden." });
-    if ((user as any).isVerified) return res.status(400).json({ error: "E-Mail bereits bestätigt." });
+    if ((user as any).isVerified) return res.status(400).json({ error: "E-Mail bereits best�tigt." });
 
     await VerificationTokenModel.deleteMany({ userId: (user as any)._id }).exec();
     const token = crypto.randomBytes(32).toString("hex");
     await VerificationTokenModel.create({ userId: (user as any)._id, token });
     await sendVerificationEmail((user as any).email, token);
 
-    return res.json({ message: "Verifizierungs-Mail erneut versandt. Bitte prüfe dein Postfach." });
+    return res.json({ message: "Verifizierungs-Mail erneut versandt. Bitte pr�fe dein Postfach." });
   } catch (err) {
-    logger?.error?.("️ Fehler in /api/auth/resend-verification:", err);
+    logger?.error?.("? Fehler in /api/auth/resend-verification:", err);
     return res.status(500).json({ error: "Interner Serverfehler beim erneuten Senden." });
   }
 }

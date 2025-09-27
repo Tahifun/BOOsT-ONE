@@ -300,10 +300,10 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   // Get volume icon
   const getVolumeIcon = (): string => {
-    if (isMuted || volume === 0) return '🔇';
-    if (volume < 0.3) return '🔈';
-    if (volume < 0.7) return '🔉';
-    return '🔊';
+    if (isMuted || volume === 0) return '??';
+    if (volume < 0.3) return '??';
+    if (volume < 0.7) return '??';
+    return '??';
   };
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
@@ -353,7 +353,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         >
           {!isPlaying && !isLoading && (
             <div className="play-overlay">
-              <span className="play-icon">▶️</span>
+              <span className="play-icon">??</span>
             </div>
           )}
         </div>
@@ -397,7 +397,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 aria-label={isPlaying ? 'Pause' : 'Play'}
                 type="button"
               >
-                {isPlaying ? '⏸️' : '▶️'}
+                {isPlaying ? '??' : '??'}
               </button>
 
               {/* Volume */}
@@ -424,7 +424,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
                       step={0.05}
                       value={isMuted ? 0 : volume}
                       onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
-                      aria-label="Lautstärke"
+                      aria-label="Lautst�rke"
                     />
                   </div>
                 )}
@@ -465,7 +465,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 aria-label="Picture in Picture"
                 type="button"
               >
-                {isPictureInPicture ? '⊡' : '⧉'}
+                {isPictureInPicture ? '?' : '?'}
               </button>
 
               {/* Fullscreen */}
@@ -475,7 +475,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 aria-label="Fullscreen"
                 type="button"
               >
-                {isFullscreen ? '⊡' : '⊞'}
+                {isFullscreen ? '?' : '?'}
               </button>
             </div>
           </div>

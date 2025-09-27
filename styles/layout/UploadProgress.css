@@ -19,8 +19,8 @@
 .progress-label { font-size: 0.9em; font-weight: 500; color: #f8fafc; }
 .progress-stats { display: flex; gap: 15px; font-size: 0.85em; color: rgba(248, 250, 252, 0.6); }
 .progress-speed, .progress-time, .progress-bytes { display: flex; align-items: center; gap: 5px; }
-.progress-speed::before { content: '⚡'; font-size: 0.9em; }
-.progress-time::before { content: '⏱️'; font-size: 0.9em; }
+.progress-speed::before { content: '?'; font-size: 0.9em; }
+.progress-time::before { content: '??'; font-size: 0.9em; }
 
 /* Progress Container */
 .progress-container { position: relative; }

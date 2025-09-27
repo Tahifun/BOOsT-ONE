@@ -1,4 +1,4 @@
-﻿name: Backend Imports Check (NodeNext ESM)
+name: Backend Imports Check (NodeNext ESM)
 
 on:
   pull_request:
@@ -19,21 +19,21 @@ jobs:
       - name: Check Backend imports only
         shell: pwsh
         run: |
-          Write-Host "🔍 Checking Backend imports (ESM requires .js extensions)" -ForegroundColor Cyan
+          Write-Host "?? Checking Backend imports (ESM requires .js extensions)" -ForegroundColor Cyan
           ./scripts/check-imports.ps1 -Scope backend
       
       - name: Verify Frontend unchanged
         shell: bash
         run: |
-          echo "🔍 Verifying Frontend imports remain extensionless..."
+          echo "?? Verifying Frontend imports remain extensionless..."
           # Count .js imports in Frontend - should be 0 or only for actual .js files
           JS_IMPORTS=$(grep -r "from.*\.js['\"]" src --include="*.tsx" --include="*.ts" | grep -v "// @ts-ignore" | wc -l)
           if [ "$JS_IMPORTS" -gt "5" ]; then
-            echo "❌ ERROR: Found $JS_IMPORTS .js imports in Frontend (should be <5)"
+            echo "? ERROR: Found $JS_IMPORTS .js imports in Frontend (should be <5)"
             echo "Frontend uses Vite and should NOT have .js extensions in TS imports!"
             exit 1
           fi
-          echo "✅ Frontend imports look correct"
+          echo "? Frontend imports look correct"
 
   frontend-type-check:
     runs-on: ubuntu-latest

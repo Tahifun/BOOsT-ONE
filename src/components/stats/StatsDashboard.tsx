@@ -1,4 +1,4 @@
-﻿// src/components/stats/StatsDashboard.tsx
+// src/components/stats/StatsDashboard.tsx
 import React, { useEffect, useState } from "react";
 import GameLeaderboard from './GameLeaderboard';
 import BotStatsPanel from './BotStatsPanel';
@@ -29,7 +29,7 @@ const StatsDashboard: React.FC<StatsDashboardProps> = ({ userId }) => {
   const [leaderboard, setLeaderboard] = useState<GameLeaderboardItem[]>([]);
   const [userStats, setUserStats] = useState<UserGameStat[]>([]);
 
-  // Falls keine userId Ã¼bergeben wurde, versuche sie aus dem eingeloggten User zu nehmen
+  // Falls keine userId übergeben wurde, versuche sie aus dem eingeloggten User zu nehmen
   const effectiveUserId =
     userId || (currentUser as any)?.id || (currentUser as any)?._id || "";
 
@@ -66,8 +66,8 @@ const StatsDashboard: React.FC<StatsDashboardProps> = ({ userId }) => {
   if (loading) {
     return (
       <div className="p-4">
-        <h2 className="text-xl font-bold">ðŸ“Š Statistiken</h2>
-        <p>â³ LÃ¤dtâ€¦</p>
+        <h2 className="text-xl font-bold">�Y"S Statistiken</h2>
+        <p>⏳ Lädt�?�</p>
       </div>
     );
   }
@@ -75,7 +75,7 @@ const StatsDashboard: React.FC<StatsDashboardProps> = ({ userId }) => {
   if (error) {
     return (
       <div className="p-4">
-        <h2 className="text-xl font-bold">ðŸ“Š Statistiken</h2>
+        <h2 className="text-xl font-bold">�Y"S Statistiken</h2>
         <p className="text-red-500">Fehler: {error}</p>
       </div>
     );
@@ -86,14 +86,14 @@ const StatsDashboard: React.FC<StatsDashboardProps> = ({ userId }) => {
   return (
     <div className="p-4">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold">ðŸ“Š Statistiken &amp; Leaderboards</h2>
+        <h2 className="text-xl font-bold">�Y"S Statistiken &amp; Leaderboards</h2>
         <a
           className="btn btn-secondary"
           href={`${API_BASE}/api/stats/export`}
           target="_blank"
           rel="noopener noreferrer"
         >
-          â¬‡ï¸ CSV Export
+          �?️ CSV Export
         </a>
       </div>
 

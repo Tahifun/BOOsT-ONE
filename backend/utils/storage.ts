@@ -3,7 +3,7 @@ import * as fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// __dirname für ES-Module herstellen
+// __dirname f�r ES-Module herstellen
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 
@@ -17,7 +17,7 @@ if (!fs.existsSync(uploadPath)) {
   fs.mkdirSync(uploadPath, { recursive: true });
 }
 
-// kleine Helferfunktion zum Auflösen von Unterordnern
+// kleine Helferfunktion zum Aufl�sen von Unterordnern
 export function resolveUpload(...parts: string[]) {
   return path.join(uploadPath, ...parts);
 }

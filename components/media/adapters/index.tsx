@@ -80,7 +80,7 @@ export const LazyAIHighlightSuggestions: React.FC<{ onSelect?: () => void }> = (
 
 export const LazyAIAssistant: React.FC = () => {
   const Comp = RealAIAssistant as React.ComponentType<any>;
-  // Minimal-Defaults, damit die Seite läuft, auch wenn nichts aktiv ausgewählt ist.
+  // Minimal-Defaults, damit die Seite l�uft, auch wenn nichts aktiv ausgew�hlt ist.
   return (
     <Comp
       mediaId={null}

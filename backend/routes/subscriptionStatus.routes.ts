@@ -40,7 +40,7 @@ router.get("/", (req: Request, res: Response) => {
     });
   }
 
-  // 2) Keine Simulation → normales Verhalten
+  // 2) Keine Simulation ? normales Verhalten
   if (!user) {
     return res.json({
       success: true,
@@ -63,9 +63,9 @@ router.get("/", (req: Request, res: Response) => {
 });
 
 /**
- * 🔧 Simulation setzen (nur in Dev nutzbar):
+ * ?? Simulation setzen (nur in Dev nutzbar):
  * GET /api/subscription/status/simulate?plan=PRO|DAYPASS|FREE
- * - Merkt den gewünschten Plan in der Session (session.simPlan)
+ * - Merkt den gew�nschten Plan in der Session (session.simPlan)
  * - Falls noch kein User existiert, wird ein einfacher Mock-User gesetzt,
  *   damit authenticated:true ist.
  */
@@ -107,9 +107,9 @@ router.get("/simulate", (req: Request, res: Response, next: NextFunction) => {
 });
 
 /**
- * 🧹 Simulation zurücksetzen:
+ * ?? Simulation zur�cksetzen:
  * GET /api/subscription/status/simulate/clear
- * - Entfernt simPlan aus der Session (du bist danach wieder FREE gemäß Normal-Logik)
+ * - Entfernt simPlan aus der Session (du bist danach wieder FREE gem�� Normal-Logik)
  */
 router.get("/simulate/clear", (req: Request, res: Response, next: NextFunction) => {
   const isProd = (process.env.NODE_ENV || "development") === "production";

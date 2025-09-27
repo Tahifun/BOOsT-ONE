@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import Button from '../Button';
 
 interface GuessEntry {
@@ -31,8 +31,8 @@ const RandomNumberGame: React.FC = () => {
     }
     let feedback: string;
     if (g === target) {
-      feedback = "Korrekt! ðŸŽ‰";
-      setResult("Korrekt! ðŸŽ‰");
+      feedback = "Korrekt! �YZ?";
+      setResult("Korrekt! �YZ?");
     } else if (g < target) {
       feedback = "Zu niedrig!";
       setResult("Zu niedrig!");
@@ -71,7 +71,7 @@ const RandomNumberGame: React.FC = () => {
             onClick={checkGuess}
             disabled={target === null || !!result?.includes("Korrekt")}
           >
-            PrÃ¼fen
+            Prüfen
           </Button>
         </div>
         <div className="flex gap-2">
@@ -96,7 +96,7 @@ const RandomNumberGame: React.FC = () => {
               <strong>Verlauf:</strong>
               {history.map((h, i) => (
                 <p key={i}>
-                  {i + 1}. {h.guess} â€“ {h.feedback}
+                  {i + 1}. {h.guess} �?" {h.feedback}
                 </p>
               ))}
             </div>

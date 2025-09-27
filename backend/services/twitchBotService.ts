@@ -1,6 +1,6 @@
 import logger from '../utils/logger.js'
-﻿// backend/services/twitchBotService.ts
-// -> Aufgeräumt: sichere Flow-Ladung, keine null-Zuweisungen, saubere Emojis, defensives Handling.
+?// backend/services/twitchBotService.ts
+// -> Aufger�umt: sichere Flow-Ladung, keine null-Zuweisungen, saubere Emojis, defensives Handling.
 
 import QuantumFlow, { type IQuantumFlow } from "../models/QuantumFlow.js";
 
@@ -153,20 +153,20 @@ class TwitchBotService {
     if (output?.aiResponse) {
       const channel = context?.channel || this.currentChannel;
       if (channel && this.client?.say) {
-        await this.client.say(channel, `🧠  ${output.aiResponse}`);
+        await this.client.say(channel, `??  ${output.aiResponse}`);
       }
     }
   }
 
   private async handleQuantumIntegrationOutput(output: unknown, _context: unknown) {
-    // Platzhalter – hier würdest du Integrationen (Webhooks, DB, etc.) anschließen
+    // Platzhalter - hier w�rdest du Integrationen (Webhooks, DB, etc.) anschlie�en
     logger.debug("Quantum integration executed:", output);
   }
 
   private async handleHolographicDisplayOutput(output: unknown, context: unknown) {
     const channel = context?.channel || this.currentChannel;
     if (channel && this.client?.say) {
-      await this.client.say(channel, `💎 Holographic display activated: ${output?.type ?? "unknown"}`);
+      await this.client.say(channel, `?? Holographic display activated: ${output?.type ?? "unknown"}`);
     }
   }
 
@@ -204,7 +204,7 @@ class TwitchBotService {
   private async executeNeuralSync(args: unknown) {
     const channel = args?.channel || this.currentChannel;
     if (channel && this.client?.say) {
-      await this.client.say(channel, "🧠 ⚡ Neural synchronization complete! Reality matrix updated! ✨");
+      await this.client.say(channel, "?? ? Neural synchronization complete! Reality matrix updated! ?");
     }
     return { success: true, message: "Neural sync executed" };
   }
@@ -212,12 +212,12 @@ class TwitchBotService {
   private async activatePlasmaField(args: unknown) {
     const channel = args?.channel || this.currentChannel;
     if (channel && this.client?.say) {
-      await this.client.say(channel, "⚡🌌 Plasma field charged to maximum! Cosmic powers activated! 🚀");
+      await this.client.say(channel, "??? Plasma field charged to maximum! Cosmic powers activated! ??");
     }
     return { success: true, message: "Plasma field activated" };
   }
 
-  // Öffentliche Message-API (z. B. vom IRC-Client aufzurufen)
+  // �ffentliche Message-API (z. B. vom IRC-Client aufzurufen)
   public async handleMessage(channel: string, tags: unknown, message: string, self: boolean) {
     return this.onMessage(channel, tags, message, self);
   }
@@ -258,7 +258,7 @@ class TwitchBotService {
     return { connected: !!this.client, channels: [], uptime: 0 };
   }
 
-  // Platzhalter-Engine: hier würdest du die Nodes/Edges deines Flows ausführen
+  // Platzhalter-Engine: hier w�rdest du die Nodes/Edges deines Flows ausf�hren
   private async executeFlow(flow: IQuantumFlow, ctx: unknown) {
     return {
       success: true,
@@ -268,13 +268,13 @@ class TwitchBotService {
       outputs: [
         {
           type: "cosmic_action",
-          output: { actionExecuted: "send_message", message: `✨ Executed flow "${(flow as any).name}"` },
+          output: { actionExecuted: "send_message", message: `? Executed flow "${(flow as any).name}"` },
         },
       ],
     };
   }
 
-  // Platzhalter für klassische Bot-Features
+  // Platzhalter f�r klassische Bot-Features
   private async updateAutoModeration(_args: unknown) { void _args; return { success: true, message: "Auto moderation updated" }; }
   private async updateWelcomeMessages(_args: unknown) { void _args; return { success: true, message: "Welcome messages updated" }; }
   private async updateTimerMessages(_args: unknown) { void _args; return { success: true, message: "Timer messages updated" }; }

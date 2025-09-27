@@ -122,7 +122,7 @@ router.post("/", async (req: Request, res: Response) => {
       }
 
       default:
-        // invoice.* / payment_intent.* usw. → acknowledge
+        // invoice.* / payment_intent.* usw. ? acknowledge
         break;
     }
 

@@ -15,7 +15,7 @@ export default async function authRegister(req: Request, res: Response) {
   try {
     const { email, password, accept } = (req.body ?? {}) as { email?: string; password?: string; accept?: boolean };
     if (!email || !password) return res.status(422).json({ ok: false, message: "E-Mail und Passwort sind erforderlich." });
-    if (!accept) return res.status(412).json({ ok: false, message: "AGB/Datenschutz müssen akzeptiert werden." });
+    if (!accept) return res.status(412).json({ ok: false, message: "AGB/Datenschutz m�ssen akzeptiert werden." });
     if (!process.env.JWT_SECRET) return res.status(500).json({ ok: false, message: "Server JWT-Config fehlt." });
 
     const db = mongoose.connection.db;

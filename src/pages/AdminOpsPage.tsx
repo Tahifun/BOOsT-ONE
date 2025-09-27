@@ -58,7 +58,7 @@ const AdminOpsPage: React.FC = () => {
     return () => { stop = true; };
   }, []);
 
-  if (!m) return <div className="p-6">Lade Metriken…</div>;
+  if (!m) return <div className="p-6">Lade Metriken.</div>;
 
   const heapPct = m.process.memory.heapUsed / (m.process.memory.heapTotal || 1);
   const sse = m.sse.totalSubscribers;
@@ -68,23 +68,23 @@ const AdminOpsPage: React.FC = () => {
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="text-2xl font-bold">Admin · Live Ops</h1>
+      <h1 className="text-2xl font-bold">Admin � Live Ops</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className={`p-4 rounded text-white ${badge(sseLevel)}`}>
           <div className="text-sm opacity-90">SSE Connections</div>
           <div className="text-3xl font-bold">{sse}</div>
-          <div className="text-xs opacity-90">Warn: {warn.sse} · Krit: {crit.sse}</div>
+          <div className="text-xs opacity-90">Warn: {warn.sse} � Krit: {crit.sse}</div>
         </div>
         <div className={`p-4 rounded text-white ${badge(memLevel)}`}>
           <div className="text-sm opacity-90">Heap Usage</div>
           <div className="text-3xl font-bold">{(heapPct*100).toFixed(1)}%</div>
-          <div className="text-xs opacity-90">Warn: {(warn.mem*100)}% · Krit: {(crit.mem*100)}%</div>
+          <div className="text-xs opacity-90">Warn: {(warn.mem*100)}% � Krit: {(crit.mem*100)}%</div>
         </div>
         <div className="p-4 rounded bg-neutral-800 text-white">
           <div className="text-sm opacity-90">Uptime</div>
           <div className="text-3xl font-bold">{Math.round(m.process.uptimeSec/60)} min</div>
-          <div className="text-xs opacity-90">PID {m.process.pid} · Node {m.process.node}</div>
+          <div className="text-xs opacity-90">PID {m.process.pid} � Node {m.process.node}</div>
         </div>
       </div>
 
@@ -101,14 +101,14 @@ const AdminOpsPage: React.FC = () => {
             return (
               <div key={c.creatorId} className={`p-3 rounded border ${lvl==="crit"?"border-red-600":lvl==="warn"?"border-yellow-500":"border-neutral-700"}`}>
                 <div className="flex items-center justify-between">
-                  <div className="font-medium">{c.creatorId} {c.live ? "• LIVE" : ""}</div>
+                  <div className="font-medium">{c.creatorId} {c.live ? ". LIVE" : ""}</div>
                   <div className={`px-2 py-0.5 rounded text-white ${badge(lvl)}`}>
                     Buffers {(maxPct*100).toFixed(0)}%
                   </div>
                 </div>
                 <div className="text-sm opacity-80 mt-1">
-                  Subs: {c.subscribers} · Chat {c.buffers.chat}/{c.buffers.cap} (drop {c.dropped.chat}) ·
-                  Gifts {c.buffers.gifts}/{c.buffers.cap} (drop {c.dropped.gifts}) ·
+                  Subs: {c.subscribers} � Chat {c.buffers.chat}/{c.buffers.cap} (drop {c.dropped.chat}) �
+                  Gifts {c.buffers.gifts}/{c.buffers.cap} (drop {c.dropped.gifts}) �
                   Likes {c.buffers.likes}/{c.buffers.cap} (drop {c.dropped.likes})
                 </div>
               </div>

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Brain, Layers, Zap, TrendingUp, BarChart3, Play, Pause, Settings, Cpu,
@@ -473,7 +473,7 @@ class QuantumAIEngine {
       'music-sync': 'Perfect Music Sync',
       'chat-reaction': 'Chat Explosion',
       'scene-change': 'Scene Transition',
-      'viral-potential': 'ðŸ”¥ Viral Potential',
+      'viral-potential': '�Y"� Viral Potential',
     };
     return titles[type] || 'AI Highlight';
   }

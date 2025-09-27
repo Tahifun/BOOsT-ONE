@@ -21,15 +21,15 @@ interface NavigationProps {
 
 const navigationTabs: NavigationTab[] = [
   { id: 'dashboard',  title: 'Dashboard',     icon: '', path: '/media/dashboard',   description: 'bersicht und Statistiken' },
-  { id: 'upload',     title: 'Upload',        icon: '️', path: '/media/upload',      description: 'Dateien hochladen' },
+  { id: 'upload',     title: 'Upload',        icon: '?', path: '/media/upload',      description: 'Dateien hochladen' },
   { id: 'gallery',    title: 'Galerie',       icon: '', path: '/media/gallery',     description: 'Alle Medien durchsuchen' },
-  { id: 'clips',      title: 'Clips',         icon: '️', path: '/media/clips',       description: 'Videos schneiden', requiresPro: true },
+  { id: 'clips',      title: 'Clips',         icon: '?', path: '/media/clips',       description: 'Videos schneiden', requiresPro: true },
   { id: 'screenshots',title: 'Screenshots',   icon: '', path: '/media/screenshots', description: 'Frames extrahieren' },
   { id: 'soundboard', title: 'Soundboard',    icon: '', path: '/media/soundboard',  description: 'Audio-Bibliothek', requiresPro: true },
   { id: 'overlays',   title: 'Overlays',      icon: '', path: '/media/overlays',    description: 'Templates verwalten', requiresPro: true },
   { id: 'export',     title: 'Export',        icon: '', path: '/media/export',      description: 'Medien exportieren' },
   { id: 'stats',      title: 'Impact Stats',  icon: '', path: '/media/stats',       description: 'Performance analysieren', requiresPro: true },
-  { id: 'ai',         title: 'AI Assistant',  icon: '', path: '/media/ai',          description: 'KI-gestützte Features', requiresPro: true, badge: 'NEU' },
+  { id: 'ai',         title: 'AI Assistant',  icon: '', path: '/media/ai',          description: 'KI-gest�tzte Features', requiresPro: true, badge: 'NEU' },
 ];
 
 export const Navigation: React.FC<NavigationProps> = ({ onTabSelect, className = '' }) => {
@@ -58,13 +58,13 @@ export const Navigation: React.FC<NavigationProps> = ({ onTabSelect, className =
     setTimeout(() => setIsAnimating(false), 300);
 
     if (tab.requiresPro && tier !== 'PRO') {
-      // Nur Hinweis  tatsächlicher Upgrade-Dialog wird auerhalb gehandhabt
+      // Nur Hinweis  tats�chlicher Upgrade-Dialog wird auerhalb gehandhabt
       logger.debug('PRO feature - showing upgrade prompt');
     }
 
     setActiveTab(tab.id);
     onTabSelect?.(tab.id);
-    // Fallback-kompatibel: solange Unterrouten evtl. fehlen, über Query navigieren
+    // Fallback-kompatibel: solange Unterrouten evtl. fehlen, �ber Query navigieren
     navigate(`/media?tab=${encodeURIComponent(tab.id)}`);
   };
 
@@ -75,7 +75,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onTabSelect, className =
     }
   };
 
-  // Globale Tastenkürzel: Alt+1..9 springt zu den ersten Tabs
+  // Globale Tastenk�rzel: Alt+1..9 springt zu den ersten Tabs
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
       if (e.altKey && e.key >= '1' && e.key <= '9') {
@@ -143,7 +143,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onTabSelect, className =
                   <div className="tooltip-content">
                     <strong>{tab.title}</strong>
                     <p>{tab.description}</p>
-                    {isLocked && <p className="tooltip-pro">⭐ PRO Feature</p>}
+                    {isLocked && <p className="tooltip-pro">? PRO Feature</p>}
                     <span className="tooltip-shortcut">Alt + {index + 1}</span>
                   </div>
                   <div className="tooltip-arrow" />

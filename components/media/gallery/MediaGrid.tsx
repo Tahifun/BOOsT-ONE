@@ -234,7 +234,7 @@ export const MediaGrid: React.FC<MediaGridProps> = ({
     <div className="grid-empty">
       <div className="empty-icon"></div>
       <h3>Keine Medien gefunden</h3>
-      <p>Lade deine ersten Dateien hoch oder ändere deine Filter</p>
+      <p>Lade deine ersten Dateien hoch oder �ndere deine Filter</p>
     </div>
   );
 

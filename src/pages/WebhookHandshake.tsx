@@ -40,7 +40,7 @@ const WebhookHandshake: React.FC = () => {
           return;
         }
         if (res.status === 404 || res.status === 501) {
-          setErr("Handshake-Endpoint nicht verfügbar. Bitte Backend ergänzen.");
+          setErr("Handshake-Endpoint nicht verf�gbar. Bitte Backend erg�nzen.");
           return;
         }
         if (!res.ok) {
@@ -63,7 +63,7 @@ const WebhookHandshake: React.FC = () => {
 
       {err && <p className="text-red-600 mt-2">{err}</p>}
 
-      {!err && !data && <p className="opacity-70 mt-2">Prüfe Konfiguration…</p>}
+      {!err && !data && <p className="opacity-70 mt-2">Pr�fe Konfiguration.</p>}
 
       {!err && data && (
         <div className="mt-3 text-sm">

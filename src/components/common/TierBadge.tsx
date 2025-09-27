@@ -28,9 +28,9 @@ const TierBadge: React.FC<TierBadgeProps> = ({ className, showCountdown = true, 
 
   if (isPro) {
     return (
-      <div className={`tier-badge pro ${className ?? ""}`} title={isDayPass ? "Day‑Pass aktiv" : "PRO aktiv"} style={baseStyle}>
+      <div className={`tier-badge pro ${className ?? ""}`} title={isDayPass ? "Day-Pass aktiv" : "PRO aktiv"} style={baseStyle}>
         <Crown size={12} />
-        <span style={{ marginLeft: 6 }}>{isDayPass ? "PRO (Day‑Pass)" : "PRO"}</span>
+        <span style={{ marginLeft: 6 }}>{isDayPass ? "PRO (Day-Pass)" : "PRO"}</span>
         {isDayPass && showCountdown && msRemaining !== null && (
           <span className="badge-countdown" style={{ marginLeft: 8 }}>
             <Clock size={12} style={{ marginRight: 4 }} />

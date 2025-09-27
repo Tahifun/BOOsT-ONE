@@ -303,7 +303,7 @@ export const DropZone: React.FC<DropZoneProps> = ({
                 disabled={disabled}
                 type="button"
               >
-                Dateien auswählen
+                Dateien ausw�hlen
               </button>
             </>
           )}
@@ -313,10 +313,10 @@ export const DropZone: React.FC<DropZoneProps> = ({
         {!isValidating && !isDragging && (
           <div className="drop-zone-info" aria-live="polite">
             <p className="info-text">
-              Unterstützte Formate: <span className="info-highlight">MP4, MOV, PNG, JPG, MP3, WAV</span>
+              Unterst�tzte Formate: <span className="info-highlight">MP4, MOV, PNG, JPG, MP3, WAV</span>
             </p>
             <p className="info-text">
-              Maximale Dateigröe: <span className="info-highlight">{formatFileSize(maxSize)}</span>
+              Maximale Dateigr�e: <span className="info-highlight">{formatFileSize(maxSize)}</span>
             </p>
             {multiple && (
               <p className="info-text">

@@ -13,7 +13,7 @@ const WheelGame: React.FC = () => {
 
   return (
     <div className="game-card">
-      <h3>Glücksrad</h3>
+      <h3>Gl�cksrad</h3>
       <button onClick={spin}>Drehen</button>
       {result && <div style={{ marginTop: 18, color: "#18ffe6", fontWeight: 700, fontSize: "1.2em" }}>{result}</div>}
     </div>

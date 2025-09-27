@@ -1,7 +1,7 @@
 import Button from "../Button"; // Pfad ggf. anpassen
 
 export default function TikTokConnectButton() {
-  // Vercel: unterstützt beide Varianten (mit Underscore oder Bindestrich)
+  // Vercel: unterst�tzt beide Varianten (mit Underscore oder Bindestrich)
   const API =
     import.meta.env.VITE_API_BASE_URL ??
     import.meta.env["VITE-API-BASE-URL"] ??

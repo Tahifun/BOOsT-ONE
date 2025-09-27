@@ -11,10 +11,10 @@ const ViewerStats: React.FC<ViewerStatsProps> = ({ variant = "dashboard" }) => (
     </h2>
     <p>
       {variant === "overlay"
-        ? "Live-Zuschauerzahlen für dein Stream-Overlay."
+        ? "Live-Zuschauerzahlen f�r dein Stream-Overlay."
         : "Hier werden die Zuschauerzahlen deines Streams angezeigt."}
     </p>
-    {/* Hier später die echte Statistik */}
+    {/* Hier sp�ter die echte Statistik */}
   </div>
 );
 

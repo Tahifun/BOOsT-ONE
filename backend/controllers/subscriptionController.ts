@@ -6,7 +6,7 @@ import SubscriptionState from "../models/SubscriptionState.js";
 
 /**
  * GET /api/subscription/plans
- * Gibt die öffentlich nutzbaren Plan-Infos zurück (aus ENV).
+ * Gibt die �ffentlich nutzbaren Plan-Infos zur�ck (aus ENV).
  */
 export const listPublicPlans = async (_req: Request, res: Response) => {
   return res.json({
@@ -35,7 +35,7 @@ export const getMySubscription = async (req: Request, res: Response) => {
 
   const doc = await SubscriptionState.findOne({ userId }).lean().exec();
 
-  // Daten defensiv auslesen (lockere Typen – Schema kann je nach Migration variieren)
+  // Daten defensiv auslesen (lockere Typen - Schema kann je nach Migration variieren)
   const stripeState = (doc as any)?.stripe ?? null;
   const dayPass = (doc as any)?.dayPass ?? null;
 

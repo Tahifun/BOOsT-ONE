@@ -26,7 +26,7 @@ router.post("/start", requireAuth, async (req, res) => {
 
     const plan = String(req.body?.plan || "pro").toLowerCase();
     if (!["pro", "daypass"].includes(plan)) {
-      return res.status(400).json({ ok: false, error: "Ungültiger Plan (erwartet 'pro' oder 'daypass')." });
+      return res.status(400).json({ ok: false, error: "Ung�ltiger Plan (erwartet 'pro' oder 'daypass')." });
     }
 
     const successUrl =

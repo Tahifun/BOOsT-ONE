@@ -1,4 +1,4 @@
-﻿import React, { lazy } from "react";
+import React, { lazy } from "react";
 
 /** Hilfs-Typ: Wir behandeln alle lazy-Komponenten als ComponentType<any>,
  *  damit Pflicht-Props dich nicht am Build hindern. */
@@ -6,7 +6,7 @@ function lazyAny(pathImport: () => Promise<{ default: React.ComponentType<any> }
   return lazy(pathImport as unknown as () => Promise<{ default: React.ComponentType<any> }>);
 }
 
-/* â”€â”€ Reale Komponenten (als any) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* �"?�"? Reale Komponenten (als any) �"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"? */
 const RealMediaUpload               = lazyAny(() => import('../MediaUpload'));
 const RealMediaGallery              = lazyAny(() => import('../MediaGallery'));
 const RealClipManager               = lazyAny(() => import('../ClipManager'));
@@ -18,7 +18,7 @@ const RealMediaImpactStats          = lazyAny(() => import('../MediaImpactStats'
 const RealAIHighlightSuggestions    = lazyAny(() => import('../AIHighlightSuggestions'));
 const RealAIAssistant               = lazyAny(() => import('../ai/AIAssistant'));
 
-/* â”€â”€ Adapter-Komponenten (mit Default-Props) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* �"?�"? Adapter-Komponenten (mit Default-Props) �"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"? */
 export const LazyMediaUpload: React.FC<{ onUpload?: () => void }> = ({ onUpload }) => {
   const Comp = RealMediaUpload as React.ComponentType<any>;
   return <Comp onUpload={onUpload ?? (() => {})} />;
@@ -26,8 +26,8 @@ export const LazyMediaUpload: React.FC<{ onUpload?: () => void }> = ({ onUpload 
 
 export const LazyMediaGallery: React.FC<{ query?: string }> = ({ query }) => {
   const Comp = RealMediaGallery as React.ComponentType<any>;
-  // Falls die echte Komponente anders heiÃŸt (search/filter), reicht es,
-  // dass wir "query" einfach mitgeben â€“ React ignoriert unbekannte Props.
+  // Falls die echte Komponente anders hei�Yt (search/filter), reicht es,
+  // dass wir "query" einfach mitgeben �?" React ignoriert unbekannte Props.
   return <Comp query={query} search={query} filter={query} />;
 };
 
@@ -48,7 +48,7 @@ export const LazySoundboardManager: React.FC = () => {
 
 export const LazyOverlayTemplateManager: React.FC = () => {
   const Comp = RealOverlayTemplateManager as React.ComponentType<any>;
-  // Viele Template-Manager verlangen Pflicht-Handler â€“ wir liefern No-Ops.
+  // Viele Template-Manager verlangen Pflicht-Handler �?" wir liefern No-Ops.
   return (
     <Comp
       templates={[]}
@@ -80,7 +80,7 @@ export const LazyAIHighlightSuggestions: React.FC<{ onSelect?: () => void }> = (
 
 export const LazyAIAssistant: React.FC = () => {
   const Comp = RealAIAssistant as React.ComponentType<any>;
-  // Minimal-Defaults, damit die Seite lÃ¤uft, auch wenn nichts aktiv ausgewÃ¤hlt ist.
+  // Minimal-Defaults, damit die Seite läuft, auch wenn nichts aktiv ausgewählt ist.
   return (
     <Comp
       mediaId={null}

@@ -4,12 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import LoginExperience from '../components/LoginExperience';
 import './LoginPage.css';
 
-// 👉 neu: zentraler API-Client (sendet Cookies immer mit)
+// ?? neu: zentraler API-Client (sendet Cookies immer mit)
 import { postLogin, getSession } from '@/services/api';
 
 // (Optional) Wenn dein globaler Auth-Context noch ein Token erwartet,
-// kannst du ihn weiter nutzen – wir setzen hier ein Dummy-Token nach erfolgreichem Session-Check.
-// Wenn es keinen Context gibt, kannst du die nächste Zeile löschen.
+// kannst du ihn weiter nutzen - wir setzen hier ein Dummy-Token nach erfolgreichem Session-Check.
+// Wenn es keinen Context gibt, kannst du die n�chste Zeile l�schen.
 import { useAuth } from '../contexts/AuthContext';
 
 // Icons als SVG Components
@@ -55,17 +55,17 @@ export default function LoginPage() {
   const fromState = (location.state as any)?.from;
   const from = redirectParam || fromState?.pathname || '/dashboard';
 
-  // Wenn bereits eingeloggt und wir von einer geschützten Seite kamen → weiter
+  // Wenn bereits eingeloggt und wir von einer gesch�tzten Seite kamen ? weiter
   useEffect(() => {
     // Kein automatischer Redirect ohne echten Session-Check
-    // (Viele Setups hatten hier nur einen Token im LocalStorage – das reicht nicht.)
+    // (Viele Setups hatten hier nur einen Token im LocalStorage - das reicht nicht.)
   }, []);
 
   // Hinweis nach E-Mail-Verifizierung
   useEffect(() => {
     const p = new URLSearchParams(location.search);
     if (p.get('verified') === 'true') {
-      setSuccess('🎉 E-Mail bestätigt! Du kannst dich jetzt einloggen!');
+      setSuccess('?? E-Mail best�tigt! Du kannst dich jetzt einloggen!');
       setError(null);
     }
   }, [location.search]);
@@ -103,12 +103,12 @@ export default function LoginPage() {
       // 1) Login beim Backend (setzt httpOnly-Cookie)
       await postLogin({ email, password: pwd });
 
-      // 2) Session sofort prüfen (geht mit Cookie)
+      // 2) Session sofort pr�fen (geht mit Cookie)
       const s = await getSession();
 
       if (s?.authenticated) {
-        setSuccess('🚀 Willkommen zurück! Einen Moment...');
-        // (Optional) alten LocalStorage-Token „füllen“, falls andere Teile der App ihn erwarten
+        setSuccess('?? Willkommen zur�ck! Einen Moment...');
+        // (Optional) alten LocalStorage-Token "f�llen", falls andere Teile der App ihn erwarten
         try { localStorage.setItem('token', 'session'); } catch {}
 
         // (Optional) globalen Auth-Context informieren
@@ -147,7 +147,7 @@ export default function LoginPage() {
         credentials: 'include',
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      setSuccess('📧 Bestätigungs-E-Mail wurde erneut gesendet!');
+      setSuccess('?? Best�tigungs-E-Mail wurde erneut gesendet!');
     } catch (err: unknown) {
       setError(err?.message || 'Fehler beim erneuten Senden');
     }
@@ -240,7 +240,7 @@ export default function LoginPage() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
                 >
-                  <span className="message-icon">⚠️</span>
+                  <span className="message-icon">??</span>
                   {error}
                 </motion.div>
               )}
@@ -264,7 +264,7 @@ export default function LoginPage() {
               transition={{ delay: 1.0, duration: 0.6 }}
             >
               <label htmlFor="email" className="input-label">
-                <span className="label-icon">📧</span>
+                <span className="label-icon">??</span>
                 E-Mail Adresse
               </label>
               <div className="input-wrapper">
@@ -292,7 +292,7 @@ export default function LoginPage() {
               transition={{ delay: 1.1, duration: 0.6 }}
             >
               <label htmlFor="password" className="input-label">
-                <span className="label-icon">🔐</span>
+                <span className="label-icon">??</span>
                 Passwort
               </label>
               <div className="input-wrapper">
@@ -300,7 +300,7 @@ export default function LoginPage() {
                   id="password"
                   type={showPassword ? 'text' : 'password'}
                   className="input-field"
-                  placeholder="••••••••"
+                  placeholder="........"
                   value={pwd}
                   onChange={(e) => setPwd(e.target.value)}
                   onFocus={() => setFocusedField('password')}
@@ -314,7 +314,7 @@ export default function LoginPage() {
                   onClick={() => setShowPassword(!showPassword)}
                   tabIndex={-1}
                 >
-                  {showPassword ? '🙈' : '🫥‍🛡️'}
+                  {showPassword ? '??' : '??????'}
                 </button>
                 <div className="input-glow" />
               </div>
@@ -341,9 +341,9 @@ export default function LoginPage() {
                   </>
                 ) : (
                   <>
-                    <span className="button-icon">🚀</span>
+                    <span className="button-icon">??</span>
                     Go Live!
-                    <span className="button-arrow">→</span>
+                    <span className="button-arrow">?</span>
                   </>
                 )}
               </span>
@@ -351,7 +351,7 @@ export default function LoginPage() {
             </motion.button>
 
             {/* Resend Verification */}
-            {error?.toLowerCase().includes('bestätige') && (
+            {error?.toLowerCase().includes('best�tige') && (
               <motion.div
                 className="resend-section"
                 initial={{ opacity: 0 }}
@@ -363,7 +363,7 @@ export default function LoginPage() {
                   className="resend-button"
                   onClick={resendVerification}
                 >
-                  📮 Bestätigungs-E-Mail erneut senden
+                  ?? Best�tigungs-E-Mail erneut senden
                 </button>
               </motion.div>
             )}
@@ -382,11 +382,11 @@ export default function LoginPage() {
 
             <Link to="/register" className="register-link">
               <span>Jetzt Account erstellen</span>
-              <span className="link-arrow">→</span>
+              <span className="link-arrow">?</span>
             </Link>
 
             <div className="social-login-hint">
-              <p>Bald verfügbar:</p>
+              <p>Bald verf�gbar:</p>
               <div className="social-icons">
                 <span className="social-icon tiktok">TikTok</span>
                 <span className="social-icon spotify">Spotify</span>
@@ -416,7 +416,7 @@ export default function LoginPage() {
             animate={{ y: [0, -15, 0], x: [0, 10, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
           >
-            🎬
+            ??
           </motion.div>
         </div>
       </div>

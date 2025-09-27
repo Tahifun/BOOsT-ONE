@@ -33,11 +33,11 @@ const UpgradePrompt: React.FC<UpgradePromptProps> = ({
     return (
       <div className="upgrade-banner">
         <div className="upgrade-banner-text">
-          <strong>PRO Feature</strong> — {displayMessage}
+          <strong>PRO Feature</strong> - {displayMessage}
         </div>
         <div className="upgrade-banner-actions">
           <button className="btn" onClick={handleUpgrade}>Jetzt upgraden</button>
-          <button className="btn ghost" onClick={() => { setOpen(false); onClose?.(); }}>Später</button>
+          <button className="btn ghost" onClick={() => { setOpen(false); onClose?.(); }}>Sp�ter</button>
         </div>
       </div>
     );
@@ -51,7 +51,7 @@ const UpgradePrompt: React.FC<UpgradePromptProps> = ({
           <p>{displayMessage}</p>
           <div className="modal-actions">
             <button className="btn" onClick={handleUpgrade}>Upgrade</button>
-            <button className="btn ghost" onClick={() => { setOpen(false); onClose?.(); }}>Schließen</button>
+            <button className="btn ghost" onClick={() => { setOpen(false); onClose?.(); }}>Schlie�en</button>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@ const UpgradePrompt: React.FC<UpgradePromptProps> = ({
 
   return (
     <div className="upgrade-inline">
-      <span className="upgrade-inline-icon">🔒</span>
+      <span className="upgrade-inline-icon">??</span>
       <span className="upgrade-inline-text">{displayMessage}</span>
       <button className="upgrade-inline-btn" onClick={handleUpgrade}>
         Upgraden

@@ -642,7 +642,7 @@ html, body {
 .energy-overflow {
   position: absolute;
   top: 0;
-  /* war: right: -50px; — ragt aus dem Container, erzeugt Horizontal-Scroll */
+  /* war: right: -50px; - ragt aus dem Container, erzeugt Horizontal-Scroll */
   right: 8px;
   animation: overflowPulse 1s ease-in-out infinite;
 }

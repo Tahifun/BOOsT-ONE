@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 /**
- * Stream Analytics – robuste, lokal speicherbare Analytics für den Livestream.
+ * Stream Analytics - robuste, lokal speicherbare Analytics f�r den Livestream.
  * Wichtige Fixes:
  * - String-Datumswerte aus localStorage werden mit `toTime()` sicher behandelt.
- * - cleanupOldData() filtert ausschließlich via `toTime(...)`, nie via `.getTime()` auf Strings.
+ * - cleanupOldData() filtert ausschlie�lich via `toTime(...)`, nie via `.getTime()` auf Strings.
  * - Public API/Export-Namen bleiben erhalten (trackStreamStart/End, trackViewerInteraction, trackThemeSwitch,
  *   trackPerformanceMetric, generateStreamReport, exportAnalyticsData, clearAnalyticsData, useStreamAnalytics, streamAnalytics).
  */
@@ -144,7 +144,7 @@ class StreamAnalytics {
     }
   }
 
-  // ------------------- Öffentliche API -------------------
+  // ------------------- �ffentliche API -------------------
 
   public trackStreamStart(payload: {
     streamId: string;
@@ -199,7 +199,7 @@ class StreamAnalytics {
       metadata: payload?.reason ? { reason: payload.reason } : undefined,
     });
 
-    // Sessions zurückschreiben
+    // Sessions zur�ckschreiben
     const sessions = this.readJSON<StreamSession[]>("epicstream_sessions", []);
     const idx = sessions.findIndex(
       (s) => s.sessionId === this.currentSession!.sessionId
@@ -237,7 +237,7 @@ class StreamAnalytics {
     switches.push(entry);
     this.writeJSON("epicstream_theme_switches", switches);
 
-    // Auch als allgemeines Ereignis führen
+    // Auch als allgemeines Ereignis f�hren
     this.addEvent({
       id: "evt_" + Math.random().toString(36).slice(2),
       type: "resume",
@@ -254,7 +254,7 @@ class StreamAnalytics {
     };
     if (this.currentSession) {
       this.currentSession.performance.push(data);
-      // Qualität grob nachführen (Durchschnittswerte)
+      // Qualit�t grob nachf�hren (Durchschnittswerte)
       this.recomputeQuality();
     }
     this.eventQueue.push(data);
@@ -407,7 +407,7 @@ class StreamAnalytics {
 export const streamAnalytics = new StreamAnalytics();
 
 /**
- * React Hook – liefert kompakte Summary & gebundene Methoden.
+ * React Hook - liefert kompakte Summary & gebundene Methoden.
  * (Beispiel-API; du kannst sie nach Bedarf erweitern.)
  */
 import { useEffect, useMemo, useState } from "react";
@@ -431,7 +431,7 @@ export function useStreamAnalytics() {
   useEffect(() => {
     // Session-Ref poll (optional)
     const id = window.setInterval(() => {
-      // Hier könnten wir die aktuelle Session aus storage neu lesen, falls nötig
+      // Hier k�nnten wir die aktuelle Session aus storage neu lesen, falls n�tig
       setCurrentSession((prev) => prev ?? null);
     }, 5000);
     return () => window.clearInterval(id);

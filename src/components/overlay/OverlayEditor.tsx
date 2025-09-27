@@ -16,10 +16,10 @@ const OverlayEditorPage: React.FC = () => {
           <button
             className="overlay-back-btn"
             onClick={() => navigate("/overlay")}
-            aria-label="Zurück zu Overlay-Übersicht"
+            aria-label="Zur�ck zu Overlay-�bersicht"
             style={{ marginRight: 8 }}
           >
-            ← Zurück
+            ? Zur�ck
           </button>
           <h1 style={{ margin: 0, fontSize: "1.5rem" }}>Overlay Editor</h1>
           {templateId && (
@@ -31,7 +31,7 @@ const OverlayEditorPage: React.FC = () => {
       </div>
 
       <p style={{ marginTop: 0, marginBottom: 12, color: "#ccc" }}>
-        Erstelle oder wähle eine Overlay-Vorlage, passe Widgets an und setze Standardwerte. Deine aktiven Widgets steuerst du im Editor der Vorlage.
+        Erstelle oder w�hle eine Overlay-Vorlage, passe Widgets an und setze Standardwerte. Deine aktiven Widgets steuerst du im Editor der Vorlage.
       </p>
 
       <OverlayTemplateManager />

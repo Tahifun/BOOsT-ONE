@@ -5,7 +5,7 @@ import { MediaGallery } from "../components/media/MediaGallery";
 import { ClipManager } from "../components/media/ClipManager";
 import { ScreenshotManager } from "../components/media/ScreenshotManager";
 import { SoundboardManager } from "../components/media/SoundboardManager";
-// ⬇️ Wichtig: Adapter statt der echten Komponente importieren
+// ?? Wichtig: Adapter statt der echten Komponente importieren
 import OverlayTemplateManager from "../components/media/OverlayTemplateManager.adapter";
 import { MediaExportTools } from "../components/media/MediaExportTools";
 import { MediaImpactStats } from "../components/media/MediaImpactStats";
@@ -34,7 +34,7 @@ export const MediaPage: React.FC = () => {
 
   return (
     <div className="media-page">
-      <h1 className="media-title">🎬 Media Center</h1>
+      <h1 className="media-title">?? Media Center</h1>
 
       <div className="media-upload-wrapper">
         <MediaUpload onUpload={handleUploadDone} />
@@ -58,7 +58,7 @@ export const MediaPage: React.FC = () => {
         {activeTab === "screenshots" && <ScreenshotManager key={reloadKey} />}
         {activeTab === "sounds" && <SoundboardManager key={reloadKey} />}
 
-        {/* ⬇️ Adapter-Komponente: keine Pflicht-Props nötig */}
+        {/* ?? Adapter-Komponente: keine Pflicht-Props n�tig */}
         {activeTab === "overlays" && <OverlayTemplateManager key={reloadKey} />}
 
         {activeTab === "export" && <MediaExportTools key={reloadKey} />}

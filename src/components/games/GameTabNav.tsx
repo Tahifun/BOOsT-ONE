@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-// Die eigentlichen Spiele werden als Props übergeben!
+// Die eigentlichen Spiele werden als Props �bergeben!
 interface GameTabNavProps {
   DuelGame: React.FC;
   SlotsGame: React.FC;
@@ -17,7 +17,7 @@ const tabs = [
   { key: "slots", label: "Slots", comp: "SlotsGame" },
   { key: "quiz", label: "Quiz", comp: "QuizGame" },
   { key: "random", label: "Zahlenraten", comp: "RandomNumberGame" },
-  { key: "wheel", label: "Glücksrad", comp: "WheelGame" },
+  { key: "wheel", label: "Gl�cksrad", comp: "WheelGame" },
   { key: "rps", label: "Stein/Schere/Papier", comp: "RockPaperScissorsGame" },
 ];
 

@@ -12,7 +12,7 @@ export const ScreenshotManager: React.FC = () => {
 
   return (
     <div className="screenshot-manager">
-      <h2>️ Screenshots</h2>
+      <h2>? Screenshots</h2>
       {screenshots.length === 0 && <div>Keine Screenshots vorhanden.</div>}
       <div className="screenshot-list">
         {screenshots.map(ss => (
@@ -23,7 +23,7 @@ export const ScreenshotManager: React.FC = () => {
             <div className="screenshot-actions">
               <button>Als Thumbnail nutzen</button>
               <button>Teilen</button>
-              <button>Löschen</button>
+              <button>L�schen</button>
             </div>
           </div>
         ))}

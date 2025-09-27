@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { OverlayCardProps } from './OverlayCard';
 
 interface OverlayPreviewModalProps {
@@ -14,7 +14,7 @@ const OverlayPreviewModal: React.FC<OverlayPreviewModalProps> = ({ overlay, onCl
         <img src={overlay.imageUrl} alt={overlay.name} />
         <h3>{overlay.name}</h3>
         <span>Kategorie: {overlay.category}</span>
-        <button onClick={onClose}>SchlieÃŸen</button>
+        <button onClick={onClose}>Schlie�Yen</button>
       </div>
     </div>
   );

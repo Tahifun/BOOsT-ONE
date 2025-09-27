@@ -1,4 +1,4 @@
-﻿// src/components/analytics/ProAnalytics.tsx
+// src/components/analytics/ProAnalytics.tsx
 import React, { useEffect, useMemo, useState } from "react";
 import ProFeatureWrapper from '../common/ProFeatureWrapper';
 import { useSubscription } from '../../contexts/SubscriptionContext';
@@ -163,7 +163,7 @@ async function fetchProStats(days: number): Promise<ProStats> {
       };
       return stats;
     } catch {
-      // nÃ¤chsten Versuch
+      // nächsten Versuch
     }
   }
 
@@ -221,10 +221,10 @@ const ProAnalytics: React.FC = () => {
   return (
     <ProFeatureWrapper featureName="pro_analytics">
       <div className="overlay-widget-card" role="region" aria-label="Pro Analytics">
-        <div className="widget-icon">ðŸ“ˆ</div>
+        <div className="widget-icon">�Y"^</div>
         <div className="widget-title">Pro Analytics</div>
         <div className="widget-desc" style={{ marginBottom: 10 }}>
-          Tiefere Einblicke in Zuschauer, Follows, Coins & Chat â€“ mit Vergleich Ã¼ber Zeit.
+          Tiefere Einblicke in Zuschauer, Follows, Coins & Chat �?" mit Vergleich über Zeit.
         </div>
 
         {/* Range-Auswahl */}
@@ -266,7 +266,7 @@ const ProAnalytics: React.FC = () => {
               }}
               title="Als CSV exportieren"
             >
-              ðŸ“¤ Export CSV
+              �Y"� Export CSV
             </button>
           </ProFeatureWrapper>
         </div>
@@ -297,12 +297,12 @@ const ProAnalytics: React.FC = () => {
             marginTop: 8,
           }}
         >
-          <MetricCard label="Peak Viewers" value={stats ? fmt(stats.peakViewers) : "â€”"} loading={loading} />
-          <MetricCard label="Ã˜ Viewers" value={stats ? fmt(stats.avgViewers) : "â€”"} loading={loading} />
-          <MetricCard label="Neue Follower" value={stats ? fmt(stats.newFollowers) : "â€”"} loading={loading} />
-          <MetricCard label="Coins" value={stats ? fmt(stats.coins) : "â€”"} loading={loading} />
-          <MetricCard label="Chat-Nachrichten" value={stats ? fmt(stats.chatMessages) : "â€”"} loading={loading} />
-          <MetricCard label="Engagement" value={stats ? pct(stats.engagementRate) : "â€”"} loading={loading} />
+          <MetricCard label="Peak Viewers" value={stats ? fmt(stats.peakViewers) : "�?""} loading={loading} />
+          <MetricCard label="�~ Viewers" value={stats ? fmt(stats.avgViewers) : "�?""} loading={loading} />
+          <MetricCard label="Neue Follower" value={stats ? fmt(stats.newFollowers) : "�?""} loading={loading} />
+          <MetricCard label="Coins" value={stats ? fmt(stats.coins) : "�?""} loading={loading} />
+          <MetricCard label="Chat-Nachrichten" value={stats ? fmt(stats.chatMessages) : "�?""} loading={loading} />
+          <MetricCard label="Engagement" value={stats ? pct(stats.engagementRate) : "�?""} loading={loading} />
         </div>
 
         {/* Sparklines */}
@@ -333,7 +333,7 @@ const MetricCard: React.FC<{ label: string; value: string; loading?: boolean }> 
   >
     <div style={{ fontSize: 12, opacity: 0.75 }}>{label}</div>
     <div style={{ fontSize: 22, fontWeight: 900, color: "#18ffe6", textShadow: "0 0 8px #18ffe666" }}>
-      {loading ? "â€¦" : value}
+      {loading ? "�?�" : value}
     </div>
   </div>
 );
@@ -344,7 +344,7 @@ const SeriesCard: React.FC<{ title: string; data: Point[]; loading?: boolean }> 
       {title}
     </div>
     {loading ? (
-      <div style={{ opacity: 0.8 }}>Lade â€¦</div>
+      <div style={{ opacity: 0.8 }}>Lade �?�</div>
     ) : data?.length ? (
       <Sparkline data={data} title={title} />
     ) : (

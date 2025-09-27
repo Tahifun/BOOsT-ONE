@@ -1,9 +1,9 @@
-﻿import React from "react";
+import React from "react";
 import { useEffect, useState } from "react";
 import { createPortalSession, mapSubscriptionError } from '../services/subscriptionService';
 
 const PortalPage: React.FC = () => {
-  const [msg, setMsg] = useState<string>("Ã–ffne Kundenportalâ€¦");
+  const [msg, setMsg] = useState<string>("�-ffne Kundenportal�?�");
   const [err, setErr] = useState<string | null>(null);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const PortalPage: React.FC = () => {
         const m = mapSubscriptionError(e);
         setErr(m);
         if ((e as any)?.status === 404 || (e as any)?.status === 501) {
-          setMsg("Weiterleitung zur Upgrade-Seiteâ€¦");
+          setMsg("Weiterleitung zur Upgrade-Seite�?�");
           window.location.replace("/upgrade");
         }
       }

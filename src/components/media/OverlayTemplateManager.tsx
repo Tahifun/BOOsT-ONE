@@ -1,4 +1,4 @@
-﻿// src/components/overlay/OverlayTemplateManager.tsx
+// src/components/overlay/OverlayTemplateManager.tsx
 import React, { useMemo, useRef, useState } from "react";
 import ProFeatureWrapper from '../common/ProFeatureWrapper';
 import UpgradePrompt from '../common/UpgradePrompt';
@@ -77,7 +77,7 @@ const OverlayTemplateManager: React.FC<Props> = ({
         <div className="actions">
           <input
             className="search-input"
-            placeholder="Suchen nach Name, Tag, Beschreibungâ€¦"
+            placeholder="Suchen nach Name, Tag, Beschreibung�?�"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -103,9 +103,9 @@ const OverlayTemplateManager: React.FC<Props> = ({
                 <div className="template-name">{tpl.name}</div>
                 <div className="template-meta">
                   <span className="template-date">
-                    {tpl.lastModified ? new Date(tpl.lastModified as any).toLocaleString() : "â€”"}
+                    {tpl.lastModified ? new Date(tpl.lastModified as any).toLocaleString() : "�?""}
                   </span>
-                  {tpl.author && <span className="template-author">â€¢ {tpl.author}</span>}
+                  {tpl.author && <span className="template-author">�?� {tpl.author}</span>}
                 </div>
               </div>
 
@@ -123,7 +123,7 @@ const OverlayTemplateManager: React.FC<Props> = ({
                 <button className="btn" onClick={() => onLoadTemplate(tpl)}>Laden</button>
                 <button className="btn" onClick={() => onDuplicateTemplate(tpl.id)}>Duplizieren</button>
                 <button className="btn" onClick={() => onExportTemplate(tpl)}>Export</button>
-                <button className="btn danger" onClick={() => onDeleteTemplate(tpl.id)}>LÃ¶schen</button>
+                <button className="btn danger" onClick={() => onDeleteTemplate(tpl.id)}>Löschen</button>
               </div>
             </div>
           );

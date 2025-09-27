@@ -58,11 +58,11 @@ const DreamMode: React.FC = () => {
 
   // Emotions
   const [emotions, setEmotions] = useState<EmotionData[]>([
-    { name: "Energy",       value: 75, color: "#78dbff", icon: "⚡" },
-    { name: "Focus",        value: 88, color: "#ff77c6", icon: "🎯" },
-    { name: "Stress",       value: 32, color: "#ff6b6b", icon: "💢" },
-    { name: "Satisfaction", value: 91, color: "#4ecdc4", icon: "✨" },
-    { name: "Creativity",   value: 95, color: "#a855f7", icon: "🎨" },
+    { name: "Energy",       value: 75, color: "#78dbff", icon: "?" },
+    { name: "Focus",        value: 88, color: "#ff77c6", icon: "??" },
+    { name: "Stress",       value: 32, color: "#ff6b6b", icon: "??" },
+    { name: "Satisfaction", value: 91, color: "#4ecdc4", icon: "?" },
+    { name: "Creativity",   value: 95, color: "#a855f7", icon: "??" },
   ]);
 
   // Widget Status
@@ -153,7 +153,7 @@ const DreamMode: React.FC = () => {
 
   // Dimension shifter
   useEffect(() => {
-    const dims = ["3D", "4D", "5D", "7D", "11D", "∞D"];
+    const dims = ["3D", "4D", "5D", "7D", "11D", "?D"];
     const i = window.setInterval(
       () => setDimension(dims[Math.floor(Math.random() * dims.length)]),
       8000,
@@ -191,7 +191,7 @@ const DreamMode: React.FC = () => {
   // Matrix rain
   useEffect(() => {
     const chars =
-      "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+      "01??????????????????????????????????????????????";
     const cols = 20;
     const rows = 10;
     const i = window.setInterval(() => {
@@ -365,7 +365,7 @@ const DreamMode: React.FC = () => {
             </div>
             <div className="status-item">
               <div className="status-label">ENTITIES</div>
-              <div className="status-value infinity-symbol">∞</div>
+              <div className="status-value infinity-symbol">?</div>
             </div>
             <div className="status-item">
               <div className="status-label">DIMENSION</div>
@@ -383,10 +383,10 @@ const DreamMode: React.FC = () => {
         <section className="module-grid">
           {(
             [
-              { id: "reality", name: "Reality Editor", icon: "🌌", energy: 87 },
-              { id: "gallery", name: "Quantum Gallery", icon: "🎨", energy: 92 },
-              { id: "upload", name: "Dimension Upload", icon: "📡", energy: 76 },
-              { id: "dream", name: "Dream Mode", icon: "🌙", energy: 100 },
+              { id: "reality", name: "Reality Editor", icon: "??", energy: 87 },
+              { id: "gallery", name: "Quantum Gallery", icon: "??", energy: 92 },
+              { id: "upload", name: "Dimension Upload", icon: "??", energy: 76 },
+              { id: "dream", name: "Dream Mode", icon: "??", energy: 100 },
             ] as ModuleData[]
           ).map(m => (
             <div
@@ -488,7 +488,7 @@ const DreamMode: React.FC = () => {
 
         <section className="quantum-control">
           <button className="quantum-toggle on" onClick={() => setIsQuantumMode(prev => !prev)}>
-            {isQuantumMode ? "🌌 QUANTUM MODE ACTIVE" : "⚡ ACTIVATE QUANTUM MODE"}
+            {isQuantumMode ? "?? QUANTUM MODE ACTIVE" : "? ACTIVATE QUANTUM MODE"}
           </button>
         </section>
       </div>

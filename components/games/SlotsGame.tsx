@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Button from '../Button';
 
 const symbolSets: Record<string, string[]> = {
-  klassisch: ["", "", "", "⭐", "7️", "", ""],
-  modern: ["", "", "", "", "⭐", ""],
+  klassisch: ["", "", "", "?", "7?", "", ""],
+  modern: ["", "", "", "", "?", ""],
 };
 
 type HistoryEntry = {
@@ -60,7 +60,7 @@ const SlotsGame: React.FC = () => {
           Modern
         </Button>
         <Button size="sm" onClick={resetHistory}>
-          Zurücksetzen
+          Zur�cksetzen
         </Button>
       </div>
 

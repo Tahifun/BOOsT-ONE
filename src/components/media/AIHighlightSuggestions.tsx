@@ -1,4 +1,4 @@
-﻿// src/components/media/AIHighlightSuggestions.tsx
+// src/components/media/AIHighlightSuggestions.tsx
 
 import React, { useContext } from "react";
 import { MediaContext } from '../../contexts/MediaContext';
@@ -20,7 +20,7 @@ export const AIHighlightSuggestions: React.FC = () => {
 
   return (
     <div className="ai-highlight-suggestions">
-      <h2>ðŸ¤– KI-Highlight-VorschlÃ¤ge</h2>
+      <h2>�Y�- KI-Highlight-Vorschläge</h2>
       {suggestions.length === 0 && (
         <div>Keine Highlights erkannt.</div>
       )}
@@ -30,13 +30,13 @@ export const AIHighlightSuggestions: React.FC = () => {
             <video src={highlight.url} controls width={200} />
             <div className="highlight-title">{highlight.name}</div>
             <div className="highlight-desc">{highlight.description}</div>
-            <button>Clip als Highlight Ã¼bernehmen</button>
+            <button>Clip als Highlight übernehmen</button>
           </div>
         ))}
       </div>
       <div style={{ marginTop: 16 }}>
         <em>
-          Die App schlÃ¤gt dir automatisch die besten Stream-Momente als Highlights vor.
+          Die App schlägt dir automatisch die besten Stream-Momente als Highlights vor.
         </em>
       </div>
     </div>

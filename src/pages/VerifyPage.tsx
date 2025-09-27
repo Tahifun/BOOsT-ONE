@@ -5,13 +5,13 @@ export default function VerifyPage() {
   const { token } = useParams<{ token: string }>()
   const nav = useNavigate()
   const [status, setStatus] = useState<'loading' | 'ok' | 'error'>('loading')
-  const [msg, setMsg] = useState<string>('Verifiziere…')
+  const [msg, setMsg] = useState<string>('Verifiziere.')
 
   useEffect(() => {
     let cancelled = false
     ;(async () => {
       try {
-        if (!token) throw new Error('Kein Token übergeben.')
+        if (!token) throw new Error('Kein Token �bergeben.')
         const res = await fetch(`/api/auth/verify/${token}`, {
           method: 'GET',
           credentials: 'include',
@@ -20,7 +20,7 @@ export default function VerifyPage() {
         if (!res.ok) throw new Error(data?.message || `Verify fehlgeschlagen (${res.status})`)
         if (!cancelled) {
           setStatus('ok')
-          setMsg('E-Mail verifiziert. Du wirst gleich zum Login weitergeleitet…')
+          setMsg('E-Mail verifiziert. Du wirst gleich zum Login weitergeleitet.')
           setTimeout(() => nav('/login?verified=1'), 1200)
         }
       } catch (err: unknown) {

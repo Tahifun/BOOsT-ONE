@@ -4,7 +4,7 @@ import { nodeProfilingIntegration } from "@sentry/profiling-node";
 
 export function initSentry() {
   const dsn = process.env.SENTRY_DSN;
-  if (!dsn) return; // kein DSN → Sentry aus
+  if (!dsn) return; // kein DSN ? Sentry aus
 
   Sentry.init({
     dsn,

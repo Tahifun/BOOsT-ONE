@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 interface GoLiveChecklistProps {
-  /** Optional – wenn nicht gesetzt, schließt das Modal nur lokal */
+  /** Optional - wenn nicht gesetzt, schlie�t das Modal nur lokal */
   onComplete?: () => void;
-  /** Optional: initial geöffnet? default: true */
+  /** Optional: initial ge�ffnet? default: true */
   initialOpen?: boolean;
 }
 
@@ -18,14 +18,14 @@ interface ChecklistItem {
 const GoLiveChecklist: React.FC<GoLiveChecklistProps> = ({ onComplete, initialOpen = true }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [checklistItems, setChecklistItems] = useState<ChecklistItem[]>([
-    { id: "camera",      label: "Camera Test",      emoji: "📸", description: "Check camera quality and positioning", completed: false },
-    { id: "microphone",  label: "Microphone Test",  emoji: "🎤", description: "Test audio levels and quality",        completed: false },
-    { id: "internet",    label: "Internet Connection", emoji: "🌐", description: "Verify stable internet speed",    completed: false },
-    { id: "overlay",     label: "Overlay Settings", emoji: "🎨", description: "Configure stream overlays and scenes", completed: false },
-    { id: "moderation",  label: "Chat Moderation",  emoji: "🛡️", description: "Set up chat moderators and filters",  completed: false },
-    { id: "title",       label: "Stream Title",     emoji: "📝", description: "Set engaging stream title and tags",   completed: false },
-    { id: "thumbnail",   label: "Thumbnail",        emoji: "🖼️", description: "Upload attractive stream thumbnail",   completed: false },
-    { id: "backup",      label: "Backup Plan",      emoji: "🆘", description: "Prepare contingency plans",             completed: false },
+    { id: "camera",      label: "Camera Test",      emoji: "??", description: "Check camera quality and positioning", completed: false },
+    { id: "microphone",  label: "Microphone Test",  emoji: "??", description: "Test audio levels and quality",        completed: false },
+    { id: "internet",    label: "Internet Connection", emoji: "??", description: "Verify stable internet speed",    completed: false },
+    { id: "overlay",     label: "Overlay Settings", emoji: "??", description: "Configure stream overlays and scenes", completed: false },
+    { id: "moderation",  label: "Chat Moderation",  emoji: "???", description: "Set up chat moderators and filters",  completed: false },
+    { id: "title",       label: "Stream Title",     emoji: "??", description: "Set engaging stream title and tags",   completed: false },
+    { id: "thumbnail",   label: "Thumbnail",        emoji: "???", description: "Upload attractive stream thumbnail",   completed: false },
+    { id: "backup",      label: "Backup Plan",      emoji: "??", description: "Prepare contingency plans",             completed: false },
   ]);
 
   const [completedCount, setCompletedCount] = useState(0);
@@ -33,7 +33,7 @@ const GoLiveChecklist: React.FC<GoLiveChecklistProps> = ({ onComplete, initialOp
   const [isAllComplete, setIsAllComplete] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
 
-  // Erst nach Mount sichtbar (für Animation)
+  // Erst nach Mount sichtbar (f�r Animation)
   useEffect(() => {
     if (initialOpen) setIsVisible(true);
   }, [initialOpen]);
@@ -57,7 +57,7 @@ const GoLiveChecklist: React.FC<GoLiveChecklistProps> = ({ onComplete, initialOp
 
   // Konfetti-Emojis
   const createCelebrationEffect = () => {
-    const emojis = ["🎉", "🎊", "✨", "🌟", "🎆", "🎈", "🥳"];
+    const emojis = ["??", "??", "?", "??", "??", "??", "??"];
     const container = document.querySelector<HTMLElement>(".checklist-modal");
     if (!container) return;
     for (let i = 0; i < 20; i++) {
@@ -140,7 +140,7 @@ const GoLiveChecklist: React.FC<GoLiveChecklistProps> = ({ onComplete, initialOp
                 letterSpacing: 2,
               }}
             >
-              🚀 Pre-Stream Checklist
+              ?? Pre-Stream Checklist
             </h2>
             <p style={{ color: "rgba(255,255,255,.8)", fontSize: "1.1rem", margin: 0 }}>
               Complete all items before going live
@@ -182,10 +182,10 @@ const GoLiveChecklist: React.FC<GoLiveChecklistProps> = ({ onComplete, initialOp
                 animation: isAllComplete ? "readyButtonPulse 2s ease-in-out infinite" : "none",
               }}
             >
-              {isAllComplete ? "🚀 READY TO GO LIVE!" : `${completedCount}/${checklistItems.length} Complete`}
+              {isAllComplete ? "?? READY TO GO LIVE!" : `${completedCount}/${checklistItems.length} Complete`}
             </button>
 
-            {/* Optional: Überspringen */}
+            {/* Optional: �berspringen */}
             <button
               onClick={() => {
                 setIsVisible(false);
@@ -200,7 +200,7 @@ const GoLiveChecklist: React.FC<GoLiveChecklistProps> = ({ onComplete, initialOp
                 cursor: "pointer",
               }}
             >
-              Später erledigen
+              Sp�ter erledigen
             </button>
           </div>
 
@@ -220,7 +220,7 @@ const GoLiveChecklist: React.FC<GoLiveChecklistProps> = ({ onComplete, initialOp
                 backdropFilter: "blur(10px)",
               }}
             >
-              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🎉</div>
+              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>??</div>
               <div style={{ fontSize: "1.5rem", fontWeight: 700, color: "#43e97b", marginBottom: ".5rem" }}>
                 All Set!
               </div>
@@ -368,7 +368,7 @@ function ChecklistRow({ item, onToggle }: { item: ChecklistItem; onToggle: () =>
       </div>
 
       <div style={{ fontSize: "1.2rem", opacity: item.completed ? 1 : 0.3, transition: "opacity .3s" }}>
-        {item.completed ? "✅" : "⭕"}
+        {item.completed ? "?" : "?"}
       </div>
     </div>
   );

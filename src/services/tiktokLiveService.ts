@@ -47,7 +47,7 @@ export function connectSSE(creatorId: string, onEvent: LiveCallback) {
   };
 }
 
-/** FREE: REST-Polling – Basis-Calls */
+/** FREE: REST-Polling - Basis-Calls */
 export async function getStatus(creatorId: string) {
   const res = await fetch(`${API_BASE}/api/tiktok/live/status?creatorId=${encodeURIComponent(creatorId)}`, {
     credentials: "include",
@@ -83,7 +83,7 @@ export async function getMetrics(creatorId: string, rangeSec = 300) {
   return res.json() as Promise<{ rangeSec: number; chat: number; gifts: number; likes: number }>;
 }
 
-/** FREE: kleiner Poller – ruft periodisch REST und reicht Events an onEvent */
+/** FREE: kleiner Poller - ruft periodisch REST und reicht Events an onEvent */
 export function startFreePolling(
   creatorId: string,
   onEvent: LiveCallback,

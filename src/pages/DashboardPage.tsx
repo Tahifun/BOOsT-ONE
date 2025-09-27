@@ -309,7 +309,7 @@ const DashboardPage: React.FC = () => {
 
             <span className="button-bg" />
 
-            <span className="button-text">ðŸŽ¨ OVERLAY EDITOR</span>
+            <span className="button-text">�YZ� OVERLAY EDITOR</span>
 
             <span className="button-glow" />
 
@@ -341,7 +341,7 @@ const DashboardPage: React.FC = () => {
 
         <div className="grid-section additional-stats">
 
-          <HolographicCard title="SPOTIFY" icon="ðŸŽµ" delay={0} className="spotify-card">
+          <HolographicCard title="SPOTIFY" icon="�YZ�" delay={0} className="spotify-card">
 
             <div id="spotify-card">
 
@@ -369,7 +369,7 @@ const DashboardPage: React.FC = () => {
 
 
 
-          <HolographicCard title="BOOST MOMENTS" icon="âš¡" delay={100}>
+          <HolographicCard title="BOOST MOMENTS" icon="�s�" delay={100}>
 
             <BoostMoments />
 
@@ -381,11 +381,11 @@ const DashboardPage: React.FC = () => {
 
         <div className="grid-section primary-stats">
 
-          <HolographicCard title="VIEWER ANALYTICS" icon="ðŸ‘" delay={200}><ViewerStats /></HolographicCard>
+          <HolographicCard title="VIEWER ANALYTICS" icon="�Y'�" delay={200}><ViewerStats /></HolographicCard>
 
-          <HolographicCard title="FOLLOWER MATRIX" icon="ðŸ‘¥" delay={300}><FollowerStats /></HolographicCard>
+          <HolographicCard title="FOLLOWER MATRIX" icon="�Y'�" delay={300}><FollowerStats /></HolographicCard>
 
-          <HolographicCard title="REVENUE STREAM" icon="ðŸ’Ž" delay={400}><CoinStats /></HolographicCard>
+          <HolographicCard title="REVENUE STREAM" icon="�Y'Z" delay={400}><CoinStats /></HolographicCard>
 
         </div>
 
@@ -393,11 +393,11 @@ const DashboardPage: React.FC = () => {
 
         <div className="grid-section social-stats">
 
-          <HolographicCard title="TIKTOK NEURAL NET" icon="ðŸ“±" delay={500}><TikTokStats /></HolographicCard>
+          <HolographicCard title="TIKTOK NEURAL NET" icon="�Y"�" delay={500}><TikTokStats /></HolographicCard>
 
-          <HolographicCard title="SENTIMENT ANALYSIS" icon="ðŸ’­" delay={600}><SentimentGraph /></HolographicCard>
+          <HolographicCard title="SENTIMENT ANALYSIS" icon="�Y'�" delay={600}><SentimentGraph /></HolographicCard>
 
-          <HolographicCard title="PRO ANALYTICS" icon="ðŸš€" delay={700} pro><ProAnalytics /></HolographicCard>
+          <HolographicCard title="PRO ANALYTICS" icon="�Ys?" delay={700} pro><ProAnalytics /></HolographicCard>
 
         </div>
 
@@ -405,11 +405,11 @@ const DashboardPage: React.FC = () => {
 
         <div className="grid-section advanced-stats">
 
-          <HolographicCard title="VIEWER TIMELINE" icon="ðŸ“Š" delay={800}><ViewerGraph /></HolographicCard>
+          <HolographicCard title="VIEWER TIMELINE" icon="�Y"S" delay={800}><ViewerGraph /></HolographicCard>
 
-          <HolographicCard title="GROWTH TRAJECTORY" icon="ðŸ“ˆ" delay={900}><FollowerTrend /></HolographicCard>
+          <HolographicCard title="GROWTH TRAJECTORY" icon="�Y"^" delay={900}><FollowerTrend /></HolographicCard>
 
-          <HolographicCard title="SESSION MATRIX" icon="â°" delay={1000}><SessionTimeline /></HolographicCard>
+          <HolographicCard title="SESSION MATRIX" icon="⏰" delay={1000}><SessionTimeline /></HolographicCard>
 
         </div>
 
@@ -417,11 +417,11 @@ const DashboardPage: React.FC = () => {
 
         <div className="grid-section engagement-stats">
 
-          <HolographicCard title="HEAT SIGNATURE" icon="ðŸ”¥" delay={1100}><HeatmapStats /></HolographicCard>
+          <HolographicCard title="HEAT SIGNATURE" icon="�Y"�" delay={1100}><HeatmapStats /></HolographicCard>
 
-          <HolographicCard title="REPLAY VALUE" icon="ðŸ”„" delay={1200}><RewatchStats /></HolographicCard>
+          <HolographicCard title="REPLAY VALUE" icon="�Y""" delay={1200}><RewatchStats /></HolographicCard>
 
-          <HolographicCard title="CHAT VELOCITY" icon="ðŸ’¬" delay={1300}><ChatPeakGraph /></HolographicCard>
+          <HolographicCard title="CHAT VELOCITY" icon="�Y'�" delay={1300}><ChatPeakGraph /></HolographicCard>
 
         </div>
 
@@ -429,7 +429,7 @@ const DashboardPage: React.FC = () => {
 
 
 
-      {/* Data Stream (unverÃ¤ndert) */}
+      {/* Data Stream (unverändert) */}
 
       <div className="data-stream-container">
 

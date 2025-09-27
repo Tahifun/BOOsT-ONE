@@ -18,9 +18,9 @@ type TabKey =
 
 const TABS: { key: TabKey; icon: string; title: string }[] = [
   { key: "dashboard", icon: "", title: "Dashboard" },
-  { key: "upload", icon: "️", title: "Upload" },
+  { key: "upload", icon: "?", title: "Upload" },
   { key: "gallery", icon: "", title: "Galerie" },
-  { key: "clips", icon: "️", title: "Clips" },
+  { key: "clips", icon: "?", title: "Clips" },
   { key: "screenshots", icon: "", title: "Screenshots" },
   { key: "soundboard", icon: "", title: "Soundboard" },
   { key: "overlays", icon: "", title: "Overlays" },
@@ -59,7 +59,7 @@ const MediaCenterPage: React.FC = () => {
     type: "success",
   });
 
-  // Partikel für Hintergrund (rein visuell)
+  // Partikel f�r Hintergrund (rein visuell)
   const particles = useMemo(
     () =>
       Array.from({ length: 50 }, () => ({
@@ -104,7 +104,7 @@ const MediaCenterPage: React.FC = () => {
     window.setTimeout(() => setNotice((n) => ({ ...n, show: false })), 3000);
   };
 
-  // simple Spinner für Suspense
+  // simple Spinner f�r Suspense
   const Spinner = () => <div className="mc-spinner" aria-hidden />;
 
   return (
@@ -147,7 +147,7 @@ const MediaCenterPage: React.FC = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <button className="mc-btn mc-btn--glass" onClick={() => showNotification(" Filter geöffnet")}>
+          <button className="mc-btn mc-btn--glass" onClick={() => showNotification(" Filter ge�ffnet")}>
             Filter
           </button>
         </div>
@@ -271,13 +271,13 @@ const MediaCenterPage: React.FC = () => {
       </div>
 
       {/* Floating Action Button */}
-      <button className="mc-fab" onClick={() => setNotice({ show: true, msg: " Quick Action Menu geöffnet", type: "success" })} aria-label="Schnellaktion">
+      <button className="mc-fab" onClick={() => setNotice({ show: true, msg: " Quick Action Menu ge�ffnet", type: "success" })} aria-label="Schnellaktion">
         +
       </button>
 
       {/* Notification */}
       <div className={`mc-notice mc-notice--${notice.type} ${notice.show ? "is-shown" : ""}`} role="status" aria-live="polite">
-        <h4 className="mc-notice__title">{notice.type === "success" ? " Erfolg!" : "️ Hinweis"}</h4>
+        <h4 className="mc-notice__title">{notice.type === "success" ? " Erfolg!" : "? Hinweis"}</h4>
         <p className="mc-notice__text">{notice.msg}</p>
       </div>
     </div>

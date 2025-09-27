@@ -9,7 +9,7 @@ export default function SpotifyControls() {
   const { deviceId, ready } = useSpotifyPlayer();
   const [playlistUrl, setPlaylistUrl] = useState("");
 
-  // Browser-Device nach "ready" als aktives Gerät übernehmen (kein Autoplay)
+  // Browser-Device nach "ready" als aktives Ger�t �bernehmen (kein Autoplay)
   useEffect(() => {
     if (!ready || !deviceId) return;
     fetch(`${API}/api/spotify/player/transfer`, {
@@ -87,10 +87,10 @@ export default function SpotifyControls() {
           style={{ flex: 1 }}
         />
         <button disabled={!ready || !deviceId} onClick={handlePlay}>Play </button>
-        <button onClick={handlePause}>Pause ⏸</button>
-        <button onClick={handleResume}>Resume ⏯</button>
-        <button onClick={handlePrev}>⏮</button>
-        <button onClick={handleNext}>⏭</button>
+        <button onClick={handlePause}>Pause ?</button>
+        <button onClick={handleResume}>Resume ?</button>
+        <button onClick={handlePrev}>?</button>
+        <button onClick={handleNext}>?</button>
       </div>
 
       <div style={{ marginTop: 6, fontSize: 12, opacity: 0.75 }}>

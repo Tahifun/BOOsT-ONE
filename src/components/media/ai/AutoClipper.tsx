@@ -1,5 +1,5 @@
 import { logger } from '@/lib/logger';
-﻿import React, { useState, useEffect, useRef, useCallback } from 'react';
+?import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Scissors, Zap, Download, CheckCircle, XCircle, Clock,
@@ -89,7 +89,7 @@ class ClipProcessingEngine {
   private history: ProcessingJob[] = []; // completed/failed
   private observers: Set<(jobs: ProcessingJob[]) => void> = new Set();
   private maxConcurrent = 3;
-  // fÃ¼r schnellen Lookup: immer letztes Job-Objekt je Clip
+  // für schnellen Lookup: immer letztes Job-Objekt je Clip
   private latestByClip: Map<string, ProcessingJob> = new Map();
   private historyLimit = 200;
 
@@ -167,7 +167,7 @@ class ClipProcessingEngine {
   }
 
   private snapshot(): ProcessingJob[] {
-    // kompakte Liste fÃ¼r UI: active + pending + letzte History (begrenzt)
+    // kompakte Liste für UI: active + pending + letzte History (begrenzt)
     return [
       ...Array.from(this.active.values()),
       ...this.queue,
@@ -524,11 +524,11 @@ const AutoClipper: React.FC<AutoClipperProps> = ({
                 </div>
                 <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', display: 'flex', gap: 10 }}>
                   <span>{formatTime(clip.startTime)} - {formatTime(clip.endTime)}</span>
-                  <span>â€¢</span>
+                  <span>�?�</span>
                   <span>{formatFileSize(currentSettings.bitrate, clip.endTime - clip.startTime)}</span>
                   {versionControl && lastVersion && (
                     <>
-                      <span>â€¢</span>
+                      <span>�?�</span>
                       <span>v{lastVersion.version}</span>
                     </>
                   )}
@@ -660,7 +660,7 @@ const formatTime = (seconds: number): string => {
 };
 
 const generateTitle = (s: AISuggestion): string => {
-  return `${s.type.replace('-', ' ')} â€“ ${formatTime(s.timestamp)}`;
+  return `${s.type.replace('-', ' ')} �?" ${formatTime(s.timestamp)}`;
 };
 
 export default AutoClipper;

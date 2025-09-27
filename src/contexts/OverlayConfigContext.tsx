@@ -13,7 +13,7 @@ import React, {
 /* ===========================
    Konfigurationstypen
    =========================== */
-// ALLE Overlay-Widgets hier als Schlüssel auflisten!
+// ALLE Overlay-Widgets hier als Schl�ssel auflisten!
 export interface OverlayConfig {
   viewerStats: boolean;
   coinStats: boolean;
@@ -28,7 +28,7 @@ export interface OverlayConfig {
   rewatchStats: boolean;
   chatPeakGraph: boolean;
   spotifyNowPlaying: boolean;
-  // >>> Hier kannst du weitere Widget-Keys ergänzen! <<<
+  // >>> Hier kannst du weitere Widget-Keys erg�nzen! <<<
 }
 
 // **Standard-Konfiguration:** Alle Overlays anfangs aktiviert
@@ -46,7 +46,7 @@ const defaultConfig: OverlayConfig = {
   rewatchStats: true,
   chatPeakGraph: true,
   spotifyNowPlaying: true,
-  // Bei neuen Widgets: einfach hier ergänzen!
+  // Bei neuen Widgets: einfach hier erg�nzen!
 };
 
 interface OverlayConfigContextType {
@@ -69,7 +69,7 @@ export const OverlayConfigProvider = ({ children }: { children: ReactNode }) => 
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        // Falls ein Key fehlt (z.B. nach App-Update), Standard-Werte auffüllen:
+        // Falls ein Key fehlt (z.B. nach App-Update), Standard-Werte auff�llen:
         return { ...defaultConfig, ...parsed };
       } catch {
         return defaultConfig;
@@ -78,7 +78,7 @@ export const OverlayConfigProvider = ({ children }: { children: ReactNode }) => 
     return defaultConfig;
   });
 
-  // Immer bei Änderung: LocalStorage aktualisieren
+  // Immer bei �nderung: LocalStorage aktualisieren
   useEffect(() => {
     localStorage.setItem("overlayConfig", JSON.stringify(config));
   }, [config]);
@@ -90,7 +90,7 @@ export const OverlayConfigProvider = ({ children }: { children: ReactNode }) => 
   );
 };
 
-// Custom Hook: Für einfachen Zugriff in allen Komponenten
+// Custom Hook: F�r einfachen Zugriff in allen Komponenten
 export const useOverlayConfig = () => useContext(OverlayConfigContext);
 
 export default OverlayConfigContext;

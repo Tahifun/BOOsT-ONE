@@ -1,5 +1,5 @@
 // backend/models/BotStat.ts
-// MongooseSchema für BotMetriken (pro StreamSession oder global aggregiert)
+// MongooseSchema f�r BotMetriken (pro StreamSession oder global aggregiert)
 
 import { Schema, model, Document } from "mongoose";
 

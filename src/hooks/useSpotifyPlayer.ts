@@ -49,7 +49,7 @@ export function useSpotifyPlayer() {
       // 1) Nur starten, wenn wir ein valides Token haben
       const firstToken = await fetchAccessToken();
       if (!firstToken || cancelled) {
-        // Kein Token → kein SDK-Init (verhindert 401-Spam)
+        // Kein Token ? kein SDK-Init (verhindert 401-Spam)
         return;
       }
 
@@ -109,7 +109,7 @@ export function useSpotifyPlayer() {
         player.connect();
       };
 
-      // 4) Wenn SDK schon da → direkt starten, sonst Callback setzen
+      // 4) Wenn SDK schon da ? direkt starten, sonst Callback setzen
       if (alreadyLoaded && (window as any).Spotify) {
         startPlayer();
       } else {

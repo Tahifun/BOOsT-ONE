@@ -153,14 +153,14 @@ const EpicLivestream: React.FC = () => {
     if (!isStreaming) return;
 
     const demoMessages = [
-      { user: "QuantumGamer", message: "This stream is INCREDIBLE! 🔥", type: "normal" as const },
+      { user: "QuantumGamer", message: "This stream is INCREDIBLE! ??", type: "normal" as const },
       { user: "CyberNinja", message: "The quality is insane!", type: "normal" as const },
-      { user: "NeonDreamer", message: "Sent you a gift! 🪁", type: "gift" as const, giftAmount: 100 },
-      { user: "PixelMaster", message: "EPIC CONTENT! 💯", type: "normal" as const },
+      { user: "NeonDreamer", message: "Sent you a gift! ??", type: "gift" as const, giftAmount: 100 },
+      { user: "PixelMaster", message: "EPIC CONTENT! ??", type: "normal" as const },
       { user: "TechGuru", message: "Best stream interface ever!", type: "super" as const },
-      { user: "GlitchKing", message: "The effects are mind-blowing 🤯", type: "normal" as const },
+      { user: "GlitchKing", message: "The effects are mind-blowing ??", type: "normal" as const },
       { user: "FutureVibes", message: "This is the future of streaming!", type: "normal" as const },
-      { user: "HoloPlayer", message: "Quantum dimension activated! ⚡", type: "normal" as const },
+      { user: "HoloPlayer", message: "Quantum dimension activated! ?", type: "normal" as const },
     ];
 
     const interval = setInterval(() => {
@@ -184,7 +184,7 @@ const EpicLivestream: React.FC = () => {
   useEffect(() => {
     if (!isStreaming) return;
 
-    const emojis = ["❤️", "🔥", "⚡", "🚀", "💎", "🌟", "💯", "🎉"];
+    const emojis = ["??", "??", "?", "??", "??", "??", "??", "??"];
 
     const interval = setInterval(() => {
       const newReaction: Reaction = {
@@ -295,7 +295,7 @@ const EpicLivestream: React.FC = () => {
       const warningMsg: ChatMessage = {
         id: `warning-${Date.now()}`,
         user: "System",
-        message: "⚠️ Message blocked by moderation",
+        message: "?? Message blocked by moderation",
         timestamp: Date.now(),
         type: "normal",
       };
@@ -338,7 +338,7 @@ const EpicLivestream: React.FC = () => {
     const msg: ChatMessage = {
       id: `${Date.now()}`,
       user: "System",
-      message: `🎉 Winner: ${winner.user} - Congratulations!`,
+      message: `?? Winner: ${winner.user} - Congratulations!`,
       timestamp: Date.now(),
       type: "super",
     };
@@ -380,7 +380,7 @@ const EpicLivestream: React.FC = () => {
           <header className="epic-header">
             <div className="epic-logo">
               CLIP BOOST QUANTUM
-              {activePreset ? ` • ${activePreset.toUpperCase()}` : ""}
+              {activePreset ? ` . ${activePreset.toUpperCase()}` : ""}
             </div>
 
             <div className="header-actions">
@@ -390,7 +390,7 @@ const EpicLivestream: React.FC = () => {
                   onClick={handleStart}
                   title="Start Stream"
                 >
-                  ▶ START
+                  ? START
                 </button>
               ) : (
                 <button
@@ -398,7 +398,7 @@ const EpicLivestream: React.FC = () => {
                   onClick={handleStop}
                   title="Stop Stream"
                 >
-                  ⏹ STOP
+                  ? STOP
                 </button>
               )}
 
@@ -547,7 +547,7 @@ const EpicLivestream: React.FC = () => {
                   const msg: ChatMessage = {
                     id: `${Date.now()}`,
                     user: "System",
-                    message: "📸 Screenshot captured!",
+                    message: "?? Screenshot captured!",
                     timestamp: Date.now(),
                     type: "normal",
                   };
@@ -557,7 +557,7 @@ const EpicLivestream: React.FC = () => {
                   const msg: ChatMessage = {
                     id: `${Date.now()}`,
                     user: "System",
-                    message: "⏺️ Recording started!",
+                    message: "?? Recording started!",
                     timestamp: Date.now(),
                     type: "normal",
                   };
@@ -591,11 +591,11 @@ const EpicLivestream: React.FC = () => {
                 {/* Stream Stats Overlay */}
                 <div className="stream-info-overlay">
                   <div className="stream-stats">
-                    <span>👁️ {combinedStats.viewers}</span>
-                    <span>❤️ {combinedStats.likes}</span>
-                    <span>🪁 {combinedStats.gifts}</span>
-                    {isRaidMode && <span>🚨 RAID</span>}
-                    {!!slowModeDelay && <span>🐌 {slowModeDelay}s</span>}
+                    <span>??? {combinedStats.viewers}</span>
+                    <span>?? {combinedStats.likes}</span>
+                    <span>?? {combinedStats.gifts}</span>
+                    {isRaidMode && <span>?? RAID</span>}
+                    {!!slowModeDelay && <span>?? {slowModeDelay}s</span>}
                   </div>
                 </div>
 
@@ -625,7 +625,7 @@ const EpicLivestream: React.FC = () => {
                             {msg.message}
                             {msg.type === "gift" && msg.giftAmount && (
                               <span style={{ marginLeft: "8px" }}>
-                                💎 x{msg.giftAmount}
+                                ?? x{msg.giftAmount}
                               </span>
                             )}
                           </span>
@@ -693,7 +693,7 @@ const EpicLivestream: React.FC = () => {
                     className="draw-winner-btn"
                     onClick={handleDrawWinner}
                   >
-                    🪁 DRAW WINNER (
+                    ?? DRAW WINNER (
                     {queue.filter((q: unknown) => q.type === "giveaway").length})
                   </Button>
                 </div>

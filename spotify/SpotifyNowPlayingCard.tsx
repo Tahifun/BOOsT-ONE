@@ -15,7 +15,7 @@ type Track = {
 
 type TrackState =
   | { isPlaying: false }
-  | { isPlaying: true; track: Track | null }; // <- track darf null sein (Backend-Realität)
+  | { isPlaying: true; track: Track | null }; // <- track darf null sein (Backend-Realit�t)
 
 const POLL_MS = 15000;
 
@@ -77,7 +77,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
         const res = await getNowPlaying(); // darf null liefern
         if (!mounted) return;
 
-        // null/kaputter Response  nichts läuft
+        // null/kaputter Response  nichts l�uft
         setData(res ? normalize(res) : { isPlaying: false });
         setErr(null);
       } catch (e: unknown) {
@@ -146,7 +146,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
 
             {data.track.trackUrl && (
               <a href={data.track.trackUrl} target="_blank" rel="noreferrer" className="sp-link">
-                In Spotify öffnen 
+                In Spotify �ffnen 
               </a>
             )}
           </div>
@@ -154,7 +154,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
       )}
 
       {!loading && !err && !hasTrack(data) && (
-        <div className="sp-muted">Es läuft gerade nichts.</div>
+        <div className="sp-muted">Es l�uft gerade nichts.</div>
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-﻿// src/components/media/ScreenshotManager.tsx
+// src/components/media/ScreenshotManager.tsx
 
 import React, { useContext } from "react";
 import { MediaContext } from '../../contexts/MediaContext';
@@ -12,7 +12,7 @@ export const ScreenshotManager: React.FC = () => {
 
   return (
     <div className="screenshot-manager">
-      <h2>ðŸ–¼ï¸ Screenshots</h2>
+      <h2>�Y-�️ Screenshots</h2>
       {screenshots.length === 0 && <div>Keine Screenshots vorhanden.</div>}
       <div className="screenshot-list">
         {screenshots.map(ss => (
@@ -23,7 +23,7 @@ export const ScreenshotManager: React.FC = () => {
             <div className="screenshot-actions">
               <button>Als Thumbnail nutzen</button>
               <button>Teilen</button>
-              <button>LÃ¶schen</button>
+              <button>Löschen</button>
             </div>
           </div>
         ))}

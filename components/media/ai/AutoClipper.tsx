@@ -89,7 +89,7 @@ class ClipProcessingEngine {
   private history: ProcessingJob[] = []; // completed/failed
   private observers: Set<(jobs: ProcessingJob[]) => void> = new Set();
   private maxConcurrent = 3;
-  // für schnellen Lookup: immer letztes Job-Objekt je Clip
+  // f�r schnellen Lookup: immer letztes Job-Objekt je Clip
   private latestByClip: Map<string, ProcessingJob> = new Map();
   private historyLimit = 200;
 
@@ -167,7 +167,7 @@ class ClipProcessingEngine {
   }
 
   private snapshot(): ProcessingJob[] {
-    // kompakte Liste für UI: active + pending + letzte History (begrenzt)
+    // kompakte Liste f�r UI: active + pending + letzte History (begrenzt)
     return [
       ...Array.from(this.active.values()),
       ...this.queue,

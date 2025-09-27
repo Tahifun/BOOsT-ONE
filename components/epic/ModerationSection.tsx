@@ -21,7 +21,7 @@ import { useModerationSettings } from '../../hooks/useModerationSettings';
 /** Import der ModerationSettings aus presets.ts */
 import type { ModerationSettings } from '../../features/moderation/presets';
 
-/** Erweiterte lokale Settings für UI */
+/** Erweiterte lokale Settings f�r UI */
 export interface ExtendedModSettings extends ModerationSettings {
   spamFilter: {
     enabled: boolean;
@@ -83,7 +83,7 @@ export const ModerationSection: React.FC = () => {
   const { settings: baseSettings, setSettings: setBaseSettings, activePreset, applyPreset } =
     useModerationSettings();
 
-  /** Konvertiere base settings zu extended settings für die UI */
+  /** Konvertiere base settings zu extended settings f�r die UI */
   const [settings, setSettings] = useState<ExtendedModSettings>(() => ({
     // Basis-Settings von der Hook
     ...baseSettings,
@@ -145,7 +145,7 @@ export const ModerationSection: React.FC = () => {
   const update = (patch: Partial<ExtendedModSettings>) => {
     setSettings((prev) => ({ ...prev, ...patch }));
     
-    // Sync zurück zu base settings wenn nötig
+    // Sync zur�ck zu base settings wenn n�tig
     if (patch.spamFilter || patch.linkPolicy || patch.toxicityFilter || patch.raidGuardSettings) {
       const newBaseSettings: Partial<ModerationSettings> = {};
       
@@ -726,7 +726,7 @@ export const ModerationSection: React.FC = () => {
                 className={`action-button ${queueMode === "giveaway" ? "warning" : ""}`}
                 onClick={() => setQueueMode("giveaway")}
                 data-text="Giveaway"
-                title="Giveaway-Einträge"
+                title="Giveaway-Eintr�ge"
               >
                 GIVEAWAY ({queue.filter((q) => q.type === "giveaway").length})
               </button>
@@ -875,5 +875,5 @@ export const ModerationSection: React.FC = () => {
   );
 };
 
-// Default export für Kompatibilität
+// Default export f�r Kompatibilit�t
 export default ModerationSection;

@@ -2,7 +2,7 @@
 
 .pro-feature-wrapper {
   position: relative;
-  isolation: isolate; /* sorgt dafür, dass das Overlay sicher oben liegt */
+  isolation: isolate; /* sorgt daf�r, dass das Overlay sicher oben liegt */
 }
 
 /* Inhalte bleiben sichtbar, aber nicht bedienbar */
@@ -19,7 +19,7 @@
   display: grid;
   place-items: center;
   padding: 12px;
-  z-index: 2; /* über dem Teaser */
+  z-index: 2; /* �ber dem Teaser */
 }
 
 /* Halbtransparenter Hintergrundfilm hinter dem Prompt */
@@ -47,7 +47,7 @@
   pointer-events: none;
 }
 
-/* Fokus- und Tastaturnutzung verbessern (für Buttons/Links im UpgradePrompt) */
+/* Fokus- und Tastaturnutzung verbessern (f�r Buttons/Links im UpgradePrompt) */
 .pro-feature-overlay :is(a, button) {
   outline: none;
 }

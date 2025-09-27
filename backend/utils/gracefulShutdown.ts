@@ -1,6 +1,6 @@
 import logger from './logger.js'
 
-﻿import { Server } from "http";
+?import { Server } from "http";
 import mongoose from "mongoose";
 import { createClient } from "redis";
 
@@ -22,7 +22,7 @@ export function setupGracefulShutdown(
     if (isShuttingDown) return;
     isShuttingDown = true;
 
-    logger.debug(`\n[shutdown] ${signal} received → starting graceful shutdown...`);
+    logger.debug(`\n[shutdown] ${signal} received ? starting graceful shutdown...`);
 
     // Hard timeout als Netz: 30s
     const hardTimeout = setTimeout(() => {
@@ -34,7 +34,7 @@ export function setupGracefulShutdown(
       // 1) HTTP beenden (nimmt keine neuen Verbindungen mehr an)
       await closeServer();
 
-      // 2) Mongo schließen (nur wenn verbunden)
+      // 2) Mongo schlie�en (nur wenn verbunden)
       try {
         if (mongoose.connection.readyState !== 0) {
           await mongoose.disconnect();
@@ -44,7 +44,7 @@ export function setupGracefulShutdown(
         console.error("[shutdown] MongoDB disconnect error", e);
       }
 
-      // 3) Redis schließen (mit Fallback bei Hängern)
+      // 3) Redis schlie�en (mit Fallback bei H�ngern)
       if (redisClient) {
         try {
           if ((redisClient as any).isOpen || (redisClient as any).isReady) {
@@ -77,13 +77,13 @@ export function setupGracefulShutdown(
   process.on("SIGTERM", () => shutdown("SIGTERM"));
   process.on("SIGINT", () => shutdown("SIGINT"));
 
-  // Uncaught Exceptions → in Prod sauber beenden
+  // Uncaught Exceptions ? in Prod sauber beenden
   process.on("uncaughtException", (error) => {
     console.error("[uncaughtException]", error);
     if (process.env.NODE_ENV === "production") shutdown("UNCAUGHT_EXCEPTION");
   });
 
-  // Unhandled Rejections → in Prod sauber beenden
+  // Unhandled Rejections ? in Prod sauber beenden
   process.on("unhandledRejection", (reason, promise) => {
     console.error("[unhandledRejection] at:", promise, "reason:", reason);
     if (process.env.NODE_ENV === "production") shutdown("UNHANDLED_REJECTION");

@@ -6,12 +6,12 @@ const router = Router();
 
 /**
  * Basen sauber ableiten:
- * - BACKEND_URL: öffentliche URL deiner API (z. B. https://api.clip-boost.online)
+ * - BACKEND_URL: �ffentliche URL deiner API (z. B. https://api.clip-boost.online)
  * - FRONTEND_URL: wohin das Browser-Redirect nach erfolgreichem OAuth gehen soll
  *
  * Fallbacks:
- * - BACKEND_URL → http://localhost:<PORT|4001>
- * - FRONTEND_URL → erster Eintrag aus CLIENT_ORIGIN, sonst http://localhost:5173
+ * - BACKEND_URL ? http://localhost:<PORT|4001>
+ * - FRONTEND_URL ? erster Eintrag aus CLIENT_ORIGIN, sonst http://localhost:5173
  */
 const portFallback = process.env.PORT ? Number(process.env.PORT) : 4001;
 const BASE_URL =
@@ -70,7 +70,7 @@ router.get('/', (req: Request, res: Response) => {
     return res.status(500).json({ error: 'tiktok_not_configured' });
   }
 
-  // PKCE: code_verifier (43–128 chars empfohlen)
+  // PKCE: code_verifier (43-128 chars empfohlen)
   const codeVerifier = randomString(64);
   const codeChallenge = sha256Base64Url(codeVerifier);
 

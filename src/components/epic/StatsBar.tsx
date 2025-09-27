@@ -25,7 +25,7 @@ interface StreamStats {
 }
 
 interface Props {
-  stats?: StreamStats; // darf fehlen → wir rendern trotzdem stabil
+  stats?: StreamStats; // darf fehlen ? wir rendern trotzdem stabil
 }
 
 export function StatsBar({ stats }: Props) {
@@ -58,7 +58,7 @@ export function StatsBar({ stats }: Props) {
   return (
     <section className="bottom-stats" aria-label="Stream-Statistiken">
       <div className="stat-item">
-        <div className="stat-icon" aria-hidden="true">👥</div>
+        <div className="stat-icon" aria-hidden="true">??</div>
         <div>
           <div className="stat-text">Zuschauer</div>
           <div className="stat-value">{safe.viewers.toLocaleString()}</div>
@@ -66,7 +66,7 @@ export function StatsBar({ stats }: Props) {
       </div>
 
       <div className="stat-item">
-        <div className="stat-icon" aria-hidden="true">❤️</div>
+        <div className="stat-icon" aria-hidden="true">??</div>
         <div>
           <div className="stat-text">Likes</div>
           <div className="stat-value">{safe.likes.toLocaleString()}</div>
@@ -74,7 +74,7 @@ export function StatsBar({ stats }: Props) {
       </div>
 
       <div className="stat-item">
-        <div className="stat-icon" aria-hidden="true">🎁</div>
+        <div className="stat-icon" aria-hidden="true">??</div>
         <div>
           <div className="stat-text">Geschenke</div>
           <div className="stat-value">{safe.gifts}</div>
@@ -82,7 +82,7 @@ export function StatsBar({ stats }: Props) {
       </div>
 
       <div className="stat-item">
-        <div className="stat-icon" aria-hidden="true">⏱️</div>
+        <div className="stat-icon" aria-hidden="true">??</div>
         <div>
           <div className="stat-text">Stream-Zeit</div>
           <div className="stat-value">{displayTime}</div>
@@ -90,7 +90,7 @@ export function StatsBar({ stats }: Props) {
       </div>
 
       <div className="stat-item">
-        <div className="stat-icon" aria-hidden="true">🎤</div>
+        <div className="stat-icon" aria-hidden="true">??</div>
         <div>
           <div className="stat-text">Audio</div>
           <div className="stat-value" aria-label={`Audiopegel ${Math.round(audioPercentage)}%`}>
@@ -100,7 +100,7 @@ export function StatsBar({ stats }: Props) {
       </div>
 
       <div className="stat-item">
-        <div className="stat-icon" aria-hidden="true">🌐</div>
+        <div className="stat-icon" aria-hidden="true">??</div>
         <div>
           <div className="stat-text">Verbindung</div>
           <div className={`stat-value connection-${safe.connectionQuality}`}>
@@ -111,12 +111,12 @@ export function StatsBar({ stats }: Props) {
 
       {safe.moderation && (
         <div className="stat-item">
-          <div className="stat-icon" aria-hidden="true">🛡️</div>
+          <div className="stat-icon" aria-hidden="true">???</div>
           <div>
             <div className="stat-text">Moderation</div>
             <div className="stat-value">
-              {safe.moderation.activeFilters || "—"}
-              {Number.isFinite(safe.queueSize) ? ` · Queue ${safe.queueSize}` : ""}
+              {safe.moderation.activeFilters || "-"}
+              {Number.isFinite(safe.queueSize) ? ` � Queue ${safe.queueSize}` : ""}
             </div>
           </div>
         </div>

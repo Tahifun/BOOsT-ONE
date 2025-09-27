@@ -1,4 +1,4 @@
-/* src/styles/overlay/OverlayEditor.css  —  scoped & cleaned */
+/* src/styles/overlay/OverlayEditor.css  -  scoped & cleaned */
 
 /* ---------- Design Tokens ---------- */
 :root {
@@ -15,7 +15,7 @@
   --consciousness-gradient: linear-gradient(90deg, var(--quantum-cyan), var(--quantum-purple));
 }
 
-/* ---------- Hard kill für alte Floating-Buttons (falls noch im DOM) ---------- */
+/* ---------- Hard kill f�r alte Floating-Buttons (falls noch im DOM) ---------- */
 .floating-actions,
 .fab-btn {
   display: none !important;
@@ -272,7 +272,7 @@
   50%     { transform: translate(-50%, -50%) scale(1.2); opacity: .8; }
 }
 
-/* ===== Stoppt Overlay-Preview außerhalb des Editors ===== */
+/* ===== Stoppt Overlay-Preview au�erhalb des Editors ===== */
 body:not(.is-overlay-editor) .editor-preview-panel,
 body:not(.is-overlay-editor) .preview-header,
 body:not(.is-overlay-editor) .overlay-preview,

@@ -2,7 +2,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-// kleine, eingebettete Ressourcen – reicht für jetzt
+// kleine, eingebettete Ressourcen - reicht f�r jetzt
 const resources = {
   de: {
     translation: {
@@ -11,7 +11,7 @@ const resources = {
       "livestream.hide_chat": "Chat ausblenden",
       "livestream.show_chat": "Chat einblenden",
 
-      // (Optional) weitere Keys kannst du hier ergänzen:
+      // (Optional) weitere Keys kannst du hier erg�nzen:
       "moderation.title": "Moderation Center",
     },
   },

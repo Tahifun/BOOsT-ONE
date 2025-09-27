@@ -1,4 +1,4 @@
-﻿// src/components/media/ClipManager.tsx
+// src/components/media/ClipManager.tsx
 
 import React, { useContext } from "react";
 import { MediaContext } from '../../contexts/MediaContext';
@@ -12,7 +12,7 @@ export const ClipManager: React.FC = () => {
 
   return (
     <div className="clip-manager">
-      <h2>ðŸŽ¬ Clips verwalten</h2>
+      <h2>�YZ� Clips verwalten</h2>
       {clips.length === 0 && <div>Keine Clips vorhanden.</div>}
       <div className="clip-list">
         {clips.map(clip => (
@@ -23,7 +23,7 @@ export const ClipManager: React.FC = () => {
               <div className="clip-desc">{clip.description}</div>
               <div className="clip-meta">
                 {clip.duration ? `${clip.duration}s` : null}
-                {" Â· "}
+                {" · "}
                 {clip.createdAt.substring(0, 10)}
               </div>
             </div>
@@ -31,7 +31,7 @@ export const ClipManager: React.FC = () => {
               <button>Exportieren</button>
               <button>Thumbnail erstellen</button>
               <button>Highlight setzen</button>
-              <button>LÃ¶schen</button>
+              <button>Löschen</button>
             </div>
           </div>
         ))}

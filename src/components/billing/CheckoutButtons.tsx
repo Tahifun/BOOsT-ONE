@@ -1,4 +1,4 @@
-﻿// src/components/billing/CheckoutButtons.tsx
+// src/components/billing/CheckoutButtons.tsx
 import React from "react";
 import { useCheckout } from '../../hooks/useCheckout';
 
@@ -24,7 +24,7 @@ export default function CheckoutButtons({ token, compact }: Props) {
           disabled={loading !== null}
           style={btnStyle(loading === "pro")}
         >
-          {loading === "pro" ? "Weiterleitungâ€¦" : "Jetzt PRO kaufen"}
+          {loading === "pro" ? "Weiterleitung�?�" : "Jetzt PRO kaufen"}
         </button>
 
         <button
@@ -32,14 +32,14 @@ export default function CheckoutButtons({ token, compact }: Props) {
           disabled={loading !== null}
           style={btnOutlineStyle(loading === "daypass")}
         >
-          {loading === "daypass" ? "Weiterleitungâ€¦" : "DayPass (24h)"}
+          {loading === "daypass" ? "Weiterleitung�?�" : "DayPass (24h)"}
         </button>
 
         <button
           onClick={openBillingPortal}
           disabled={loading !== null}
           style={btnGhostStyle()}
-          title="Zahlungsmittel Ã¤ndern / kÃ¼ndigen"
+          title="Zahlungsmittel ändern / kündigen"
         >
           Abo verwalten
         </button>
@@ -63,7 +63,7 @@ export default function CheckoutButtons({ token, compact }: Props) {
 
       {!compact && (
         <p style={{ fontSize: 12, opacity: 0.7 }}>
-          Nach dem Kauf kehrst du automatisch zurÃ¼ck. Dein Status wird unter{" "}
+          Nach dem Kauf kehrst du automatisch zurück. Dein Status wird unter{" "}
           <code>/api/subscription/status</code> aktualisiert.
         </p>
       )}

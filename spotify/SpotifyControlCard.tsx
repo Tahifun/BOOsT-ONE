@@ -76,7 +76,7 @@ export default function SpotifyControlCard() {
         )}
 
         <div style={{ flex:1, minWidth:0 }}>
-          <div style={{ opacity:0.7, fontSize:12, marginBottom:4 }}>Jetzt läuft</div>
+          <div style={{ opacity:0.7, fontSize:12, marginBottom:4 }}>Jetzt l�uft</div>
           <div style={{ fontWeight:600, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap" }}>
             {title}
           </div>
@@ -85,11 +85,11 @@ export default function SpotifyControlCard() {
           </div>
 
           <div style={{ display:"flex", gap:8, marginTop:12 }}>
-            <button disabled={!ready || loading} onClick={prev}  style={btn()}>⏮</button>
+            <button disabled={!ready || loading} onClick={prev}  style={btn()}>?</button>
             <button disabled={!ready || loading} onClick={playPause} style={btn(true)}>
-              {state?.is_playing ? "⏸ Pause" : " Play"}
+              {state?.is_playing ? "? Pause" : " Play"}
             </button>
-            <button disabled={!ready || loading} onClick={next}  style={btn()}>⏭</button>
+            <button disabled={!ready || loading} onClick={next}  style={btn()}>?</button>
           </div>
           {!ready && <div style={{ marginTop:8, fontSize:12, opacity:0.7 }}>Player initialisiert</div>}
         </div>

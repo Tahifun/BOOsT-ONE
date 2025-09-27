@@ -34,7 +34,7 @@ export default function SpotifyCallback() {
   }, [ok, navigate]);
 
   const headline = useMemo(
-    () => (ok === "1" ? "Spotify Anmeldung läuft..." : "Spotify Anmeldung"),
+    () => (ok === "1" ? "Spotify Anmeldung l�uft..." : "Spotify Anmeldung"),
     [ok]
   );
 
@@ -66,7 +66,7 @@ export default function SpotifyCallback() {
               marginBottom: "1rem",
               animation: "pulse 1.5s ease-in-out infinite"
             }}>
-              ✅
+              ?
             </div>
             <p style={{ 
               color: "#10b981", 
@@ -75,7 +75,7 @@ export default function SpotifyCallback() {
             }}>
               Willkommen{name ? `, ${name}` : ""}! 
               <br />
-              Deine Spotify-Verknüpfung ist aktiv.
+              Deine Spotify-Verkn�pfung ist aktiv.
             </p>
             <p style={{ 
               color: "#6b7280", 
@@ -95,7 +95,7 @@ export default function SpotifyCallback() {
               textAlign: "center", 
               marginBottom: "1rem" 
             }}>
-              ❌
+              ?
             </div>
             <p style={{ 
               color: "#ef4444", 
@@ -117,7 +117,7 @@ export default function SpotifyCallback() {
                 cursor: "pointer"
               }}
             >
-              Zurück zum Dashboard
+              Zur�ck zum Dashboard
             </button>
           </>
         )}

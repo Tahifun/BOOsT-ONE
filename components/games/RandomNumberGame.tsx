@@ -71,7 +71,7 @@ const RandomNumberGame: React.FC = () => {
             onClick={checkGuess}
             disabled={target === null || !!result?.includes("Korrekt")}
           >
-            Prüfen
+            Pr�fen
           </Button>
         </div>
         <div className="flex gap-2">

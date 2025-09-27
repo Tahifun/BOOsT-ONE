@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef, ReactNode } from 'react';
+import React, { useEffect, useRef, ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import { Navigation } from './Navigation';
@@ -140,15 +140,15 @@ export const Layout: React.FC<LayoutProps> = ({
           <div className="footer-content">
             <div className="footer-info">
               <span className="footer-version">Media Center v2.0</span>
-              <span className="footer-separator">â€¢</span>
+              <span className="footer-separator">�?�</span>
               <span className="footer-status">
                 Status: <span className="status-indicator">Online</span>
               </span>
             </div>
             <div className="footer-actions">
-              <button className="footer-link" aria-label="Hilfe"><span>â“ Hilfe</span></button>
-              <button className="footer-link" aria-label="Feedback"><span>ðŸ’¬ Feedback</span></button>
-              <button className="footer-link" aria-label="Einstellungen"><span>âš™ï¸ Einstellungen</span></button>
+              <button className="footer-link" aria-label="Hilfe"><span>�" Hilfe</span></button>
+              <button className="footer-link" aria-label="Feedback"><span>�Y'� Feedback</span></button>
+              <button className="footer-link" aria-label="Einstellungen"><span>�sT️ Einstellungen</span></button>
             </div>
           </div>
         </footer>

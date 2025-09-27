@@ -29,23 +29,23 @@ export default function Footer() {
         <Link to="/imprint" className="footer-link" style={{ textDecoration: "underline" }}>
           Impressum
         </Link>
-        <span aria-hidden="true">•</span>
+        <span aria-hidden="true">.</span>
         <Link to="/terms" className="footer-link" style={{ textDecoration: "underline" }}>
           AGB
         </Link>
-        <span aria-hidden="true">•</span>
+        <span aria-hidden="true">.</span>
         <Link to="/privacy" className="footer-link" style={{ textDecoration: "underline" }}>
           Datenschutz
         </Link>
-        <span aria-hidden="true">•</span>
+        <span aria-hidden="true">.</span>
         <Link to="/withdrawal" className="footer-link" style={{ textDecoration: "underline" }}>
           Widerruf
         </Link>
-        <span aria-hidden="true">•</span>
+        <span aria-hidden="true">.</span>
         <Link to="/guidelines" className="footer-link" style={{ textDecoration: "underline" }}>
           Richtlinien
         </Link>
-        <span aria-hidden="true">•</span>
+        <span aria-hidden="true">.</span>
         <Link to="/licenses" className="footer-link" style={{ textDecoration: "underline" }}>
           Lizenzen
         </Link>

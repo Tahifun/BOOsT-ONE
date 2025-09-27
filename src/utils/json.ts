@@ -20,9 +20,9 @@ export function safeParseNullable<T>(raw: string | null | undefined): T | null {
 }
 
 /**
- * Sicheres Response-Parsing für Fetch:
+ * Sicheres Response-Parsing f�r Fetch:
  * - wirft bei !ok (inkl. Body-Snippet)
- * - 204/empty → null
+ * - 204/empty ? null
  * - JSON via content-type ODER heuristisch
  */
 export async function safeJson<T = unknown>(res: Response): Promise<T | null> {

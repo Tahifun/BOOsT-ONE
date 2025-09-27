@@ -7,7 +7,7 @@ export async function ensureSubscriptionIndexes() {
   await SubscriptionStateModel.collection.createIndex({ updatedAt: -1 });
 }
 
-/** Liefert den Rohzustand; legt bei Bedarf FREE-Grundgerüst an. */
+/** Liefert den Rohzustand; legt bei Bedarf FREE-Grundger�st an. */
 export async function getState(userId: string): Promise<ISubscriptionState> {
   const now = new Date();
   let doc = await SubscriptionStateModel.findOne({ userId }).lean<ISubscriptionState>().exec();
@@ -42,7 +42,7 @@ type SetProArgs = {
   status?: string | null; // 'active' | 'trialing' | 'past_due' | 'canceled' | ...
 };
 
-/** Setzt dauerhaften PRO-Status gemä Subscription. */
+/** Setzt dauerhaften PRO-Status gem� Subscription. */
 export async function setProFromSubscription(userId: string, args: SetProArgs) {
   const { customerId, subscriptionId, priceId, status } = args;
   await SubscriptionStateModel.updateOne(
@@ -58,7 +58,7 @@ export async function setProFromSubscription(userId: string, args: SetProArgs) {
         "stripe.status": status ?? "active",
       },
       $unset: {
-        // Day-Pass wird beim echten Abo zurückgesetzt
+        // Day-Pass wird beim echten Abo zur�ckgesetzt
         "dayPass.active": "",
         "dayPass.validUntil": "",
         "dayPass.source": "",
@@ -92,7 +92,7 @@ export async function setDayPass(userId: string, args: SetDayPassArgs = {}) {
     {
       $set: {
         userId,
-        // tier bleibt, Access wird über effective Access berechnet
+        // tier bleibt, Access wird �ber effective Access berechnet
         dayPass: {
           active: true,
           grantedAt: now,
@@ -115,7 +115,7 @@ export async function setDayPass(userId: string, args: SetDayPassArgs = {}) {
   ).exec();
 }
 
-/** Setzt User hart auf FREE (z. B. wenn Subscription gelöscht). */
+/** Setzt User hart auf FREE (z. B. wenn Subscription gel�scht). */
 export async function clearToFree(userId: string) {
   await SubscriptionStateModel.updateOne(
     { userId },

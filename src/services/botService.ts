@@ -24,14 +24,14 @@ function buildHeaders(token?: string | null): HeadersLike {
 }
 
 /**
- * Wrap für fetch mit Cookie-Support + optionalem JWT
+ * Wrap f�r fetch mit Cookie-Support + optionalem JWT
  */
 async function fetchJSON<T>(
   url: string,
   init: RequestInit = {}
 ): Promise<T> {
   const res = await fetch(url, {
-    credentials: "include",    // <-- wichtig für Session-Cookies
+    credentials: "include",    // <-- wichtig f�r Session-Cookies
     ...init,
   });
   if (!res.ok) {
@@ -68,9 +68,9 @@ export async function sendBotCommand(
 }
 
 /**
- * OPTIONALER Stub – nur für UI-Konsistenz:
+ * OPTIONALER Stub - nur f�r UI-Konsistenz:
  * Es gibt KEINE Backend-Route /api/bot/connection/twitch/toggle.
- * Wenn du die UI-Schaltfläche behalten willst, kannst du hier
+ * Wenn du die UI-Schaltfl�che behalten willst, kannst du hier
  * einen Command senden, den dein Bot interpretiert (sofern implementiert),
  * z. B. command="toggle_twitch".
  */

@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { MediaItem } from './MediaGrid';
 import './MediaCard.css';
 
@@ -95,11 +95,11 @@ export const MediaCard: React.FC<MediaCardProps> = ({
 
   const getTypeIcon = (type: MediaItem['type']): string => {
     switch (type) {
-      case 'video': return 'ðŸŽ¬';
-      case 'image': return 'ðŸ–¼ï¸';
-      case 'audio': return 'ðŸŽµ';
-      case 'overlay': return 'ðŸŽ¨';
-      default: return 'ðŸ“„';
+      case 'video': return '�YZ�';
+      case 'image': return '�Y-�️';
+      case 'audio': return '�YZ�';
+      case 'overlay': return '�YZ�';
+      default: return '�Y""';
     }
   };
 
@@ -187,7 +187,7 @@ export const MediaCard: React.FC<MediaCardProps> = ({
             checked={selected}
             onChange={handleSelect}
             onClick={(e) => e.stopPropagation()}
-            aria-label={`${item.name} auswÃ¤hlen`}
+            aria-label={`${item.name} auswählen`}
           />
         </div>
       )}
@@ -232,11 +232,11 @@ export const MediaCard: React.FC<MediaCardProps> = ({
           <span className="type-badge">{getTypeIcon(item.type)}</span>
           {item.status !== 'ready' && (
             <span className={`status-indicator ${getStatusColor(item.status)}`}>
-              {item.status === 'processing' ? 'â³' : 'âš ï¸'}
+              {item.status === 'processing' ? '⏳' : '�s�️'}
             </span>
           )}
           {item.type === 'video' && !isPlaying && (
-            <div className="play-button"><span>â–¶ï¸</span></div>
+            <div className="play-button"><span>�-�️</span></div>
           )}
         </div>
       </div>
@@ -248,7 +248,7 @@ export const MediaCard: React.FC<MediaCardProps> = ({
           <span className="meta-size">{formatFileSize(item.size)}</span>
           {item.dimensions && (
             <span className="meta-dimensions">
-              {item.dimensions.width}Ã—{item.dimensions.height}
+              {item.dimensions.width}�-{item.dimensions.height}
             </span>
           )}
           <span className="meta-date">{formatDate(item.createdAt)}</span>
@@ -258,13 +258,13 @@ export const MediaCard: React.FC<MediaCardProps> = ({
           <div className="card-stats">
             {item.views !== undefined && (
               <span className="stat-item">
-                <span className="stat-icon">ðŸ‘ï¸</span>
+                <span className="stat-icon">�Y'�️</span>
                 <span className="stat-value">{item.views.toLocaleString()}</span>
               </span>
             )}
             {item.likes !== undefined && (
               <span className="stat-item">
-                <span className="stat-icon">â¤ï¸</span>
+                <span className="stat-icon">❤️</span>
                 <span className="stat-value">{item.likes.toLocaleString()}</span>
               </span>
             )}
@@ -284,10 +284,10 @@ export const MediaCard: React.FC<MediaCardProps> = ({
       {/* Quick Actions */}
       {showActions && viewMode !== 'list' && (
         <div className="card-actions">
-          <button className="action-btn" onClick={(e) => handleAction('share', e)} aria-label="Teilen" title="Teilen">ðŸ”—</button>
-          <button className="action-btn" onClick={(e) => handleAction('download', e)} aria-label="Download" title="Download">â¬‡ï¸</button>
-          <button className="action-btn" onClick={(e) => handleAction('edit', e)} aria-label="Bearbeiten" title="Bearbeiten">âœï¸</button>
-          <button className="action-btn danger" onClick={(e) => handleAction('delete', e)} aria-label="LÃ¶schen" title="LÃ¶schen">ðŸ—‘ï¸</button>
+          <button className="action-btn" onClick={(e) => handleAction('share', e)} aria-label="Teilen" title="Teilen">�Y"-</button>
+          <button className="action-btn" onClick={(e) => handleAction('download', e)} aria-label="Download" title="Download">�?️</button>
+          <button className="action-btn" onClick={(e) => handleAction('edit', e)} aria-label="Bearbeiten" title="Bearbeiten">�o�️</button>
+          <button className="action-btn danger" onClick={(e) => handleAction('delete', e)} aria-label="Löschen" title="Löschen">�Y-'️</button>
         </div>
       )}
 
@@ -298,16 +298,16 @@ export const MediaCard: React.FC<MediaCardProps> = ({
           style={{ top: contextMenuPosition.y, left: contextMenuPosition.x }}
           role="menu"
         >
-          <button onClick={(e) => handleAction('open', e)}><span>ðŸ“‚</span> Ã–ffnen</button>
-          <button onClick={(e) => handleAction('share', e)}><span>ðŸ”—</span> Teilen</button>
-          <button onClick={(e) => handleAction('download', e)}><span>â¬‡ï¸</span> Download</button>
-          <button onClick={(e) => handleAction('duplicate', e)}><span>ðŸ“‹</span> Duplizieren</button>
+          <button onClick={(e) => handleAction('open', e)}><span>�Y",</span> �-ffnen</button>
+          <button onClick={(e) => handleAction('share', e)}><span>�Y"-</span> Teilen</button>
+          <button onClick={(e) => handleAction('download', e)}><span>�?️</span> Download</button>
+          <button onClick={(e) => handleAction('duplicate', e)}><span>�Y"<</span> Duplizieren</button>
           <div className="context-menu-divider" />
-          <button onClick={(e) => handleAction('edit', e)}><span>âœï¸</span> Bearbeiten</button>
-          <button onClick={(e) => handleAction('rename', e)}><span>ðŸ“</span> Umbenennen</button>
-          <button onClick={(e) => handleAction('tags', e)}><span>ðŸ·ï¸</span> Tags bearbeiten</button>
+          <button onClick={(e) => handleAction('edit', e)}><span>�o�️</span> Bearbeiten</button>
+          <button onClick={(e) => handleAction('rename', e)}><span>�Y"�</span> Umbenennen</button>
+          <button onClick={(e) => handleAction('tags', e)}><span>�Y��️</span> Tags bearbeiten</button>
           <div className="context-menu-divider" />
-          <button onClick={(e) => handleAction('delete', e)} className="danger"><span>ðŸ—‘ï¸</span> LÃ¶schen</button>
+          <button onClick={(e) => handleAction('delete', e)} className="danger"><span>�Y-'️</span> Löschen</button>
         </div>
       )}
     </div>

@@ -1,7 +1,7 @@
 // controllers/botController.ts
 import type { Request, Response } from "express";
 
-/** Fängt generische Bot-Kommandos ab (Platzhalter) */
+/** F�ngt generische Bot-Kommandos ab (Platzhalter) */
 export async function runCommand(_req: Request, res: Response) {
   try {
     const result = {} as any;

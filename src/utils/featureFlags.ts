@@ -6,8 +6,8 @@ import { API_BASE } from "@/env";
 
 // -------------------------------------------------------------
 // Feature Flags & Remote Config Manager
-// – nutzt jetzt ABSOLUTE API-URL aus env (API_BASE)
-// – POST auf `${API_BASE}/feature-flags` mit credentials
+// - nutzt jetzt ABSOLUTE API-URL aus env (API_BASE)
+// - POST auf `${API_BASE}/feature-flags` mit credentials
 // -------------------------------------------------------------
 
 // Types
@@ -20,7 +20,7 @@ export interface FeatureFlag {
   enabled: boolean;
   description?: string;
   segments: UserSegment[];
-  rolloutPercentage?: number; // 0–100
+  rolloutPercentage?: number; // 0-100
   conditions?: {
     minVersion?: string;
     platform?: ('web' | 'mobile' | 'desktop')[];
@@ -245,7 +245,7 @@ class FeatureFlagManager {
     });
     this.remoteConfig = config;
     this.saveLocalFlags();
-    logger.debug('📡 Remote feature flags updated:', Object.keys(config.flags).length + ' flags');
+    logger.debug('?? Remote feature flags updated:', Object.keys(config.flags).length + ' flags');
   }
 
   private saveLocalFlags(): void {

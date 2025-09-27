@@ -62,7 +62,7 @@ const Homepage: React.FC = () => {
       <section className="hero">
         <div className="hero-content">
           <div className="hero-text">
-            <div className="hero-badge">🚀 Die Zukunft des Streamings ist hier</div>
+            <div className="hero-badge">?? Die Zukunft des Streamings ist hier</div>
 
             <h1 className="hero-title">
               Stream wie ein
@@ -80,7 +80,7 @@ const Homepage: React.FC = () => {
                 className="btn btn-primary"
                 onClick={() => navigate("/register")}
               >
-                Jetzt starten – Kostenlos
+                Jetzt starten - Kostenlos
               </button>
 
               <a href="#features" className="btn btn-secondary">
@@ -92,9 +92,9 @@ const Homepage: React.FC = () => {
           <div className="hero-visual">
             <div className="stream-preview">
               <div className="stream-header">
-                <div className="live-badge">● LIVE</div>
+                <div className="live-badge">? LIVE</div>
                 <div className="viewer-count">
-                  <span>👁</span>
+                  <span>??</span>
                   <span>12,847 Zuschauer</span>
                 </div>
               </div>
@@ -118,17 +118,17 @@ const Homepage: React.FC = () => {
       <section className="features" id="features" style={{ scrollMarginTop: "96px" }}>
         <div className="section-header">
           <h2 className="section-title">Alles was du brauchst</h2>
-          <p className="section-subtitle">Professionelle Tools für deinen Erfolg</p>
+          <p className="section-subtitle">Professionelle Tools f�r deinen Erfolg</p>
         </div>
 
         <div className="features-grid">
           {[
-            { icon: "🎨", title: "Custom Overlays", description: "Editor & Templates – in Minuten live." },
-            { icon: "🤖", title: "Smart Bot", description: "Auto-Moderation, Commands, kleine Games." },
-            { icon: "📊", title: "Live Analytics", description: "Echtzeit-Zahlen: Viewer, Chat, Revenue." },
-            { icon: "🎮", title: "Mini-Games", description: "Wheel, Quiz & Giveaways – mehr Interaktion." },
-            { icon: "🎵", title: "Spotify", description: "Now Playing & Song-Requests im Stream." },
-            { icon: "💎", title: "Epic / PRO", description: "Alle Pro-Features. Volle Power." },
+            { icon: "??", title: "Custom Overlays", description: "Editor & Templates - in Minuten live." },
+            { icon: "??", title: "Smart Bot", description: "Auto-Moderation, Commands, kleine Games." },
+            { icon: "??", title: "Live Analytics", description: "Echtzeit-Zahlen: Viewer, Chat, Revenue." },
+            { icon: "??", title: "Mini-Games", description: "Wheel, Quiz & Giveaways - mehr Interaktion." },
+            { icon: "??", title: "Spotify", description: "Now Playing & Song-Requests im Stream." },
+            { icon: "??", title: "Epic / PRO", description: "Alle Pro-Features. Volle Power." },
           ].map((f, i) => (
             <div key={i} className="feature-card">
               <div className="feature-icon">{f.icon}</div>
@@ -144,7 +144,7 @@ const Homepage: React.FC = () => {
       {/* About Section */}
       <section id="about" className="about" style={{ scrollMarginTop: "96px" }}>
         <div className="section-header">
-          <h2 className="section-title">Über CLiP BOOsT</h2>
+          <h2 className="section-title">�ber CLiP BOOsT</h2>
           <p className="section-subtitle">Warum noch mit Standard-Tools streamen?</p>
         </div>
 
@@ -152,20 +152,20 @@ const Homepage: React.FC = () => {
           <div className="about-card">
             <h3>Fokus: TikTok</h3>
             <p>
-              Wir bauen speziell für TikTok-Livestreams: stabil, performant, mit Features,
+              Wir bauen speziell f�r TikTok-Livestreams: stabil, performant, mit Features,
               die wirklich tragen.
             </p>
           </div>
           <div className="about-card">
             <h3>Pro-Workflow</h3>
             <p>
-              Overlays, Bot, Analytics – alles aus einem Guss. Weniger Reibung, mehr Output.
+              Overlays, Bot, Analytics - alles aus einem Guss. Weniger Reibung, mehr Output.
             </p>
           </div>
           <div className="about-card">
             <h3>Fair & flexibel</h3>
             <p>
-              Free für Basics. PRO monatlich – oder Day-Pass für 24h volle Power.
+              Free f�r Basics. PRO monatlich - oder Day-Pass f�r 24h volle Power.
             </p>
           </div>
         </div>
@@ -187,7 +187,7 @@ const Homepage: React.FC = () => {
             <div className="stat-label">Zuschauer erreicht</div>
           </div>
           <div className="stat-card">
-            <div className="stat-number">4.9★</div>
+            <div className="stat-number">4.9?</div>
             <div className="stat-label">App Bewertung</div>
           </div>
         </div>
@@ -199,7 +199,7 @@ const Homepage: React.FC = () => {
           <div className="cta-glow" />
           <h2 className="cta-title">Bereit durchzustarten?</h2>
           <p className="cta-text">
-            Werde Teil der CLiP BOOsT Community und bringe deine Streams auf das nächste Level.
+            Werde Teil der CLiP BOOsT Community und bringe deine Streams auf das n�chste Level.
           </p>
           <button
             className="btn btn-primary btn-large"
@@ -241,15 +241,15 @@ const Homepage: React.FC = () => {
             <div className="footer-column">
               <h4>Social</h4>
               <div className="social-links">
-                <a href="#" className="social-link">📱</a>
-                <a href="#" className="social-link">💬</a>
-                <a href="#" className="social-link">🐦</a>
+                <a href="#" className="social-link">??</a>
+                <a href="#" className="social-link">??</a>
+                <a href="#" className="social-link">??</a>
               </div>
             </div>
           </div>
           <div className="footer-bottom">
             <div className="footer-copyright">
-              © {new Date().getFullYear()} CLiP BOOsT. Alle Rechte vorbehalten. Made with 💙 for Streamers.
+              � {new Date().getFullYear()} CLiP BOOsT. Alle Rechte vorbehalten. Made with ?? for Streamers.
             </div>
           </div>
         </div>

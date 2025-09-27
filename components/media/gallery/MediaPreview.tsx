@@ -268,7 +268,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
-        aria-label={`Vorschau für ${item.name}`}
+        aria-label={`Vorschau f�r ${item.name}`}
       >
         {/* Header */}
         <div className={`preview-header ${!showInfo ? 'hidden' : ''}`}>
@@ -288,7 +288,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
               aria-label="Schlieen"
               type="button"
             >
-              ️
+              ?
             </button>
           </div>
         </div>
@@ -298,12 +298,12 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
           <div className="preview-actions-menu">
             {onEdit && (
               <button onClick={() => onEdit(item)} type="button">
-                <span>️</span> Bearbeiten
+                <span>?</span> Bearbeiten
               </button>
             )}
             {onDownload && (
               <button onClick={() => onDownload(item)} type="button">
-                <span>️</span> Download
+                <span>?</span> Download
               </button>
             )}
             {onShare && (
@@ -313,7 +313,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
             )}
             {onDelete && (
               <button onClick={() => onDelete(item)} className="danger" type="button">
-                <span>️</span> Löschen
+                <span>?</span> L�schen
               </button>
             )}
           </div>
@@ -341,7 +341,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
               <button
                 className="preview-nav next"
                 onClick={onNext}
-                aria-label="Nächstes"
+                aria-label="N�chstes"
                 type="button"
               >
                 <span></span>
@@ -361,7 +361,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
                 aria-label={isPlaying ? 'Pause' : 'Play'}
                 type="button"
               >
-                {isPlaying ? '⏸️' : '️'}
+                {isPlaying ? '??' : '?'}
               </button>
             </div>
           )}
@@ -383,7 +383,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
                 className="control-btn"
                 onClick={handleZoomIn}
                 disabled={zoomLevel >= 3}
-                aria-label="Vergröern"
+                aria-label="Vergr�ern"
                 type="button"
               >
                 <span>+</span>
@@ -392,7 +392,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
                 className="control-btn"
                 onClick={resetZoom}
                 disabled={zoomLevel === 1}
-                aria-label="Zurücksetzen"
+                aria-label="Zur�cksetzen"
                 type="button"
               >
                 <span></span>
@@ -408,7 +408,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
               aria-label={showInfo ? 'Info ausblenden' : 'Info anzeigen'}
               type="button"
             >
-              <span>️</span>
+              <span>?</span>
             </button>
             <button
               className="control-btn"
@@ -433,7 +433,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
                 <dt>Typ:</dt>
                 <dd>{item.type}</dd>
                 
-                <dt>Gröe:</dt>
+                <dt>Gr�e:</dt>
                 <dd>{formatFileSize(item.size)}</dd>
                 
                 {item.dimensions && (
@@ -453,7 +453,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
                 <dt>Erstellt:</dt>
                 <dd>{formatDate(item.createdAt)}</dd>
                 
-                <dt>Geändert:</dt>
+                <dt>Ge�ndert:</dt>
                 <dd>{formatDate(item.updatedAt)}</dd>
               </dl>
             </div>
@@ -479,14 +479,14 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
                 <div className="info-stats">
                   {item.views !== undefined && (
                     <div className="stat">
-                      <span className="stat-icon">️</span>
+                      <span className="stat-icon">?</span>
                       <span className="stat-value">{item.views.toLocaleString()}</span>
                       <span className="stat-label">Aufrufe</span>
                     </div>
                   )}
                   {item.likes !== undefined && (
                     <div className="stat">
-                      <span className="stat-icon">❤️</span>
+                      <span className="stat-icon">??</span>
                       <span className="stat-value">{item.likes.toLocaleString()}</span>
                       <span className="stat-label">Likes</span>
                     </div>

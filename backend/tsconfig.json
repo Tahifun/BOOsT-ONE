@@ -19,13 +19,13 @@
       "@/lib/*": ["./utils/*"]
     },
 
-    /* Interop & Qualität */
+    /* Interop & Qualit�t */
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
 
-    /* Typ-Präzision */
+    /* Typ-Pr�zision */
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,

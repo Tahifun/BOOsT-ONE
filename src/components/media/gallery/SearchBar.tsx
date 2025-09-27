@@ -97,7 +97,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           id: `recent-${search}`,
           text: search,
           type: 'recent',
-          icon: '🕐'
+          icon: '??'
         });
       });
       
@@ -106,7 +106,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           id: `popular-${search}`,
           text: search,
           type: 'popular',
-          icon: '🔥'
+          icon: '??'
         });
       });
     } else {
@@ -236,11 +236,11 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   // Get icon for suggestion type
   const getTypeIcon = (type: SearchSuggestion['type']): string => {
     switch (type) {
-      case 'recent': return '🕐';
-      case 'popular': return '🔥';
-      case 'tag': return '🏷️';
-      case 'file': return '📄';
-      default: return '🔍';
+      case 'recent': return '??';
+      case 'popular': return '??';
+      case 'tag': return '???';
+      case 'file': return '??';
+      default: return '??';
     }
   };
 
@@ -254,7 +254,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           {isSearching ? (
             <div className="search-spinner" />
           ) : (
-            <span>🔍</span>
+            <span>??</span>
           )}
         </div>
 
@@ -285,10 +285,10 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           <button
             className="search-clear"
             onClick={handleClear}
-            aria-label="Suche löschen"
+            aria-label="Suche l�schen"
             type="button"
           >
-            ✖️
+            ??
           </button>
         )}
 
@@ -310,7 +310,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             aria-label="Erweiterte Suche"
             type="button"
           >
-            <span>⚙️</span>
+            <span>??</span>
           </button>
         )}
       </div>
@@ -341,7 +341,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                       role="option"
                       aria-selected={selectedSuggestionIndex === index}
                     >
-                      <span className="suggestion-icon">🕐</span>
+                      <span className="suggestion-icon">??</span>
                       <span className="suggestion-text">{search}</span>
                       <button
                         className="suggestion-remove"
@@ -349,7 +349,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                         aria-label={`${search} aus Verlauf entfernen`}
                         type="button"
                       >
-                        ×
+                        �
                       </button>
                     </div>
                   ))}
@@ -374,7 +374,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                         role="option"
                         aria-selected={selectedSuggestionIndex === actualIndex}
                       >
-                        <span className="suggestion-icon">🔥</span>
+                        <span className="suggestion-icon">??</span>
                         <span className="suggestion-text">{search}</span>
                       </div>
                     );
@@ -413,8 +413,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           {/* No Results */}
           {internalValue !== '' && suggestionsList.length === 0 && (
             <div className="suggestions-empty">
-              <span className="empty-icon">🔍</span>
-              <p>Keine Ergebnisse für "{internalValue}"</p>
+              <span className="empty-icon">??</span>
+              <p>Keine Ergebnisse f�r "{internalValue}"</p>
             </div>
           )}
         </div>

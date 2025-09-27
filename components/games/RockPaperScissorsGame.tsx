@@ -3,7 +3,7 @@ import Button from '../Button';
 
 const choices = [
   { emoji: "", name: "Stein" },
-  { emoji: "️", name: "Schere" },
+  { emoji: "?", name: "Schere" },
   { emoji: "", name: "Papier" },
 ];
 
@@ -80,7 +80,7 @@ const RockPaperScissorsGame: React.FC = () => {
           </Button>
         ))}
         <Button size="md" onClick={reset}>
-          Zurücksetzen
+          Zur�cksetzen
         </Button>
       </div>
 

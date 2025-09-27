@@ -1,4 +1,4 @@
-﻿// src/contexts/MediaContext.tsx
+// src/contexts/MediaContext.tsx
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { MediaItem } from '../types/mediaTypes';
 import {
@@ -9,7 +9,7 @@ import {
 } from '../services/mediaService';
 import { MediaType } from '../types/mediaTypes';
 
-/** Typen fÃ¼r Upload-Parameter: erlaubt entweder schon validierten MediaType oder beliebigen string mit Laufzeit-Check */
+/** Typen für Upload-Parameter: erlaubt entweder schon validierten MediaType oder beliebigen string mit Laufzeit-Check */
 interface FileUploadParams {
   file: File;
   meta: {
@@ -32,7 +32,7 @@ interface FileUploadParamsRaw {
   };
 }
 
-/** Guard fÃ¼r MediaType */
+/** Guard für MediaType */
 function isMediaType(v: string): v is MediaType {
   return ["clip", "screenshot", "sound", "overlay"].includes(v);
 }
@@ -66,7 +66,7 @@ export const MediaProvider = ({ children }: { children: ReactNode }) => {
   const addMedia = async (params: FileUploadParams | FileUploadParamsRaw) => {
     const { file, meta } = params as any;
 
-    // Typ prÃ¼fen / konvertieren
+    // Typ prüfen / konvertieren
     let mediaMeta: MediaUploadMeta;
     if (isMediaType(meta.type)) {
       mediaMeta = {
@@ -75,7 +75,7 @@ export const MediaProvider = ({ children }: { children: ReactNode }) => {
         description: meta.description,
       };
     } else {
-      throw new Error(`UngÃ¼ltiger media type: ${meta.type}`);
+      throw new Error(`Ungültiger media type: ${meta.type}`);
     }
 
     await uploadMediaFile(file, mediaMeta);

@@ -67,11 +67,11 @@
 }
 .metadata-info { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8em; color: rgba(248, 250, 252, 0.6); }
 .metadata-info > span { display: flex; align-items: center; gap: 4px; }
-.metadata-size::before { content: '💾'; font-size: 0.9em; }
-.metadata-dimensions::before { content: '📐'; font-size: 0.9em; }
-.metadata-duration::before { content: '⏱️'; font-size: 0.9em; }
-.metadata-sample-rate::before { content: '🎵'; font-size: 0.9em; }
-.metadata-channels::before { content: '🔊'; font-size: 0.9em; }
+.metadata-size::before { content: '??'; font-size: 0.9em; }
+.metadata-dimensions::before { content: '??'; font-size: 0.9em; }
+.metadata-duration::before { content: '??'; font-size: 0.9em; }
+.metadata-sample-rate::before { content: '??'; font-size: 0.9em; }
+.metadata-channels::before { content: '??'; font-size: 0.9em; }
 
 /* Hover Effects */
 .preview-container:hover .preview-image img { transform: scale(1.05); transition: transform 0.3s ease; }

@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 
-/** Wartet auf Auth-Bootstrap und schützt Routen sauber. */
+/** Wartet auf Auth-Bootstrap und sch�tzt Routen sauber. */
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { token, isLoading } = useAuth();
   const location = useLocation();

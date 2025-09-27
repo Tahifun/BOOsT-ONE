@@ -944,7 +944,7 @@ const MarkerSystem: React.FC<MarkerSystemProps> = ({
         >
           <div className="details-header">
             <h4>Marker Details</h4>
-            <button onClick={() => setSelectedMarker(null)}>×</button>
+            <button onClick={() => setSelectedMarker(null)}>�</button>
           </div>
           <div className="details-content">
             <div className="detail-row">
@@ -996,7 +996,7 @@ const MarkerSystem: React.FC<MarkerSystemProps> = ({
               <div className="detail-row">
                 <label>Description:</label>
                 <textarea
-                  placeholder="Add a description…"
+                  placeholder="Add a description."
                   onChange={(e) => updateMarker(selectedMarker.id, {
                     metadata: { ...(selectedMarker.metadata || {}), description: e.target.value }
                   })}

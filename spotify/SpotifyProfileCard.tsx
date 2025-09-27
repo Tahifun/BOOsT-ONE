@@ -12,7 +12,7 @@ const SpotifyProfileCard: React.FC = () => {
     let mounted = true;
     (async () => {
       try {
-        const p = await getSpotifyProfile(); // null, wenn nicht verknüpft
+        const p = await getSpotifyProfile(); // null, wenn nicht verkn�pft
         if (!mounted) return;
         setProfile(p);
       } catch (e: unknown) {
@@ -52,7 +52,7 @@ const SpotifyProfileCard: React.FC = () => {
         <div className="sp-muted">
           Kein Spotify-Konto verbunden.
           <br />
-          <span style={{ fontSize: 12 }}>Verbinde dich über den Button in der Seitenleiste.</span>
+          <span style={{ fontSize: 12 }}>Verbinde dich �ber den Button in der Seitenleiste.</span>
         </div>
       )}
 
@@ -81,7 +81,7 @@ const SpotifyProfileCard: React.FC = () => {
             </div>
             {profile.url && (
               <a href={profile.url} target="_blank" rel="noreferrer" className="sp-link">
-                Profil öffnen 
+                Profil �ffnen 
               </a>
             )}
           </div>

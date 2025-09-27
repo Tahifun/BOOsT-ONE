@@ -45,7 +45,7 @@ export function useTheme(): ThemeContextValue {
   return ctx;
 }
 
-/** Alias für Legacy-Imports (z. B. useThemeContext) */
+/** Alias f�r Legacy-Imports (z. B. useThemeContext) */
 export const useThemeContext = useTheme;
 
 // Optional, falls irgendwo der Context selbst gebraucht wird:

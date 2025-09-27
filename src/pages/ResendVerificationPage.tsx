@@ -43,7 +43,7 @@ export default function ResendVerificationPage() {
           />
         </label>
         <button type="submit" disabled={loading} style={{ marginTop: 8, padding: '8px 14px' }}>
-          {loading ? 'Bitte warten…' : 'Senden'}
+          {loading ? 'Bitte warten.' : 'Senden'}
         </button>
         {msg && <div style={{ color: '#4caf50', marginTop: 10 }}>{msg}</div>}
         {err && <div style={{ color: '#f66', marginTop: 10 }}>{err}</div>}

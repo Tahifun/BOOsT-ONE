@@ -1,11 +1,11 @@
 // src/components/epic/VideoSection.tsx
 import React, { useEffect, useRef, useState } from "react";
 
-/** Größen: Objekt oder Preset-String wie "720p", "1080p" */
+/** Gr��en: Objekt oder Preset-String wie "720p", "1080p" */
 type SizeObject = { width: number; height: number };
 type SizeProp = SizeObject | string;
 type EffectSettings = {
-  blur?: number;                // Intensität (px)
+  blur?: number;                // Intensit�t (px)
   saturation?: number;
   contrast?: number;
   backgroundMode?: "none" | "blur" | "face-only";
@@ -62,7 +62,7 @@ function VideoSection({
     | "blur"
     | "face-only";
 
-  // Filter (für "none" auf <video>, für Canvas im Draw verwendet)
+  // Filter (f�r "none" auf <video>, f�r Canvas im Draw verwendet)
   const blur = effectSettings.blur ?? 10;
   const saturation = effectSettings.saturation ?? 1;
   const contrast = effectSettings.contrast ?? 1;
@@ -76,7 +76,7 @@ function VideoSection({
     if (w && h) setDims({ w, h });
   };
 
-  // Kamera Start/Stop + Auflösung
+  // Kamera Start/Stop + Aufl�sung
   useEffect(() => {
     let cancelled = false;
 
@@ -115,7 +115,7 @@ function VideoSection({
           try {
             await track.applyConstraints({ width: resolved.width, height: resolved.height });
             setTimeout(updateDims, 120);
-          } catch { /* Kamera/Browser könnte es ignorieren */ }
+          } catch { /* Kamera/Browser k�nnte es ignorieren */ }
         }
       } catch (e: unknown) {
         setError(e?.name ? `${e.name}: ${e.message || ""}` : (e?.message || "unknown camera error"));
@@ -133,7 +133,7 @@ function VideoSection({
     return () => { cancelled = true; stopTracks(); };
   }, [isStreaming, cameraDeviceId, resolved.width, resolved.height]);
 
-  // Laufende Größenänderungen durchschieben
+  // Laufende Gr��en�nderungen durchschieben
   useEffect(() => {
     if (!isStreaming) return;
     const track = currentStream.current?.getVideoTracks()?.[0];
@@ -147,7 +147,7 @@ function VideoSection({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resolved.width, resolved.height]);
 
-  // Mediapipe SelfieSegmentation lazy laden (nur wenn benötigt)
+  // Mediapipe SelfieSegmentation lazy laden (nur wenn ben�tigt)
   useEffect(() => {
     let mounted = true;
     (async () => {
@@ -187,7 +187,7 @@ function VideoSection({
             if (bgMode === "blur") {
               // Vordergrund (Person) scharf
               ctx.globalCompositeOperation = "source-in";
-              ctx.filter = cssFilter; // Sättigung/Kontrast
+              ctx.filter = cssFilter; // S�ttigung/Kontrast
               ctx.drawImage(results.image, 0, 0, c.width, c.height);
 
               // Hintergrund weich
@@ -199,7 +199,7 @@ function VideoSection({
               ctx.globalCompositeOperation = "source-in";
               ctx.filter = cssFilter;
               ctx.drawImage(results.image, 0, 0, c.width, c.height);
-              // Option: Hintergrund leicht abdunkeln (nicht nötig – already transparent/leer)
+              // Option: Hintergrund leicht abdunkeln (nicht n�tig - already transparent/leer)
               // ctx.globalCompositeOperation = "destination-over";
               // ctx.fillStyle = "rgba(0,0,0,1)";
               // ctx.fillRect(0,0,c.width,c.height);
@@ -220,7 +220,7 @@ function VideoSection({
     return () => { mounted = true; };
   }, [bgMode, blur, cssFilter]);
 
-  // Loop zum Füttern der Segmentation (pro Frame send(image: video))
+  // Loop zum F�ttern der Segmentation (pro Frame send(image: video))
   useEffect(() => {
     // nur wenn Streaming + Modus aktiv + Instanz da
     if (!isStreaming || bgMode === "none" || !segmentationRef.current) {
@@ -239,7 +239,7 @@ function VideoSection({
         if (!processingRef.current) {
           try {
             processingRef.current = true;
-            // send triggert onResults → dort wird gezeichnet
+            // send triggert onResults ? dort wird gezeichnet
             await sm.send({ image: v });
           } catch {
             // ignore
@@ -258,7 +258,7 @@ function VideoSection({
   useEffect(() => {
     if (!isStreaming) return;
     if (bgMode === "none") return;
-    if (segmentationReady) return; // echte Segmentation übernimmt
+    if (segmentationReady) return; // echte Segmentation �bernimmt
 
     const v = videoRef.current;
     const c = canvasRef.current;
@@ -282,7 +282,7 @@ function VideoSection({
           ctx.drawImage(v, 0, 0, vw, vh);
           ctx.globalAlpha = 1;
         } else {
-          // sehr einfacher „face-only“-Ersatz: Spotlight in der Mitte
+          // sehr einfacher "face-only"-Ersatz: Spotlight in der Mitte
           ctx.filter = `blur(${blur}px) ${cssFilter}`;
           ctx.drawImage(v, 0, 0, vw, vh);
           ctx.filter = "none";
@@ -325,7 +325,7 @@ function VideoSection({
           onLoadedMetadata={updateDims}
         />
 
-        {/* Canvas für Blur/Face-Only (sichtbar, wenn Effekt aktiv) */}
+        {/* Canvas f�r Blur/Face-Only (sichtbar, wenn Effekt aktiv) */}
         <canvas
           ref={canvasRef}
           style={{
@@ -351,11 +351,11 @@ function VideoSection({
               boxShadow: "0 0 20px rgba(255,0,122,.35)",
             }}
           >
-            ● LIVE
+            ? LIVE
           </div>
         )}
 
-        {/* echte Capture-Auflösung */}
+        {/* echte Capture-Aufl�sung */}
         {dims.w > 0 && dims.h > 0 && (
           <div
             style={{
@@ -369,7 +369,7 @@ function VideoSection({
               fontSize: 12,
             }}
           >
-            {dims.w}×{dims.h}
+            {dims.w}�{dims.h}
           </div>
         )}
 
@@ -386,9 +386,9 @@ function VideoSection({
               borderRadius: 6,
               fontSize: 12,
             }}
-            title="Installiert: @mediapipe/selfie_segmentation – lädt/initialisiert"
+            title="Installiert: @mediapipe/selfie_segmentation - l�dt/initialisiert"
           >
-            Segmentation lädt … (Fallback aktiv)
+            Segmentation l�dt . (Fallback aktiv)
           </div>
         )}
       </div>

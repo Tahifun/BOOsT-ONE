@@ -29,7 +29,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
     else setGlowIntensity(1);
   }, []);
 
-  // Debounced Search + Demo-Vorschläge
+  // Debounced Search + Demo-Vorschl�ge
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchQuery.trim().length > 2) {
@@ -55,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
     if (onSearch) {
       onSearch(q);
     } else {
-      // Fallback: navigiert zur Media-Seite und übergibt die Suche als Query
+      // Fallback: navigiert zur Media-Seite und �bergibt die Suche als Query
       const url = q ? `/media?query=${encodeURIComponent(q)}&tab=gallery` : '/media';
       navigate(url);
     }
@@ -136,7 +136,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
               aria-autocomplete="list"
             />
             <span id="search-hint" className="sr-only">
-              Drücke Enter zum Suchen oder nutze die Vorschläge.
+              Dr�cke Enter zum Suchen oder nutze die Vorschl�ge.
             </span>
 
             {showSuggestions && (
@@ -170,7 +170,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
               title="Upload starten (Ctrl+U)"
               type="button"
             >
-              <span className="action-icon">️</span>
+              <span className="action-icon">?</span>
             </button>
             <button
               className="quick-action-btn"

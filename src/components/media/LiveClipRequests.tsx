@@ -1,11 +1,11 @@
-﻿// src/components/media/LiveClipRequests.tsx
+// src/components/media/LiveClipRequests.tsx
 
 import React, { useContext } from "react";
 import { MediaContext } from '../../contexts/MediaContext';
 import { MediaItem } from '../../types/mediaTypes';
 import "../../styles/media.css";
 
-// In einer echten App wÃ¼rden die Clip-Requests live Ã¼ber ein Backend oder Websocket kommen.
+// In einer echten App würden die Clip-Requests live über ein Backend oder Websocket kommen.
 // Hier als Demo: nutze vorhandene Clips als "Requests".
 
 export const LiveClipRequests: React.FC = () => {
@@ -18,7 +18,7 @@ export const LiveClipRequests: React.FC = () => {
 
   return (
     <div className="live-clip-requests">
-      <h2>ðŸ’¡ Live Clip-Requests</h2>
+      <h2>�Y'� Live Clip-Requests</h2>
       {clipRequests.length === 0 && (
         <div>Keine Clip-Requests vorhanden.</div>
       )}
@@ -31,14 +31,14 @@ export const LiveClipRequests: React.FC = () => {
             <div className="clip-request-actions">
               <button>Clip freigeben</button>
               <button>Bearbeiten</button>
-              <button>LÃ¶schen</button>
+              <button>Löschen</button>
             </div>
           </div>
         ))}
       </div>
       <div style={{ marginTop: 16 }}>
         <em>
-          Hier erscheinen Clips, die Zuschauer wÃ¤hrend des Streams markiert oder vorgeschlagen haben.
+          Hier erscheinen Clips, die Zuschauer während des Streams markiert oder vorgeschlagen haben.
         </em>
       </div>
     </div>

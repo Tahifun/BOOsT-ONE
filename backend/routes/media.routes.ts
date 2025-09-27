@@ -103,7 +103,7 @@ router.post(
         if (err.code === "LIMIT_FILE_SIZE") {
           return res.status(413).json({
             error: "too_large",
-            message: "Datei überschreitet das Upload-Limit.",
+            message: "Datei �berschreitet das Upload-Limit.",
             limitMB: Math.round(fileSizeLimit / (1024 * 1024)),
           });
         }
@@ -134,7 +134,7 @@ router.post(
         if (!parsed.success) {
           if (file) removeFileSafe(file.path);
           const errors = parsed.error.issues.map((i) => ({ field: i.path.join("."), message: i.message }));
-          return res.status(422).json({ message: "Ungültige Eingaben.", errors });
+          return res.status(422).json({ message: "Ung�ltige Eingaben.", errors });
         }
         const { type, name, description } = parsed.data;
 
@@ -197,7 +197,7 @@ router.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => 
     if (err.code === "LIMIT_FILE_SIZE") {
       return res.status(413).json({
         error: "too_large",
-        message: "Die Datei überschreitet das maximale Serverlimit.",
+        message: "Die Datei �berschreitet das maximale Serverlimit.",
       });
     }
     if (err.code === "LIMIT_UNEXPECTED_FILE") {

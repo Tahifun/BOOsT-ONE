@@ -1,4 +1,4 @@
-﻿
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { FileWithValidation } from './DropZone';
 import { UploadProgress } from './UploadProgress';
@@ -208,22 +208,22 @@ export const UploadQueue: React.FC<UploadQueueProps> = ({
         <div className="queue-actions">
           {selectedItems.size > 0 && (
             <div className="batch-actions">
-              <span className="selected-count">{selectedItems.size} ausgewÃ¤hlt</span>
-              <button className="action-btn" onClick={() => handleBatchAction('remove')} aria-label="AusgewÃ¤hlte entfernen">ðŸ—‘ï¸</button>
-              <button className="action-btn" onClick={() => handleBatchAction('retry')} aria-label="AusgewÃ¤hlte wiederholen">ðŸ”„</button>
-              <button className="action-btn" onClick={clearSelection} aria-label="Auswahl aufheben">âœ–ï¸</button>
+              <span className="selected-count">{selectedItems.size} ausgewählt</span>
+              <button className="action-btn" onClick={() => handleBatchAction('remove')} aria-label="Ausgewählte entfernen">�Y-'️</button>
+              <button className="action-btn" onClick={() => handleBatchAction('retry')} aria-label="Ausgewählte wiederholen">�Y""</button>
+              <button className="action-btn" onClick={clearSelection} aria-label="Auswahl aufheben">�o-️</button>
             </div>
           )}
           <div className="queue-controls">
             <select className="sort-select" value={sortBy} onChange={(e) => setSortBy(e.target.value as typeof sortBy)} aria-label="Sortierung">
               <option value="name">Name</option>
-              <option value="size">GrÃ¶ÃŸe</option>
+              <option value="size">Grö�Ye</option>
               <option value="status">Status</option>
             </select>
             <select className="filter-select" value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)} aria-label="Filter">
               <option value="all">Alle</option>
               <option value="waiting">Wartend</option>
-              <option value="uploading">LÃ¤uft</option>
+              <option value="uploading">Läuft</option>
               <option value="completed">Fertig</option>
               <option value="failed">Fehler</option>
               <option value="paused">Pausiert</option>
@@ -241,7 +241,7 @@ export const UploadQueue: React.FC<UploadQueueProps> = ({
           <UploadProgress progress={overallProgress} label="Gesamtfortschritt" showPercentage size="small" />
           <div className="status-summary">
             <span className="status-item waiting">{statusCounts.waiting} wartend</span>
-            <span className="status-item uploading">{statusCounts.uploading} lÃ¤uft</span>
+            <span className="status-item uploading">{statusCounts.uploading} läuft</span>
             <span className="status-item completed">{statusCounts.completed} fertig</span>
             {statusCounts.failed > 0 && <span className="status-item failed">{statusCounts.failed} fehler</span>}
           </div>
@@ -252,7 +252,7 @@ export const UploadQueue: React.FC<UploadQueueProps> = ({
       <div className="queue-items">
         {displayQueue.length === 0 ? (
           <div className="queue-empty">
-            <span className="empty-icon">ðŸ“­</span>
+            <span className="empty-icon">�Y"�</span>
             <p>Keine Dateien in der Warteschlange</p>
           </div>
         ) : (
@@ -275,9 +275,9 @@ export const UploadQueue: React.FC<UploadQueueProps> = ({
       {queue.length > 0 && (
         <div className="upload-controls">
           {isUploading ? (
-            <button className="control-btn stop" onClick={() => setIsUploading(false)}>â¸ï¸ Upload pausieren</button>
+            <button className="control-btn stop" onClick={() => setIsUploading(false)}>⏸️ Upload pausieren</button>
           ) : (
-            <button className="control-btn start" onClick={() => setIsUploading(true)}>â–¶ï¸ Upload starten</button>
+            <button className="control-btn start" onClick={() => setIsUploading(true)}>�-�️ Upload starten</button>
           )}
         </div>
       )}
@@ -313,9 +313,9 @@ const QueueRow: React.FC<RowProps> = ({ item, isSelected, onSelect, onRemove, on
 
   return (
     <div className={`queue-item ${item.status} ${isSelected ? 'selected' : ''}`}>
-      <input type="checkbox" className="item-checkbox" checked={isSelected} onChange={onSelect} aria-label={`${item.file.name} auswÃ¤hlen`} />
+      <input type="checkbox" className="item-checkbox" checked={isSelected} onChange={onSelect} aria-label={`${item.file.name} auswählen`} />
       <div className="item-preview">
-        {item.preview ? <img src={item.preview} alt={item.file.name} /> : <span className="file-icon" aria-hidden="true">ðŸ“„</span>}
+        {item.preview ? <img src={item.preview} alt={item.file.name} /> : <span className="file-icon" aria-hidden="true">�Y""</span>}
       </div>
       <div className="item-info">
         <div className="item-name" title={item.file.name}>{item.file.name}</div>
@@ -336,19 +336,19 @@ const QueueRow: React.FC<RowProps> = ({ item, isSelected, onSelect, onRemove, on
 
       <div className="item-status">
         <span className={`status-badge ${item.status}`}>
-          {item.status === 'waiting' && 'â³'}
-          {item.status === 'uploading' && 'ðŸ“¤'}
-          {item.status === 'completed' && 'âœ…'}
-          {item.status === 'failed' && 'âŒ'}
-          {item.status === 'paused' && 'â¸ï¸'}
+          {item.status === 'waiting' && '⏳'}
+          {item.status === 'uploading' && '�Y"�'}
+          {item.status === 'completed' && '�o.'}
+          {item.status === 'failed' && '�O'}
+          {item.status === 'paused' && '⏸️'}
         </span>
       </div>
 
       <div className="item-actions">
-        {item.status === 'failed' && <button className="item-btn" onClick={onRetry} aria-label="Wiederholen">ðŸ”„</button>}
-        {item.status === 'uploading' && <button className="item-btn" onClick={onPause} aria-label="Pausieren">â¸ï¸</button>}
-        {item.status === 'paused' && <button className="item-btn" onClick={onResume} aria-label="Fortsetzen">â–¶ï¸</button>}
-        <button className="item-btn remove" onClick={onRemove} aria-label="Entfernen">âœ–ï¸</button>
+        {item.status === 'failed' && <button className="item-btn" onClick={onRetry} aria-label="Wiederholen">�Y""</button>}
+        {item.status === 'uploading' && <button className="item-btn" onClick={onPause} aria-label="Pausieren">⏸️</button>}
+        {item.status === 'paused' && <button className="item-btn" onClick={onResume} aria-label="Fortsetzen">�-�️</button>}
+        <button className="item-btn remove" onClick={onRemove} aria-label="Entfernen">�o-️</button>
       </div>
     </div>
   );

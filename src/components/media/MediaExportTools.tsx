@@ -1,18 +1,18 @@
-﻿import React from "react";
+import React from "react";
 import { useContext } from "react";
 import { MediaContext } from '../../contexts/MediaContext';
 import { MediaItem } from '../../types/mediaTypes';
 import ProFeatureWrapper from '../common/ProFeatureWrapper';
 import "../../styles/media.css";
 
-/** Hilfsfunktion: absolute URL fÃ¼r ein Item bauen */
+/** Hilfsfunktion: absolute URL für ein Item bauen */
 function buildPublicUrl(url: string) {
   try {
     // Wenn bereits absolut, beibehalten
     const u = new URL(url);
     return u.toString();
   } catch {
-    // Relativ -> an Origin anhÃ¤ngen
+    // Relativ -> an Origin anhängen
     return `${window.location.origin}${url.startsWith("/") ? "" : "/"}${url}`;
   }
 }
@@ -29,30 +29,30 @@ export const MediaExportTools: React.FC = () => {
     const link = buildPublicUrl(item.url);
     try {
       await navigator.clipboard.writeText(link);
-      alert("ðŸ”— Link kopiert!");
+      alert("�Y"- Link kopiert!");
     } catch {
-      // Fallback fÃ¼r Browser ohne Clipboard-API
-      const ok = window.confirm(`Kopieren nicht mÃ¶glich.\nLink anzeigen?\n\n${link}`);
+      // Fallback für Browser ohne Clipboard-API
+      const ok = window.confirm(`Kopieren nicht möglich.\nLink anzeigen?\n\n${link}`);
       if (ok) window.prompt("Link manuell kopieren:", link);
     }
   };
 
-  // Platzhalter-Actions â€“ hier spÃ¤ter Backend/Worker-Export einhÃ¤ngen
+  // Platzhalter-Actions �?" hier später Backend/Worker-Export einhängen
   const handleExportShort = (item: MediaItem) => {
     // z. B. POST /api/export/short { url, aspect: 9:16, trim, watermark, ... }
-    alert(`ðŸŽ¬ TikTok-Short Export gestartet fÃ¼r: ${item.name}`);
+    alert(`�YZ� TikTok-Short Export gestartet für: ${item.name}`);
   };
   const handleExportStory = (item: MediaItem) => {
-    alert(`ðŸ“± Story Export gestartet fÃ¼r: ${item.name}`);
+    alert(`�Y"� Story Export gestartet für: ${item.name}`);
   };
   const handleAddBranding = (item: MediaItem) => {
-    // z. B. Editor Ã¶ffnen / Overlay aus Galerie wÃ¤hlen
-    alert(`âœ¨ Branding-Overlay fÃ¼r: ${item.name}`);
+    // z. B. Editor öffnen / Overlay aus Galerie wählen
+    alert(`�o� Branding-Overlay für: ${item.name}`);
   };
 
   return (
     <div className="media-export-tools">
-      <h2>ðŸš€ Export & Teilen</h2>
+      <h2>�Ys? Export & Teilen</h2>
 
       {exportables.length === 0 && (
         <div className="export-empty">
@@ -66,7 +66,7 @@ export const MediaExportTools: React.FC = () => {
             <div className="export-title">{item.name}</div>
 
             <div className="export-actions">
-              {/* PRO: Transcoding fÃ¼r Export-Short */}
+              {/* PRO: Transcoding für Export-Short */}
               <ProFeatureWrapper
                 featureName="transcoding"
                 message="Export in vertikales Short-Format (9:16) ist ein PRO-Feature."
@@ -76,10 +76,10 @@ export const MediaExportTools: React.FC = () => {
                 </button>
               </ProFeatureWrapper>
 
-              {/* PRO: Transcoding fÃ¼r Story */}
+              {/* PRO: Transcoding für Story */}
               <ProFeatureWrapper
                 featureName="transcoding"
-                message="Story-Export (1080Ã—1920) ist ein PRO-Feature."
+                message="Story-Export (1080�-1920) ist ein PRO-Feature."
               >
                 <button type="button" onClick={() => handleExportStory(item)}>
                   Als Story exportieren
@@ -97,7 +97,7 @@ export const MediaExportTools: React.FC = () => {
                 message="Eigene Branding-Overlays sind im PRO-Paket enthalten."
               >
                 <button type="button" onClick={() => handleAddBranding(item)}>
-                  Branding hinzufÃ¼gen
+                  Branding hinzufügen
                 </button>
               </ProFeatureWrapper>
             </div>

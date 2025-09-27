@@ -1,9 +1,9 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import Button from '../Button';
 
 const symbolSets: Record<string, string[]> = {
-  klassisch: ["ðŸ’", "ðŸ‹", "ðŸ€", "â­", "7ï¸âƒ£", "ðŸ‰", "ðŸ””"],
-  modern: ["ðŸ’", "ðŸ‹", "ðŸ””", "ðŸ‰", "â­", "ðŸ’Ž"],
+  klassisch: ["�Y�'", "�Y�<", "�Y�?", "⭐", "7️�f�", "�Y�?", "�Y"""],
+  modern: ["�Y�'", "�Y�<", "�Y""", "�Y�?", "⭐", "�Y'Z"],
 };
 
 type HistoryEntry = {
@@ -13,10 +13,10 @@ type HistoryEntry = {
 
 const evaluate = (combo: string[]): string => {
   const unique = new Set(combo);
-  if (unique.size === 1) return "JACKPOT! ðŸŽ‰";
+  if (unique.size === 1) return "JACKPOT! �YZ?";
   if (combo[0] === combo[1] || combo[1] === combo[2] || combo[0] === combo[2])
-    return "Fast! ðŸ˜Ž";
-  return "Nix gewonnen ðŸ˜…";
+    return "Fast! �Y~Z";
+  return "Nix gewonnen �Y~.";
 };
 
 const SlotsGame: React.FC = () => {
@@ -60,14 +60,14 @@ const SlotsGame: React.FC = () => {
           Modern
         </Button>
         <Button size="sm" onClick={resetHistory}>
-          ZurÃ¼cksetzen
+          Zurücksetzen
         </Button>
       </div>
 
       <div style={{ fontSize: 38, margin: "10px 0" }}>
         {reels.map((symbol, i) => (
           <span key={i} style={{ margin: "0 6px" }}>
-            {symbol || "â”"}
+            {symbol || "�""}
           </span>
         ))}
       </div>
@@ -89,7 +89,7 @@ const SlotsGame: React.FC = () => {
           <strong>Verlauf (neueste oben):</strong>
           {history.map((h, i) => (
             <div key={i} style={{ marginTop: 4 }}>
-              {i + 1}. {h.combo.join(" ")} â€“ {h.result}
+              {i + 1}. {h.combo.join(" ")} �?" {h.result}
             </div>
           ))}
         </div>

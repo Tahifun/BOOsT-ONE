@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { VirtualScroller } from './VirtualScroller';
 import { MediaCard } from './MediaCard';
 import './MediaGrid.css';
@@ -232,9 +232,9 @@ export const MediaGrid: React.FC<MediaGridProps> = ({
   // Empty state
   const renderEmptyState = () => (
     <div className="grid-empty">
-      <div className="empty-icon">ðŸ“</div>
+      <div className="empty-icon">�Y"�</div>
       <h3>Keine Medien gefunden</h3>
-      <p>Lade deine ersten Dateien hoch oder Ã¤ndere deine Filter</p>
+      <p>Lade deine ersten Dateien hoch oder ändere deine Filter</p>
     </div>
   );
 

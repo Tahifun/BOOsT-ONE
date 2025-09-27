@@ -23,7 +23,7 @@ export default class ErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return this.props.fallback ?? (
-        <div style={{ padding: 12 }}>Dieser Bereich ist gerade nicht verfügbar.</div>
+        <div style={{ padding: 12 }}>Dieser Bereich ist gerade nicht verf�gbar.</div>
       );
     }
     return this.props.children ?? null;

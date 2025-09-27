@@ -1,4 +1,4 @@
-﻿import React, { useContext, useEffect, useMemo, useState, useCallback } from "react";
+import React, { useContext, useEffect, useMemo, useState, useCallback } from "react";
 import { MediaContext } from '../../contexts/MediaContext';
 import type { MediaItem } from '../../types/mediaTypes';
 import "../../styles/media.css";
@@ -46,7 +46,7 @@ export const SoundboardManager: React.FC = () => {
   const [masterVolume, setMasterVolume] = useState(0.8);     // 0..1
   const [exclusive, setExclusive] = useState(true);          // nur ein Sound gleichzeitig
 
-  // Media â†’ SoundItem
+  // Media �?' SoundItem
   const mediaSounds = useMemo<MediaItem[]>(
     () => (mediaItems || []).filter((m) => (m as any).type === "sound"),
     [mediaItems]
@@ -87,7 +87,7 @@ export const SoundboardManager: React.FC = () => {
   // Lokaler Grid-State
   const [gridSounds, setGridSounds] = useState<SoundItem[]>(baseSoundItems);
 
-  // Bei Ã„nderungen synchronisieren (playing/vol mÃ¶glichst erhalten)
+  // Bei �"nderungen synchronisieren (playing/vol möglichst erhalten)
   useEffect(() => {
     setGridSounds((prev) => {
       const prevMap = new Map(prev.map((s) => [s.id, s]));
@@ -100,7 +100,7 @@ export const SoundboardManager: React.FC = () => {
     });
   }, [baseSoundItems]);
 
-  // Callbacks fÃ¼r Grid
+  // Callbacks für Grid
   const onSoundUpdate = useCallback((sound: SoundItem) => {
     setGridSounds((prev) => prev.map((s) => (s.id === sound.id ? { ...s, ...sound } : s)));
   }, []);
@@ -130,7 +130,7 @@ export const SoundboardManager: React.FC = () => {
   return (
     <div className="soundboard-manager">
       <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 12, flexWrap: "wrap" }}>
-        <h2 style={{ margin: 0 }}>ðŸ”Š Soundboard</h2>
+        <h2 style={{ margin: 0 }}>�Y"S Soundboard</h2>
 
         {/* Master Volume */}
         <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12 }}>

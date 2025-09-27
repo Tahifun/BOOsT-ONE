@@ -21,7 +21,7 @@ const OverlayEditorPage: React.FC = () => {
   const [isReady, setIsReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Body-Kennzeichnung: Nur im Editor ist die Klasse gesetzt (für CSS-Scoping)
+  // Body-Kennzeichnung: Nur im Editor ist die Klasse gesetzt (f�r CSS-Scoping)
   useEffect(() => {
     document.body.classList.add("is-overlay-editor");
     return () => document.body.classList.remove("is-overlay-editor");
@@ -68,7 +68,7 @@ const OverlayEditorPage: React.FC = () => {
       const template = templates.find((t) => t?.id === id);
       if (template) {
         console.debug("Template loaded:", template.name);
-        // TODO: State/Context hier mit Template-Daten befüllen
+        // TODO: State/Context hier mit Template-Daten bef�llen
       }
     } catch (err) {
       console.error("Failed to load template:", err);
@@ -93,7 +93,7 @@ const OverlayEditorPage: React.FC = () => {
         <div className="error-container">
           <h2>Fehler</h2>
           <p>{error}</p>
-          <button onClick={() => navigate("/overlay")}>Zurück zur Übersicht</button>
+          <button onClick={() => navigate("/overlay")}>Zur�ck zur �bersicht</button>
         </div>
       </div>
     );
@@ -106,9 +106,9 @@ const OverlayEditorPage: React.FC = () => {
         <button
           className="nav-back-btn"
           onClick={() => navigate("/overlay")}
-          aria-label="Zurück zu Overlay-Übersicht"
+          aria-label="Zur�ck zu Overlay-�bersicht"
         >
-          ← Zurück
+          ? Zur�ck
         </button>
 
         <div className="nav-breadcrumbs">
@@ -122,7 +122,7 @@ const OverlayEditorPage: React.FC = () => {
         <div className="nav-actions">
           {!isPro && (
             <button className="upgrade-btn" onClick={() => navigate("/upgrade")}>
-              ⚡ UPGRADE TO PRO
+              ? UPGRADE TO PRO
             </button>
           )}
         </div>
@@ -131,7 +131,7 @@ const OverlayEditorPage: React.FC = () => {
       {/* Haupt-Editor */}
       <OverlayEditor />
 
-      {/* Alte Floating-Action-Buttons entfernt; CSS sperrt verbleibende Reste außerhalb des Editors */}
+      {/* Alte Floating-Action-Buttons entfernt; CSS sperrt verbleibende Reste au�erhalb des Editors */}
     </div>
   );
 };

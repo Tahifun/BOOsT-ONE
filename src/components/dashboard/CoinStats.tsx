@@ -11,8 +11,8 @@ const CoinStats: React.FC<CoinStatsProps> = ({ variant = "dashboard" }) => (
     </h2>
     <p>
       {variant === "overlay"
-        ? "Live-Übersicht deiner verdienten Coins (Overlay-Ansicht)."
-        : "Hier findest du eine Übersicht deiner verdienten Coins."}
+        ? "Live-�bersicht deiner verdienten Coins (Overlay-Ansicht)."
+        : "Hier findest du eine �bersicht deiner verdienten Coins."}
     </p>
   </div>
 );

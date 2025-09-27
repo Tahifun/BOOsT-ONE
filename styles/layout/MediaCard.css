@@ -156,9 +156,9 @@
 
 .card-meta { display: flex; gap: 10px; font-size: 0.75em; color: rgba(248, 250, 252, 0.5); }
 .meta-size, .meta-dimensions, .meta-date { display: flex; align-items: center; gap: 3px; }
-.meta-size::before { content: '💾'; font-size: 0.9em; }
-.meta-dimensions::before { content: '📐'; font-size: 0.9em; }
-.meta-date::before { content: '📅'; font-size: 0.9em; }
+.meta-size::before { content: '??'; font-size: 0.9em; }
+.meta-dimensions::before { content: '??'; font-size: 0.9em; }
+.meta-date::before { content: '??'; font-size: 0.9em; }
 
 /* Card Stats */
 .card-stats { display: flex; gap: 15px; margin-top: auto; }

@@ -1,7 +1,7 @@
 import logger from './logger.js'
 
 // utils/sendgrid.ts
-// Robustes Typing ohne .default-Typabhängigkeit
+// Robustes Typing ohne .default-Typabh�ngigkeit
 import * as sgMail from "@sendgrid/mail";
 
 const API_KEY = process.env.SENDGRID_API_KEY || process.env.SENDGRID_KEY || "";
@@ -13,7 +13,7 @@ export function initSendgrid() {
       if (API_KEY) (sgMail as any).setApiKey(API_KEY);
       initialized = true;
       // eslint-disable-next-line no-console
-      logger.debug("✅ SendGrid initialized");
+      logger.debug("? SendGrid initialized");
     } catch {
       // ignore
     }
