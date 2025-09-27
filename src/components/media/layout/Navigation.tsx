@@ -1,5 +1,5 @@
-import { logger } from '@/lib/logger';
-?import React, { useState, useEffect } from 'react';
+﻿import { logger } from '@/lib/logger';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useSubscription } from '../../contexts/SubscriptionContext';
 import '../../styles/layout/Navigation.css';
@@ -20,16 +20,82 @@ interface NavigationProps {
 }
 
 const navigationTabs: NavigationTab[] = [
-  { id: 'dashboard',  title: 'Dashboard',     icon: '�Y"S', path: '/media/dashboard',   description: '�obersicht und Statistiken' },
-  { id: 'upload',     title: 'Upload',        icon: '�?️', path: '/media/upload',      description: 'Dateien hochladen' },
-  { id: 'gallery',    title: 'Galerie',       icon: '�YZ�', path: '/media/gallery',     description: 'Alle Medien durchsuchen' },
-  { id: 'clips',      title: 'Clips',         icon: '�o,️', path: '/media/clips',       description: 'Videos schneiden', requiresPro: true },
-  { id: 'screenshots',title: 'Screenshots',   icon: '�Y"�', path: '/media/screenshots', description: 'Frames extrahieren' },
-  { id: 'soundboard', title: 'Soundboard',    icon: '�Y"S', path: '/media/soundboard',  description: 'Audio-Bibliothek', requiresPro: true },
-  { id: 'overlays',   title: 'Overlays',      icon: '�YZ�', path: '/media/overlays',    description: 'Templates verwalten', requiresPro: true },
-  { id: 'export',     title: 'Export',        icon: '�Y"�', path: '/media/export',      description: 'Medien exportieren' },
-  { id: 'stats',      title: 'Impact Stats',  icon: '�Y"^', path: '/media/stats',       description: 'Performance analysieren', requiresPro: true },
-  { id: 'ai',         title: 'AI Assistant',  icon: '�Y�-', path: '/media/ai',          description: 'KI-gestützte Features', requiresPro: true, badge: 'NEU' },
+  {
+    id: 'dashboard',
+    title: 'Dashboard',
+    icon: 'ï¿½Y"S',
+    path: '/media/dashboard',
+    description: 'ï¿½obersicht und Statistiken',
+  },
+  {
+    id: 'upload',
+    title: 'Upload',
+    icon: 'ï¿½?ï¸',
+    path: '/media/upload',
+    description: 'Dateien hochladen',
+  },
+  {
+    id: 'gallery',
+    title: 'Galerie',
+    icon: 'ï¿½YZï¿½',
+    path: '/media/gallery',
+    description: 'Alle Medien durchsuchen',
+  },
+  {
+    id: 'clips',
+    title: 'Clips',
+    icon: 'ï¿½o,ï¸',
+    path: '/media/clips',
+    description: 'Videos schneiden',
+    requiresPro: true,
+  },
+  {
+    id: 'screenshots',
+    title: 'Screenshots',
+    icon: 'ï¿½Y"ï¿½',
+    path: '/media/screenshots',
+    description: 'Frames extrahieren',
+  },
+  {
+    id: 'soundboard',
+    title: 'Soundboard',
+    icon: 'ï¿½Y"S',
+    path: '/media/soundboard',
+    description: 'Audio-Bibliothek',
+    requiresPro: true,
+  },
+  {
+    id: 'overlays',
+    title: 'Overlays',
+    icon: 'ï¿½YZï¿½',
+    path: '/media/overlays',
+    description: 'Templates verwalten',
+    requiresPro: true,
+  },
+  {
+    id: 'export',
+    title: 'Export',
+    icon: 'ï¿½Y"ï¿½',
+    path: '/media/export',
+    description: 'Medien exportieren',
+  },
+  {
+    id: 'stats',
+    title: 'Impact Stats',
+    icon: 'ï¿½Y"^',
+    path: '/media/stats',
+    description: 'Performance analysieren',
+    requiresPro: true,
+  },
+  {
+    id: 'ai',
+    title: 'AI Assistant',
+    icon: 'ï¿½Yï¿½-',
+    path: '/media/ai',
+    description: 'KI-gestÃ¼tzte Features',
+    requiresPro: true,
+    badge: 'NEU',
+  },
 ];
 
 export const Navigation: React.FC<NavigationProps> = ({ onTabSelect, className = '' }) => {
@@ -45,11 +111,11 @@ export const Navigation: React.FC<NavigationProps> = ({ onTabSelect, className =
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const tabFromQuery = params.get('tab');
-    if (tabFromQuery && navigationTabs.some(t => t.id === tabFromQuery)) {
+    if (tabFromQuery && navigationTabs.some((t) => t.id === tabFromQuery)) {
       setActiveTab(tabFromQuery);
       return;
     }
-    const byPath = navigationTabs.find(tab => location.pathname.startsWith(tab.path));
+    const byPath = navigationTabs.find((tab) => location.pathname.startsWith(tab.path));
     if (byPath) setActiveTab(byPath.id);
   }, [location]);
 
@@ -58,13 +124,13 @@ export const Navigation: React.FC<NavigationProps> = ({ onTabSelect, className =
     setTimeout(() => setIsAnimating(false), 300);
 
     if (tab.requiresPro && tier !== 'PRO') {
-      // Nur Hinweis �?" tatsächlicher Upgrade-Dialog wird au�Yerhalb gehandhabt
+      // Nur Hinweis ï¿½?" tatsÃ¤chlicher Upgrade-Dialog wird auï¿½Yerhalb gehandhabt
       logger.debug('PRO feature - showing upgrade prompt');
     }
 
     setActiveTab(tab.id);
     onTabSelect?.(tab.id);
-    // Fallback-kompatibel: solange Unterrouten evtl. fehlen, über Query navigieren
+    // Fallback-kompatibel: solange Unterrouten evtl. fehlen, Ã¼ber Query navigieren
     navigate(`/media?tab=${encodeURIComponent(tab.id)}`);
   };
 
@@ -75,7 +141,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onTabSelect, className =
     }
   };
 
-  // Globale Tastenkürzel: Alt+1..9 springt zu den ersten Tabs
+  // Globale TastenkÃ¼rzel: Alt+1..9 springt zu den ersten Tabs
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
       if (e.altKey && e.key >= '1' && e.key <= '9') {
@@ -124,14 +190,16 @@ export const Navigation: React.FC<NavigationProps> = ({ onTabSelect, className =
 
               {/* Inhalt */}
               <div className="tab-content">
-                <span className="tab-icon" aria-hidden="true">{tab.icon}</span>
+                <span className="tab-icon" aria-hidden="true">
+                  {tab.icon}
+                </span>
                 <span className="tab-title">{tab.title}</span>
 
                 {tab.badge && <span className="tab-badge">{tab.badge}</span>}
 
                 {isLocked && (
                   <span className="tab-lock" id={`lock-${tab.id}`}>
-                    <span className="lock-icon">�Y"'</span>
+                    <span className="lock-icon">ï¿½Y"'</span>
                     <span className="sr-only">PRO Feature</span>
                   </span>
                 )}
@@ -143,7 +211,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onTabSelect, className =
                   <div className="tooltip-content">
                     <strong>{tab.title}</strong>
                     <p>{tab.description}</p>
-                    {isLocked && <p className="tooltip-pro">⭐ PRO Feature</p>}
+                    {isLocked && <p className="tooltip-pro">â­ PRO Feature</p>}
                     <span className="tooltip-shortcut">Alt + {index + 1}</span>
                   </div>
                   <div className="tooltip-arrow" />
@@ -164,9 +232,8 @@ export const Navigation: React.FC<NavigationProps> = ({ onTabSelect, className =
 
       {/* Mobile Hinweis */}
       <div className="nav-scroll-indicator" aria-hidden="true">
-        <span className="scroll-hint">�?� Wischen �?'</span>
+        <span className="scroll-hint">ï¿½?ï¿½ Wischen ï¿½?'</span>
       </div>
     </nav>
   );
 };
-
