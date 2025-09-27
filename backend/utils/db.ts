@@ -1,6 +1,5 @@
-import logger from './logger.js'
-
-?import mongoose from "mongoose";
+﻿import logger from './logger.js'
+import mongoose from "mongoose";
 
 const URI =
   process.env.MONGODB_URI ||
@@ -29,5 +28,6 @@ mongoose.connection.on("disconnected", () => {
     console.error("[db] Verbindungsaufbau fehlgeschlagen:", (err as any)?.message || err);
   }
 })();
+
 
 

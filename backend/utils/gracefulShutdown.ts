@@ -1,6 +1,5 @@
-import logger from './logger.js'
-
-?import { Server } from "http";
+﻿import logger from './logger.js'
+import { Server } from "http";
 import mongoose from "mongoose";
 import { createClient } from "redis";
 
@@ -34,7 +33,7 @@ export function setupGracefulShutdown(
       // 1) HTTP beenden (nimmt keine neuen Verbindungen mehr an)
       await closeServer();
 
-      // 2) Mongo schlie�en (nur wenn verbunden)
+      // 2) Mongo schlieï¿½en (nur wenn verbunden)
       try {
         if (mongoose.connection.readyState !== 0) {
           await mongoose.disconnect();
@@ -44,7 +43,7 @@ export function setupGracefulShutdown(
         console.error("[shutdown] MongoDB disconnect error", e);
       }
 
-      // 3) Redis schlie�en (mit Fallback bei H�ngern)
+      // 3) Redis schlieï¿½en (mit Fallback bei Hï¿½ngern)
       if (redisClient) {
         try {
           if ((redisClient as any).isOpen || (redisClient as any).isReady) {
@@ -89,3 +88,4 @@ export function setupGracefulShutdown(
     if (process.env.NODE_ENV === "production") shutdown("UNHANDLED_REJECTION");
   });
 }
+
