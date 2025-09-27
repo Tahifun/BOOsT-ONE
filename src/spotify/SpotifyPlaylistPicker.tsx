@@ -44,7 +44,7 @@ export default function SpotifyPlaylistPicker() {
     });
   };
 
-  if (loading) return <div className="sp-sub">Playlists werden geladen…</div>;
+  if (loading) return <div className="sp-sub">Playlists werden geladen.</div>;
   if (!items.length) return <div className="sp-muted">Keine Playlists gefunden.</div>;
 
   return (
@@ -58,7 +58,7 @@ export default function SpotifyPlaylistPicker() {
             <div className="sp-pl-name">{p.name}</div>
             <div className="sp-pl-sub">{p.tracks?.total ?? 0} Titel</div>
           </div>
-          <div className="sp-pl-play">▶</div>
+          <div className="sp-pl-play">?</div>
         </button>
       ))}
     </div>

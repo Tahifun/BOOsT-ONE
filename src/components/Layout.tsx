@@ -7,7 +7,7 @@ export default function Layout() {
       <header className="border-b p-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link to="/" className="font-semibold">TikTok Livestream Companion</Link>
-          {/* Platz für Nav / User-Menü */}
+          {/* Platz f�r Nav / User-Men� */}
         </div>
       </header>
 
@@ -18,17 +18,17 @@ export default function Layout() {
         </div>
       </main>
 
-      {/* Footer mit rechtlichen Links – klein, aber klar erkennbar */}
+      {/* Footer mit rechtlichen Links - klein, aber klar erkennbar */}
       <footer className="border-t">
         <div className="max-w-6xl mx-auto p-4 text-xs sm:text-sm flex flex-wrap items-center justify-center gap-4">
           <Link to="/imprint" className="underline underline-offset-2 hover:no-underline">
             Impressum
           </Link>
-          <span aria-hidden="true">•</span>
+          <span aria-hidden="true">.</span>
           <Link to="/terms" className="underline underline-offset-2 hover:no-underline">
             AGB
           </Link>
-          <span aria-hidden="true">•</span>
+          <span aria-hidden="true">.</span>
           <Link to="/privacy" className="underline underline-offset-2 hover:no-underline">
             Datenschutz
           </Link>

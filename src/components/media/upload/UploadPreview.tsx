@@ -167,13 +167,13 @@ export const UploadPreview: React.FC<UploadPreviewProps> = ({
   };
 
   const getFileIcon = (mimeType: string): string => {
-    if (mimeType.startsWith('image/')) return '🖼️';
-    if (mimeType.startsWith('video/')) return '🎬';
-    if (mimeType.startsWith('audio/')) return '🎵';
-    if (mimeType.includes('pdf')) return '📄';
-    if (mimeType.includes('zip') || mimeType.includes('rar')) return '📦';
-    if (mimeType.includes('text')) return '📝';
-    return '📎';
+    if (mimeType.startsWith('image/')) return '???';
+    if (mimeType.startsWith('video/')) return '??';
+    if (mimeType.startsWith('audio/')) return '??';
+    if (mimeType.includes('pdf')) return '??';
+    if (mimeType.includes('zip') || mimeType.includes('rar')) return '??';
+    if (mimeType.includes('text')) return '??';
+    return '??';
   };
 
   const formatFileSize = (bytes: number): string => {
@@ -200,7 +200,7 @@ export const UploadPreview: React.FC<UploadPreviewProps> = ({
           </div>
         ) : error ? (
           <div className="preview-error">
-            <span className="error-icon">⚠️</span>
+            <span className="error-icon">??</span>
             <span className="error-text">{error}</span>
           </div>
         ) : preview ? (
@@ -208,7 +208,7 @@ export const UploadPreview: React.FC<UploadPreviewProps> = ({
             <img src={preview} alt={file.name} />
             {file.type.startsWith('video/') && (
               <div className="preview-overlay">
-                <span className="play-icon">▶️</span>
+                <span className="play-icon">??</span>
               </div>
             )}
           </div>
@@ -226,7 +226,7 @@ export const UploadPreview: React.FC<UploadPreviewProps> = ({
             <span className="metadata-size">{formatFileSize(file.size)}</span>
             {metadata.dimensions && (
               <span className="metadata-dimensions">
-                {metadata.dimensions.width} × {metadata.dimensions.height}
+                {metadata.dimensions.width} � {metadata.dimensions.height}
               </span>
             )}
             {metadata.duration && (

@@ -4,7 +4,7 @@ import {promises as fs} from "fs";
 import fg from "fast-glob";
 
 const GLOBS = ["**/*.{ts,tsx,js,jsx,css,html,md,svg,txt,json,yml,yaml}"];
-const MARKER = /Ã|Â|â€”|â€“|â€œ|â€\?|â€˜|â€™|â€¦|ð|âš¡/;
+const MARKER = /�|�|�?"|�?"|�?o|�?\?|�?~|�?T|�?�|�|�s�/;
 
 function latin1toUtf8(s){ return Buffer.from(s, "latin1").toString("utf8"); }
 

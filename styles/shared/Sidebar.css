@@ -272,7 +272,7 @@
   height: 96px;
   aspect-ratio: 1 / 1;
 
-  border-radius: 16px;          /* oder 50% für Kreis */
+  border-radius: 16px;          /* oder 50% f�r Kreis */
   overflow: hidden;
   position: relative;
   display: inline-flex;
@@ -283,7 +283,7 @@
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.06),
     0 6px 16px rgba(0,0,0,0.35);
-  flex-shrink: 0;               /* nicht zusammendrücken */
+  flex-shrink: 0;               /* nicht zusammendr�cken */
 }
 
 .epic-sidebar .avatar-img {
@@ -291,7 +291,7 @@
   height: 100%;
   display: block;
 
-  /* Zauber: füllt den Frame ohne Verzerrung, zentriert */
+  /* Zauber: f�llt den Frame ohne Verzerrung, zentriert */
   object-fit: cover;
   object-position: center;
 }
@@ -664,7 +664,7 @@
 }
 
 .btn-upgrade::before {
-  content: '✨';
+  content: '?';
   position: absolute;
   font-size: 40px;
   opacity: 0;
@@ -810,7 +810,7 @@
 .epic-sidebar .avatar-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* füllt den Rahmen */
+  object-fit: cover;   /* f�llt den Rahmen */
   object-position: center;
   display: block;
 }

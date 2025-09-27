@@ -1,4 +1,4 @@
-/* === BotPanel.css – Next-Level Neon UI für Bot & Games (2025) === */
+/* === BotPanel.css - Next-Level Neon UI f�r Bot & Games (2025) === */
 
 /* ---------- Grundpanel & Schatten ---------- */
 .cb-bot-manager-page, .cb-games-panel-main, .cb-stats-panel-main {
@@ -163,7 +163,7 @@
   min-height: 370px;
   position: relative;
   z-index: 1;
-  /* Leichter Blur für Glas-Panel-Effekt */
+  /* Leichter Blur f�r Glas-Panel-Effekt */
   backdrop-filter: blur(1.5px);
 }
 

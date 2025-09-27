@@ -163,7 +163,7 @@ async function fetchProStats(days: number): Promise<ProStats> {
       };
       return stats;
     } catch {
-      // nächsten Versuch
+      // n�chsten Versuch
     }
   }
 
@@ -224,7 +224,7 @@ const ProAnalytics: React.FC = () => {
         <div className="widget-icon"></div>
         <div className="widget-title">Pro Analytics</div>
         <div className="widget-desc" style={{ marginBottom: 10 }}>
-          Tiefere Einblicke in Zuschauer, Follows, Coins & Chat  mit Vergleich über Zeit.
+          Tiefere Einblicke in Zuschauer, Follows, Coins & Chat  mit Vergleich �ber Zeit.
         </div>
 
         {/* Range-Auswahl */}

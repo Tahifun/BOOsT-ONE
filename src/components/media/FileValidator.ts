@@ -64,14 +64,14 @@ export class FileValidator {
     let metadata: FileMetadata = { mimeType: (file.type || '').toLowerCase(), extension: this.getFileExtension(file.name) };
 
     if (typeof this.config.maxSize === 'number' && file.size > this.config.maxSize) {
-      errors.push(`Datei ist zu groß. Maximum: ${this.formatFileSize(this.config.maxSize)}`);
+      errors.push(`Datei ist zu gro�. Maximum: ${this.formatFileSize(this.config.maxSize)}`);
     }
     if (typeof this.config.minSize === 'number' && file.size < this.config.minSize) {
-      errors.push('Datei ist leer oder beschädigt');
+      errors.push('Datei ist leer oder besch�digt');
     }
 
     if (!this.isAcceptedType(file)) {
-      errors.push(`Dateityp "${file.type || 'unbekannt'}" wird nicht unterstützt`);
+      errors.push(`Dateityp "${file.type || 'unbekannt'}" wird nicht unterst�tzt`);
     }
 
     if (this.config.validateContent && errors.length === 0) {
@@ -81,7 +81,7 @@ export class FileValidator {
         if (!contentValidation.valid) errors.push(...contentValidation.errors);
         if (contentValidation.warnings) warnings.push(...contentValidation.warnings);
       } catch {
-        warnings.push('Inhaltsprüfung konnte nicht durchgeführt werden');
+        warnings.push('Inhaltspr�fung konnte nicht durchgef�hrt werden');
       }
     }
 
@@ -93,7 +93,7 @@ export class FileValidator {
           errors.push('Diese Datei wurde bereits hochgeladen');
         }
       } catch {
-        warnings.push('Duplikatsprüfung konnte nicht durchgeführt werden');
+        warnings.push('Duplikatspr�fung konnte nicht durchgef�hrt werden');
       }
     }
 
@@ -156,13 +156,13 @@ export class FileValidator {
 
       img.onload = () => {
         metadata.dimensions = { width: img.naturalWidth, height: img.naturalHeight };
-        if (img.naturalWidth > 10000 || img.naturalHeight > 10000) warnings.push('Bild ist sehr groß und könnte die Performance beeinträchtigen');
+        if (img.naturalWidth > 10000 || img.naturalHeight > 10000) warnings.push('Bild ist sehr gro� und k�nnte die Performance beeintr�chtigen');
         if (img.naturalWidth < 10 || img.naturalHeight < 10) errors.push('Bild ist zu klein');
         URL.revokeObjectURL(url);
         resolve({ valid: errors.length === 0, errors, warnings: warnings.length ? warnings : undefined, metadata: metadata as FileMetadata });
       };
       img.onerror = () => {
-        errors.push('Bilddatei ist beschädigt oder ungültig');
+        errors.push('Bilddatei ist besch�digt oder ung�ltig');
         URL.revokeObjectURL(url);
         resolve({ valid: false, errors, metadata: metadata as FileMetadata });
       };
@@ -186,17 +186,17 @@ export class FileValidator {
         metadata.dimensions = { width: video.videoWidth, height: video.videoHeight };
         metadata.duration = video.duration;
 
-        if (video.duration > 3600) warnings.push('Video ist länger als 1 Stunde');
+        if (video.duration > 3600) warnings.push('Video ist l�nger als 1 Stunde');
         if (video.duration < 0.1) errors.push('Video ist zu kurz');
 
-        if (video.videoWidth > 4096 || video.videoHeight > 4096) warnings.push('Video-Auflösung ist sehr hoch (4K+)');
-        if (video.videoWidth < 100 || video.videoHeight < 100) errors.push('Video-Auflösung ist zu niedrig');
+        if (video.videoWidth > 4096 || video.videoHeight > 4096) warnings.push('Video-Aufl�sung ist sehr hoch (4K+)');
+        if (video.videoWidth < 100 || video.videoHeight < 100) errors.push('Video-Aufl�sung ist zu niedrig');
 
         URL.revokeObjectURL(url);
         resolve({ valid: errors.length === 0, errors, warnings: warnings.length ? warnings : undefined, metadata: metadata as FileMetadata });
       };
       video.onerror = () => {
-        errors.push('Videodatei ist beschädigt oder verwendet einen nicht unterstützten Codec');
+        errors.push('Videodatei ist besch�digt oder verwendet einen nicht unterst�tzten Codec');
         URL.revokeObjectURL(url);
         resolve({ valid: false, errors, metadata: metadata as FileMetadata });
       };
@@ -216,13 +216,13 @@ export class FileValidator {
 
       audio.onloadedmetadata = () => {
         metadata.duration = audio.duration;
-        if (audio.duration > 600) warnings.push('Audio ist länger als 10 Minuten');
+        if (audio.duration > 600) warnings.push('Audio ist l�nger als 10 Minuten');
         if (audio.duration < 0.1) errors.push('Audio ist zu kurz');
         URL.revokeObjectURL(url);
         resolve({ valid: errors.length === 0, errors, warnings: warnings.length ? warnings : undefined, metadata: metadata as FileMetadata });
       };
       audio.onerror = () => {
-        errors.push('Audiodatei ist beschädigt oder verwendet einen nicht unterstützten Codec');
+        errors.push('Audiodatei ist besch�digt oder verwendet einen nicht unterst�tzten Codec');
         URL.revokeObjectURL(url);
         resolve({ valid: false, errors, metadata: metadata as FileMetadata });
       };

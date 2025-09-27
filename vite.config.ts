@@ -42,7 +42,7 @@ export default defineConfig(({ mode }) => {
           configure: (proxy) => {
             proxy.on('error', (err) => console.debug('[proxy:/api] error', err));
             proxy.on('proxyReq', (_proxyReq, req) =>
-              console.debug('[proxy:/api] →', req.method, req.url)
+              console.debug('[proxy:/api] ?', req.method, req.url)
             );
           }
         },
@@ -53,7 +53,7 @@ export default defineConfig(({ mode }) => {
           changeOrigin: true
         },
 
-        // 3) Kurzpfad: /session → /api/session
+        // 3) Kurzpfad: /session ? /api/session
         '/session': {
           target: apiTarget,
           changeOrigin: true,
@@ -61,12 +61,12 @@ export default defineConfig(({ mode }) => {
           rewrite: (p) => p.replace(/^\/session/, '/api/session'),
           configure: (proxy) => {
             proxy.on('proxyReq', (_proxyReq, req) =>
-              console.debug('[proxy:/session→/api/session] →', req.method, req.url)
+              console.debug('[proxy:/session?/api/session] ?', req.method, req.url)
             );
           }
         },
 
-        // 4) 🔐 Auth-Endpunkte ohne /api-Präfix → /api/auth/*
+        // 4) ?? Auth-Endpunkte ohne /api-Pr�fix ? /api/auth/*
         '/auth': {
           target: apiTarget,
           changeOrigin: true,
@@ -74,12 +74,12 @@ export default defineConfig(({ mode }) => {
           rewrite: (p) => p.replace(/^\/auth/, '/api/auth'),
           configure: (proxy) => {
             proxy.on('proxyReq', (_proxyReq, req) =>
-              console.debug('[proxy:/auth→/api/auth] →', req.method, req.url)
+              console.debug('[proxy:/auth?/api/auth] ?', req.method, req.url)
             );
           }
         },
 
-        // 5) Optional: /subscription → /api/subscription
+        // 5) Optional: /subscription ? /api/subscription
         '/subscription': {
           target: apiTarget,
           changeOrigin: true,
@@ -87,7 +87,7 @@ export default defineConfig(({ mode }) => {
           rewrite: (p) => p.replace(/^\/subscription/, '/api/subscription'),
           configure: (proxy) => {
             proxy.on('proxyReq', (_proxyReq, req) =>
-              console.debug('[proxy:/subscription→/api/subscription] →', req.method, req.url)
+              console.debug('[proxy:/subscription?/api/subscription] ?', req.method, req.url)
             );
           }
         }

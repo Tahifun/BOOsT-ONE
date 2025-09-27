@@ -14,14 +14,14 @@ import "../../styles/GamesPanel.css";
 /**
  * MiniGamesPage  KOMPLETT hinter PRO-Gate.
  * Free-Nutzer sehen eine entsperrte Preview (grau) mit -Hinweis
- * über den ProFeatureWrapper (inkl. Upsell-CTA).
+ * �ber den ProFeatureWrapper (inkl. Upsell-CTA).
  */
 const MiniGamesPage: React.FC = () => {
   return (
     <ProFeatureWrapper
       featureName="mini_games_page"
       showUpgradePrompt
-      message="MiniGames sind Teil von PRO. Hol dir Abo oder Tageskarte (24h) für vollen Zugriff."
+      message="MiniGames sind Teil von PRO. Hol dir Abo oder Tageskarte (24h) f�r vollen Zugriff."
     >
       <div className="games-panel">
         <h2> MiniGames</h2>

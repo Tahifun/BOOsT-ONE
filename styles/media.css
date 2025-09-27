@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /* ========================================================================
    NEXUS INFINITUS (scoped)
-   - Alles ist unter .nexus-page gekapselt, damit nichts global „kippt“.
-   - Keyframes bleiben global (wie üblich), haben aber eindeutige Namen.
+   - Alles ist unter .nexus-page gekapselt, damit nichts global "kippt".
+   - Keyframes bleiben global (wie �blich), haben aber eindeutige Namen.
    ======================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
@@ -38,7 +38,7 @@
   transform-style: preserve-3d;
 }
 
-/* ─────────────────────────── Background Matrix ─────────────────────────── */
+/* ??????????????????????????? Background Matrix ??????????????????????????? */
 
 .nexus-page .reality-fabric {
   position: fixed;
@@ -105,7 +105,7 @@
 }
 @keyframes nx-consciousnessPulse { 0%,100%{filter:brightness(1)} 50%{filter:brightness(2)} }
 
-/* 10 vordefinierte Partikel (weitere können dynamisch ergänzt werden) */
+/* 10 vordefinierte Partikel (weitere k�nnen dynamisch erg�nzt werden) */
 .nexus-page .consciousness-particle:nth-child(1){ left:5%; animation-delay:0s; animation-duration:18s;}
 .nexus-page .consciousness-particle:nth-child(2){ left:10%; animation-delay:.4s; animation-duration:22s;}
 .nexus-page .consciousness-particle:nth-child(3){ left:15%; animation-delay:.8s; animation-duration:19s;}
@@ -117,7 +117,7 @@
 .nexus-page .consciousness-particle:nth-child(9){ left:45%; animation-delay:3.2s; animation-duration:17s;}
 .nexus-page .consciousness-particle:nth-child(10){ left:50%; animation-delay:3.6s; animation-duration:25s;}
 
-/* ─────────────────────────── Upload Nexus / Container ─────────────────── */
+/* ??????????????????????????? Upload Nexus / Container ??????????????????? */
 
 .nexus-page .nexus-core {
   position: relative;
@@ -150,7 +150,7 @@
   -webkit-backdrop-filter: blur(30px) saturate(200%) contrast(1.2) brightness(1.1);
 }
 
-/* „Impossible“ Border */
+/* "Impossible" Border */
 .nexus-page .upload-sanctum::before{
   content:""; position:absolute; inset:-5px; border-radius:calc(30px * var(--phi)); padding:5px;
   background: conic-gradient(from calc(var(--dimension-shift) * 2) at 50% 50%,
@@ -195,7 +195,7 @@
 }
 .nexus-page .nexus-title::before,
 .nexus-page .nexus-title::after{
-  content:'⟨ NEXUS INFINITUS ⟩'; position:absolute; inset:0; -webkit-background-clip:text; background-clip:text;
+  content:'? NEXUS INFINITUS ?'; position:absolute; inset:0; -webkit-background-clip:text; background-clip:text;
 }
 .nexus-page .nexus-title::before{ animation: nx-glitchA .5s ease-in-out infinite alternate, nx-rgbShift 2s linear infinite; color: rgba(255,0,0,.5); z-index:-1; mix-blend-mode: screen; }
 .nexus-page .nexus-title::after{ animation: nx-glitchB .7s ease-in-out infinite alternate, nx-rgbShift 2s linear infinite reverse; color: rgba(0,255,255,.5); z-index:-2; mix-blend-mode: screen; }
@@ -216,7 +216,7 @@
 }
 @keyframes nx-rgbShift { 0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(360deg)} }
 
-/* ─────────────────────────── Form / Dropzone ─────────────────────────── */
+/* ??????????????????????????? Form / Dropzone ??????????????????????????? */
 
 .nexus-page .quantum-selector{
   position:relative; width:100%; padding:calc(20px * var(--phi)); margin:calc(20px * var(--phi)) 0;

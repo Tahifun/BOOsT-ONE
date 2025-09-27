@@ -21,7 +21,7 @@ export function EffectsPanel({ settings, onSettingsChange }: Props) {
 
   return (
     <div className="epic-panel effects-panel">
-      <h3 className="panel-title">✨ Effekte</h3>
+      <h3 className="panel-title">? Effekte</h3>
       
       <div className="form-group">
         <label className="form-label">Modus</label>
@@ -30,14 +30,14 @@ export function EffectsPanel({ settings, onSettingsChange }: Props) {
           value={settings.mode}
           onChange={(e) => handleChange("mode", e.target.value as any)}
         >
-          <option value="normal">✨ Normal</option>
-          <option value="face">🎭 Nur Gesicht</option>
-          <option value="blur-bg">🌊 Blur Hintergrund</option>
+          <option value="normal">? Normal</option>
+          <option value="face">?? Nur Gesicht</option>
+          <option value="blur-bg">?? Blur Hintergrund</option>
         </select>
       </div>
 
       <div className="form-group">
-        <label className="form-label">Blur Intensität</label>
+        <label className="form-label">Blur Intensit�t</label>
         <input 
           type="range" 
           className="form-range" 

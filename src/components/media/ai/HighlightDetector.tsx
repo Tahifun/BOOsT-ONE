@@ -5,15 +5,15 @@ import { Activity, Mic, MessageSquare, TrendingUp, Zap } from 'lucide-react';
 interface HighlightDetectorProps {
   waveform?: Float32Array;
   chatData?: ChatMessage[];
-  /** Aktuelle Abspielzeit (Sekunden oder Millisekunden – wird automatisch normalisiert) */
+  /** Aktuelle Abspielzeit (Sekunden oder Millisekunden - wird automatisch normalisiert) */
   currentTime: number;
   onHighlightDetected: (highlight: DetectedHighlight) => void;
 
-  sensitivity?: number;            // 0–1 (Basis für Audio)
+  sensitivity?: number;            // 0-1 (Basis f�r Audio)
   detectionInterval?: number;      // ms
   enableAudioDetection?: boolean;
   enableChatDetection?: boolean;
-  enableMotionDetection?: boolean; // Platzhalter – Score-Fusion unterstützt es bereits
+  enableMotionDetection?: boolean; // Platzhalter - Score-Fusion unterst�tzt es bereits
   threshold?: HighlightThreshold;  // feingranulare Schwellen
 
   /** Minimale Zeit zwischen zwei Detections gleicher Art (ms) */
@@ -27,7 +27,7 @@ interface ChatMessage {
   id: string;
   username: string;
   message: string;
-  /** Sek. oder ms – wird normalisiert */
+  /** Sek. oder ms - wird normalisiert */
   timestamp: number;
   emotes?: string[];
 }
@@ -36,9 +36,9 @@ export interface DetectedHighlight {
   /** Sekunden */
   timestamp: number;
   duration: number;
-  /** 0–100 */
+  /** 0-100 */
   score: number;
-  /** 0–1 */
+  /** 0-1 */
   confidence: number;
   type: 'audio-peak' | 'chat-burst' | 'motion-spike' | 'combined';
   reason: string;
@@ -51,14 +51,14 @@ interface HighlightMetrics {
   chatVelocity?: number;
   chatEmoteRatio?: number;
   motionIntensity?: number;
-  combinedScore?: number; // 0–1
+  combinedScore?: number; // 0-1
 }
 
 interface HighlightThreshold {
-  audioPeak: number;   // 0–1
-  chatBurst: number;   // 0–1
-  motionSpike: number; // 0–1
-  combined: number;    // 0–1
+  audioPeak: number;   // 0-1
+  chatBurst: number;   // 0-1
+  motionSpike: number; // 0-1
+  combined: number;    // 0-1
 }
 
 /* ------------------------ Heuristischer Analyzer ------------------------ */
@@ -290,7 +290,7 @@ class HeuristicAnalyzer {
       const last = audio.peaks[audio.peaks.length - 1].timestamp;
       return Math.max(1, last - first + 2);
     }
-    return Math.max(1, Math.min(10, chat.velocity)); // 1–10 s
+    return Math.max(1, Math.min(10, chat.velocity)); // 1-10 s
   }
 
   private determineType(audio: AudioAnalysis, chat: ChatAnalysis, motion?: MotionAnalysis): DetectedHighlight['type'] {
@@ -325,7 +325,7 @@ interface AudioAnalysis {
   maxAmplitude: number;
   dynamicRange: number;
   peakDensity: number;
-  /** 0–1 */
+  /** 0-1 */
   score: number;
   isHighlight: boolean;
 }
@@ -333,10 +333,10 @@ interface AudioAnalysis {
 interface ChatAnalysis {
   messageCount: number;
   velocity: number;     // msg/s
-  emoteRatio: number;   // 0–1
+  emoteRatio: number;   // 0-1
   patterns: ChatPattern[];
   sentiment: number;    // -1..1
-  score: number;        // 0–1
+  score: number;        // 0-1
   isHighlight: boolean;
 }
 
@@ -344,12 +344,12 @@ interface ChatPattern {
   type: 'spam' | 'emote-chain' | 'hype';
   value: string;
   count: number;
-  score: number; // 0–1
+  score: number; // 0-1
 }
 
 interface MotionAnalysis {
-  intensity: number; // 0–1
-  score: number;     // 0–1
+  intensity: number; // 0-1
+  score: number;     // 0-1
   isHighlight: boolean;
 }
 
@@ -364,7 +364,7 @@ const HighlightDetector: React.FC<HighlightDetectorProps> = ({
   detectionInterval = 1000,
   enableAudioDetection = true,
   enableChatDetection = true,
-  enableMotionDetection = false, // noch nicht ausgewertet – Hook/Prop vorgesehen
+  enableMotionDetection = false, // noch nicht ausgewertet - Hook/Prop vorgesehen
   threshold = { audioPeak: 0.7, chatBurst: 0.6, motionSpike: 0.8, combined: 0.75 },
   cooldownMs = 1200,
   position = 'bottom-right',
@@ -382,7 +382,7 @@ const HighlightDetector: React.FC<HighlightDetectorProps> = ({
     'audio-peak': 0, 'chat-burst': 0, 'motion-spike': 0, 'combined': 0,
   });
 
-  // Refs für aktuelle Daten (um Interval-Neustarts zu vermeiden)
+  // Refs f�r aktuelle Daten (um Interval-Neustarts zu vermeiden)
   const waveformRef = useRef<Float32Array | undefined>(waveform);
   const chatRef = useRef<ChatMessage[]>(chatData);
   const timeRef = useRef<number>(currentTime);
@@ -476,7 +476,7 @@ const HighlightDetector: React.FC<HighlightDetectorProps> = ({
       setIsDetecting(false);
     };
 
-    // Intervall starten (nur bei Konfig-Änderungen neu)
+    // Intervall starten (nur bei Konfig-�nderungen neu)
     timerRef.current = setInterval(detect, detectionInterval);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -564,7 +564,7 @@ const HighlightDetector: React.FC<HighlightDetectorProps> = ({
                 {lastDetection.reason}
               </div>
               <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', marginTop: 4 }}>
-                Score: {Math.round(lastDetection.score)}% • Confidence: {Math.round(lastDetection.confidence * 100)}%
+                Score: {Math.round(lastDetection.score)}% . Confidence: {Math.round(lastDetection.confidence * 100)}%
               </div>
             </div>
           </motion.div>
@@ -629,7 +629,7 @@ const HighlightDetector: React.FC<HighlightDetectorProps> = ({
               animation: prefersReducedMotion ? undefined : 'blink 1s ease-in-out infinite',
             }}
           />
-          Detecting…
+          Detecting.
         </div>
       )}
 

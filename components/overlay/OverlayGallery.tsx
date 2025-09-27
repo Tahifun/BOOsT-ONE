@@ -520,8 +520,8 @@ const QuantumOverlayGallery: React.FC = () => {
 
         {/* Temporal Phase Indicator */}
         <div className={`temporal-phase-indicator phase-${overlay.temporalPhase}`}>
-          {overlay.temporalPhase === 'future' && '⧸⧸⧸'}
-          {overlay.temporalPhase === 'past' && '⧹⧹⧹'}
+          {overlay.temporalPhase === 'future' && '???'}
+          {overlay.temporalPhase === 'past' && '???'}
           {overlay.temporalPhase === 'present' && ''}
         </div>
 
@@ -635,7 +635,7 @@ const QuantumOverlayGallery: React.FC = () => {
             whileHover={{ scale: 1.05, x: -5 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="btn-icon">️</span>
+            <span className="btn-icon">?</span>
             <span className="btn-text">Reality Portal</span>
             <div className="btn-quantum-trail" />
           </motion.button>
@@ -702,7 +702,7 @@ const QuantumOverlayGallery: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <span className="mode-icon">
-                  {mode === 'matrix' && '⬢'}
+                  {mode === 'matrix' && '?'}
                   {mode === 'neural' && ''}
                   {mode === 'dimensional' && ''}
                   {mode === 'consciousness' && ''}

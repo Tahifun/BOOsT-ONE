@@ -1,4 +1,4 @@
-﻿// src/components/epic/ModerationSection.tsx
+// src/components/epic/ModerationSection.tsx
 import React, { useEffect, useState } from "react";
 import {
   Shield,
@@ -21,7 +21,7 @@ import { useModerationSettings } from '../../hooks/useModerationSettings';
 /** Import der ModerationSettings aus presets.ts */
 import type { ModerationSettings } from '../../features/moderation/presets';
 
-/** Erweiterte lokale Settings fÃ¼r UI */
+/** Erweiterte lokale Settings für UI */
 export interface ExtendedModSettings extends ModerationSettings {
   spamFilter: {
     enabled: boolean;
@@ -79,11 +79,11 @@ type Moderator = {
 };
 
 export const ModerationSection: React.FC = () => {
-  /** âœ… Gemeinsamer Settings-State + Presets aus der Hook */
+  /** �o. Gemeinsamer Settings-State + Presets aus der Hook */
   const { settings: baseSettings, setSettings: setBaseSettings, activePreset, applyPreset } =
     useModerationSettings();
 
-  /** Konvertiere base settings zu extended settings fÃ¼r die UI */
+  /** Konvertiere base settings zu extended settings für die UI */
   const [settings, setSettings] = useState<ExtendedModSettings>(() => ({
     // Basis-Settings von der Hook
     ...baseSettings,
@@ -145,7 +145,7 @@ export const ModerationSection: React.FC = () => {
   const update = (patch: Partial<ExtendedModSettings>) => {
     setSettings((prev) => ({ ...prev, ...patch }));
     
-    // Sync zurÃ¼ck zu base settings wenn nÃ¶tig
+    // Sync zurück zu base settings wenn nötig
     if (patch.spamFilter || patch.linkPolicy || patch.toxicityFilter || patch.raidGuardSettings) {
       const newBaseSettings: Partial<ModerationSettings> = {};
       
@@ -198,7 +198,7 @@ export const ModerationSection: React.FC = () => {
             id: Date.now().toString(),
             type: "warn",
             user: "System",
-            reason: "Raid detected â†’ Lockdown preset applied",
+            reason: "Raid detected �?' Lockdown preset applied",
             moderator: "AutoMod",
             timestamp: Date.now(),
           },
@@ -231,7 +231,7 @@ export const ModerationSection: React.FC = () => {
       message:
         queueMode === "questions"
           ? "Wie funktioniert der Clip-Boost?"
-          : "ðŸŽ Teilnahme Giveaway",
+          : "�YZ� Teilnahme Giveaway",
       timestamp: Date.now(),
       type: queueMode,
     };
@@ -243,7 +243,7 @@ export const ModerationSection: React.FC = () => {
       {/* ===== Header (benutzt die Styles aus ModerationSection.css) ===== */}
       <div className="moderation-header">
         <div className="header-left">
-          <div className="moderation-icon">âš¡</div>
+          <div className="moderation-icon">�s�</div>
           <div>
             <h3 className="moderation-title">Moderation Center</h3>
             <p className="moderation-subtitle">
@@ -254,7 +254,7 @@ export const ModerationSection: React.FC = () => {
 
         <div className="active-mods-count" title="Moderators online">
           <span className="online-dot-mod" />
-          {moderators.filter((m) => m.online).length} Online â€¢{" "}
+          {moderators.filter((m) => m.online).length} Online �?�{" "}
           <span style={{ marginLeft: 6 }}>
             <AlertTriangle className="inline-block" size={14} /> {modActions.length} Actions
           </span>
@@ -426,7 +426,7 @@ export const ModerationSection: React.FC = () => {
                 <div className="whitelist-input">
                   <input
                     type="text"
-                    placeholder="Add URLâ€¦"
+                    placeholder="Add URL�?�"
                     value={newWhitelistLink}
                     onChange={(e) => setNewWhitelistLink(e.target.value)}
                     onKeyDown={(e) => {
@@ -479,7 +479,7 @@ export const ModerationSection: React.FC = () => {
                           })
                         }
                       >
-                        Ã—
+                        �-
                       </button>
                     </div>
                   ))}
@@ -586,7 +586,7 @@ export const ModerationSection: React.FC = () => {
                     <div className="banned-input">
                       <input
                         type="text"
-                        placeholder="Add banned wordâ€¦"
+                        placeholder="Add banned word�?�"
                         value={newBannedWord}
                         onChange={(e) => setNewBannedWord(e.target.value)}
                         onKeyDown={(e) => {
@@ -631,7 +631,7 @@ export const ModerationSection: React.FC = () => {
                               })
                             }
                           >
-                            Ã—
+                            �-
                           </button>
                         </div>
                       ))}
@@ -726,7 +726,7 @@ export const ModerationSection: React.FC = () => {
                 className={`action-button ${queueMode === "giveaway" ? "warning" : ""}`}
                 onClick={() => setQueueMode("giveaway")}
                 data-text="Giveaway"
-                title="Giveaway-EintrÃ¤ge"
+                title="Giveaway-Einträge"
               >
                 GIVEAWAY ({queue.filter((q) => q.type === "giveaway").length})
               </button>
@@ -825,7 +825,7 @@ export const ModerationSection: React.FC = () => {
                   <div style={{ display: "flex", flexDirection: "column" }}>
                     <strong className="log-user">@{a.user}</strong>
                     <span style={{ color: "rgba(255,255,255,.8)" }}>
-                      {a.type.toUpperCase()} â€¢ {a.reason}
+                      {a.type.toUpperCase()} �?� {a.reason}
                     </span>
                   </div>
                 </div>
@@ -851,7 +851,7 @@ export const ModerationSection: React.FC = () => {
                     <div style={{ display: "flex", flexDirection: "column" }}>
                       <strong>{m.name}</strong>
                       <small style={{ opacity: 0.8 }}>
-                        {m.role.replace("_", " ")} â€¢ {m.actions} actions
+                        {m.role.replace("_", " ")} �?� {m.actions} actions
                       </small>
                     </div>
                     <div style={{ marginLeft: "auto" }}>
@@ -875,5 +875,5 @@ export const ModerationSection: React.FC = () => {
   );
 };
 
-// Default export fÃ¼r KompatibilitÃ¤t
+// Default export für Kompatibilität
 export default ModerationSection;

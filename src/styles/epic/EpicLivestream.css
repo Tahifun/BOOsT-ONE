@@ -780,7 +780,7 @@ label, .form-label {
   }
 }
 
-/* --- kompaktere Abstände NUR in Gerät- & Effekt-Panel --- */
+/* --- kompaktere Abst�nde NUR in Ger�t- & Effekt-Panel --- */
 .device-panel,
 .effects-panel {
   display: grid;              /* sichere, einfache vertikale Staffelung */
@@ -798,7 +798,7 @@ label, .form-label {
   margin-bottom: 4px;
 }
 
-/* Vertikale Abstände zwischen Elementen in den Panels weiter verkleinern */
+/* Vertikale Abst�nde zwischen Elementen in den Panels weiter verkleinern */
 :is(.device-panel, .effects-panel) > * + * {
   margin-top: 8px;
 }
@@ -811,7 +811,7 @@ label, .form-label {
 }
 
 /* --- PANIC-Button: rot leuchtend --- */
-/* Trifft gängige Varianten; wenn dein Button noch keine Klasse hat,
+/* Trifft g�ngige Varianten; wenn dein Button noch keine Klasse hat,
    gib ihm z.B. class="panic-btn" oder id="panicButton". */
 button#panic,
 button#panicButton,
@@ -831,7 +831,7 @@ button#panicButton,
   animation: panicPulse 1.6s ease-in-out infinite;
 }
 
-/* Hover/Active etwas kräftiger */
+/* Hover/Active etwas kr�ftiger */
 button#panic:hover,
 button#panicButton:hover,
 .panic-btn:hover,
@@ -881,7 +881,7 @@ button#panicButton:hover,
   margin-top: 8px !important;
 }
 
-/* typische Gruppen/Zeilen in den Panels zusammendrücken */
+/* typische Gruppen/Zeilen in den Panels zusammendr�cken */
 .device-panel .form-group,
 .effects-panel .form-group,
 .device-panel .control-group,
@@ -931,7 +931,7 @@ button#panicButton:hover,
   margin-top: 6px !important;
 }
 
-/* Übliche Gruppen/Zeilen – noch kompakter */
+/* �bliche Gruppen/Zeilen - noch kompakter */
 .device-panel :is(.form-group,.control-group,.form-row,.row,.grid,.stack),
 .effects-panel :is(.form-group,.control-group,.form-row,.row,.grid,.stack) {
   gap: 6px !important;
@@ -976,7 +976,7 @@ button#panicButton:hover,
   margin-top: 6px !important;
 }
 
-/* Falls irgendwo noch Standardabstände versteckt sind */
+/* Falls irgendwo noch Standardabst�nde versteckt sind */
 .device-panel .mb,
 .effects-panel .mb { margin-bottom: 6px !important; }
 .device-panel .mt,

@@ -17,7 +17,7 @@ export default function BillingSuccess() {
   const sessionId = qs.get("session_id") || "";
 
   useEffect(() => {
-    // optional: Session-ID an dein Backend posten, falls du dafür einen Endpunkt hast.
+    // optional: Session-ID an dein Backend posten, falls du daf�r einen Endpunkt hast.
     // Wir zeigen hier einfach den aktuellen Status.
     const run = async () => {
       try {
@@ -45,14 +45,14 @@ export default function BillingSuccess() {
             {status.source ? ` (Quelle: ${status.source})` : null}
           </p>
           {status.dayPass?.active && status.dayPass.validUntil && (
-            <p>DayPass gültig bis: {new Date(status.dayPass.validUntil).toLocaleString()}</p>
+            <p>DayPass g�ltig bis: {new Date(status.dayPass.validUntil).toLocaleString()}</p>
           )}
         </div>
       ) : (
         <p>Lade Status</p>
       )}
 
-      <a href="/">Zurück zur Startseite</a>
+      <a href="/">Zur�ck zur Startseite</a>
     </div>
   );
 }

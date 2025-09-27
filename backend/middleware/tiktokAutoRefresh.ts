@@ -21,7 +21,7 @@ export default async function ensureTikTokAccessToken(req: Request, res: Respons
     const atExp = Number(req.cookies?.["tt_at_exp"] || 0);
     const rt = req.cookies?.["tt_rt"];
 
-    // gültig?
+    // g�ltig?
     if (at && atExp && Date.now() < atExp) {
       return next();
     }

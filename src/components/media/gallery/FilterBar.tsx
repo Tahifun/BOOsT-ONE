@@ -61,10 +61,10 @@ export const FilterBar: React.FC<FilterBarProps> = ({
 
   // Media types
   const mediaTypes = [
-    { value: 'video', label: 'Videos', icon: '🎬' },
-    { value: 'image', label: 'Bilder', icon: '🖼️' },
-    { value: 'audio', label: 'Audio', icon: '🎵' },
-    { value: 'overlay', label: 'Overlays', icon: '🎨' }
+    { value: 'video', label: 'Videos', icon: '??' },
+    { value: 'image', label: 'Bilder', icon: '???' },
+    { value: 'audio', label: 'Audio', icon: '??' },
+    { value: 'overlay', label: 'Overlays', icon: '??' }
   ];
 
   // Status options
@@ -77,7 +77,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   const sortFields = [
     { value: 'name', label: 'Name' },
     { value: 'date', label: 'Datum' },
-    { value: 'size', label: 'Größe' },
+    { value: 'size', label: 'Gr��e' },
     { value: 'type', label: 'Typ' },
     { value: 'views', label: 'Aufrufe' },
     { value: 'duration', label: 'Dauer' }
@@ -208,7 +208,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
             onClick={() => onSortChange({ ...sort, direction: sort.direction === 'asc' ? 'desc' : 'asc' })}
             aria-label={`Sortierung ${sort.direction === 'asc' ? 'absteigend' : 'aufsteigend'}`}
           >
-            {sort.direction === 'asc' ? '↑' : '↓'}
+            {sort.direction === 'asc' ? '?' : '?'}
           </button>
         </div>
 
@@ -216,12 +216,12 @@ export const FilterBar: React.FC<FilterBarProps> = ({
         <div className="filter-actions">
           {activeFilters > 0 && <span className="active-filters-badge">{activeFilters} aktiv</span>}
           <button className="filter-toggle" onClick={() => setIsExpanded(!isExpanded)} aria-expanded={isExpanded} aria-label="Erweiterte Filter">
-            <span className="toggle-icon">⚙️</span>
+            <span className="toggle-icon">??</span>
             <span className="toggle-label">Filter</span>
-            <span className="toggle-arrow">{isExpanded ? '▼' : '▶'}</span>
+            <span className="toggle-arrow">{isExpanded ? '?' : '?'}</span>
           </button>
           {activeFilters > 0 && (
-            <button className="filter-clear" onClick={clearAllFilters} aria-label="Alle Filter zurücksetzen">✖️ Zurücksetzen</button>
+            <button className="filter-clear" onClick={clearAllFilters} aria-label="Alle Filter zur�cksetzen">?? Zur�cksetzen</button>
           )}
         </div>
       </div>
@@ -241,7 +241,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
               <button className="date-option custom" onClick={() => handleDateRange('custom')}>Benutzerdefiniert</button>
             </div>
             {filters.dateRange && (
-              <div className="date-display">📅 {formatDate(filters.dateRange.start)} - {formatDate(filters.dateRange.end)}</div>
+              <div className="date-display">?? {formatDate(filters.dateRange.start)} - {formatDate(filters.dateRange.end)}</div>
             )}
             {showDatePicker && (
               <div className="date-picker">
@@ -269,7 +269,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
             <h4 className="section-title">
               Tags {filters.tags && filters.tags.length > 0 && <span className="section-count">({filters.tags.length})</span>}
             </h4>
-            <button className="tag-selector-toggle" onClick={() => setShowTagSelector(!showTagSelector)}>🏷️ Tags auswählen</button>
+            <button className="tag-selector-toggle" onClick={() => setShowTagSelector(!showTagSelector)}>??? Tags ausw�hlen</button>
             {showTagSelector && (
               <div className="tag-selector">
                 <div className="tag-list">
@@ -298,7 +298,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
                         onFiltersChange({ ...filters, tags: newTags.length > 0 ? newTags : undefined });
                       }}
                     >
-                      ×
+                      �
                     </button>
                   </span>
                 ))}
@@ -308,7 +308,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
 
           {/* Size Range */}
           <div className="filter-section">
-            <h4 className="section-title">Dateigröße</h4>
+            <h4 className="section-title">Dateigr��e</h4>
             <div className="size-range">
               <input
                 type="number"

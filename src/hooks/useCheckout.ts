@@ -1,4 +1,4 @@
-﻿// src/hooks/useCheckout.ts
+// src/hooks/useCheckout.ts
 import { useCallback, useState } from "react";
 import { api } from '../lib/apiClient';
 
@@ -14,10 +14,10 @@ type UseCheckoutReturn = {
 };
 
 /**
- * useCheckout â€“ kapselt Checkout (PRO/DayPass) + Billing-Portal-Redirect
+ * useCheckout �?" kapselt Checkout (PRO/DayPass) + Billing-Portal-Redirect
  * - Nutzt /api/subscription/checkout (POST { plan })
  * - Nutzt /api/billing/create-portal-session (POST)
- * - Optionaler Bearer-Token fÃ¼r Header (bis Cookie-Flow final ist)
+ * - Optionaler Bearer-Token für Header (bis Cookie-Flow final ist)
  */
 export function useCheckout(token?: string): UseCheckoutReturn {
   const [loading, setLoading] = useState<Plan | null>(null);

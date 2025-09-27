@@ -149,7 +149,7 @@ export const UploadProgress: React.FC<UploadProgressProps> = ({
 
           {isComplete && (
             <div className="progress-complete" aria-hidden="true">
-              <span className="complete-icon">✓</span>
+              <span className="complete-icon">?</span>
             </div>
           )}
         </div>

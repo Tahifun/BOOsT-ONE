@@ -148,7 +148,7 @@ export const Layout: React.FC<LayoutProps> = ({
             <div className="footer-actions">
               <button className="footer-link" aria-label="Hilfe"><span> Hilfe</span></button>
               <button className="footer-link" aria-label="Feedback"><span> Feedback</span></button>
-              <button className="footer-link" aria-label="Einstellungen"><span>️ Einstellungen</span></button>
+              <button className="footer-link" aria-label="Einstellungen"><span>? Einstellungen</span></button>
             </div>
           </div>
         </footer>

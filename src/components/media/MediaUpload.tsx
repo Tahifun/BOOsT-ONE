@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { uploadMediaFile, mapUploadError } from '../../services/mediaService';
 import { MediaType } from '../../types/mediaTypes';
@@ -74,9 +74,9 @@ const MediaUpload: React.FC<Props> = ({ onUpload }) => {
   };
 
   function validateFile(f: File, type: MediaType): string | null {
-    if (!f) return "Bitte eine Datei auswÃ¤hlen.";
+    if (!f) return "Bitte eine Datei auswählen.";
     if (f.size > maxBytes) {
-      return `Datei zu groÃŸ fÃ¼r â€ž${type}â€œ. Maximal ${MAX_MB[type]} MB (deine: ${formatBytes(f.size)}).`;
+      return `Datei zu gro�Y für �?z${type}�?o. Maximal ${MAX_MB[type]} MB (deine: ${formatBytes(f.size)}).`;
     }
     // Optional: MIME grob checken (Frontend-Selektion begrenzt bereits)
     return null;
@@ -138,7 +138,7 @@ const MediaUpload: React.FC<Props> = ({ onUpload }) => {
       setDescription("");
       onUpload?.();
     } catch (err: unknown) {
-      setError(mapUploadError(err)); // â¬…ï¸ zentrale Fehlermeldung
+      setError(mapUploadError(err)); // �.️ zentrale Fehlermeldung
     } finally {
       setLoading(false);
     }
@@ -147,7 +147,7 @@ const MediaUpload: React.FC<Props> = ({ onUpload }) => {
   return (
     <ProFeatureWrapper featureName="overlay_upload">
       <div className="media-upload-card">
-        <h3 className="font-semibold mb-2">ðŸ“¤ Media Upload</h3>
+        <h3 className="font-semibold mb-2">�Y"� Media Upload</h3>
 
         {/* Typ-Auswahl */}
         <div className="grid" style={{ gap: 8, gridTemplateColumns: "1fr 1fr" }}>
@@ -184,7 +184,7 @@ const MediaUpload: React.FC<Props> = ({ onUpload }) => {
           onDrop={onDrop}
           onClick={onBrowse}
           role="button"
-          aria-label="Datei wÃ¤hlen oder hier ablegen"
+          aria-label="Datei wählen oder hier ablegen"
           tabIndex={0}
           onKeyDown={(e) => (e.key === "Enter" || e.key === " " ? onBrowse() : null)}
           style={{ marginTop: 12 }}
@@ -193,13 +193,13 @@ const MediaUpload: React.FC<Props> = ({ onUpload }) => {
             <img src={previewUrl} alt="Vorschau" style={{ maxHeight: 160, borderRadius: 8 }} />
           ) : (
             <div style={{ fontWeight: 700, marginBottom: 6 }}>
-              Datei hier ablegen oder klicken zum AuswÃ¤hlen
+              Datei hier ablegen oder klicken zum Auswählen
             </div>
           )}
           <div style={{ fontSize: 12, opacity: 0.8 }}>
             {file ? (
               <>
-                âœ… <strong>{file.name}</strong> Â· {formatBytes(file.size)}
+                �o. <strong>{file.name}</strong> · {formatBytes(file.size)}
               </>
             ) : (
               <>Akzeptiert: {accept}</>
@@ -235,10 +235,10 @@ const MediaUpload: React.FC<Props> = ({ onUpload }) => {
         {/* Aktionen */}
         <div className="flex gap-2" style={{ marginTop: 12 }}>
           <button onClick={handleUpload} disabled={loading || !file} type="button">
-            {loading ? "Hochladenâ€¦" : "Upload starten"}
+            {loading ? "Hochladen�?�" : "Upload starten"}
           </button>
           <button onClick={resetFile} disabled={loading || !file} type="button">
-            ZurÃ¼cksetzen
+            Zurücksetzen
           </button>
         </div>
 

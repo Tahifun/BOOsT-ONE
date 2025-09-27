@@ -8,7 +8,7 @@ export const API_BASE =
   read("VITE-API-BASE-URL") ??
   "https://api.clip-boost.online/api";
 
-// Kompatibilität: alter Name weiter exportiert
+// Kompatibilit�t: alter Name weiter exportiert
 export const API_BASE_URL = API_BASE;
 
 export const BACKEND_URL =

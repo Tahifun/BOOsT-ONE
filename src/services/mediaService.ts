@@ -1,4 +1,4 @@
-﻿import { MediaType } from '../types/mediaTypes';
+import { MediaType } from '../types/mediaTypes';
 
 /** API-Basis aus .env (z. B. http://localhost:4000/api) */
 const API_BASE = (import.meta.env.VITE_API_URL || "")
@@ -25,7 +25,7 @@ export interface MediaUploadResponse {
   };
 }
 
-/** Fehlerobjekt (axios-Ã¤hnlich) */
+/** Fehlerobjekt (axios-ähnlich) */
 export class HttpError extends Error {
   status: number;
   data: unknown;
@@ -150,13 +150,13 @@ export async function fetchMedia(params?: { type?: MediaType; q?: string }) {
 }
 
 /**
- * LÃ¶schen
+ * Löschen
  */
 export async function deleteMedia(id: string) {
   const res = await doRequest(`/media/${encodeURIComponent(id)}`, { method: "DELETE" });
   const data = await safeJson(res);
   if (!res.ok) {
-    throw new HttpError(res.status, data, data?.message || "LÃ¶schen fehlgeschlagen.");
+    throw new HttpError(res.status, data, data?.message || "Löschen fehlgeschlagen.");
   }
   return data;
 }
@@ -177,7 +177,7 @@ export async function createMedia(media: Partial<MediaUploadResponse["item"]>) {
 }
 
 /**
- * Fehler-Mapping fÃ¼r UI
+ * Fehler-Mapping für UI
  */
 export function mapUploadError(err: unknown): string {
   if (!(err instanceof HttpError)) return "Unbekannter Fehler beim Upload.";
@@ -190,22 +190,22 @@ export function mapUploadError(err: unknown): string {
   if (status === 413 || code === "PAYLOAD_TOO_LARGE") {
     const limit = data?.limitMB ?? data?.maxMB;
     return limit
-      ? `Datei zu groÃŸ (Limit ${limit} MB).`
-      : "Datei zu groÃŸ fÃ¼r den Server.";
+      ? `Datei zu gro�Y (Limit ${limit} MB).`
+      : "Datei zu gro�Y für den Server.";
   }
   if (status === 415 || code === "unsupported_type") {
     const allowed = Array.isArray(data?.allowed) ? data.allowed.join(", ") : "dieses Format";
-    return `Der Dateityp wird nicht unterstÃ¼tzt (${allowed}).`;
+    return `Der Dateityp wird nicht unterstützt (${allowed}).`;
   }
   if (status === 400) {
-    return data?.message || "UngÃ¼ltige Eingaben fÃ¼r den Upload.";
+    return data?.message || "Ungültige Eingaben für den Upload.";
   }
   if (status === 429) {
-    return "Zu viele Anfragen. Bitte spÃ¤ter erneut versuchen.";
+    return "Zu viele Anfragen. Bitte später erneut versuchen.";
   }
   if (status === 401) return "Nicht angemeldet. Bitte erneut einloggen.";
-  if (status === 403) return "Keine Berechtigung fÃ¼r diese Aktion.";
-  if (status >= 500) return "Serverfehler beim Upload. Bitte spÃ¤ter erneut versuchen.";
+  if (status === 403) return "Keine Berechtigung für diese Aktion.";
+  if (status >= 500) return "Serverfehler beim Upload. Bitte später erneut versuchen.";
 
   return (err as any)?.message || "Unbekannter Fehler beim Upload.";
 }

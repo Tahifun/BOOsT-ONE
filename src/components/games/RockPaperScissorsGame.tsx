@@ -1,10 +1,10 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import Button from '../Button';
 
 const choices = [
-  { emoji: "ðŸª¨", name: "Stein" },
-  { emoji: "âœ‚ï¸", name: "Schere" },
-  { emoji: "ðŸ“„", name: "Papier" },
+  { emoji: "�Y��", name: "Stein" },
+  { emoji: "�o,️", name: "Schere" },
+  { emoji: "�Y""", name: "Papier" },
 ];
 
 const getResult = (user: number, comp: number) => {
@@ -14,7 +14,7 @@ const getResult = (user: number, comp: number) => {
     (user === 1 && comp === 2) ||
     (user === 2 && comp === 0)
   )
-    return "Du gewinnst! ðŸŽ‰";
+    return "Du gewinnst! �YZ?";
   return "Der Computer gewinnt!";
 };
 
@@ -40,7 +40,7 @@ const RockPaperScissorsGame: React.FC = () => {
     setHistory((prev) => [{ user: choice, comp: compChoice, result: res }, ...prev]);
 
     setScore((prev) => {
-      if (res === "Du gewinnst! ðŸŽ‰") return { ...prev, user: prev.user + 1 };
+      if (res === "Du gewinnst! �YZ?") return { ...prev, user: prev.user + 1 };
       if (res === "Unentschieden!") return { ...prev, ties: prev.ties + 1 };
       return { ...prev, comp: prev.comp + 1 };
     });
@@ -80,7 +80,7 @@ const RockPaperScissorsGame: React.FC = () => {
           </Button>
         ))}
         <Button size="md" onClick={reset}>
-          ZurÃ¼cksetzen
+          Zurücksetzen
         </Button>
       </div>
 
@@ -105,7 +105,7 @@ const RockPaperScissorsGame: React.FC = () => {
             <strong>Verlauf:</strong>
             {history.map((h, i) => (
               <div key={i}>
-                {i + 1}. {choices[h.user].emoji} vs {choices[h.comp].emoji} â€“ {h.result}
+                {i + 1}. {choices[h.user].emoji} vs {choices[h.comp].emoji} �?" {h.result}
               </div>
             ))}
           </div>

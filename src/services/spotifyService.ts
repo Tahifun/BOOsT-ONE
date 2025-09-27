@@ -1,11 +1,11 @@
 // src/services/spotifyService.ts
 
 /**
- * Service für Spotify:
+ * Service f�r Spotify:
  * - OAuth-Start (PKCE+state via Backend)
  * - Code-Exchange im Callback
  * - Optional: Refresh/Disconnect
- * - Status/Basic-Stats: Now Playing (über Backend)
+ * - Status/Basic-Stats: Now Playing (�ber Backend)
  */
 
 export type NowPlaying =
@@ -117,7 +117,7 @@ async function request<T = any>(path: string, opts: ReqOpts = {}): Promise<T> {
       const msg =
         (data as any)?.message ||
         ({
-          400: "Ungültige Anfrage.",
+          400: "Ung�ltige Anfrage.",
           401: "Nicht angemeldet.",
           403: "Keine Berechtigung.",
           404: "Nicht gefunden.",
@@ -129,7 +129,7 @@ async function request<T = any>(path: string, opts: ReqOpts = {}): Promise<T> {
       throw new Error(msg);
     }
 
-    // Wenn kein JSON zurückkam, gib leeres Objekt statt zu crashen
+    // Wenn kein JSON zur�ckkam, gib leeres Objekt statt zu crashen
     return (data as T) ?? ({} as T);
   } finally {
     clearTimeout(to);
@@ -203,11 +203,11 @@ export async function disconnectSpotify(): Promise<void> {
 
 /** ---------- Now Playing ---------- */
 /**
- * - 200 + { isPlaying: false } → nichts läuft
- * - 200 + { isPlaying: true, track: {...} } → Track-Infos
- * - 204 → kein verknüpftes Konto / keine Daten
- * - 404 → Endpunkt nicht vorhanden → null
- * - 501 → Backend/ENV nicht konfiguriert
+ * - 200 + { isPlaying: false } ? nichts l�uft
+ * - 200 + { isPlaying: true, track: {...} } ? Track-Infos
+ * - 204 ? kein verkn�pftes Konto / keine Daten
+ * - 404 ? Endpunkt nicht vorhanden ? null
+ * - 501 ? Backend/ENV nicht konfiguriert
  */
 export async function getNowPlaying(): Promise<NowPlaying | null> {
   try {
@@ -258,6 +258,6 @@ export async function getSpotifyProfile(): Promise<SpotifyProfile | null> {
     const data = await safeJson<SpotifyProfile>(res);
     return data ?? null;
   } catch {
-    return null; // ← fehlte vorher: sorgt für vollständige Rückgabe-Pfade
+    return null; // ? fehlte vorher: sorgt f�r vollst�ndige R�ckgabe-Pfade
   }
 }

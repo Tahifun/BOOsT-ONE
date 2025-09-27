@@ -42,7 +42,7 @@ export function ModerationProvider({ children }: { children: React.ReactNode }) 
     setActivePreset(mode);
     setSettings(next);
 
-    // optional: Backend informieren  falls dein Bot/Twitch-Adapter läuft
+    // optional: Backend informieren  falls dein Bot/Twitch-Adapter l�uft
     try {
       await fetch(`${API}/api/mod/settings/apply`, {
         method: "POST",

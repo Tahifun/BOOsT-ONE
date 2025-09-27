@@ -1,9 +1,9 @@
-﻿// src/pages/DayPassPage.tsx
+// src/pages/DayPassPage.tsx
 import React, { useState, useCallback } from "react";
 import { buyDayPass, mapSubscriptionError, CONSENT_DEFAULT_TEXT, CONSENT_VERSION } from '../services/subscriptionService';
 
 const DayPassPage: React.FC = () => {
-  // âœ… Kein Auto-Redirect mehr â€“ Consent-Gate zuerst
+  // �o. Kein Auto-Redirect mehr �?" Consent-Gate zuerst
   const [consent, setConsent] = useState(false);
   const [pending, setPending] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -51,7 +51,7 @@ const DayPassPage: React.FC = () => {
         title={!consent ? "Bitte zuerst zustimmen" : "Day-Pass kaufen"}
         style={{ marginTop: 16 }}
       >
-        {pending ? "LÃ¤dtâ€¦" : "Day-Pass kaufen"}
+        {pending ? "Lädt�?�" : "Day-Pass kaufen"}
       </button>
     </div>
   );

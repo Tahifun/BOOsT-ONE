@@ -123,7 +123,7 @@ const OverlayTemplateManager: React.FC<Props> = ({
                 <button className="btn" onClick={() => onLoadTemplate(tpl)}>Laden</button>
                 <button className="btn" onClick={() => onDuplicateTemplate(tpl.id)}>Duplizieren</button>
                 <button className="btn" onClick={() => onExportTemplate(tpl)}>Export</button>
-                <button className="btn danger" onClick={() => onDeleteTemplate(tpl.id)}>Löschen</button>
+                <button className="btn danger" onClick={() => onDeleteTemplate(tpl.id)}>L�schen</button>
               </div>
             </div>
           );

@@ -1,4 +1,4 @@
-﻿// src/main.tsx
+// src/main.tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -28,7 +28,7 @@ if (import.meta.env.DEV && typeof window !== "undefined") {
 
       const ct = (res.headers.get("content-type") || "").toLowerCase();
 
-      // Nur fÃ¼r unsere Backend-Calls interessant
+      // Nur für unsere Backend-Calls interessant
       if (url.startsWith("/api/") && !ct.includes("application/json")) {
         const preview = await res.clone().text().catch(() => "");
         // Zeig kurz an, was kam (Status/CT/Anfang vom Body)
@@ -52,7 +52,7 @@ if (!rootEl) {
 
 ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
-    {/* Auth mÃ¶glichst frÃ¼h, Router nur einmal */}
+    {/* Auth möglichst früh, Router nur einmal */}
     <AuthProvider>
       <ThemeProvider>
         <OverlayConfigProvider>

@@ -17,12 +17,12 @@ export default [
     },
     rules: {
       'no-console': 'off',
-      // Sicherheitsnetz, falls irgendwo noch anschlägt:
+      // Sicherheitsnetz, falls irgendwo noch anschl�gt:
       'no-undef': 'off',
     },
   },
 
-  // TS (Backend) — typed linting, laute Regeln vorerst OFF für Baseline
+  // TS (Backend) - typed linting, laute Regeln vorerst OFF f�r Baseline
   ...tseslint.configs.recommendedTypeChecked.map(cfg => ({
     ...cfg,
     files: ['backend/**/*.{ts,tsx}'],
@@ -37,7 +37,7 @@ export default [
     },
     rules: {
       ...cfg.rules,
-      // Baseline-Entschärfung:
+      // Baseline-Entsch�rfung:
       '@typescript-eslint/require-await': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',
@@ -67,7 +67,7 @@ export default [
     },
     rules: {
       ...cfg.rules,
-      // Baseline-Entschärfung:
+      // Baseline-Entsch�rfung:
       '@typescript-eslint/require-await': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',

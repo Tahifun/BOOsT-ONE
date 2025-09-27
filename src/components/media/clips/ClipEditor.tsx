@@ -201,7 +201,7 @@ const MarkerSystem: React.FC<MarkerSystemProps> = ({
   const deleteMarker = useCallback((id: string) => {
     const marker = markers.find(m => m.id === id);
     if (marker?.locked) {
-      console.warn('Marker locked – cannot delete');
+      console.warn('Marker locked - cannot delete');
       return;
     }
     onMarkersChange(markers.filter(m => m.id !== id));
@@ -366,7 +366,7 @@ const MarkerSystem: React.FC<MarkerSystemProps> = ({
 
   const renderGraphView = () => (
     <div className="marker-graph-view">
-      {/* Platzhalter für künftige Canvas/Charts */}
+      {/* Platzhalter f�r k�nftige Canvas/Charts */}
       <div className="graph-legend">
         {Object.entries(getMarkerStats()).map(([type, count]) => (
           <div key={type} className="legend-item">
@@ -486,7 +486,7 @@ return (
       >
         <div className="details-header">
           <h4>Marker Details</h4>
-          <button onClick={() => setSelectedMarker(null)}>×</button>
+          <button onClick={() => setSelectedMarker(null)}>�</button>
         </div>
 
         <div className="details-content">
@@ -567,7 +567,7 @@ return (
             <div className="detail-row">
               <label>Description:</label>
               <textarea
-                placeholder="Add a description…"
+                placeholder="Add a description."
                 onChange={(e) =>
                   updateMarker(selectedMarker.id, {
                     metadata: { ...(selectedMarker.metadata || {}), description: e.target.value },

@@ -56,7 +56,7 @@ router.post("/auth/mock-logout", (req: Request, res: Response, next: NextFunctio
   });
 });
 
-// --- Bestehender Mock-Login (behalten, praktisch für Tests) ---
+// --- Bestehender Mock-Login (behalten, praktisch f�r Tests) ---
 router.post("/auth/mock-login", (req: Request, res: Response, next: NextFunction) => {
   const { email = "you@clipboost.dev", name = "Rene" } = req.body || {};
   const user: User = { id: "mock-1", email, name };

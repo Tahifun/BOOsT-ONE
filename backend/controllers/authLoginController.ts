@@ -22,10 +22,10 @@ export default async function authLogin(req: Request, res: Response) {
     const users = db.collection("users");
 
     const user = await users.findOne({ email: email.toLowerCase() }, { projection: { _id: 1, email: 1, passwordHash: 1 } });
-    if (!user || !user.passwordHash) return res.status(401).json({ ok: false, message: "Ungültige Zugangsdaten." });
+    if (!user || !user.passwordHash) return res.status(401).json({ ok: false, message: "Ung�ltige Zugangsdaten." });
 
     const ok = await bcrypt.compare(password, user.passwordHash);
-    if (!ok) return res.status(401).json({ ok: false, message: "Ungültige Zugangsdaten." });
+    if (!ok) return res.status(401).json({ ok: false, message: "Ung�ltige Zugangsdaten." });
 
     const token = issueJwt(user._id.toString());
     return res.json({ ok: true, token, user: { _id: user._id.toString(), email: user.email } });

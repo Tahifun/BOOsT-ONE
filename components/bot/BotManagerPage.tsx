@@ -655,7 +655,7 @@ const BotManagerPage: React.FC = () => (
   <ProFeatureWrapper
     featureName="bot_commands"
     showUpgradePrompt
-    message="Bot & Commands sind Teil von PRO. Hol dir Abo oder Tageskarte (24h) für vollen Zugriff."
+    message="Bot & Commands sind Teil von PRO. Hol dir Abo oder Tageskarte (24h) f�r vollen Zugriff."
   >
     <BotManagerPageInner />
   </ProFeatureWrapper>

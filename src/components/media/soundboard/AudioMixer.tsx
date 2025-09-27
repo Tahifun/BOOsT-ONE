@@ -119,13 +119,13 @@ class QuantumHotkeyEngine {
     window.addEventListener('blur', this.handleBlur);
   }
 
-  /** blockt Auslösung während Recording */
+  /** blockt Ausl�sung w�hrend Recording */
   setRecordingGuard(active: boolean) {
     this.recordingGuard = active;
   }
 
   private handleKeyDown = (event: KeyboardEvent) => {
-    // Tippfelder respektieren (aber Hotkeys mit cmd/ctrl dürfen UI-Shortcuts überschreiben)
+    // Tippfelder respektieren (aber Hotkeys mit cmd/ctrl d�rfen UI-Shortcuts �berschreiben)
     if (!this.recordingGuard && isEditableTarget(event) && !(event.ctrlKey || event.metaKey)) {
       return;
     }
@@ -445,7 +445,7 @@ const HotkeyManager: React.FC<HotkeyManagerProps> = ({
     engineRef.current?.setRecordingGuard(false);
   };
 
-  /* ---------- Macro (simple buffer – optional) ---------- */
+  /* ---------- Macro (simple buffer - optional) ---------- */
 
   const startMacroRecording = () => {
     setMacroMode(true);
@@ -488,7 +488,7 @@ const HotkeyManager: React.FC<HotkeyManagerProps> = ({
   };
 
   const playMacro = () => {
-    // Sicherheitsmaßnahme: keine echten KeyboardEvents dispatchen (Browser lassen vieles eh nicht zu).
+    // Sicherheitsma�nahme: keine echten KeyboardEvents dispatchen (Browser lassen vieles eh nicht zu).
     // Stattdessen triggern wir die registrierten Muster best-effort (nur Mod-Kombos).
     if (!engineRef.current) return;
     const seq = [...currentMacro];
@@ -504,7 +504,7 @@ const HotkeyManager: React.FC<HotkeyManagerProps> = ({
         shiftKey: e.modifiers.includes('shift'),
         metaKey: e.modifiers.includes('cmd')
       });
-      // Da Engine intern iteriert, rufen wir check indirekt über register-Callbacks (nicht öffentlich) nicht auf.
+      // Da Engine intern iteriert, rufen wir check indirekt �ber register-Callbacks (nicht �ffentlich) nicht auf.
       // Realistisch: Macro-Wiedergabe steuert deine Actions direkt:
       onAction(pattern, fake);
     });
@@ -782,7 +782,7 @@ const HotkeyManager: React.FC<HotkeyManagerProps> = ({
           <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: 12, marginBottom: 6 }}>Top shortcuts</div>
           {[...statistics.entries()].sort((a, b) => (b[1].useCount - a[1].useCount)).slice(0, 5).map(([p, st]) => (
             <div key={p} style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)' }}>
-              {p} — {st.useCount}× (last: {new Date(st.lastUsed).toLocaleTimeString()})
+              {p} - {st.useCount}� (last: {new Date(st.lastUsed).toLocaleTimeString()})
             </div>
           ))}
         </div>
@@ -800,7 +800,7 @@ const HotkeyManager: React.FC<HotkeyManagerProps> = ({
           </div>
           {suggestions.slice(0, 3).map((s, i) => (
             <div key={i} style={{ fontSize: 12, color: 'rgba(255,255,255,0.75)', marginBottom: 4 }}>
-              • {s.reason}{s.newKeys ? ` → ${s.newKeys.join('+')}` : ''}
+              . {s.reason}{s.newKeys ? ` ? ${s.newKeys.join('+')}` : ''}
             </div>
           ))}
         </div>
@@ -872,9 +872,9 @@ const HotkeyManager: React.FC<HotkeyManagerProps> = ({
 
                 <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', display: 'flex', alignItems: 'center', gap: 10 }}>
                   <span>Action: {h.action}</span>
-                  <span>•</span>
+                  <span>.</span>
                   <span>Scope: {h.scope}</span>
-                  {stat && (<><span>•</span><span>Used {stat.useCount}x</span></>)}
+                  {stat && (<><span>.</span><span>Used {stat.useCount}x</span></>)}
                 </div>
               </div>
 

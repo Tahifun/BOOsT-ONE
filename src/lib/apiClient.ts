@@ -2,8 +2,8 @@
 import { API_BASE_URL, BACKEND_URL, SOCKET_URL } from '@/env';
 
 /**
- * Ermittelt die Basis-URL für die API:
- * - Wenn eine Origin in Env gesetzt ist, nehmen wir sie und hängen "/api" an.
+ * Ermittelt die Basis-URL f�r die API:
+ * - Wenn eine Origin in Env gesetzt ist, nehmen wir sie und h�ngen "/api" an.
  * - Wenn nichts gesetzt ist (z. B. lokal via Vite-Proxy), nutzen wir einfach "/api".
  *
  * Beispiele:
@@ -19,12 +19,12 @@ function resolveApiBase(): string {
 
 const API_BASE = resolveApiBase();
 
-/** Prüft, ob der Pfad schon eine absolute URL ist (dann nicht präfixen) */
+/** Pr�ft, ob der Pfad schon eine absolute URL ist (dann nicht pr�fixen) */
 function isAbsoluteUrl(url: string) {
   return /^https?:\/\//i.test(url);
 }
 
-/** Baut die finale URL für den Request */
+/** Baut die finale URL f�r den Request */
 function buildUrl(path: string): string {
   if (isAbsoluteUrl(path)) return path;
   const p = path.startsWith("/") ? path : `/${path}`;
@@ -39,7 +39,7 @@ function withTimeout<T>(
   if (!timeoutMs) return promise;
   const controller = new AbortController();
   const t = setTimeout(() => controller.abort(), timeoutMs);
-  // @ts-expect-error – wir hängen signal gleich unten an
+  // @ts-expect-error - wir h�ngen signal gleich unten an
   (promise as any).__signal = controller.signal;
   return Promise.race([
     promise,
@@ -51,7 +51,7 @@ function withTimeout<T>(
  * Fetch-Helper
  *
  * @param path   API-Pfad (z. B. "/auth/login" oder "auth/login") ODER absolute URL
- * @param opts   Fetch-Optionen (credentials ist standardmäßig 'include')
+ * @param opts   Fetch-Optionen (credentials ist standardm��ig 'include')
  * @param token  optionales Bearer-Token
  * @returns      T (JSON)
  */
@@ -61,7 +61,7 @@ export async function api<T = any>(
   token?: string
 ): Promise<T> {
   const headers = new Headers(opts.headers || {});
-  // Content-Type nur setzen, wenn ein Body übergeben wurde und Header noch fehlt
+  // Content-Type nur setzen, wenn ein Body �bergeben wurde und Header noch fehlt
   if (!headers.has("Content-Type") && opts.body) {
     headers.set("Content-Type", "application/json");
   }
@@ -71,14 +71,14 @@ export async function api<T = any>(
 
   const url = buildUrl(path);
 
-  // credentials immer einschalten (für Cookies/Sessions)
+  // credentials immer einschalten (f�r Cookies/Sessions)
   const finalOpts: RequestInit = {
     credentials: "include",
     ...opts,
     headers,
   };
 
-  // Optional: Timeout unterstützen, falls in opts als (custom) "timeout" übergeben (z. B. finalOpts as any).timeout
+  // Optional: Timeout unterst�tzen, falls in opts als (custom) "timeout" �bergeben (z. B. finalOpts as any).timeout
   const timeoutMs = (opts as any)?.timeout ? Number((opts as any).timeout) : 0;
 
   const fetchPromise = fetch(url, finalOpts);
@@ -95,5 +95,5 @@ export async function api<T = any>(
   return data as T;
 }
 
-/** Export der berechneten Basis (nützlich für Debug oder externe Aufrufe) */
+/** Export der berechneten Basis (n�tzlich f�r Debug oder externe Aufrufe) */
 export const API = API_BASE;

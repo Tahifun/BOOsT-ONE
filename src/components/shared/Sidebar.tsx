@@ -36,7 +36,7 @@ const FUNCTION_PAGES = [
 /**
  * API-Basis:
  * - Liest beide ENV-Varianten (Unterstrich oder Bindestrich).
- * - Normalisiert die Basis und hängt sicher `/api` an.
+ * - Normalisiert die Basis und h�ngt sicher `/api` an.
  * - Fallback ist die Produktionsdomain ohne `/api`.
  */
 const RAW_API_BASE =
@@ -49,7 +49,7 @@ const API_BASE = (() => {
   return base.endsWith("/api") ? base : `${base}/api`;
 })();
 
-/** Externe Flows immer absolut über das Backend routen. */
+/** Externe Flows immer absolut �ber das Backend routen. */
 const SPOTIFY_LOGIN_URL = `${API_BASE}/spotify/login`;
 const TIKTOK_LOGIN_URL  = `${API_BASE}/oauth/tiktok/auth`;
 const UPGRADE_ROUTE = "/subscribe";
@@ -107,7 +107,7 @@ export default function Sidebar() {
             <button
               className="avatar-wrap"
               onClick={onPickAvatar}
-              title="Profilbild ändern"
+              title="Profilbild �ndern"
               type="button"
             >
               {avatarUrl ? (
@@ -201,7 +201,7 @@ export default function Sidebar() {
               <Clock size={14} />
               <span>
                 Day-Pass aktiv
-                {typeof msRemaining === "number" ? ` – ${formatHMS(msRemaining)} übrig` : ""}
+                {typeof msRemaining === "number" ? ` - ${formatHMS(msRemaining)} �brig` : ""}
               </span>
             </div>
           )}

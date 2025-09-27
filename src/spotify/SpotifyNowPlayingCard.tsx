@@ -1,4 +1,4 @@
-﻿// src/spotify/SpotifyNowPlayingCard.tsx
+// src/spotify/SpotifyNowPlayingCard.tsx
 import React, { useEffect, useMemo, useState } from "react";
 import { getNowPlaying } from '../services/spotifyService';
 import "../styles/spotify.css";
@@ -15,7 +15,7 @@ type Track = {
 
 type TrackState =
   | { isPlaying: false }
-  | { isPlaying: true; track: Track | null }; // <- track darf null sein (Backend-RealitÃ¤t)
+  | { isPlaying: true; track: Track | null }; // <- track darf null sein (Backend-Realität)
 
 const POLL_MS = 15000;
 
@@ -77,7 +77,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
         const res = await getNowPlaying(); // darf null liefern
         if (!mounted) return;
 
-        // null/kaputter Response â†’ â€žnichts lÃ¤uftâ€œ
+        // null/kaputter Response �?' �?znichts läuft�?o
         setData(res ? normalize(res) : { isPlaying: false });
         setErr(null);
       } catch (e: unknown) {
@@ -101,7 +101,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
   return (
     <div className={`spotify-now-card${loading ? " is-loading" : ""}`} aria-live="polite">
       <div className="sp-header">
-        <div className="sp-badge" aria-hidden title="Spotify">â–¶</div>
+        <div className="sp-badge" aria-hidden title="Spotify">�-�</div>
         <h3 style={{ margin: 0, fontWeight: 600 }}>Now Playing</h3>
       </div>
 
@@ -128,7 +128,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
               onError={(e) => ((e.currentTarget as HTMLImageElement).style.display = "none")}
             />
           ) : (
-            <div className="np-cover np-cover--placeholder">ðŸŽµ</div>
+            <div className="np-cover np-cover--placeholder">�YZ�</div>
           )}
 
           <div style={{ minWidth: 0, width: "100%" }}>
@@ -137,7 +137,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
             </div>
             <div className="np-artist" title={data.track.artist || ""}>
               {(data.track.artist || "Unbekannter Artist") +
-                (data.track.album ? ` â€” ${data.track.album}` : "")}
+                (data.track.album ? ` �?" ${data.track.album}` : "")}
             </div>
 
             <div className="np-progress" aria-label="Fortschritt">
@@ -146,7 +146,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
 
             {data.track.trackUrl && (
               <a href={data.track.trackUrl} target="_blank" rel="noreferrer" className="sp-link">
-                In Spotify Ã¶ffnen â†—
+                In Spotify öffnen �?-
               </a>
             )}
           </div>
@@ -154,7 +154,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
       )}
 
       {!loading && !err && !hasTrack(data) && (
-        <div className="sp-muted">Es lÃ¤uft gerade nichts.</div>
+        <div className="sp-muted">Es läuft gerade nichts.</div>
       )}
     </div>
   );

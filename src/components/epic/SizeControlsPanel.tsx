@@ -3,7 +3,7 @@ import React from "react";
 import type { Size as HookSize } from "@/hooks/useLivestream"; // <- exakt derselbe Typ wie im Hook
 
 export interface SizeControlsPanelProps {
-  /** Kann z.B. "720p" oder {width,height} sein – genau wie im Hook */
+  /** Kann z.B. "720p" oder {width,height} sein - genau wie im Hook */
   size: HookSize;
   onSizeChange: (s: HookSize) => void;
 
@@ -37,14 +37,14 @@ function fromUiSize(
   ui: { width: number; height: number },
   original: HookSize
 ): HookSize {
-  // Wenn original ein String-Preset war, versuche zurück auf ein Preset zu mappen.
+  // Wenn original ein String-Preset war, versuche zur�ck auf ein Preset zu mappen.
   if (typeof original === "string") {
     const match = Object.entries(PRESETS).find(
       ([, val]) => val.width === ui.width && val.height === ui.height
     );
     return (match?.[0] as HookSize) ?? (ui as unknown as HookSize);
   }
-  // Sonst in Objektform zurückgeben:
+  // Sonst in Objektform zur�ckgeben:
   return ui as unknown as HookSize;
 }
 
@@ -69,7 +69,7 @@ export const SizeControlsPanel: React.FC<SizeControlsPanelProps> = ({
 
   return (
     <div className="epic-card">
-      <div className="section-title">Stream / Größe</div>
+      <div className="section-title">Stream / Gr��e</div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
         <label>
@@ -82,7 +82,7 @@ export const SizeControlsPanel: React.FC<SizeControlsPanelProps> = ({
           />
         </label>
         <label>
-          Höhe
+          H�he
           <input
             type="number"
             value={ui.height}

@@ -1,5 +1,5 @@
 // backend/openapi.ts
-// OpenAPI 3.0 Spec als Plain-Object (keine Abhängigkeit zu swagger-jsdoc nötig)
+// OpenAPI 3.0 Spec als Plain-Object (keine Abh�ngigkeit zu swagger-jsdoc n�tig)
 import "dotenv/config";
 
 type AnyObj = Record<string, any>;
@@ -17,7 +17,7 @@ export function buildOpenApiSpec(): AnyObj {
       title: "CLiP_ALffA API",
       version: "1.0.0",
       description:
-        "REST API für Auth, Abos (PRO/DayPass), Checkout (EU-Consent), Billing-Portal und Overlays.",
+        "REST API f�r Auth, Abos (PRO/DayPass), Checkout (EU-Consent), Billing-Portal und Overlays.",
       contact: { name: "CLiP_ALffA" }
     },
     servers: [
@@ -122,7 +122,7 @@ export function buildOpenApiSpec(): AnyObj {
             product: "day_pass",
             consent: true,
             consentText:
-              "Ich stimme zu, dass der digitale Inhalt sofort verfügbar ist und ich mein Widerrufsrecht verliere.",
+              "Ich stimme zu, dass der digitale Inhalt sofort verf�gbar ist und ich mein Widerrufsrecht verliere.",
             consentVersion: "2025-09-01"
           }
         },
@@ -279,7 +279,7 @@ export function buildOpenApiSpec(): AnyObj {
           tags: ["checkout"],
           summary: "Stripe Webhook (RAW body, keine Auth)",
           description:
-            "️ Der Body **muss** unverändert (RAW) sein. Signatur-Verifikation via `STRIPE_WEBHOOK_SECRET`.",
+            "? Der Body **muss** unver�ndert (RAW) sein. Signatur-Verifikation via `STRIPE_WEBHOOK_SECRET`.",
           requestBody: {
             required: true,
             content: {
@@ -288,7 +288,7 @@ export function buildOpenApiSpec(): AnyObj {
           },
           responses: {
             "200": { description: "ok (oder duplicate ignored)" },
-            "400": { description: "Signatur ungültig / Missing header" },
+            "400": { description: "Signatur ung�ltig / Missing header" },
             "500": { description: "Fehler in Verarbeitung" }
           }
         }

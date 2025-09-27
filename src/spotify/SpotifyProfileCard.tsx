@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { useEffect, useState } from "react";
 import { getSpotifyProfile, type SpotifyProfile } from '../services/spotifyService';
 import "../styles/spotify.css";
@@ -12,7 +12,7 @@ const SpotifyProfileCard: React.FC = () => {
     let mounted = true;
     (async () => {
       try {
-        const p = await getSpotifyProfile(); // null, wenn nicht verknÃ¼pft
+        const p = await getSpotifyProfile(); // null, wenn nicht verknüpft
         if (!mounted) return;
         setProfile(p);
       } catch (e: unknown) {
@@ -28,7 +28,7 @@ const SpotifyProfileCard: React.FC = () => {
   return (
     <div className={`spotify-profile-card${loading ? " is-loading" : ""}`} aria-live="polite">
       <div className="sp-header">
-        <div className="sp-badge" aria-hidden title="Spotify">â™ª</div>
+        <div className="sp-badge" aria-hidden title="Spotify">�T�</div>
         <h3 style={{ margin: 0, fontWeight: 600 }}>Spotify-Profil</h3>
       </div>
 
@@ -52,7 +52,7 @@ const SpotifyProfileCard: React.FC = () => {
         <div className="sp-muted">
           Kein Spotify-Konto verbunden.
           <br />
-          <span style={{ fontSize: 12 }}>Verbinde dich Ã¼ber den Button in der Seitenleiste.</span>
+          <span style={{ fontSize: 12 }}>Verbinde dich über den Button in der Seitenleiste.</span>
         </div>
       )}
 
@@ -77,11 +77,11 @@ const SpotifyProfileCard: React.FC = () => {
             <div className="sp-sub">
               {typeof profile.followers === "number"
                 ? `${profile.followers.toLocaleString()} Follower`
-                : "Follower â€“ n/a"}
+                : "Follower �?" n/a"}
             </div>
             {profile.url && (
               <a href={profile.url} target="_blank" rel="noreferrer" className="sp-link">
-                Profil Ã¶ffnen â†—
+                Profil öffnen �?-
               </a>
             )}
           </div>

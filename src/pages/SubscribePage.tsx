@@ -1,7 +1,7 @@
 // src/pages/SubscribePage.tsx
 import React, { useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// ❌ entfernst: useAuth (isPro gibt es dort nicht)
+// ? entfernst: useAuth (isPro gibt es dort nicht)
 // import { useAuth } from '../contexts/AuthContext';
 import { useSubscription } from "../contexts/SubscriptionContext";
 
@@ -34,10 +34,10 @@ function getToken(): string | undefined {
 const YEARLY_ENABLED =
   String((import.meta as any).env?.VITE_ENABLE_YEARLY || "false") === "true";
 const YEARLY_PRICE_LABEL =
-  (import.meta as any).env?.VITE_YEARLY_PRICE_LABEL || "99,90 €/Jahr";
+  (import.meta as any).env?.VITE_YEARLY_PRICE_LABEL || "99,90 ?/Jahr";
 
 export default function SubscribePage() {
-  // ✅ korrekt: isPro aus SubscriptionContext
+  // ? korrekt: isPro aus SubscriptionContext
   const { isPro } = useSubscription();
   const navigate = useNavigate();
 
@@ -45,7 +45,7 @@ export default function SubscribePage() {
   const [error, setError] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
 
-  // ✅ Consent-Gate
+  // ? Consent-Gate
   const [consentChecked, setConsentChecked] = useState(false);
 
   const uspMonthly = useMemo(
@@ -54,7 +54,7 @@ export default function SubscribePage() {
       "Giveaways, Polls, Advanced Audio, Panic Button",
       "Pro-Analytics + CSV-Export",
       "Overlay-Vorlagen: 20 (FREE: 2)",
-      "Kündbar im Kundenportal jederzeit",
+      "K�ndbar im Kundenportal jederzeit",
     ],
     []
   );
@@ -62,8 +62,8 @@ export default function SubscribePage() {
   const uspDayPass = useMemo(
     () => [
       "24 Stunden alle PRO-Features",
-      "Ideal für einzelne Events/Streams",
-      "Keine automatische Verlängerung",
+      "Ideal f�r einzelne Events/Streams",
+      "Keine automatische Verl�ngerung",
     ],
     []
   );
@@ -115,7 +115,7 @@ export default function SubscribePage() {
             Accept: "application/json",
             ...(getToken() ? { Authorization: `Bearer ${getToken()}` } : {}),
           },
-          // ✅ Consent auch beim Jahresabo mitsenden
+          // ? Consent auch beim Jahresabo mitsenden
           body: JSON.stringify({
             mode: "subscription",
             product: "pro_yearly",
@@ -180,19 +180,19 @@ export default function SubscribePage() {
       {isPro ? (
         <>
           <h1>
-            Du bist bereits <span style={{ color: "#1fffc3" }}>PRO</span> 🎉
+            Du bist bereits <span style={{ color: "#1fffc3" }}>PRO</span> ??
           </h1>
-          <p>Danke fürs Unterstützen! Verwalte dein Abo im Kundenportal.</p>
+          <p>Danke f�rs Unterst�tzen! Verwalte dein Abo im Kundenportal.</p>
           <button className="btn-pro" onClick={onOpenPortal} disabled={pending}>
-            🧾 Abo verwalten
+            ?? Abo verwalten
           </button>
         </>
       ) : (
         <>
           <h1>Pro freischalten</h1>
-          <p>Alle Premium-Features und höhere Limits – jederzeit kündbar.</p>
+          <p>Alle Premium-Features und h�here Limits - jederzeit k�ndbar.</p>
 
-          {/* ✅ Consent-Checkbox (nicht vorausgewählt) */}
+          {/* ? Consent-Checkbox (nicht vorausgew�hlt) */}
           <div className="consent-box" style={{ margin: "12px 0 16px" }}>
             <label style={{ display: "flex", gap: 12, alignItems: "start" }}>
               <input
@@ -207,8 +207,8 @@ export default function SubscribePage() {
               </span>
             </label>
             <p className="consent-help" style={{ opacity: 0.8, marginTop: 6 }}>
-              Ohne aktive Zustimmung ist ein Kauf nicht möglich (digitale
-              Leistung, vorzeitiges Erlöschen des Widerrufsrechts).
+              Ohne aktive Zustimmung ist ein Kauf nicht m�glich (digitale
+              Leistung, vorzeitiges Erl�schen des Widerrufsrechts).
             </p>
           </div>
 
@@ -229,7 +229,7 @@ export default function SubscribePage() {
               <header className="plan-header">
                 <div className="plan-name">Pro Monat</div>
                 <div className="plan-price">
-                  <strong>9,99 €</strong>
+                  <strong>9,99 ?</strong>
                   <span>/Monat</span>
                 </div>
               </header>
@@ -249,7 +249,7 @@ export default function SubscribePage() {
                     : "Pro monatlich abonnieren"
                 }
               >
-                ★ Jetzt Pro abonnieren
+                ? Jetzt Pro abonnieren
               </button>
             </section>
 
@@ -267,7 +267,7 @@ export default function SubscribePage() {
               <ul className="plan-list">
                 <li>Alles aus Pro Monat</li>
                 <li>Jahresrabatt</li>
-                <li>Ideal für Power-Streamer</li>
+                <li>Ideal f�r Power-Streamer</li>
               </ul>
               <button
                 className="btn-pro"
@@ -278,15 +278,15 @@ export default function SubscribePage() {
                   !consentChecked
                     ? "Bitte zuerst zustimmen"
                     : YEARLY_ENABLED
-                    ? "Pro jährlich abonnieren"
-                    : "Bald verfügbar"
+                    ? "Pro j�hrlich abonnieren"
+                    : "Bald verf�gbar"
                 }
               >
-                {YEARLY_ENABLED ? "🌟 Jahresabo starten" : "🔒 Bald verfügbar"}
+                {YEARLY_ENABLED ? "?? Jahresabo starten" : "?? Bald verf�gbar"}
               </button>
               {!YEARLY_ENABLED && (
                 <div className="plan-note">
-                  Hinweis: Jahresabo wird demnächst freigeschaltet.
+                  Hinweis: Jahresabo wird demn�chst freigeschaltet.
                 </div>
               )}
             </section>
@@ -316,14 +316,14 @@ export default function SubscribePage() {
                     : "Pro Day-Pass (24h) kaufen"
                 }
               >
-                ⚡ Day-Pass kaufen
+                ? Day-Pass kaufen
               </button>
             </section>
           </div>
 
           <p className="small-text">
-            Abrechnung über Stripe. Du erhältst eine Bestätigung per E-Mail
-            (dauerhafter Datenträger).
+            Abrechnung �ber Stripe. Du erh�ltst eine Best�tigung per E-Mail
+            (dauerhafter Datentr�ger).
           </p>
         </>
       )}

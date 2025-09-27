@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import LoginExperience from '../components/LoginExperience';
 import './RegisterPage.css';
 
-// 👉 neu: zentraler API-Client (sendet Cookies immer mit)
+// ?? neu: zentraler API-Client (sendet Cookies immer mit)
 import { postRegister, getSession } from '@/services/api';
 
 const CheckIcon = () => (
@@ -97,11 +97,11 @@ export default function RegisterPage() {
     e.preventDefault();
 
     if (pwd !== pwdConfirm) {
-      setError('Passwörter stimmen nicht überein!');
+      setError('Passw�rter stimmen nicht �berein!');
       return;
     }
     if (passwordStrength.score < 2) {
-      setError('Bitte wähle ein stärkeres Passwort!');
+      setError('Bitte w�hle ein st�rkeres Passwort!');
       return;
     }
     if (!agreedToTerms) {
@@ -114,17 +114,17 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
-      // 1) Registrieren (setzt i. d. R. direkt eine Session – in unserem Mock auf jeden Fall)
+      // 1) Registrieren (setzt i. d. R. direkt eine Session - in unserem Mock auf jeden Fall)
       await postRegister({ email, password: pwd, name: username });
 
-      // 2) Session prüfen
+      // 2) Session pr�fen
       const s = await getSession();
 
-      setSuccess('🎉 Willkommen bei CLiP BOOsT!');
+      setSuccess('?? Willkommen bei CLiP BOOsT!');
       setStep(3);
 
       setTimeout(() => {
-        // Dein früherer Flow leitete zur Login-Seite; du kannst auch direkt ins Dashboard.
+        // Dein fr�herer Flow leitete zur Login-Seite; du kannst auch direkt ins Dashboard.
         if (s?.authenticated) {
           navigate('/', { replace: true });
         } else {
@@ -132,7 +132,7 @@ export default function RegisterPage() {
         }
       }, 1500);
     } catch (err: unknown) {
-      // Wenn dein Backend 409 für „E-Mail existiert“ zurückgibt, kannst du das hier matchen:
+      // Wenn dein Backend 409 f�r "E-Mail existiert" zur�ckgibt, kannst du das hier matchen:
       if (String(err?.message || '').includes('409')) {
         setError('E-Mail bereits registriert.');
       } else {
@@ -144,12 +144,12 @@ export default function RegisterPage() {
   }
 
   const features = [
-    { icon: '🎬', text: 'Professionelle Overlays' },
-    { icon: '📊', text: 'Live Analytics' },
-    { icon: '🤖', text: 'Smart Bot Integration' },
-    { icon: '🎵', text: 'Spotify Connection' },
-    { icon: '💎', text: 'PRO Features' },
-    { icon: '🚀', text: 'TikTok Optimiert' }
+    { icon: '??', text: 'Professionelle Overlays' },
+    { icon: '??', text: 'Live Analytics' },
+    { icon: '??', text: 'Smart Bot Integration' },
+    { icon: '??', text: 'Spotify Connection' },
+    { icon: '??', text: 'PRO Features' },
+    { icon: '??', text: 'TikTok Optimiert' }
   ];
 
   return (
@@ -214,7 +214,7 @@ export default function RegisterPage() {
                   transition={{ duration: 0.5 }}
                 >
                   <h2 className="step-title">
-                    <span className="step-icon">👤</span>
+                    <span className="step-icon">??</span>
                     Erstelle deinen Account
                   </h2>
 
@@ -231,7 +231,7 @@ export default function RegisterPage() {
                         placeholder="deine@email.com"
                         required
                       />
-                      <span className="input-icon">📧</span>
+                      <span className="input-icon">??</span>
                     </div>
                   </div>
 
@@ -240,7 +240,7 @@ export default function RegisterPage() {
                       Username{' '}
                       {usernameAvailable !== null && (
                         <span className={`availability ${usernameAvailable ? 'available' : 'taken'}`}>
-                          {usernameAvailable ? '✓ Verfügbar' : '✗ Bereits vergeben'}
+                          {usernameAvailable ? '? Verf�gbar' : '? Bereits vergeben'}
                         </span>
                       )}
                     </label>
@@ -271,7 +271,7 @@ export default function RegisterPage() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    Weiter <span className="button-arrow">→</span>
+                    Weiter <span className="button-arrow">?</span>
                   </motion.button>
                 </motion.div>
               )}
@@ -286,7 +286,7 @@ export default function RegisterPage() {
                   transition={{ duration: 0.5 }}
                 >
                   <h2 className="step-title">
-                    <span className="step-icon">🔐</span>
+                    <span className="step-icon">??</span>
                     Sicherheit & Bedingungen
                   </h2>
 
@@ -300,7 +300,7 @@ export default function RegisterPage() {
                         onChange={(e) => setPwd(e.target.value)}
                         onFocus={() => setFocusedField('password')}
                         onBlur={() => setFocusedField(null)}
-                        placeholder="••••••••"
+                        placeholder="........"
                         required
                         minLength={8}
                       />
@@ -309,7 +309,7 @@ export default function RegisterPage() {
                         className="toggle-password"
                         onClick={() => setShowPassword(!showPassword)}
                       >
-                        {showPassword ? '🙈' : '🫥‍🛡️'}
+                        {showPassword ? '??' : '??????'}
                       </button>
                     </div>
 
@@ -332,7 +332,7 @@ export default function RegisterPage() {
                   </div>
 
                   <div className={`input-group ${focusedField === 'confirm' ? 'focused' : ''}`}>
-                    <label htmlFor="confirm">Passwort bestätigen</label>
+                    <label htmlFor="confirm">Passwort best�tigen</label>
                     <div className="input-wrapper">
                       <input
                         id="confirm"
@@ -341,12 +341,12 @@ export default function RegisterPage() {
                         onChange={(e) => setPwdConfirm(e.target.value)}
                         onFocus={() => setFocusedField('confirm')}
                         onBlur={() => setFocusedField(null)}
-                        placeholder="••••••••"
+                        placeholder="........"
                         required
                       />
                       {pwdConfirm && (
                         <span className={`match-icon ${pwd === pwdConfirm ? 'match' : 'no-match'}`}>
-                          {pwd === pwdConfirm ? '✓' : '✗'}
+                          {pwd === pwdConfirm ? '?' : '?'}
                         </span>
                       )}
                     </div>
@@ -387,7 +387,7 @@ export default function RegisterPage() {
 
                   <div className="button-group">
                     <button type="button" className="back-button" onClick={() => setStep(1)}>
-                      ← Zurück
+                      ? Zur�ck
                     </button>
                     <motion.button
                       type="submit"
@@ -403,7 +403,7 @@ export default function RegisterPage() {
                         </>
                       ) : (
                         <>
-                          Account erstellen <span className="button-icon">🚀</span>
+                          Account erstellen <span className="button-icon">??</span>
                         </>
                       )}
                     </motion.button>
@@ -425,7 +425,7 @@ export default function RegisterPage() {
                     animate={{ scale: 1, rotate: 360 }}
                     transition={{ delay: 0.2, duration: 0.8 }}
                   >
-                    🎉
+                    ??
                   </motion.div>
 
                   <h2 className="success-title">Willkommen bei CLiP BOOsT!</h2>
@@ -481,7 +481,7 @@ export default function RegisterPage() {
               <p>
                 Bereits ein Streamer?{' '}
                 <Link to="/login" className="login-link">
-                  Zum Login <span className="link-arrow">→</span>
+                  Zum Login <span className="link-arrow">?</span>
                 </Link>
               </p>
             </motion.div>
@@ -502,11 +502,11 @@ export default function RegisterPage() {
                 delay: i * 0.5
               }}
             >
-              {i === 0 && '🎬'}
+              {i === 0 && '??'}
               {i === 1 && 'LIVE'}
-              {i === 2 && '💎'}
+              {i === 2 && '??'}
               {i === 3 && 'PRO'}
-              {i === 4 && '🚀'}
+              {i === 4 && '??'}
             </motion.div>
           ))}
         </div>

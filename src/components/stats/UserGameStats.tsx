@@ -1,4 +1,4 @@
-﻿// src/components/stats/UserGameStats.tsx
+// src/components/stats/UserGameStats.tsx
 
 import React from "react";
 import type { UserGameStat } from './GameStatsService';
@@ -11,7 +11,7 @@ const UserGameStats: React.FC<UserGameStatsProps> = ({ stats }) => {
   if (!stats?.length) {
     return (
       <div className="user-game-stats p-2">
-        <h3 className="font-semibold mb-2">ðŸ‘¤ Deine Gameâ€‘Statistiken</h3>
+        <h3 className="font-semibold mb-2">�Y'� Deine Game�?'Statistiken</h3>
         <p>Keine Daten vorhanden.</p>
       </div>
     );
@@ -19,7 +19,7 @@ const UserGameStats: React.FC<UserGameStatsProps> = ({ stats }) => {
 
   return (
     <div className="user-game-stats p-2">
-      <h3 className="font-semibold mb-2">ðŸ‘¤ Deine Gameâ€‘Statistiken</h3>
+      <h3 className="font-semibold mb-2">�Y'� Deine Game�?'Statistiken</h3>
       <table className="min-w-full text-sm">
         <thead>
           <tr className="border-b">

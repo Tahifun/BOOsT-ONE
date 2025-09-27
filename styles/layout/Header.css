@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* Header.css – Animierter Header mit Glow-Effekt, abgestimmt auf Header.tsx */
+/* Header.css - Animierter Header mit Glow-Effekt, abgestimmt auf Header.tsx */
 
 .media-header {
   position: relative;
@@ -61,7 +61,7 @@
   50%      { transform: translateY(-10px); }
 }
 
-/* Header Content – Grid passend zu Header.tsx */
+/* Header Content - Grid passend zu Header.tsx */
 .header-content {
   position: relative;
   z-index: 1;
@@ -177,7 +177,7 @@
   padding: 10px;
   animation: slideUp 0.2s ease-out;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-  z-index: 10; /* über Partikeln/Glow */
+  z-index: 10; /* �ber Partikeln/Glow */
 }
 
 @keyframes slideUp {

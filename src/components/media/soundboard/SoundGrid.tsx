@@ -918,7 +918,7 @@ const SoundGrid: React.FC<SoundGridProps> = ({
               </div>
               <div>
                 <div style={{ fontSize: 13, fontWeight: 600, color: 'white' }}>{s.name}</div>
-                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>{s.category} • {s.tags.join(', ')}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>{s.category} . {s.tags.join(', ')}</div>
               </div>
               <button
                 onClick={() => handleSoundPlay(s)}

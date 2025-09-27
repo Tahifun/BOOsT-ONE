@@ -9,14 +9,14 @@ const SubscriptionStateSchema = new Schema(
     tier: { type: String, enum: ["FREE", "PRO"], default: "FREE" },
     active: { type: Boolean, default: false },
 
-    // Day-Pass (One-time Käufe)
+    // Day-Pass (One-time K�ufe)
     dayPass: {
       active: { type: Boolean, default: false },
       validUntil: { type: Date, default: null },
       source: { type: String, default: null }, // z.B. "stripe:PRICE_ID_DAY_PASS"
     },
 
-    // Stripe-Verknüpfung (kundenseitig)
+    // Stripe-Verkn�pfung (kundenseitig)
     stripe: {
       customerId: { type: String, index: true, unique: true, sparse: true, default: null },
       subscriptionId: { type: String, default: null },

@@ -1,5 +1,5 @@
 import { logger } from '@/lib/logger';
-﻿import React, { Suspense, useEffect } from "react";
+?import React, { Suspense, useEffect } from "react";
 import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 
 import Sidebar from './components/shared/Sidebar';
@@ -63,7 +63,7 @@ function DevProbe() {
     if (import.meta.env.DEV) {
       fetch(`/api/session`, { credentials: "include" })
         .then((r) => r.json())
-        .then((d) => logger.debug("[DevProbe] /session →", d))
+        .then((d) => logger.debug("[DevProbe] /session ?", d))
         .catch((e) => console.error("[DevProbe] /session error:", e));
     }
   }, []);
@@ -107,18 +107,18 @@ const AppShell: React.FC = () => {
     <Suspense fallback={null}>
       <DevProbe />
       <Routes>
-        {/* Öffentliche Seiten (ohne Sidebar) */}
+        {/* �ffentliche Seiten (ohne Sidebar) */}
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/billing/success" element={<BillingSuccess />} />
         </Route>
 
-        {/* Öffentlich (bzw. gemischt) & mit Sidebar */}
+        {/* �ffentlich (bzw. gemischt) & mit Sidebar */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Homepage />} />
 
-          {/* Rechtliches – EN */}
+          {/* Rechtliches - EN */}
           <Route path="/imprint" element={<Imprint />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
@@ -126,7 +126,7 @@ const AppShell: React.FC = () => {
           <Route path="/guidelines" element={<CommunityGuidelines />} />
           <Route path="/licenses" element={<Licenses />} />
 
-          {/* Rechtliches – DE Aliasse */}
+          {/* Rechtliches - DE Aliasse */}
           <Route path="/impressum" element={<Imprint />} />
           <Route path="/agb" element={<Terms />} />
           <Route path="/datenschutz" element={<Privacy />} />
@@ -144,7 +144,7 @@ const AppShell: React.FC = () => {
           {/* Billing */}
           <Route path="/billing" element={<BillingPage />} />
 
-          {/* Geschützt */}
+          {/* Gesch�tzt */}
           <Route path="/subscribe" element={<ProtectedRoute><SubscribePage /></ProtectedRoute>} />
           <Route path="/epiclivestream" element={<ProtectedRoute><EpicLivestream /></ProtectedRoute>} />
           <Route path="/live" element={<ProtectedRoute><EpicLivestream /></ProtectedRoute>} />

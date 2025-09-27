@@ -1,12 +1,12 @@
 // backend/config/limits.ts
-// Zentrale Free/Pro-Limits (Gröe, Anzahl, Quoten) + Helper
+// Zentrale Free/Pro-Limits (Gr�e, Anzahl, Quoten) + Helper
 
 export type TierName = "FREE" | "PRO" | "ENTERPRISE";
 
 export interface Limits {
   /** Max. Anzahl Overlay-Vorlagen */
   templatesMax: number;
-  /** Max. Uploadgröe in Bytes (für /media/upload u.ä.) */
+  /** Max. Uploadgr�e in Bytes (f�r /media/upload u.�.) */
   uploadMaxBytes: number;
   /** Gleichzeitige Ressourcennutzung */
   concurrent: {
@@ -33,7 +33,7 @@ const envInt = (name: string, fallback: number) => {
 };
 
 /**
- * Default-Limits (können via ENV überschrieben werden)
+ * Default-Limits (k�nnen via ENV �berschrieben werden)
  * ENV-Keys:
  *  - LIMIT_TEMPLATES_FREE / _PRO / _ENT
  *  - LIMIT_UPLOAD_FREE_MB / _PRO_MB / _ENT_MB
@@ -97,14 +97,14 @@ export const LIMITS: Record<TierName, Limits> = {
 
 /**
  * PRO-gleich behandeln?
- * - Day-Pass zählt als PRO.
+ * - Day-Pass z�hlt als PRO.
  * - SUPERUSER kann (optional) wie ENTERPRISE behandelt werden.
  */
 export function isProLike(tier: TierName, active: boolean): boolean {
   return active && tier !== "FREE";
 }
 
-/** Effektive Limits für einen Nutzer (mit SUPERUSER-Lift) */
+/** Effektive Limits f�r einen Nutzer (mit SUPERUSER-Lift) */
 export function getLimitsForUser(user?: {
   role?: "USER" | "SUPERUSER";
   tier?: TierName;
@@ -112,7 +112,7 @@ export function getLimitsForUser(user?: {
   validUntil?: Date | string | null; // optional (Day-Pass)
 }): Limits {
   if (user?.role === "SUPERUSER") {
-    // SUPERUSER = grozügigste Limits
+    // SUPERUSER = groz�gigste Limits
     return LIMITS.ENTERPRISE;
   }
 
@@ -125,7 +125,7 @@ export function getLimitsForUser(user?: {
   return tier === "ENTERPRISE" ? LIMITS.ENTERPRISE : LIMITS.PRO;
 }
 
-/** Nur die Upload-Grenze (Bytes)  z. B. für Multer/Limits */
+/** Nur die Upload-Grenze (Bytes)  z. B. f�r Multer/Limits */
 export function getUploadByteLimitForUser(user?: {
   role?: "USER" | "SUPERUSER";
   tier?: TierName;

@@ -17,7 +17,7 @@ export async function fetchJson<T = any>(
   const ct = (res.headers.get("content-type") || "").toLowerCase();
 
   if (!ct.includes("application/json")) {
-    // Fallback: Body lesen (geclont) für Debug
+    // Fallback: Body lesen (geclont) f�r Debug
     const clone = res.clone();
     const txt = await clone.text().catch(() => "");
     throw new HttpError(

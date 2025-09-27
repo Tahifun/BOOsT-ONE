@@ -1,4 +1,4 @@
-﻿// src/components/media/MediaGallery.tsx
+// src/components/media/MediaGallery.tsx
 
 import React, { useContext, useState } from "react";
 import { MediaContext } from '../../contexts/MediaContext';
@@ -63,7 +63,7 @@ export const MediaGallery: React.FC = () => {
             <div className="media-card-actions">
               <button className="media-card-btn">Vorschau</button>
               <button className="media-card-btn">Teilen</button>
-              <button className="media-card-btn">LÃ¶schen</button>
+              <button className="media-card-btn">Löschen</button>
             </div>
           </div>
         ))}

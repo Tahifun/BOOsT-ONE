@@ -1,7 +1,7 @@
 // scripts/generate-secrets.js
 const crypto = require('crypto');
 
-console.log('\n🔐 Generating secure secrets for CLiP BOOsT\n');
+console.log('\n?? Generating secure secrets for CLiP BOOsT\n');
 console.log('='.repeat(50)); // FIXED: removed space
 
 const jwtSecret = crypto.randomBytes(48).toString('hex');
@@ -14,8 +14,8 @@ console.log(`COOKIE_SECRET=${cookieSecret}`);
 console.log(`SESSION_SECRET=${sessionSecret}`);
 
 console.log('\n' + '='.repeat(50));
-console.log('\n⚠️  WICHTIG:');
+console.log('\n??  WICHTIG:');
 console.log('1. Kopiere diese Secrets in deine .env Datei');
 console.log('2. NIEMALS diese .env Datei committen!');
-console.log('3. Nutze unterschiedliche Secrets für Prod & Dev');
-console.log('\n✅ Secrets erfolgreich generiert!\n');
+console.log('3. Nutze unterschiedliche Secrets f�r Prod & Dev');
+console.log('\n? Secrets erfolgreich generiert!\n');

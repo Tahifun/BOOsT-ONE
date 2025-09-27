@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSpotifyPlayer } from '../hooks/useSpotifyPlayer';
 
 const API =
@@ -63,8 +63,8 @@ export default function SpotifyControlCard() {
   const prev = () => action("player/previous");
 
   const img = state?.item?.album?.images?.[0]?.url;
-  const title = state?.item?.name || "â€“";
-  const artists = (state?.item?.artists || []).map(a => a.name).join(", ") || "â€“";
+  const title = state?.item?.name || "�?"";
+  const artists = (state?.item?.artists || []).map(a => a.name).join(", ") || "�?"";
 
   return (
     <div id="spotify-card" style={{ background:"#141414", borderRadius:12, padding:16 }}>
@@ -76,7 +76,7 @@ export default function SpotifyControlCard() {
         )}
 
         <div style={{ flex:1, minWidth:0 }}>
-          <div style={{ opacity:0.7, fontSize:12, marginBottom:4 }}>Jetzt lÃ¤uft</div>
+          <div style={{ opacity:0.7, fontSize:12, marginBottom:4 }}>Jetzt läuft</div>
           <div style={{ fontWeight:600, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap" }}>
             {title}
           </div>
@@ -85,13 +85,13 @@ export default function SpotifyControlCard() {
           </div>
 
           <div style={{ display:"flex", gap:8, marginTop:12 }}>
-            <button disabled={!ready || loading} onClick={prev}  style={btn()}>â®ï¸Ž</button>
+            <button disabled={!ready || loading} onClick={prev}  style={btn()}>⏮�Z</button>
             <button disabled={!ready || loading} onClick={playPause} style={btn(true)}>
-              {state?.is_playing ? "â¸ï¸Ž Pause" : "â–¶ï¸Ž Play"}
+              {state?.is_playing ? "⏸�Z Pause" : "�-��Z Play"}
             </button>
-            <button disabled={!ready || loading} onClick={next}  style={btn()}>â­ï¸Ž</button>
+            <button disabled={!ready || loading} onClick={next}  style={btn()}>⏭�Z</button>
           </div>
-          {!ready && <div style={{ marginTop:8, fontSize:12, opacity:0.7 }}>Player initialisiertâ€¦</div>}
+          {!ready && <div style={{ marginTop:8, fontSize:12, opacity:0.7 }}>Player initialisiert�?�</div>}
         </div>
       </div>
     </div>

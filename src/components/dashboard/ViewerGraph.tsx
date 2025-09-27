@@ -11,7 +11,7 @@ const ViewerGraph: React.FC<ViewerGraphProps> = ({ variant = "dashboard" }) => (
     </h2>
     <p>
       {variant === "overlay"
-        ? "Live-Grafik der Zuschauerentwicklung für dein Overlay."
+        ? "Live-Grafik der Zuschauerentwicklung f�r dein Overlay."
         : "Grafische Darstellung der Zuschauerentwicklung."}
     </p>
   </div>

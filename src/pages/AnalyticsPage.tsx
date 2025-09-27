@@ -21,17 +21,17 @@ import {
 import "../styles/analyticspage.css";
 import ProFeatureWrapper from "@/components/common/ProFeatureWrapper";
 
-/** ─────────────────────────────────────────────────────────
+/** ?????????????????????????????????????????????????????????
  *  Analytics Page
- *  - Enthält drei Canvas-Visualisierungen:
+ *  - Enth�lt drei Canvas-Visualisierungen:
  *    1) Quantum Particle Field (Hintergrund)
  *    2) DNA-Helix (Canvas im Card)
  *    3) Neural Network (Canvas im Card)
  *  - Recharts-Radar (Emotional Spectrum)
- *  - „Audio Spectrum“, „Sentiment Shield“, „Timeline“, „Interstellar Map“
+ *  - "Audio Spectrum", "Sentiment Shield", "Timeline", "Interstellar Map"
  *  - Komplett ohne Tailwind; alle Styles in analytics.css
  *  - Sauberes Cleanup + Resize-Handling
- *  ──────────────────────────────────────────────────────── */
+ *  ???????????????????????????????????????????????????????? */
 
 // Typen
 type EmotionalSpectrum = Record<
@@ -53,9 +53,9 @@ type Connection = {
   type: "follow" | "raid" | "host" | "collab";
 };
 
-/** ─────────────────────────────────────────────────────────
- *  Klassen für Canvas-Animationen
- *  ──────────────────────────────────────────────────────── */
+/** ?????????????????????????????????????????????????????????
+ *  Klassen f�r Canvas-Animationen
+ *  ???????????????????????????????????????????????????????? */
 
 // DNA Helix
 class DNAHelix {
@@ -335,9 +335,9 @@ class NeuralNetwork {
   }
 }
 
-/** ─────────────────────────────────────────────────────────
+/** ?????????????????????????????????????????????????????????
  *  Component
- *  ──────────────────────────────────────────────────────── */
+ *  ???????????????????????????????????????????????????????? */
 
 const AnalyticsPage: React.FC = () => {
   // Core states
@@ -492,7 +492,7 @@ const AnalyticsPage: React.FC = () => {
     }
 
     const draw = () => {
-      // leichte „motion blur“-Fläche
+      // leichte "motion blur"-Fl�che
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -616,7 +616,7 @@ const AnalyticsPage: React.FC = () => {
             .slice(0, 3)
             .map(([emotion, value]) => (
               <div key={emotion} className="qa-emote-item">
-                <div className="qa-emote-emoji">{value > 80 ? "🔥" : value > 60 ? "⚡" : value > 40 ? "✨" : "💫"}</div>
+                <div className="qa-emote-emoji">{value > 80 ? "??" : value > 60 ? "?" : value > 40 ? "?" : "??"}</div>
                 <div className="qa-emote-label">{emotion}</div>
               </div>
             ))}
@@ -765,17 +765,17 @@ const AnalyticsPage: React.FC = () => {
 
         <div className="qa-shield-legend">
           <div className="qa-shield-item">
-            <div className="qa-emoji">😍</div>
+            <div className="qa-emoji">??</div>
             <div className="qa-legend-label">Begeistert</div>
             <div className="qa-legend-val">{Math.round(viewerSentiment * 0.4)}%</div>
           </div>
           <div className="qa-shield-item">
-            <div className="qa-emoji">😊</div>
+            <div className="qa-emoji">??</div>
             <div className="qa-legend-label">Zufrieden</div>
             <div className="qa-legend-val">{Math.round(viewerSentiment * 0.35)}%</div>
           </div>
           <div className="qa-shield-item">
-            <div className="qa-emoji">😐</div>
+            <div className="qa-emoji">??</div>
             <div className="qa-legend-label">Neutral</div>
             <div className="qa-legend-val">{Math.round(viewerSentiment * 0.25)}%</div>
           </div>
@@ -895,7 +895,7 @@ const AnalyticsPage: React.FC = () => {
           </div>
           <div className="qa-col">
             <EmotionalRadar />
-            <ProFeatureWrapper featureName="analytics_deep" showUpgradePrompt message="Deep Analytics (Stimmung/Heatmaps/Trends) sind Teil von PRO. Hol dir Abo oder Tageskarte (24h) für vollen Zugriff.">
+            <ProFeatureWrapper featureName="analytics_deep" showUpgradePrompt message="Deep Analytics (Stimmung/Heatmaps/Trends) sind Teil von PRO. Hol dir Abo oder Tageskarte (24h) f�r vollen Zugriff.">
             <ViewerSentimentAnalyzer />
           </ProFeatureWrapper>
           </div>

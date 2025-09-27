@@ -25,7 +25,7 @@
   backdrop-filter: saturate(120%) blur(6px);
 }
 
-/* Stabil: gleiche Mindesthöhe, verhindert Layout-Shifts */
+/* Stabil: gleiche Mindesth�he, verhindert Layout-Shifts */
 .spotify-now-card {
   min-height: 120px;
 }
@@ -140,7 +140,7 @@
   box-shadow: 0 0 8px rgba(24, 255, 230, 0.35);
 }
 
-/* ===== Links, Zustände, Skeleton ===== */
+/* ===== Links, Zust�nde, Skeleton ===== */
 .spotify-profile-card .sp-sub,
 .spotify-now-card .sp-sub {
   font-size: 12px;
@@ -225,7 +225,7 @@
   .spotify-now-card.is-loading .sp-skeleton::after { animation: none; }
 }
 
-/* Neon-Hover für Badge */
+/* Neon-Hover f�r Badge */
 .spotify-profile-card:hover .sp-badge,
 .spotify-now-card:hover .sp-badge {
   box-shadow:
@@ -235,7 +235,7 @@
 }
 
 /* ===== Hintergrund-Animationen aus dem Layout nehmen ===== */
-/* Diese Klassen kommen von deiner Dashboard-Seite. So drücken sie nicht mehr das Layout. */
+/* Diese Klassen kommen von deiner Dashboard-Seite. So dr�cken sie nicht mehr das Layout. */
 .neural-network,
 .particle-field,
 .matrix-rain {

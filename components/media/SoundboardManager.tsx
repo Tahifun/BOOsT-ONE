@@ -87,7 +87,7 @@ export const SoundboardManager: React.FC = () => {
   // Lokaler Grid-State
   const [gridSounds, setGridSounds] = useState<SoundItem[]>(baseSoundItems);
 
-  // Bei nderungen synchronisieren (playing/vol möglichst erhalten)
+  // Bei nderungen synchronisieren (playing/vol m�glichst erhalten)
   useEffect(() => {
     setGridSounds((prev) => {
       const prevMap = new Map(prev.map((s) => [s.id, s]));
@@ -100,7 +100,7 @@ export const SoundboardManager: React.FC = () => {
     });
   }, [baseSoundItems]);
 
-  // Callbacks für Grid
+  // Callbacks f�r Grid
   const onSoundUpdate = useCallback((sound: SoundItem) => {
     setGridSounds((prev) => prev.map((s) => (s.id === sound.id ? { ...s, ...sound } : s)));
   }, []);

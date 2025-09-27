@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState, useId } from 'react';
 import { motion, animate, useReducedMotion } from 'framer-motion';
 
 interface ScoreIndicatorProps {
-  score: number; // 0–100
+  score: number; // 0-100
   size?: 'small' | 'medium' | 'large' | 'xlarge';
   showLabel?: boolean;
   showPercentage?: boolean;

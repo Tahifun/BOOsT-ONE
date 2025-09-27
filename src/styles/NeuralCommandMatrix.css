@@ -611,7 +611,7 @@
 }
 
 .control-item::before {
-  content: '▸';
+  content: '?';
   position: absolute;
   left: 0;
   color: var(--neural-purple);

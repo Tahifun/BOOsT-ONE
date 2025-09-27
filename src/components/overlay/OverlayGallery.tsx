@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import OverlayCard from './OverlayCard';
@@ -520,9 +520,9 @@ const QuantumOverlayGallery: React.FC = () => {
 
         {/* Temporal Phase Indicator */}
         <div className={`temporal-phase-indicator phase-${overlay.temporalPhase}`}>
-          {overlay.temporalPhase === 'future' && 'â§¸â§¸â§¸'}
-          {overlay.temporalPhase === 'past' && 'â§¹â§¹â§¹'}
-          {overlay.temporalPhase === 'present' && 'â—‡â—†â—‡'}
+          {overlay.temporalPhase === 'future' && '⧸⧸⧸'}
+          {overlay.temporalPhase === 'past' && '⧹⧹⧹'}
+          {overlay.temporalPhase === 'present' && '�-?�-?�-?'}
         </div>
 
         {/* Main Card Content */}
@@ -594,7 +594,7 @@ const QuantumOverlayGallery: React.FC = () => {
             />
           </div>
           <div className="creativity-spark">
-            {overlay.creativityIndex && overlay.creativityIndex > 70 && 'âœ¨'}
+            {overlay.creativityIndex && overlay.creativityIndex > 70 && '�o�'}
           </div>
         </div>
       </motion.div>
@@ -635,7 +635,7 @@ const QuantumOverlayGallery: React.FC = () => {
             whileHover={{ scale: 1.05, x: -5 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="btn-icon">â¬…ï¸</span>
+            <span className="btn-icon">�.️</span>
             <span className="btn-text">Reality Portal</span>
             <div className="btn-quantum-trail" />
           </motion.button>
@@ -702,10 +702,10 @@ const QuantumOverlayGallery: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <span className="mode-icon">
-                  {mode === 'matrix' && 'â¬¢'}
-                  {mode === 'neural' && 'ðŸ§ '}
-                  {mode === 'dimensional' && 'ðŸŒ€'}
-                  {mode === 'consciousness' && 'ðŸ‘â€ðŸ—¨'}
+                  {mode === 'matrix' && '⬢'}
+                  {mode === 'neural' && '�Y��'}
+                  {mode === 'dimensional' && '�YO?'}
+                  {mode === 'consciousness' && '�Y'��?��Y-�'}
                 </span>
                 <span className="mode-text">{mode.toUpperCase()}</span>
               </motion.button>
@@ -841,7 +841,7 @@ const QuantumOverlayGallery: React.FC = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <div className="no-results-icon">ðŸŒŒ</div>
+          <div className="no-results-icon">�YOO</div>
           <h3 className="no-results-title">QUANTUM VOID DETECTED</h3>
           <p className="no-results-message">
             No overlays match your quantum parameters. Try adjusting the reality filters or expanding the consciousness threshold.

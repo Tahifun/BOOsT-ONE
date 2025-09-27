@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { useState } from "react";
 import Button from '../Button';
 
@@ -33,7 +33,7 @@ const QuizGame: React.FC = () => {
     return (
       <div className="game-card">
         <h3>Quiz beendet!</h3>
-        <div>Dein Ergebnis: {correct} von {questions.length} richtig! ðŸŽ‰</div>
+        <div>Dein Ergebnis: {correct} von {questions.length} richtig! �YZ?</div>
         <Button variant="secondary" size="md" onClick={() => { setStep(0); setCorrect(0); }}>Neu starten</Button>
       </div>
     );

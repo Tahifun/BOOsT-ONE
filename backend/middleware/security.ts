@@ -14,7 +14,7 @@ export const securityMiddleware = (isProduction: boolean) => {
         defaultSrc: ["'self'"],
         scriptSrc: [
           "'self'",
-          "'unsafe-inline'", // Nur wenn wirklich nötig
+          "'unsafe-inline'", // Nur wenn wirklich n�tig
           "https://cdnjs.cloudflare.com",
           "https://unpkg.com"
         ],

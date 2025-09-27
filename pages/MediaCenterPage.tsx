@@ -16,9 +16,9 @@ type TabKey =
 
 const TABS: { key: TabKey; icon: string; title: string }[] = [
   { key: "dashboard", icon: "", title: "Dashboard" },
-  { key: "upload", icon: "️", title: "Upload" },
+  { key: "upload", icon: "?", title: "Upload" },
   { key: "gallery", icon: "", title: "Galerie" },
-  { key: "clips", icon: "️", title: "Clips" },
+  { key: "clips", icon: "?", title: "Clips" },
   { key: "screenshots", icon: "", title: "Screenshots" },
   { key: "soundboard", icon: "", title: "Soundboard" },
   { key: "overlays", icon: "", title: "Overlays" },
@@ -27,7 +27,7 @@ const TABS: { key: TabKey; icon: string; title: string }[] = [
   { key: "ai", icon: "", title: "AI Assistant" },
 ];
 
-/* >>> Adapter statt direkter Imports (fix für strenge Props) */
+/* >>> Adapter statt direkter Imports (fix f�r strenge Props) */
 import {
   LazyMediaUpload as MediaUpload,
   LazyMediaGallery as MediaGallery,
@@ -52,7 +52,7 @@ const MediaCenterPage: React.FC = () => {
     type: "success",
   });
 
-  /* Partikel für Hintergrund (visuell) */
+  /* Partikel f�r Hintergrund (visuell) */
   const particles = useMemo(
     () =>
       Array.from({ length: 50 }, () => ({
@@ -140,7 +140,7 @@ const MediaCenterPage: React.FC = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <button className="mc-btn mc-btn--glass" onClick={() => showNotification(" Filter geöffnet")}>
+          <button className="mc-btn mc-btn--glass" onClick={() => showNotification(" Filter ge�ffnet")}>
             Filter
           </button>
         </div>
@@ -266,7 +266,7 @@ const MediaCenterPage: React.FC = () => {
       {/* Floating Action Button */}
       <button
         className="mc-fab"
-        onClick={() => setNotice({ show: true, msg: " Quick Action Menu geöffnet", type: "success" })}
+        onClick={() => setNotice({ show: true, msg: " Quick Action Menu ge�ffnet", type: "success" })}
         aria-label="Schnellaktion"
       >
         +
@@ -278,7 +278,7 @@ const MediaCenterPage: React.FC = () => {
         role="status"
         aria-live="polite"
       >
-        <h4 className="mc-notice__title">{notice.type === "success" ? " Erfolg!" : "️ Hinweis"}</h4>
+        <h4 className="mc-notice__title">{notice.type === "success" ? " Erfolg!" : "? Hinweis"}</h4>
         <p className="mc-notice__text">{notice.msg}</p>
       </div>
     </div>

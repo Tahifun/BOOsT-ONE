@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useSpring, useMotionValue } from 'framer-motion';
 import {
   Play,
@@ -174,7 +174,7 @@ const SuggestionCard: React.FC<SuggestionCardProps> = ({
         setIsPlaying(true);
       }
     } catch {
-      // Autoplay might be blocked â€” ignore.
+      // Autoplay might be blocked �?" ignore.
     }
   };
 
@@ -470,7 +470,7 @@ const SuggestionCard: React.FC<SuggestionCardProps> = ({
                 >
                   {suggestion.type.replace('-', ' ')}
                 </span>
-                <span>â€¢</span>
+                <span>�?�</span>
                 <span>{Math.round(suggestion.confidence * 100)}% confidence</span>
               </div>
             </div>

@@ -1,4 +1,4 @@
-﻿import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { PRESETS } from '../features/moderation/presets';
 
 type Mode = keyof typeof PRESETS;
@@ -42,7 +42,7 @@ export function ModerationProvider({ children }: { children: React.ReactNode }) 
     setActivePreset(mode);
     setSettings(next);
 
-    // optional: Backend informieren â€“ falls dein Bot/Twitch-Adapter lÃ¤uft
+    // optional: Backend informieren �?" falls dein Bot/Twitch-Adapter läuft
     try {
       await fetch(`${API}/api/mod/settings/apply`, {
         method: "POST",

@@ -98,7 +98,7 @@ export default function LoginExperience(): JSX.Element {
     };
   }, []);
 
-  // Fallback ohne WebGL → kein Crash, keine schwarze Seite
+  // Fallback ohne WebGL ? kein Crash, keine schwarze Seite
   if (!webglOk) {
     return <div className="login-experience-fallback" />;
   }

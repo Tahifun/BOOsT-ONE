@@ -24,7 +24,7 @@ interface UploadState {
 }
 
 const QUANTUM_COLORS = ["#00ffff", "#a855f7", "#ec4899", "#10b981", "#ffd700"];
-const MAX_FILE_SIZE = 250 * 1024 * 1024; // 250MB (derzeit nicht genutzt, TYPE_CONFIG regelt Größe pro Typ)
+const MAX_FILE_SIZE = 250 * 1024 * 1024; // 250MB (derzeit nicht genutzt, TYPE_CONFIG regelt Gr��e pro Typ)
 
 const TYPE_CONFIG: Record<
   MediaType,
@@ -37,28 +37,28 @@ const TYPE_CONFIG: Record<
   }
 > = {
   clip: {
-    icon: "🎬",
+    icon: "??",
     accept: "video/*",
     maxMB: 250,
     color: "#00ffff",
-    description: "Video-Clips für dynamische Overlays",
+    description: "Video-Clips f�r dynamische Overlays",
   },
   screenshot: {
-    icon: "📸",
+    icon: "??",
     accept: "image/*",
     maxMB: 25,
     color: "#a855f7",
     description: "Statische Bilder und Screenshots",
   },
   sound: {
-    icon: "🎵",
+    icon: "??",
     accept: "audio/*",
     maxMB: 40,
     color: "#ec4899",
-    description: "Audio-Dateien für Sound-Overlays",
+    description: "Audio-Dateien f�r Sound-Overlays",
   },
   overlay: {
-    icon: "✨",
+    icon: "?",
     accept: "image/*,video/*,audio/*",
     maxMB: 200,
     color: "#ffd700",
@@ -246,7 +246,7 @@ const OverlayUploadPage = (): JSX.Element => {
     // Validate file size (guard also against total max)
     const maxSize = TYPE_CONFIG[selectedType].maxMB * 1024 * 1024;
     if (selectedFile.size > maxSize || selectedFile.size > MAX_FILE_SIZE) {
-      setError(`Datei zu groß! Maximum: ${Math.min(TYPE_CONFIG[selectedType].maxMB, MAX_FILE_SIZE / (1024 * 1024))}MB`);
+      setError(`Datei zu gro�! Maximum: ${Math.min(TYPE_CONFIG[selectedType].maxMB, MAX_FILE_SIZE / (1024 * 1024))}MB`);
       return;
     }
 
@@ -371,8 +371,8 @@ const OverlayUploadPage = (): JSX.Element => {
         {/* Header with Back Button */}
         <div className="quantum-upload-header">
           <button className="quantum-back-btn" onClick={() => navigate("/overlay")}>
-            <span className="back-icon">←</span>
-            <span className="back-text">Zurück zur Übersicht</span>
+            <span className="back-icon">?</span>
+            <span className="back-text">Zur�ck zur �bersicht</span>
             <div className="btn-quantum-trail"></div>
           </button>
 
@@ -393,7 +393,7 @@ const OverlayUploadPage = (): JSX.Element => {
             <span className="title-suffix">Portal</span>
           </h1>
 
-          <p className="quantum-upload-subtitle">Transformiere deine Medien durch quantenverschränkte Übertragung</p>
+          <p className="quantum-upload-subtitle">Transformiere deine Medien durch quantenverschr�nkte �bertragung</p>
 
           {/* Media Type Selector */}
           <div className="quantum-type-selector">
@@ -447,24 +447,24 @@ const OverlayUploadPage = (): JSX.Element => {
                 <div className="dropzone-content">
                   <div className="drop-icon">
                     {uploadState.phase === "analyzing"
-                      ? "🔬"
+                      ? "??"
                       : uploadState.phase === "quantum-processing"
-                      ? "⚙️"
+                      ? "??"
                       : uploadState.phase === "materializing"
-                      ? "✨"
+                      ? "?"
                       : uploadState.phase === "complete"
-                      ? "✅"
+                      ? "?"
                       : uploadState.phase === "error"
-                      ? "❌"
-                      : "🌌"}
+                      ? "?"
+                      : "??"}
                   </div>
                   <div className="drop-text">
                     {uploadState.phase === "idle"
-                      ? "Ziehe Dateien hierher oder klicke zum Auswählen"
+                      ? "Ziehe Dateien hierher oder klicke zum Ausw�hlen"
                       : uploadState.phase === "analyzing"
                       ? "Analysiere Quantenstruktur..."
                       : uploadState.phase === "quantum-processing"
-                      ? "Verschränke Dateipartikel..."
+                      ? "Verschr�nke Dateipartikel..."
                       : uploadState.phase === "materializing"
                       ? "Materialisiere in der Cloud..."
                       : uploadState.phase === "complete"
@@ -474,7 +474,7 @@ const OverlayUploadPage = (): JSX.Element => {
                       : ""}
                   </div>
                   <div className="drop-formats">
-                    Unterstützt: {TYPE_CONFIG[selectedType].accept} | Max: {TYPE_CONFIG[selectedType].maxMB}MB
+                    Unterst�tzt: {TYPE_CONFIG[selectedType].accept} | Max: {TYPE_CONFIG[selectedType].maxMB}MB
                   </div>
                 </div>
               )}
@@ -515,7 +515,7 @@ const OverlayUploadPage = (): JSX.Element => {
           <div className="quantum-metadata">
             <div className="metadata-field">
               <label className="field-label">
-                <span className="label-icon">📝</span>
+                <span className="label-icon">??</span>
                 <span className="label-text">Overlay Name</span>
                 <span className="label-required">*</span>
               </label>
@@ -532,13 +532,13 @@ const OverlayUploadPage = (): JSX.Element => {
 
             <div className="metadata-field">
               <label className="field-label">
-                <span className="label-icon">💭</span>
+                <span className="label-icon">??</span>
                 <span className="label-text">Beschreibung</span>
                 <span className="label-optional">(optional)</span>
               </label>
               <textarea
                 className="quantum-textarea"
-                placeholder="Beschreibe dein Overlay für andere Nutzer..."
+                placeholder="Beschreibe dein Overlay f�r andere Nutzer..."
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 rows={3}
@@ -555,7 +555,7 @@ const OverlayUploadPage = (): JSX.Element => {
               onClick={simulateQuantumUpload}
               disabled={!file || !name || uploadState.phase !== "idle"}
             >
-              <span className="btn-icon">🚀</span>
+              <span className="btn-icon">??</span>
               <span className="btn-text">Quantum Upload starten</span>
               <div className="btn-energy"></div>
             </button>
@@ -569,22 +569,22 @@ const OverlayUploadPage = (): JSX.Element => {
                 uploadState.phase !== "error"
               }
             >
-              <span className="btn-icon">🔄</span>
-              <span className="btn-text">Zurücksetzen</span>
+              <span className="btn-icon">??</span>
+              <span className="btn-text">Zur�cksetzen</span>
             </button>
           </div>
 
           {/* Error/Success Messages */}
           {error && (
             <div className="quantum-message error-message">
-              <span className="message-icon">⚠️</span>
+              <span className="message-icon">??</span>
               <span className="message-text">{error}</span>
             </div>
           )}
 
           {uploadState.phase === "complete" && (
             <div className="quantum-message success-message">
-              <span className="message-icon">✨</span>
+              <span className="message-icon">?</span>
               <span className="message-text">Upload erfolgreich! Weiterleitung zur Galerie...</span>
             </div>
           )}
@@ -592,12 +592,12 @@ const OverlayUploadPage = (): JSX.Element => {
           {/* Stats Display */}
           <div className="quantum-stats">
             <div className="stat-item">
-              <span className="stat-label">Dateigröße</span>
-              <span className="stat-value">{file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : "—"}</span>
+              <span className="stat-label">Dateigr��e</span>
+              <span className="stat-value">{file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : "-"}</span>
             </div>
             <div className="stat-item">
               <span className="stat-label">Dateityp</span>
-              <span className="stat-value">{file?.type || "—"}</span>
+              <span className="stat-value">{file?.type || "-"}</span>
             </div>
             <div className="stat-item">
               <span className="stat-label">Quantum-Status</span>

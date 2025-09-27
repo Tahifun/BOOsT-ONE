@@ -877,7 +877,7 @@ const SoundGrid: React.FC<SoundGridProps> = ({
           background: 'rgba(0,0,0,0.8)', border: '1px solid rgba(0,255,204,0.4)',
           color: '#00ffcc', padding: '6px 10px', borderRadius: 8, zIndex: 200
         }}>
-          Drücke eine Taste, um den Hotkey zuzuweisen…
+          Dr�cke eine Taste, um den Hotkey zuzuweisen.
         </div>
       )}
 
@@ -976,7 +976,7 @@ const SoundGrid: React.FC<SoundGridProps> = ({
               </div>
               <div>
                 <div style={{ fontSize: 13, fontWeight: 600, color: 'white' }}>{s.name}</div>
-                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>{s.category} • {s.tags.join(', ')}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>{s.category} . {s.tags.join(', ')}</div>
               </div>
               <button
                 onClick={() => handleSoundPlay(s)}

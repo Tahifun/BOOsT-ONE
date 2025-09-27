@@ -9,7 +9,7 @@ const API_BASE =
 export default function TikTokCallback() {
   const nav = useNavigate();
   const loc = useLocation();
-  const [status, setStatus] = useState<string>("Verarbeite TikTok-Callback …");
+  const [status, setStatus] = useState<string>("Verarbeite TikTok-Callback .");
 
   const { code, state, redirectUri } = useMemo(() => {
     const q = new URLSearchParams(loc.search);
@@ -26,7 +26,7 @@ export default function TikTokCallback() {
 
     (async () => {
       if (!code) {
-        setStatus("Kein Code im Callback – Abbruch.");
+        setStatus("Kein Code im Callback - Abbruch.");
         return;
       }
       try {
@@ -48,8 +48,8 @@ export default function TikTokCallback() {
         }
 
         if (!aborted) {
-          setStatus("TikTok verbunden. Weiterleitung …");
-          // 👉 nach erfolgreichem Login direkt zur Home-Seite
+          setStatus("TikTok verbunden. Weiterleitung .");
+          // ?? nach erfolgreichem Login direkt zur Home-Seite
           nav("/", { replace: true });
         }
       } catch (e: unknown) {

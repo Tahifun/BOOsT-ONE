@@ -18,20 +18,20 @@ export default function Licenses() {
         <li>Lucide Icons (ISC)</li>
       </ul>
       <p>
-        Vollständige Lizenztexte sind im Repository unter <code>/licenses</code> bzw. in den jeweiligen
+        Vollst�ndige Lizenztexte sind im Repository unter <code>/licenses</code> bzw. in den jeweiligen
         NPM-Packages enthalten.
       </p>
 
       <h2 style={{ fontSize: 18, marginTop: 16 }}>Eigene Inhalte</h2>
       <p>
-        Sämtliche von uns erstellten Inhalte (Code, Texte, Grafiken) sind urheberrechtlich geschützt.
-        Nutzung nur mit ausdrücklicher Genehmigung, sofern nicht anders gekennzeichnet.
+        S�mtliche von uns erstellten Inhalte (Code, Texte, Grafiken) sind urheberrechtlich gesch�tzt.
+        Nutzung nur mit ausdr�cklicher Genehmigung, sofern nicht anders gekennzeichnet.
       </p>
 
       <h2 style={{ fontSize: 18, marginTop: 16 }}>Uploads durch Nutzer</h2>
       <p>
         Medien und Overlays, die Nutzer hochladen, bleiben deren Eigentum. Nutzer versichern, die erforderlichen
-        Rechte innezuhaben; bei Hinweisen auf Rechtsverletzungen entfernen wir Inhalte nach Prüfung.
+        Rechte innezuhaben; bei Hinweisen auf Rechtsverletzungen entfernen wir Inhalte nach Pr�fung.
       </p>
 
       <p style={{ opacity: 0.7, marginTop: 24 }}>Aktualisiert am: 24.08.2025</p>

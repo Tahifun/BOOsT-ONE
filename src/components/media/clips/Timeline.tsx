@@ -313,12 +313,12 @@ export const Timeline: React.FC<TimelineProps> = ({
   // Get marker icon
   const getMarkerIcon = (type: Marker['type']): string => {
     switch (type) {
-      case 'highlight': return '⭐';
-      case 'comment': return '💬';
-      case 'chapter': return '📑';
-      case 'cut': return '✂️';
-      case 'ai': return '🤖';
-      default: return '📍';
+      case 'highlight': return '?';
+      case 'comment': return '??';
+      case 'chapter': return '??';
+      case 'cut': return '??';
+      case 'ai': return '??';
+      default: return '??';
     }
   };
 
@@ -359,7 +359,7 @@ export const Timeline: React.FC<TimelineProps> = ({
                 aria-label="Zoom out"
                 type="button"
               >
-                −
+                ?
               </button>
               <span className="zoom-level">{Math.round((zoom || 1) * 100)}%</span>
               <button
@@ -376,7 +376,7 @@ export const Timeline: React.FC<TimelineProps> = ({
                 aria-label="Reset zoom"
                 type="button"
               >
-                ⟲
+                ?
               </button>
             </div>
           )}
@@ -390,7 +390,7 @@ export const Timeline: React.FC<TimelineProps> = ({
               type="button"
               title="Lineal umschalten"
             >
-              📏
+              ??
             </button>
             <button
               className={`view-btn ${effectiveShowWaveform ? 'active' : ''}`}
@@ -399,7 +399,7 @@ export const Timeline: React.FC<TimelineProps> = ({
               type="button"
               title="Waveform umschalten"
             >
-              〰️
+              ??
             </button>
             <button
               className={`view-btn ${effectiveShowThumbnails ? 'active' : ''}`}
@@ -408,7 +408,7 @@ export const Timeline: React.FC<TimelineProps> = ({
               type="button"
               title="Thumbnails umschalten"
             >
-              🖼️
+              ???
             </button>
             <button
               className={`view-btn ${playheadAutoScroll ? 'active' : ''}`}
@@ -417,7 +417,7 @@ export const Timeline: React.FC<TimelineProps> = ({
               type="button"
               title="Playhead-Autoscroll umschalten"
             >
-              🧭
+              ??
             </button>
           </div>
         </div>
@@ -522,7 +522,7 @@ export const Timeline: React.FC<TimelineProps> = ({
                     setIsSelecting(true);
                     setResizingHandle('left');
                   }}
-                  title="Bereich vergrößern/verkleinern"
+                  title="Bereich vergr��ern/verkleinern"
                 />
                 <div
                   className="selection-handle right"
@@ -531,7 +531,7 @@ export const Timeline: React.FC<TimelineProps> = ({
                     setIsSelecting(true);
                     setResizingHandle('right');
                   }}
-                  title="Bereich vergrößern/verkleinern"
+                  title="Bereich vergr��ern/verkleinern"
                 />
               </div>
             )}
@@ -602,13 +602,13 @@ export const Timeline: React.FC<TimelineProps> = ({
                 // Placeholder for edit UI
                 setContextMenu(null);
               }}>
-                ✏️ Bearbeiten
+                ?? Bearbeiten
               </button>
               <button type="button" onClick={() => {
                 onMarkerRemove?.(contextMenu.marker!.id);
                 setContextMenu(null);
               }}>
-                🗑️ Löschen
+                ??? L�schen
               </button>
             </>
           ) : (
@@ -618,21 +618,21 @@ export const Timeline: React.FC<TimelineProps> = ({
                 onMarkerAdd?.(time, 'highlight');
                 setContextMenu(null);
               }}>
-                ⭐ Highlight hinzufügen
+                ? Highlight hinzuf�gen
               </button>
               <button type="button" onClick={() => {
                 const time = positionToTime(contextMenu.x);
                 onMarkerAdd?.(time, 'comment');
                 setContextMenu(null);
               }}>
-                💬 Kommentar hinzufügen
+                ?? Kommentar hinzuf�gen
               </button>
               <button type="button" onClick={() => {
                 const time = positionToTime(contextMenu.x);
                 onMarkerAdd?.(time, 'chapter');
                 setContextMenu(null);
               }}>
-                📑 Kapitel hinzufügen
+                ?? Kapitel hinzuf�gen
               </button>
             </>
           )}

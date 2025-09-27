@@ -90,7 +90,7 @@ export default function Sidebar() {
             <button
               className="avatar-wrap"
               onClick={onPickAvatar}
-              title="Profilbild ändern"
+              title="Profilbild �ndern"
               type="button"
             >
               {avatarUrl ? (
@@ -186,7 +186,7 @@ export default function Sidebar() {
               <Clock size={14} />
               <span>
                 Day-Pass aktiv
-                {typeof msRemaining === "number" ? `  ${formatHMS(msRemaining)} übrig` : ""}
+                {typeof msRemaining === "number" ? `  ${formatHMS(msRemaining)} �brig` : ""}
               </span>
             </div>
           )}

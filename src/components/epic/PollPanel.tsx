@@ -16,10 +16,10 @@ export function PollPanel() {
 
   return (
     <div className="epic-panel poll-panel">
-      <h3 className="panel-title">📊 Community-Abstimmung</h3>
+      <h3 className="panel-title">?? Community-Abstimmung</h3>
       
       <div className="poll-widget">
-        <div className="poll-question">Was soll als nächstes passieren?</div>
+        <div className="poll-question">Was soll als n�chstes passieren?</div>
         <div className="poll-options">
           <div className="poll-option" onClick={() => vote('A')}>
             <div 
@@ -27,7 +27,7 @@ export function PollPanel() {
               style={{ width: `${(votes.A / total) * 100}%` }}
             ></div>
             <div className="poll-text">
-              🎮 Gaming Session ({Math.round((votes.A / total) * 100)}%)
+              ?? Gaming Session ({Math.round((votes.A / total) * 100)}%)
             </div>
           </div>
           <div className="poll-option" onClick={() => vote('B')}>
@@ -36,7 +36,7 @@ export function PollPanel() {
               style={{ width: `${(votes.B / total) * 100}%` }}
             ></div>
             <div className="poll-text">
-              💬 Just Chatting ({Math.round((votes.B / total) * 100)}%)
+              ?? Just Chatting ({Math.round((votes.B / total) * 100)}%)
             </div>
           </div>
         </div>

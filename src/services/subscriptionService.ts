@@ -28,7 +28,7 @@ export class HttpError extends Error {
 
 /** ===== Consent-Konstanten ===== */
 export const CONSENT_DEFAULT_TEXT =
-  "Ich stimme ausdrücklich zu, dass CLiP BOOsT unmittelbar nach Kauf mit der Leistungserbringung beginnt. Mir ist bekannt, dass damit mein Widerrufsrecht erlischt.";
+  "Ich stimme ausdr�cklich zu, dass CLiP BOOsT unmittelbar nach Kauf mit der Leistungserbringung beginnt. Mir ist bekannt, dass damit mein Widerrufsrecht erlischt.";
 export const CONSENT_VERSION = "2025-08-24"; // YYYY-MM-DD
 
 export interface ConsentPayload {
@@ -46,7 +46,7 @@ const API_BASE = (import.meta.env.VITE_API_URL || "").toString().replace(/\/+$/,
 function toUrl(path: string) {
   if (/^https?:\/\//i.test(path)) return path;     // absolute URL
   const p = path.startsWith("/") ? path : `/${path}`;
-  return `${API_BASE}${p}`;                         // '' + '/api/...' → geht über Proxy
+  return `${API_BASE}${p}`;                         // '' + '/api/...' ? geht �ber Proxy
 }
 
 function getAuthToken(): string | undefined {
@@ -65,7 +65,7 @@ async function safeJson(res: Response) {
   }
 }
 
-/** 401-Silent-Refresh (TikTok) – optional */
+/** 401-Silent-Refresh (TikTok) - optional */
 async function refreshAuthSilently(): Promise<void> {
   try {
     await fetch("/api/oauth/tiktok/refresh", {
@@ -116,7 +116,7 @@ async function request<T = any>(path: string, opts: ReqOpts = {}): Promise<T> {
   try {
     const res = await fetch(toUrl(path), {
       method,
-      credentials: "include", // 🔑 wichtig: Cookies immer mitsenden
+      credentials: "include", // ?? wichtig: Cookies immer mitsenden
       headers: h,
       body: hasJsonBody ? JSON.stringify(body) : isFormData ? (body as FormData) : undefined,
       signal: ac.signal,
@@ -135,7 +135,7 @@ async function request<T = any>(path: string, opts: ReqOpts = {}): Promise<T> {
       const msg =
         data?.message ||
         ({
-          400: "Ungültige Anfrage.",
+          400: "Ung�ltige Anfrage.",
           401: "Nicht angemeldet.",
           402: "Upgrade erforderlich.",
           403: "Keine Berechtigung.",
@@ -151,7 +151,7 @@ async function request<T = any>(path: string, opts: ReqOpts = {}): Promise<T> {
     return data as T;
   } catch (e: unknown) {
     if (e?.name === "AbortError") {
-      throw new HttpError(0, null, "Zeitüberschreitung (Timeout).", "TIMEOUT");
+      throw new HttpError(0, null, "Zeit�berschreitung (Timeout).", "TIMEOUT");
     }
     if (e instanceof HttpError) throw e;
     throw new HttpError(0, null, e?.message || "Netzwerkfehler.");
@@ -160,7 +160,7 @@ async function request<T = any>(path: string, opts: ReqOpts = {}): Promise<T> {
   }
 }
 
-/* ===================== Mapping Backend → Frontend-Modell ===================== */
+/* ===================== Mapping Backend ? Frontend-Modell ===================== */
 /** Backend liefert aktuell:
  *  {
  *    success: true,
@@ -182,10 +182,10 @@ function mapBackendToSubscriptionStatus(b: unknown): SubscriptionStatus {
   const active = !!(b?.isPro || b?.isDayPass);
   const validUntil = b?.expiresAt ?? null;
 
-  // Du hast aktuell keine Rollen aus dem Backend → USER als Standard
+  // Du hast aktuell keine Rollen aus dem Backend ? USER als Standard
   const role: Role = "USER";
 
-  // Quelle nur grob markieren: eingeloggt ⇒ 'db', sonst 'none'
+  // Quelle nur grob markieren: eingeloggt ? 'db', sonst 'none'
   const source: "superuser" | "db" | "none" = b?.authenticated ? "db" : "none";
 
   return {
@@ -194,13 +194,13 @@ function mapBackendToSubscriptionStatus(b: unknown): SubscriptionStatus {
     active,
     validUntil,
     source,
-    // Stripe-IDs kommen später aus echter Logik:
+    // Stripe-IDs kommen sp�ter aus echter Logik:
     stripeCustomerId: undefined,
     stripeSubscriptionId: undefined,
   };
 }
 
-/* =========================== Öffentliche Funktionen ========================== */
+/* =========================== �ffentliche Funktionen ========================== */
 
 export async function getSubscriptionStatus(signal?: AbortSignal): Promise<SubscriptionStatus> {
   const raw = await request<any>("/api/subscription/status", { method: "GET", signal });
@@ -223,7 +223,7 @@ export async function buyDayPass(consent: ConsentPayload): Promise<{ url: string
   });
 }
 
-/** Stripe Customer Portal öffnen */
+/** Stripe Customer Portal �ffnen */
 export async function createPortalSession(): Promise<{ url: string }> {
   return request<{ url: string }>("/api/billing/create-portal-session", {
     method: "POST",
@@ -239,7 +239,7 @@ export function mapSubscriptionError(err: unknown): string {
   if (status === 402 || code === "UPGRADE_REQUIRED") return "Dieses Feature erfordert PRO.";
   if (status === 401) return "Bitte einloggen.";
   if (status === 403) return "Keine Berechtigung.";
-  if (status === 429) return "Zu viele Anfragen. Bitte später erneut versuchen.";
+  if (status === 429) return "Zu viele Anfragen. Bitte sp�ter erneut versuchen.";
   if (status >= 500 || status === 0) return "Serverfehler/Netzwerkfehler.";
   return data?.message || message || "Ein Fehler ist aufgetreten.";
 }

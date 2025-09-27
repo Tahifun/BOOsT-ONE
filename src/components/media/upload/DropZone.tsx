@@ -1,4 +1,4 @@
-﻿
+
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { FileValidator } from './FileValidator';
 import './DropZone.css';
@@ -275,9 +275,9 @@ export const DropZone: React.FC<DropZoneProps> = ({
           {isValidating ? (
             <div className="validating-spinner" />
           ) : isDragging ? (
-            <span className="icon-dropping" aria-hidden="true">ðŸ“¥</span>
+            <span className="icon-dropping" aria-hidden="true">�Y"�</span>
           ) : (
-            <span className="icon-upload" aria-hidden="true">ðŸ“</span>
+            <span className="icon-upload" aria-hidden="true">�Y"�</span>
           )}
         </div>
 
@@ -303,7 +303,7 @@ export const DropZone: React.FC<DropZoneProps> = ({
                 disabled={disabled}
                 type="button"
               >
-                Dateien auswÃ¤hlen
+                Dateien auswählen
               </button>
             </>
           )}
@@ -313,10 +313,10 @@ export const DropZone: React.FC<DropZoneProps> = ({
         {!isValidating && !isDragging && (
           <div className="drop-zone-info" aria-live="polite">
             <p className="info-text">
-              UnterstÃ¼tzte Formate: <span className="info-highlight">MP4, MOV, PNG, JPG, MP3, WAV</span>
+              Unterstützte Formate: <span className="info-highlight">MP4, MOV, PNG, JPG, MP3, WAV</span>
             </p>
             <p className="info-text">
-              Maximale DateigrÃ¶ÃŸe: <span className="info-highlight">{formatFileSize(maxSize)}</span>
+              Maximale Dateigrö�Ye: <span className="info-highlight">{formatFileSize(maxSize)}</span>
             </p>
             {multiple && (
               <p className="info-text">

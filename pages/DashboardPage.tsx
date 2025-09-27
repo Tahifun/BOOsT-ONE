@@ -409,7 +409,7 @@ const DashboardPage: React.FC = () => {
 
           <HolographicCard title="GROWTH TRAJECTORY" icon="" delay={900}><FollowerTrend /></HolographicCard>
 
-          <HolographicCard title="SESSION MATRIX" icon="⏰" delay={1000}><SessionTimeline /></HolographicCard>
+          <HolographicCard title="SESSION MATRIX" icon="?" delay={1000}><SessionTimeline /></HolographicCard>
 
         </div>
 
@@ -429,7 +429,7 @@ const DashboardPage: React.FC = () => {
 
 
 
-      {/* Data Stream (unverändert) */}
+      {/* Data Stream (unver�ndert) */}
 
       <div className="data-stream-container">
 

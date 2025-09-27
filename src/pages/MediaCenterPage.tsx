@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useState, Suspense } from "react";
+import React, { useEffect, useMemo, useState, Suspense } from "react";
 import "../styles/media-center.css";
 
 /* Tabs */
@@ -15,19 +15,19 @@ type TabKey =
   | "ai";
 
 const TABS: { key: TabKey; icon: string; title: string }[] = [
-  { key: "dashboard", icon: "ðŸ“Š", title: "Dashboard" },
-  { key: "upload", icon: "â¬†ï¸", title: "Upload" },
-  { key: "gallery", icon: "ðŸŽ¬", title: "Galerie" },
-  { key: "clips", icon: "âœ‚ï¸", title: "Clips" },
-  { key: "screenshots", icon: "ðŸ“¸", title: "Screenshots" },
-  { key: "soundboard", icon: "ðŸ”Š", title: "Soundboard" },
-  { key: "overlays", icon: "ðŸŽ¨", title: "Overlays" },
-  { key: "export", icon: "ðŸ“¤", title: "Export" },
-  { key: "stats", icon: "ðŸ“ˆ", title: "Impact Stats" },
-  { key: "ai", icon: "ðŸ¤–", title: "AI Assistant" },
+  { key: "dashboard", icon: "�Y"S", title: "Dashboard" },
+  { key: "upload", icon: "�?️", title: "Upload" },
+  { key: "gallery", icon: "�YZ�", title: "Galerie" },
+  { key: "clips", icon: "�o,️", title: "Clips" },
+  { key: "screenshots", icon: "�Y"�", title: "Screenshots" },
+  { key: "soundboard", icon: "�Y"S", title: "Soundboard" },
+  { key: "overlays", icon: "�YZ�", title: "Overlays" },
+  { key: "export", icon: "�Y"�", title: "Export" },
+  { key: "stats", icon: "�Y"^", title: "Impact Stats" },
+  { key: "ai", icon: "�Y�-", title: "AI Assistant" },
 ];
 
-/* >>> Adapter statt direkter Imports (fix fÃ¼r strenge Props) */
+/* >>> Adapter statt direkter Imports (fix für strenge Props) */
 import {
   LazyMediaUpload as MediaUpload,
   LazyMediaGallery as MediaGallery,
@@ -52,7 +52,7 @@ const MediaCenterPage: React.FC = () => {
     type: "success",
   });
 
-  /* Partikel fÃ¼r Hintergrund (visuell) */
+  /* Partikel für Hintergrund (visuell) */
   const particles = useMemo(
     () =>
       Array.from({ length: 50 }, () => ({
@@ -125,22 +125,22 @@ const MediaCenterPage: React.FC = () => {
           <div className="mc-header__row">
             <h1 className="mc-title">MEDIA CENTER</h1>
             <div className="mc-user">
-              <span>ðŸ‘¤ Creator</span>
-              <span className="mc-pro">âœ¨ PRO</span>
+              <span>�Y'� Creator</span>
+              <span className="mc-pro">�o� PRO</span>
             </div>
           </div>
         </header>
 
         {/* Suche */}
         <div className="mc-search" role="search">
-          <span aria-hidden>ðŸ”</span>
+          <span aria-hidden>�Y"�</span>
           <input
             className="mc-search__input"
             placeholder="Suche nach Videos, Clips, Screenshots..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <button className="mc-btn mc-btn--glass" onClick={() => showNotification("ðŸ”Ž Filter geÃ¶ffnet")}>
+          <button className="mc-btn mc-btn--glass" onClick={() => showNotification("�Y"Z Filter geöffnet")}>
             Filter
           </button>
         </div>
@@ -172,7 +172,7 @@ const MediaCenterPage: React.FC = () => {
               </Suspense>
 
               <div className="mc-ai-suggestions">
-                <span className="mc-ai-badge">ðŸ¤– AI Empfohlen</span>
+                <span className="mc-ai-badge">�Y�- AI Empfohlen</span>
                 <Suspense fallback={<Spinner />}>
                   <AIHighlightSuggestions onSelect={() => setActive("clips")} />
                 </Suspense>
@@ -184,7 +184,7 @@ const MediaCenterPage: React.FC = () => {
           {active === "upload" && (
             <section className="mc-panel">
               <Suspense fallback={<Spinner />}>
-                <MediaUpload onUpload={() => showNotification("âœ… Upload erfolgreich!")} />
+                <MediaUpload onUpload={() => showNotification("�o. Upload erfolgreich!")} />
               </Suspense>
             </section>
           )}
@@ -266,7 +266,7 @@ const MediaCenterPage: React.FC = () => {
       {/* Floating Action Button */}
       <button
         className="mc-fab"
-        onClick={() => setNotice({ show: true, msg: "ðŸš€ Quick Action Menu geÃ¶ffnet", type: "success" })}
+        onClick={() => setNotice({ show: true, msg: "�Ys? Quick Action Menu geöffnet", type: "success" })}
         aria-label="Schnellaktion"
       >
         +
@@ -278,7 +278,7 @@ const MediaCenterPage: React.FC = () => {
         role="status"
         aria-live="polite"
       >
-        <h4 className="mc-notice__title">{notice.type === "success" ? "âœ… Erfolg!" : "âš ï¸ Hinweis"}</h4>
+        <h4 className="mc-notice__title">{notice.type === "success" ? "�o. Erfolg!" : "�s�️ Hinweis"}</h4>
         <p className="mc-notice__text">{notice.msg}</p>
       </div>
     </div>

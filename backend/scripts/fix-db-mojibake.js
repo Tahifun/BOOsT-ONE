@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 
 const URI = process.env.MONGODB_URI; // vorher setzen
-const MARKER = /Ã|Â|â€”|â€“|â€œ|â€\?|â€˜|â€™|â€¦|ð|âš¡/;
+const MARKER = /�|�|�?"|�?"|�?o|�?\?|�?~|�?T|�?�|�|�s�/;
 
 function fixString(s){ return Buffer.from(s, "latin1").toString("utf8"); }
 
@@ -60,6 +60,6 @@ async function run(dryRun=true){
   await mongoose.disconnect();
 }
 
-// 1. Testlauf (nur zählen)
+// 1. Testlauf (nur z�hlen)
 await run(true);
-// 2. Danach echte Reparatur: ändere auf run(false)
+// 2. Danach echte Reparatur: �ndere auf run(false)

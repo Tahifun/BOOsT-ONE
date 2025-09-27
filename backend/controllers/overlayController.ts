@@ -3,7 +3,7 @@ import path from "node:path";
 import type { Request, Response } from "express";
 import { UPLOAD_ROOT_ABS } from "../middleware/upload.js";
 
-/** Speichert Metadaten / antwortet  hier minimal: gib Dateiname+Size zurück */
+/** Speichert Metadaten / antwortet  hier minimal: gib Dateiname+Size zur�ck */
 export async function uploadOverlay(req: Request, res: Response) {
   const f = (req as any).file as Express.Multer.File | undefined;
   if (!f) return res.status(400).json({ message: "No file" });

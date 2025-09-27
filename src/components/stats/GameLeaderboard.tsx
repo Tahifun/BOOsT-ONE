@@ -1,4 +1,4 @@
-﻿import React, { useMemo } from "react";
+import React, { useMemo } from "react";
 import type { GameLeaderboardItem } from './GameStatsService';
 
 type Props = {
@@ -24,8 +24,8 @@ const GameLeaderboard: React.FC<Props> = ({ leaderboard }) => {
   if (!ranked.length) {
     return (
       <div className="game-leaderboard p-2">
-        <h3 className="text-lg font-semibold mb-2">ðŸ† Game Leaderboard</h3>
-        <p className="text-sm opacity-70">Keine EintrÃ¤ge vorhanden.</p>
+        <h3 className="text-lg font-semibold mb-2">�Y�? Game Leaderboard</h3>
+        <p className="text-sm opacity-70">Keine Einträge vorhanden.</p>
       </div>
     );
   }
@@ -34,7 +34,7 @@ const GameLeaderboard: React.FC<Props> = ({ leaderboard }) => {
 
   return (
     <div className="game-leaderboard p-2">
-      <h3 className="text-lg font-semibold mb-2">ðŸ† Game Leaderboard</h3>
+      <h3 className="text-lg font-semibold mb-2">�Y�? Game Leaderboard</h3>
       <ul className="space-y-1">
         {ranked.map((user, i) => (
           <li

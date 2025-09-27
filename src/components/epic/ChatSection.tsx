@@ -18,16 +18,16 @@ export interface ChatSectionProps {
 }
 
 const demoMessages = [
-  { user: "🎮 GameMaster", message: "Diese Grafiken sind unreal! 🤯" },
-  { user: "💎 DiamondUser", message: "Beste Stream-UI die ich je gesehen habe!" },
-  { user: "⚡ LightningFast", message: "So smooth, so clean! 😍" },
-  { user: "🔥 HotShot", message: "Wie kann sowas so geil aussehen?!" },
-  { user: "🚀 RocketScience", message: "Das ist Kunst! Pure Kunst!" },
+  { user: "?? GameMaster", message: "Diese Grafiken sind unreal! ??" },
+  { user: "?? DiamondUser", message: "Beste Stream-UI die ich je gesehen habe!" },
+  { user: "? LightningFast", message: "So smooth, so clean! ??" },
+  { user: "?? HotShot", message: "Wie kann sowas so geil aussehen?!" },
+  { user: "?? RocketScience", message: "Das ist Kunst! Pure Kunst!" },
 ];
 
 export function ChatSection({ messages: controlled, onSendMessage, slowMode = 0 }: ChatSectionProps) {
   const [localMessages, setLocalMessages] = useState<ChatMessage[]>([
-    { id: Date.now().toString(), user: "👑 Anna", message: "Mega Stream! Das UI macht süchtig! 🔥🔥🔥", timestamp: Date.now() }
+    { id: Date.now().toString(), user: "?? Anna", message: "Mega Stream! Das UI macht s�chtig! ??????", timestamp: Date.now() }
   ]);
   const [inputValue, setInputValue] = useState("");
   const [lastSentAt, setLastSentAt] = useState<number>(0);
@@ -105,7 +105,7 @@ export function ChatSection({ messages: controlled, onSendMessage, slowMode = 0 
   return (
     <div className="chat-container">
       <div className="chat-header">
-        <div className="chat-title">💬 Live-Chat</div>
+        <div className="chat-title">?? Live-Chat</div>
         <div className="chat-count">{Math.max(1, Math.floor(msgs.length / 3))} online</div>
       </div>
 
@@ -122,14 +122,14 @@ export function ChatSection({ messages: controlled, onSendMessage, slowMode = 0 
         <input
           type="text"
           className="chat-input"
-          placeholder={slowMode > 0 ? `Slow mode ${slowMode}s…` : "Schreibe eine Nachricht..."}
+          placeholder={slowMode > 0 ? `Slow mode ${slowMode}s.` : "Schreibe eine Nachricht..."}
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={handleKeyDown}
           disabled={slowMode > 0 && !canSend()}
         />
         <button className="chat-send" onClick={sendMessage} disabled={slowMode > 0 && !canSend()}>
-          🚀
+          ??
         </button>
       </div>
     </div>

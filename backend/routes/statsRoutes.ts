@@ -71,7 +71,7 @@ async function buildCsvFromMock(from: Date, to: Date): Promise<string> {
   const header = 'date,active_users,new_signups,commands,errors\n';
   let rows = '';
   for (let cur = new Date(from); cur <= to; cur = addDays(cur, 1)) {
-    // mock numbers – replace with DB aggregation
+    // mock numbers - replace with DB aggregation
     const date = formatDate(cur);
     const active = 100 + Math.floor(Math.random() * 50);
     const signups = 5 + Math.floor(Math.random() * 10);

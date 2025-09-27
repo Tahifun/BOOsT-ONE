@@ -19,7 +19,7 @@ export function DevicePanel({ settings, onSettingsChange }: Props) {
 
   return (
     <div className="epic-panel device-panel">
-      <h3 className="panel-title">📹 Geräte</h3>
+      <h3 className="panel-title">?? Ger�te</h3>
       
       <div className="form-group">
         <label className="form-label">Kamera</label>
@@ -28,7 +28,7 @@ export function DevicePanel({ settings, onSettingsChange }: Props) {
           value={settings.camId}
           onChange={(e) => handleChange("camId", e.target.value)}
         >
-          <option value="">Kamera auswählen...</option>
+          <option value="">Kamera ausw�hlen...</option>
           <option value="hd-webcam">HD Webcam (1080p)</option>
           <option value="usb-camera">USB Camera</option>
           <option value="obs-virtual">OBS Virtual Camera</option>
@@ -36,7 +36,7 @@ export function DevicePanel({ settings, onSettingsChange }: Props) {
       </div>
 
       <div className="form-group">
-        <label className="form-label">Auflösung</label>
+        <label className="form-label">Aufl�sung</label>
         <select 
           className="form-select"
           value={settings.resolution}
@@ -55,10 +55,10 @@ export function DevicePanel({ settings, onSettingsChange }: Props) {
           value={settings.micId}
           onChange={(e) => handleChange("micId", e.target.value)}
         >
-          <option value="">Mikrofon auswählen...</option>
-          <option value="blue-yeti">🎤 Blue Yeti</option>
-          <option value="audio-technica">🎤 Audio-Technica AT2020</option>
-          <option value="standard">🎤 Standard Mikro</option>
+          <option value="">Mikrofon ausw�hlen...</option>
+          <option value="blue-yeti">?? Blue Yeti</option>
+          <option value="audio-technica">?? Audio-Technica AT2020</option>
+          <option value="standard">?? Standard Mikro</option>
         </select>
       </div>
 

@@ -3,7 +3,7 @@
    =========================== */
 
 :root {
-  /* Fallbacks, falls du schon Tokens definiert hast, greifen diese hier nicht störend ein */
+  /* Fallbacks, falls du schon Tokens definiert hast, greifen diese hier nicht st�rend ein */
   --cb-surface: #ffffff;
   --cb-border: #e5e7eb;
   --cb-text: #111827;
