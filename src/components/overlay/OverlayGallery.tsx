@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import OverlayCard from './OverlayCard';
 import OverlayPreviewModal from './OverlayPreviewModal';
 import OverlayCategoryFilter from './OverlayCategoryFilter';
 
-import "@/styles/overlay/OverlayGalleryPage.css";
+import '@/styles/overlay/OverlayGalleryPage.css';
 
 // ========== QUANTUM GALLERY INTERFACES ==========
 
@@ -73,7 +73,7 @@ interface QuantumPortal {
 
 const QuantumOverlayGallery: React.FC = () => {
   const [overlays, setOverlays] = useState<OverlayData[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [previewOverlay, setPreviewOverlay] = useState<OverlayData | null>(null);
   const [quantumState, setQuantumState] = useState<QuantumGalleryState>({
     viewMode: 'matrix',
@@ -83,14 +83,14 @@ const QuantumOverlayGallery: React.FC = () => {
     dimensionalPhase: 0,
     quantumCoherence: 100,
     creativityBoost: false,
-    emotionalFilter: 'all'
+    emotionalFilter: 'all',
   });
 
   const [galleryParticles, setGalleryParticles] = useState<GalleryParticle[]>([]);
   const [quantumPortals, setQuantumPortals] = useState<QuantumPortal[]>([]);
   const [animationTime, setAnimationTime] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [galleryConsciousness, setGalleryConsciousness] = useState(50);
   const [dimensionalRift, setDimensionalRift] = useState(false);
@@ -102,24 +102,30 @@ const QuantumOverlayGallery: React.FC = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   // ========== QUANTUM CONSCIOUSNESS OVERLAYS ==========
-  const enhanceOverlaysWithQuantumProperties = useCallback((rawOverlays: OverlayData[]): OverlayData[] => {
-    return rawOverlays.map(overlay => ({
-      ...overlay,
-      consciousness: Math.floor(Math.random() * 100) + 1,
-      realityLevel: Math.floor(Math.random() * 1000) + 100,
-      temporalPhase: ['past', 'present', 'future'][Math.floor(Math.random() * 3)] as 'past' | 'present' | 'future',
-      quantumSignature: `QS-${overlay._id.slice(0, 8)}-${Math.random().toString(36).substr(2, 6)}`,
-      dimensionalStability: Math.random() * 100,
-      creativityIndex: Math.random() * 100,
-      emotionalResonance: {
-        energy: Math.random() * 100,
-        inspiration: Math.random() * 100,
-        tranquility: Math.random() * 100,
-        power: Math.random() * 100,
-        mystery: Math.random() * 100
-      }
-    }));
-  }, []);
+  const enhanceOverlaysWithQuantumProperties = useCallback(
+    (rawOverlays: OverlayData[]): OverlayData[] => {
+      return rawOverlays.map((overlay) => ({
+        ...overlay,
+        consciousness: Math.floor(Math.random() * 100) + 1,
+        realityLevel: Math.floor(Math.random() * 1000) + 100,
+        temporalPhase: ['past', 'present', 'future'][Math.floor(Math.random() * 3)] as
+          | 'past'
+          | 'present'
+          | 'future',
+        quantumSignature: `QS-${overlay._id.slice(0, 8)}-${Math.random().toString(36).substr(2, 6)}`,
+        dimensionalStability: Math.random() * 100,
+        creativityIndex: Math.random() * 100,
+        emotionalResonance: {
+          energy: Math.random() * 100,
+          inspiration: Math.random() * 100,
+          tranquility: Math.random() * 100,
+          power: Math.random() * 100,
+          mystery: Math.random() * 100,
+        },
+      }));
+    },
+    [],
+  );
 
   // ========== QUANTUM PARTICLE SYSTEM ==========
   useEffect(() => {
@@ -132,31 +138,32 @@ const QuantumOverlayGallery: React.FC = () => {
         velocity: {
           x: (Math.random() - 0.5) * 0.5,
           y: (Math.random() - 0.5) * 0.5,
-          z: (Math.random() - 0.5) * 0.2
+          z: (Math.random() - 0.5) * 0.2,
         },
         size: Math.random() * 3 + 1,
-        color: ['#00ffff', '#a855f7', '#ec4899', '#10b981', '#ffd700'][Math.floor(Math.random() * 5)],
+        color: ['#00ffff', '#a855f7', '#ec4899', '#10b981', '#ffd700'][
+          Math.floor(Math.random() * 5)
+        ],
         consciousness: Math.random() * 100,
         lifespan: 1000 + Math.random() * 2000,
         age: 0,
         connectedTo: [],
-        quantumState: ['stable', 'superposition', 'entangled'][Math.floor(Math.random() * 3)] as any
+        quantumState: ['stable', 'superposition', 'entangled'][
+          Math.floor(Math.random() * 3)
+        ] as any,
       }));
 
       // Create quantum connections
-      particles.forEach(particle => {
+      particles.forEach((particle) => {
         const nearbyParticles = particles
-          .filter(p => p.id !== particle.id)
-          .filter(p => {
-            const dist = Math.sqrt(
-              Math.pow(p.x - particle.x, 2) + 
-              Math.pow(p.y - particle.y, 2)
-            );
+          .filter((p) => p.id !== particle.id)
+          .filter((p) => {
+            const dist = Math.sqrt(Math.pow(p.x - particle.x, 2) + Math.pow(p.y - particle.y, 2));
             return dist < 20;
           })
           .slice(0, 3);
-        
-        particle.connectedTo = nearbyParticles.map(p => p.id);
+
+        particle.connectedTo = nearbyParticles.map((p) => p.id);
       });
 
       setGalleryParticles(particles);
@@ -171,7 +178,7 @@ const QuantumOverlayGallery: React.FC = () => {
         destination: ['matrix', 'neural', 'dimensional', 'consciousness', 'creativity'][i],
         activeLevel: Math.random() * 100,
         particles: [],
-        consciousness: Math.random() * 100
+        consciousness: Math.random() * 100,
       }));
 
       setQuantumPortals(portals);
@@ -184,14 +191,14 @@ const QuantumOverlayGallery: React.FC = () => {
   // ========== DATA FETCHING WITH QUANTUM ENHANCEMENT ==========
   useEffect(() => {
     setIsSearching(true);
-    
-    fetch("/api/overlays/all")
-      .then(res => res.json())
-      .then(data => {
+
+    fetch('/api/overlays/all')
+      .then((res) => res.json())
+      .then((data) => {
         const enhancedOverlays = enhanceOverlaysWithQuantumProperties(data.overlays || []);
         setOverlays(enhancedOverlays);
         setIsSearching(false);
-        
+
         // Consciousness evolution based on gallery size
         setGalleryConsciousness(Math.min(100, enhancedOverlays.length * 2));
       })
@@ -201,41 +208,47 @@ const QuantumOverlayGallery: React.FC = () => {
   // ========== ANIMATION LOOP ==========
   useEffect(() => {
     const interval = setInterval(() => {
-      setAnimationTime(t => t + 0.03);
-      
+      setAnimationTime((t) => t + 0.03);
+
       // Update particle system
-      setGalleryParticles(prev => prev.map(particle => {
-        const newAge = particle.age + 1;
-        const newX = particle.x + particle.velocity.x;
-        const newY = particle.y + particle.velocity.y;
-        const newZ = particle.z + particle.velocity.z;
-        
-        // Boundary wrapping
-        const wrappedX = newX < 0 ? 100 : newX > 100 ? 0 : newX;
-        const wrappedY = newY < 0 ? 100 : newY > 100 ? 0 : newY;
-        const wrappedZ = newZ < 0 ? 100 : newZ > 100 ? 0 : newZ;
-        
-        // Consciousness evolution
-        const newConsciousness = Math.min(100, particle.consciousness + 0.01);
-        
-        return {
-          ...particle,
-          x: wrappedX,
-          y: wrappedY,
-          z: wrappedZ,
-          age: newAge,
-          consciousness: newConsciousness,
-          quantumState: newAge % 300 === 0 ? 
-            (['stable', 'superposition', 'entangled'][Math.floor(Math.random() * 3)] as any) : 
-            particle.quantumState
-        };
-      }));
+      setGalleryParticles((prev) =>
+        prev.map((particle) => {
+          const newAge = particle.age + 1;
+          const newX = particle.x + particle.velocity.x;
+          const newY = particle.y + particle.velocity.y;
+          const newZ = particle.z + particle.velocity.z;
+
+          // Boundary wrapping
+          const wrappedX = newX < 0 ? 100 : newX > 100 ? 0 : newX;
+          const wrappedY = newY < 0 ? 100 : newY > 100 ? 0 : newY;
+          const wrappedZ = newZ < 0 ? 100 : newZ > 100 ? 0 : newZ;
+
+          // Consciousness evolution
+          const newConsciousness = Math.min(100, particle.consciousness + 0.01);
+
+          return {
+            ...particle,
+            x: wrappedX,
+            y: wrappedY,
+            z: wrappedZ,
+            age: newAge,
+            consciousness: newConsciousness,
+            quantumState:
+              newAge % 300 === 0
+                ? (['stable', 'superposition', 'entangled'][Math.floor(Math.random() * 3)] as any)
+                : particle.quantumState,
+          };
+        }),
+      );
 
       // Update quantum state
-      setQuantumState(prev => ({
+      setQuantumState((prev) => ({
         ...prev,
         dimensionalPhase: (prev.dimensionalPhase + 0.5) % 360,
-        quantumCoherence: Math.max(10, Math.min(100, prev.quantumCoherence + (Math.random() - 0.5) * 2))
+        quantumCoherence: Math.max(
+          10,
+          Math.min(100, prev.quantumCoherence + (Math.random() - 0.5) * 2),
+        ),
       }));
     }, 50);
 
@@ -246,34 +259,33 @@ const QuantumOverlayGallery: React.FC = () => {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return;
-      
+
       const rect = containerRef.current.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
       const y = ((e.clientY - rect.top) / rect.height) * 100;
-      
+
       setMousePosition({ x, y });
-      
+
       // Mouse influence on particles
-      setGalleryParticles(prev => prev.map(particle => {
-        const distance = Math.sqrt(
-          Math.pow(particle.x - x, 2) + 
-          Math.pow(particle.y - y, 2)
-        );
-        
-        if (distance < 15) {
-          const force = (15 - distance) / 15;
-          return {
-            ...particle,
-            velocity: {
-              x: particle.velocity.x + (x - particle.x) * force * 0.001,
-              y: particle.velocity.y + (y - particle.y) * force * 0.001,
-              z: particle.velocity.z
-            },
-            consciousness: Math.min(100, particle.consciousness + force * 2)
-          };
-        }
-        return particle;
-      }));
+      setGalleryParticles((prev) =>
+        prev.map((particle) => {
+          const distance = Math.sqrt(Math.pow(particle.x - x, 2) + Math.pow(particle.y - y, 2));
+
+          if (distance < 15) {
+            const force = (15 - distance) / 15;
+            return {
+              ...particle,
+              velocity: {
+                x: particle.velocity.x + (x - particle.x) * force * 0.001,
+                y: particle.velocity.y + (y - particle.y) * force * 0.001,
+                z: particle.velocity.z,
+              },
+              consciousness: Math.min(100, particle.consciousness + force * 2),
+            };
+          }
+          return particle;
+        }),
+      );
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -284,7 +296,7 @@ const QuantumOverlayGallery: React.FC = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -297,21 +309,15 @@ const QuantumOverlayGallery: React.FC = () => {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Draw quantum connections
-      galleryParticles.forEach(particle => {
-        particle.connectedTo.forEach(connectedId => {
-          const connected = galleryParticles.find(p => p.id === connectedId);
+      galleryParticles.forEach((particle) => {
+        particle.connectedTo.forEach((connectedId) => {
+          const connected = galleryParticles.find((p) => p.id === connectedId);
           if (connected && particle.quantumState === 'entangled') {
             ctx.beginPath();
-            ctx.moveTo(
-              particle.x * canvas.width / 100, 
-              particle.y * canvas.height / 100
-            );
-            ctx.lineTo(
-              connected.x * canvas.width / 100, 
-              connected.y * canvas.height / 100
-            );
-            
-            const alpha = (particle.consciousness + connected.consciousness) / 200 * 0.3;
+            ctx.moveTo((particle.x * canvas.width) / 100, (particle.y * canvas.height) / 100);
+            ctx.lineTo((connected.x * canvas.width) / 100, (connected.y * canvas.height) / 100);
+
+            const alpha = ((particle.consciousness + connected.consciousness) / 200) * 0.3;
             ctx.strokeStyle = `rgba(0, 255, 255, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.stroke();
@@ -320,14 +326,14 @@ const QuantumOverlayGallery: React.FC = () => {
       });
 
       // Draw particles
-      galleryParticles.forEach(particle => {
-        const x = particle.x * canvas.width / 100;
-        const y = particle.y * canvas.height / 100;
+      galleryParticles.forEach((particle) => {
+        const x = (particle.x * canvas.width) / 100;
+        const y = (particle.y * canvas.height) / 100;
         const size = particle.size * (1 + particle.consciousness / 200);
-        
+
         ctx.beginPath();
         ctx.arc(x, y, size, 0, Math.PI * 2);
-        
+
         if (particle.quantumState === 'superposition') {
           // Superposition effect
           const gradient = ctx.createRadialGradient(x, y, 0, x, y, size);
@@ -336,11 +342,15 @@ const QuantumOverlayGallery: React.FC = () => {
           gradient.addColorStop(1, 'transparent');
           ctx.fillStyle = gradient;
         } else {
-          ctx.fillStyle = particle.color + Math.floor(particle.consciousness * 2.55).toString(16).padStart(2, '0');
+          ctx.fillStyle =
+            particle.color +
+            Math.floor(particle.consciousness * 2.55)
+              .toString(16)
+              .padStart(2, '0');
         }
-        
+
         ctx.fill();
-        
+
         // Consciousness glow
         if (particle.consciousness > 70) {
           ctx.shadowBlur = 20;
@@ -351,32 +361,32 @@ const QuantumOverlayGallery: React.FC = () => {
       });
 
       // Draw quantum portals
-      quantumPortals.forEach(portal => {
-        const x = portal.x * canvas.width / 100;
-        const y = portal.y * canvas.height / 100;
-        
+      quantumPortals.forEach((portal) => {
+        const x = (portal.x * canvas.width) / 100;
+        const y = (portal.y * canvas.height) / 100;
+
         ctx.beginPath();
         ctx.arc(x, y, portal.radius, 0, Math.PI * 2);
-        
+
         const gradient = ctx.createRadialGradient(x, y, 0, x, y, portal.radius);
         gradient.addColorStop(0, `rgba(168, 85, 247, ${portal.activeLevel / 300})`);
         gradient.addColorStop(0.7, `rgba(0, 255, 255, ${portal.activeLevel / 500})`);
         gradient.addColorStop(1, 'transparent');
-        
+
         ctx.fillStyle = gradient;
         ctx.fill();
       });
 
       requestAnimationFrame(drawFrame);
     };
-    
+
     drawFrame();
   }, [galleryParticles, quantumPortals, galleryConsciousness]);
 
   // ========== FILTERING LOGIC ==========
-  const categories = useMemo(() => 
-    Array.from(new Set(overlays.map(o => o.category))), 
-    [overlays]
+  const categories = useMemo(
+    () => Array.from(new Set(overlays.map((o) => o.category))),
+    [overlays],
   );
 
   const filteredOverlays = useMemo(() => {
@@ -384,31 +394,35 @@ const QuantumOverlayGallery: React.FC = () => {
 
     // Category filter
     if (selectedCategory) {
-      filtered = filtered.filter(o => o.category === selectedCategory);
+      filtered = filtered.filter((o) => o.category === selectedCategory);
     }
 
     // Search filter
     if (searchQuery) {
-      filtered = filtered.filter(o => 
-        o.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        o.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        o.uploader?.toLowerCase().includes(searchQuery.toLowerCase())
+      filtered = filtered.filter(
+        (o) =>
+          o.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          o.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          o.uploader?.toLowerCase().includes(searchQuery.toLowerCase()),
       );
     }
 
     // Quantum filters
-    filtered = filtered.filter(o => {
+    filtered = filtered.filter((o) => {
       if (o.consciousness && o.consciousness < quantumState.consciousnessThreshold) return false;
       if (o.realityLevel && o.realityLevel < quantumState.realityFilter) return false;
-      if (quantumState.temporalView !== 'all' && o.temporalPhase !== quantumState.temporalView) return false;
+      if (quantumState.temporalView !== 'all' && o.temporalPhase !== quantumState.temporalView)
+        return false;
       return true;
     });
 
     // Emotional filter
     if (quantumState.emotionalFilter !== 'all' && overlays[0]?.emotionalResonance) {
       filtered = filtered.sort((a, b) => {
-        const aValue = a.emotionalResonance?.[quantumState.emotionalFilter as keyof EmotionalSignature] || 0;
-        const bValue = b.emotionalResonance?.[quantumState.emotionalFilter as keyof EmotionalSignature] || 0;
+        const aValue =
+          a.emotionalResonance?.[quantumState.emotionalFilter as keyof EmotionalSignature] || 0;
+        const bValue =
+          b.emotionalResonance?.[quantumState.emotionalFilter as keyof EmotionalSignature] || 0;
         return bValue - aValue;
       });
     }
@@ -419,7 +433,7 @@ const QuantumOverlayGallery: React.FC = () => {
   // ========== QUANTUM SEARCH ==========
   const handleQuantumSearch = useCallback((query: string) => {
     setSearchQuery(query);
-    
+
     if (query.length > 3) {
       setDimensionalRift(true);
       setTimeout(() => setDimensionalRift(false), 1000);
@@ -428,7 +442,7 @@ const QuantumOverlayGallery: React.FC = () => {
 
   // ========== VIEW MODE HANDLERS ==========
   const switchViewMode = useCallback((mode: QuantumGalleryState['viewMode']) => {
-    setQuantumState(prev => ({ ...prev, viewMode: mode }));
+    setQuantumState((prev) => ({ ...prev, viewMode: mode }));
     setCreativityField(true);
     setTimeout(() => setCreativityField(false), 2000);
   }, []);
@@ -445,37 +459,37 @@ const QuantumOverlayGallery: React.FC = () => {
     useEffect(() => {
       if (isHovered && overlay.consciousness) {
         const interval = setInterval(() => {
-          setCardConsciousness(prev => Math.min(100, prev + 0.5));
+          setCardConsciousness((prev) => Math.min(100, prev + 0.5));
         }, 100);
         return () => clearInterval(interval);
       }
     }, [isHovered, overlay.consciousness]);
 
     const cardVariants = {
-      hidden: { 
-        opacity: 0, 
-        scale: 0.8, 
+      hidden: {
+        opacity: 0,
+        scale: 0.8,
         rotateY: -90,
-        z: -100
+        z: -100,
       },
-      visible: { 
-        opacity: 1, 
-        scale: 1, 
+      visible: {
+        opacity: 1,
+        scale: 1,
         rotateY: 0,
         z: 0,
         transition: {
           delay: index * 0.1,
           duration: 0.8,
-          type: "spring",
-          damping: 20
-        }
+          type: 'spring',
+          damping: 20,
+        },
       },
       hover: {
         scale: 1.05,
         rotateY: 5,
         z: 50,
-        transition: { duration: 0.3 }
-      }
+        transition: { duration: 0.3 },
+      },
     };
 
     return (
@@ -494,24 +508,24 @@ const QuantumOverlayGallery: React.FC = () => {
           setQuantumGlow(false);
         }}
         onClick={() => setPreviewOverlay(overlay)}
-        style={{
-          '--consciousness-level': `${cardConsciousness / 100}`,
-          '--reality-level': `${(overlay.realityLevel || 500) / 1000}`,
-          '--creativity-index': `${(overlay.creativityIndex || 50) / 100}`,
-          '--dimensional-stability': `${(overlay.dimensionalStability || 50) / 100}`,
-          '--quantum-signature': `"${overlay.quantumSignature || 'QS-DEFAULT'}"`,
-        } as React.CSSProperties}
+        style={
+          {
+            '--consciousness-level': `${cardConsciousness / 100}`,
+            '--reality-level': `${(overlay.realityLevel || 500) / 1000}`,
+            '--creativity-index': `${(overlay.creativityIndex || 50) / 100}`,
+            '--dimensional-stability': `${(overlay.dimensionalStability || 50) / 100}`,
+            '--quantum-signature': `"${overlay.quantumSignature || 'QS-DEFAULT'}"`,
+          } as React.CSSProperties
+        }
       >
         {/* Quantum Signature Display */}
-        <div className="quantum-signature">
-          {overlay.quantumSignature}
-        </div>
+        <div className="quantum-signature">{overlay.quantumSignature}</div>
 
         {/* Consciousness Aura */}
         <div className="consciousness-aura">
           {[...Array(4)].map((_, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className={`aura-ring ring-${i} ${quantumGlow ? 'glowing' : ''}`}
               style={{ '--ring-delay': `${i * 0.3}s` } as React.CSSProperties}
             />
@@ -520,25 +534,21 @@ const QuantumOverlayGallery: React.FC = () => {
 
         {/* Temporal Phase Indicator */}
         <div className={`temporal-phase-indicator phase-${overlay.temporalPhase}`}>
-          {overlay.temporalPhase === 'future' && '⧸⧸⧸'}
-          {overlay.temporalPhase === 'past' && '⧹⧹⧹'}
-          {overlay.temporalPhase === 'present' && '�-?�-?�-?'}
+          {overlay.temporalPhase === 'future' && 'â§¸â§¸â§¸'}
+          {overlay.temporalPhase === 'past' && 'â§¹â§¹â§¹'}
+          {overlay.temporalPhase === 'present' && 'ï¿½-?ï¿½-?ï¿½-?'}
         </div>
 
         {/* Main Card Content */}
         <div className="quantum-card-content">
           <div className="overlay-thumbnail">
-            <img 
-              src={overlay.imageUrl} 
-              alt={overlay.name}
-              className="quantum-image"
-            />
+            <img src={overlay.imageUrl} alt={overlay.name} className="quantum-image" />
             <div className="dimensional-overlay">
               <div className="quantum-grid">
                 {[...Array(16)].map((_, i) => (
-                  <div 
-                    key={i} 
-                    className="grid-cell" 
+                  <div
+                    key={i}
+                    className="grid-cell"
                     style={{ '--cell-delay': `${i * 0.05}s` } as React.CSSProperties}
                   />
                 ))}
@@ -553,7 +563,7 @@ const QuantumOverlayGallery: React.FC = () => {
               <span className="consciousness-level">C:{Math.floor(cardConsciousness)}</span>
               <span className="reality-level">R:{overlay.realityLevel}</span>
             </div>
-            
+
             {overlay.uploader && (
               <div className="uploader-info">
                 <span className="uploader-label">Creator:</span>
@@ -567,17 +577,24 @@ const QuantumOverlayGallery: React.FC = () => {
         {overlay.emotionalResonance && (
           <div className="emotional-resonance">
             {Object.entries(overlay.emotionalResonance).map(([emotion, value]) => (
-              <div 
-                key={emotion} 
+              <div
+                key={emotion}
                 className="emotion-bar"
-                style={{
-                  '--emotion-value': `${value}%`,
-                  '--emotion-color': 
-                    emotion === 'energy' ? '#ff4757' :
-                    emotion === 'inspiration' ? '#ffa726' :
-                    emotion === 'tranquility' ? '#26c6da' :
-                    emotion === 'power' ? '#ab47bc' : '#66bb6a'
-                } as React.CSSProperties}
+                style={
+                  {
+                    '--emotion-value': `${value}%`,
+                    '--emotion-color':
+                      emotion === 'energy'
+                        ? '#ff4757'
+                        : emotion === 'inspiration'
+                          ? '#ffa726'
+                          : emotion === 'tranquility'
+                            ? '#26c6da'
+                            : emotion === 'power'
+                              ? '#ab47bc'
+                              : '#66bb6a',
+                  } as React.CSSProperties
+                }
               >
                 <div className="emotion-fill" />
               </div>
@@ -588,13 +605,13 @@ const QuantumOverlayGallery: React.FC = () => {
         {/* Quantum State Indicators */}
         <div className="quantum-state-indicators">
           <div className="dimensional-stability-meter">
-            <div 
+            <div
               className="stability-fill"
               style={{ width: `${overlay.dimensionalStability || 50}%` }}
             />
           </div>
           <div className="creativity-spark">
-            {overlay.creativityIndex && overlay.creativityIndex > 70 && '�o�'}
+            {overlay.creativityIndex && overlay.creativityIndex > 70 && 'ï¿½oï¿½'}
           </div>
         </div>
       </motion.div>
@@ -602,18 +619,18 @@ const QuantumOverlayGallery: React.FC = () => {
   };
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className={`quantum-overlay-gallery-page ${quantumState.viewMode} ${dimensionalRift ? 'dimensional-rift' : ''} ${creativityField ? 'creativity-field' : ''}`}
     >
       <canvas ref={canvasRef} className="quantum-gallery-canvas" />
-      
+
       {/* Quantum Background Effects */}
       <div className="quantum-background-field">
         <div className="consciousness-waves">
           {[...Array(5)].map((_, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className="consciousness-wave"
               style={{ '--wave-delay': `${i * 2}s` } as React.CSSProperties}
             />
@@ -622,20 +639,20 @@ const QuantumOverlayGallery: React.FC = () => {
       </div>
 
       {/* Enhanced Header */}
-      <motion.div 
+      <motion.div
         className="quantum-gallery-header"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, type: "spring" }}
+        transition={{ duration: 1, type: 'spring' }}
       >
         <div className="header-controls">
           <motion.button
             className="quantum-back-btn"
-            onClick={() => navigate("/overlay")}
+            onClick={() => navigate('/overlay')}
             whileHover={{ scale: 1.05, x: -5 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="btn-icon">�.️</span>
+            <span className="btn-icon">ï¿½.ï¸</span>
             <span className="btn-text">Reality Portal</span>
             <div className="btn-quantum-trail" />
           </motion.button>
@@ -644,22 +661,19 @@ const QuantumOverlayGallery: React.FC = () => {
             <span className="status-label">Gallery Consciousness:</span>
             <span className="status-value">{Math.floor(galleryConsciousness)}/100</span>
             <div className="consciousness-meter">
-              <div 
-                className="consciousness-fill"
-                style={{ width: `${galleryConsciousness}%` }}
-              />
+              <div className="consciousness-fill" style={{ width: `${galleryConsciousness}%` }} />
             </div>
           </div>
         </div>
 
-        <motion.h1 
+        <motion.h1
           className="quantum-gallery-title"
           animate={{
             background: [
-              "linear-gradient(90deg, #00ffff, #a855f7, #ec4899, #00ffff)",
-              "linear-gradient(90deg, #a855f7, #ec4899, #10b981, #a855f7)",
-              "linear-gradient(90deg, #ec4899, #10b981, #00ffff, #ec4899)"
-            ]
+              'linear-gradient(90deg, #00ffff, #a855f7, #ec4899, #00ffff)',
+              'linear-gradient(90deg, #a855f7, #ec4899, #10b981, #a855f7)',
+              'linear-gradient(90deg, #ec4899, #10b981, #00ffff, #ec4899)',
+            ],
           }}
           transition={{ duration: 6, repeat: Infinity }}
         >
@@ -683,7 +697,7 @@ const QuantumOverlayGallery: React.FC = () => {
       </motion.div>
 
       {/* Quantum Control Panel */}
-      <motion.div 
+      <motion.div
         className="quantum-control-panel"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -693,7 +707,7 @@ const QuantumOverlayGallery: React.FC = () => {
         <div className="view-mode-selector">
           <div className="selector-label">VIEW MATRIX</div>
           <div className="mode-buttons">
-            {(['matrix', 'neural', 'dimensional', 'consciousness'] as const).map(mode => (
+            {(['matrix', 'neural', 'dimensional', 'consciousness'] as const).map((mode) => (
               <motion.button
                 key={mode}
                 className={`mode-btn ${quantumState.viewMode === mode ? 'active' : ''}`}
@@ -702,10 +716,10 @@ const QuantumOverlayGallery: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <span className="mode-icon">
-                  {mode === 'matrix' && '⬢'}
-                  {mode === 'neural' && '�Y��'}
-                  {mode === 'dimensional' && '�YO?'}
-                  {mode === 'consciousness' && '�Y'��?��Y-�'}
+                  {mode === 'matrix' && 'â¬¢'}
+                  {mode === 'neural' && '\u{1F9E0}'}
+                  {mode === 'dimensional' && '\u269B\uFE0F'}
+                  {mode === 'consciousness' && '\u2728'}
                 </span>
                 <span className="mode-text">{mode.toUpperCase()}</span>
               </motion.button>
@@ -745,10 +759,12 @@ const QuantumOverlayGallery: React.FC = () => {
               min="0"
               max="100"
               value={quantumState.consciousnessThreshold}
-              onChange={(e) => setQuantumState(prev => ({
-                ...prev,
-                consciousnessThreshold: parseInt(e.target.value)
-              }))}
+              onChange={(e) =>
+                setQuantumState((prev) => ({
+                  ...prev,
+                  consciousnessThreshold: parseInt(e.target.value),
+                }))
+              }
               className="quantum-slider"
             />
             <span className="filter-value">{quantumState.consciousnessThreshold}</span>
@@ -761,10 +777,12 @@ const QuantumOverlayGallery: React.FC = () => {
               min="0"
               max="1000"
               value={quantumState.realityFilter}
-              onChange={(e) => setQuantumState(prev => ({
-                ...prev,
-                realityFilter: parseInt(e.target.value)
-              }))}
+              onChange={(e) =>
+                setQuantumState((prev) => ({
+                  ...prev,
+                  realityFilter: parseInt(e.target.value),
+                }))
+              }
               className="quantum-slider"
             />
             <span className="filter-value">{quantumState.realityFilter}</span>
@@ -774,10 +792,12 @@ const QuantumOverlayGallery: React.FC = () => {
             <label className="filter-label">Temporal View</label>
             <select
               value={quantumState.temporalView}
-              onChange={(e) => setQuantumState(prev => ({
-                ...prev,
-                temporalView: e.target.value as any
-              }))}
+              onChange={(e) =>
+                setQuantumState((prev) => ({
+                  ...prev,
+                  temporalView: e.target.value as any,
+                }))
+              }
               className="quantum-select"
             >
               <option value="all">All Time</option>
@@ -791,10 +811,12 @@ const QuantumOverlayGallery: React.FC = () => {
             <label className="filter-label">Emotional Resonance</label>
             <select
               value={quantumState.emotionalFilter}
-              onChange={(e) => setQuantumState(prev => ({
-                ...prev,
-                emotionalFilter: e.target.value as any
-              }))}
+              onChange={(e) =>
+                setQuantumState((prev) => ({
+                  ...prev,
+                  emotionalFilter: e.target.value as any,
+                }))
+              }
               className="quantum-select"
             >
               <option value="all">All Emotions</option>
@@ -818,46 +840,40 @@ const QuantumOverlayGallery: React.FC = () => {
       </motion.div>
 
       {/* Quantum Gallery Grid */}
-      <motion.div 
-        className={`quantum-gallery-grid view-${quantumState.viewMode}`}
-        layout
-      >
+      <motion.div className={`quantum-gallery-grid view-${quantumState.viewMode}`} layout>
         <AnimatePresence mode="popLayout">
           {filteredOverlays.map((overlay, index) => (
-            <QuantumOverlayCard
-              key={overlay._id}
-              overlay={overlay}
-              index={index}
-            />
+            <QuantumOverlayCard key={overlay._id} overlay={overlay} index={index} />
           ))}
         </AnimatePresence>
       </motion.div>
 
       {/* No Results Quantum Message */}
       {filteredOverlays.length === 0 && !isSearching && (
-        <motion.div 
+        <motion.div
           className="quantum-no-results"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <div className="no-results-icon">�YOO</div>
+          <div className="no-results-icon">ï¿½YOO</div>
           <h3 className="no-results-title">QUANTUM VOID DETECTED</h3>
           <p className="no-results-message">
-            No overlays match your quantum parameters. Try adjusting the reality filters or expanding the consciousness threshold.
+            No overlays match your quantum parameters. Try adjusting the reality filters or
+            expanding the consciousness threshold.
           </p>
           <motion.button
             className="reset-filters-btn"
             onClick={() => {
-              setQuantumState(prev => ({
+              setQuantumState((prev) => ({
                 ...prev,
                 consciousnessThreshold: 0,
                 realityFilter: 0,
                 temporalView: 'all',
-                emotionalFilter: 'all'
+                emotionalFilter: 'all',
               }));
-              setSelectedCategory("");
-              setSearchQuery("");
+              setSelectedCategory('');
+              setSearchQuery('');
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -869,7 +885,7 @@ const QuantumOverlayGallery: React.FC = () => {
 
       {/* Quantum Loading */}
       {isSearching && (
-        <motion.div 
+        <motion.div
           className="quantum-loading"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -877,8 +893,8 @@ const QuantumOverlayGallery: React.FC = () => {
         >
           <div className="loading-quantum-field">
             {[...Array(12)].map((_, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="loading-particle"
                 style={{ '--particle-delay': `${i * 0.1}s` } as React.CSSProperties}
               />
@@ -889,10 +905,7 @@ const QuantumOverlayGallery: React.FC = () => {
       )}
 
       {/* Enhanced Preview Modal */}
-      <OverlayPreviewModal 
-        overlay={previewOverlay} 
-        onClose={() => setPreviewOverlay(null)} 
-      />
+      <OverlayPreviewModal overlay={previewOverlay} onClose={() => setPreviewOverlay(null)} />
 
       {/* Dimensional Rift Effect */}
       <AnimatePresence>
@@ -905,8 +918,8 @@ const QuantumOverlayGallery: React.FC = () => {
             transition={{ duration: 1 }}
           >
             {[...Array(20)].map((_, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="rift-particle"
                 style={{ '--rift-angle': `${i * 18}deg` } as React.CSSProperties}
               />
@@ -926,14 +939,16 @@ const QuantumOverlayGallery: React.FC = () => {
             transition={{ duration: 2 }}
           >
             {[...Array(30)].map((_, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="creativity-spark"
-                style={{ 
-                  '--spark-x': `${Math.random() * 100}%`,
-                  '--spark-y': `${Math.random() * 100}%`,
-                  '--spark-delay': `${Math.random() * 2}s`
-                } as React.CSSProperties}
+                style={
+                  {
+                    '--spark-x': `${Math.random() * 100}%`,
+                    '--spark-y': `${Math.random() * 100}%`,
+                    '--spark-delay': `${Math.random() * 2}s`,
+                  } as React.CSSProperties
+                }
               />
             ))}
           </motion.div>
