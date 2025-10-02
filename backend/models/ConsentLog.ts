@@ -3,7 +3,7 @@ import mongoose, { Schema, InferSchemaType, Model } from "mongoose";
 
 const ConsentLogSchema = new Schema({
   userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
-  plan: { type: String, enum: ["PRO_MONTHLY", "DAY_PASS"], required: true },
+  plan: { type: String, enum: ["PRO_MONTHL, "DAY_PASS"], required: true },
   consent: { type: Boolean, required: true },
   consentText: { type: String, required: true },
   consentVersion: { type: String, required: true },
