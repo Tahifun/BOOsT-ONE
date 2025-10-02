@@ -76,7 +76,7 @@ const RockPaperScissorsGame: React.FC = () => {
           </Button>
         ))}
         <Button size="md" onClick={reset}>
-          ZurÃƒÆ’Ã‚Â¼cksetzen
+          ZurÃƒÆ'Ã‚Â¼cksetzen
         </Button>
       </div>
 
