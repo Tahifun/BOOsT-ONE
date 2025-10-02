@@ -1,5 +1,5 @@
 // backend/utils/env.ts
-// L�dt .env und exportiert getypte Umgebungswerte f�r das Backend.
+// Ldt .env und exportiert getypte Umgebungswerte fr das Backend.
 
 import 'dotenv/config';
 
@@ -10,7 +10,7 @@ export const env = {
   STRIPE_SECRET: process.env.STRIPE_SECRET ?? '',
   STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET ?? '',
 
-  // Allgemein - falls sp�ter gebraucht, hier erg�nzen
+  // Allgemein - falls spter gebraucht, hier ergnzen
   APP_NAME: process.env.APP_NAME ?? 'clip-boost',
 } as const;
 
