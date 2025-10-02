@@ -1,239 +1,227 @@
-import { logger } from '@/lib/logger';
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useSubscription } from '@contexts/SubscriptionContext';
-import '../../styles/layout/Navigation.css';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import { useSubscription } from '../../contexts/SubscriptionContext';
+import './Header.css';
 
-interface NavigationTab {
-  id: string;
-  title: string;
-  icon: string;
-  path: string;
-  requiresPro?: boolean;
-  badge?: string;
-  description?: string;
-}
-
-interface NavigationProps {
-  onTabSelect?: (tabId: string) => void;
+interface HeaderProps {
+  onSearch?: (query: string) => void;
   className?: string;
 }
 
-const navigationTabs: NavigationTab[] = [
-  {
-    id: 'dashboard',
-    title: 'Dashboard',
-    icon: '📁',
-    path: '/media/dashboard',
-    description: 'ï¿½obersicht und Statistiken',
-  },
-  {
-    id: 'upload',
-    title: 'Upload',
-    icon: '📁',
-    path: '/media/upload',
-    description: 'Dateien hochladen',
-  },
-  {
-    id: 'gallery',
-    title: 'Galerie',
-    icon: '📁',
-    path: '/media/gallery',
-    description: 'Alle Medien durchsuchen',
-  },
-  {
-    id: 'clips',
-    title: 'Clips',
-    icon: '📁',
-    path: '/media/clips',
-    description: 'Videos schneiden',
-    requiresPro: true,
-  },
-  {
-    id: 'screenshots',
-    title: 'Screenshots',
-    icon: '📁',
-    path: '/media/screenshots',
-    description: 'Frames extrahieren',
-  },
-  {
-    id: 'soundboard',
-    title: 'Soundboard',
-    icon: '📁',
-    path: '/media/soundboard',
-    description: 'Audio-Bibliothek',
-    requiresPro: true,
-  },
-  {
-    id: 'overlays',
-    title: 'Overlays',
-    icon: '📁',
-    path: '/media/overlays',
-    description: 'Templates verwalten',
-    requiresPro: true,
-  },
-  {
-    id: 'export',
-    title: 'Export',
-    icon: '📁',
-    path: '/media/export',
-    description: 'Medien exportieren',
-  },
-  {
-    id: 'stats',
-    title: 'Impact Stats',
-    icon: '📁',
-    path: '/media/stats',
-    description: 'Performance analysieren',
-    requiresPro: true,
-  },
-  {
-    id: 'ai',
-    title: 'AI Assistant',
-    icon: '📁',
-    path: '/media/ai',
-    description: 'KI-gestÃ¼tzte Features',
-    requiresPro: true,
-    badge: 'NEU',
-  },
-];
-
-export const Navigation: React.FC<NavigationProps> = ({ onTabSelect, className = '' }) => {
+export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { user } = useAuth();
   const { tier } = useSubscription();
 
-  const [activeTab, setActiveTab] = useState<string>('dashboard');
-  const [hoveredTab, setHoveredTab] = useState<string | null>(null);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [searchSuggestions, setSearchSuggestions] = useState<string[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
-  // Aus URL den aktiven Tab bestimmen: zuerst ?tab=..., sonst Pfad-Match
+  // Dynamische Glow-Animation basierend auf Tageszeit
+  const [glowIntensity, setGlowIntensity] = useState(1);
+
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const tabFromQuery = params.get('tab');
-    if (tabFromQuery && navigationTabs.some((t) => t.id === tabFromQuery)) {
-      setActiveTab(tabFromQuery);
-      return;
-    }
-    const byPath = navigationTabs.find((tab) => location.pathname.startsWith(tab.path));
-    if (byPath) setActiveTab(byPath.id);
-  }, [location]);
-
-  const handleTabClick = (tab: NavigationTab) => {
-    setIsAnimating(true);
-    setTimeout(() => setIsAnimating(false), 300);
-
-    if (tab.requiresPro && tier !== 'PRO') {
-      // Nur Hinweis ï¿½?" tatsÃ¤chlicher Upgrade-Dialog wird auï¿½Yerhalb gehandhabt
-      logger.debug('PRO feature - showing upgrade prompt');
-    }
-
-    setActiveTab(tab.id);
-    onTabSelect?.(tab.id);
-    // Fallback-kompatibel: solange Unterrouten evtl. fehlen, Ã¼ber Query navigieren
-    navigate(`/media?tab=${encodeURIComponent(tab.id)}`);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent, tab: NavigationTab) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      handleTabClick(tab);
-    }
-  };
-
-  // Globale TastenkÃ¼rzel: Alt+1..9 springt zu den ersten Tabs
-  useEffect(() => {
-    const handleGlobalKeyDown = (e: KeyboardEvent) => {
-      if (e.altKey && e.key >= '1' && e.key <= '9') {
-        const index = parseInt(e.key, 10) - 1;
-        if (index < navigationTabs.length) handleTabClick(navigationTabs[index]);
-      }
-    };
-    window.addEventListener('keydown', handleGlobalKeyDown);
-    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+    const hour = new Date().getHours();
+    if (hour >= 6 && hour < 12) setGlowIntensity(1.2);
+    else if (hour >= 18 || hour < 6) setGlowIntensity(0.8);
+    else setGlowIntensity(1);
   }, []);
 
-  return (
-    <nav
-      className={`media-navigation ${className} ${isAnimating ? 'animating' : ''}`}
-      role="navigation"
-      aria-label="Media Center Navigation"
-      id="navigation"
-    >
-      <div className="nav-tabs-container" role="tablist" aria-orientation="horizontal">
-        {navigationTabs.map((tab, index) => {
-          const isActive = activeTab === tab.id;
-          const isLocked = tab.requiresPro && tier !== 'PRO';
-          const isHovered = hoveredTab === tab.id;
+  // Debounced Search + Demo-Vorschlge
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchQuery.trim().length > 2) {
+        setSearchSuggestions([
+          `${searchQuery}  Videos`,
+          `${searchQuery}  Clips`,
+          `${searchQuery}  Screenshots`,
+          `${searchQuery}  Sounds`,
+        ]);
+        setShowSuggestions(true);
+      } else {
+        setShowSuggestions(false);
+      }
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
-          return (
+  const handleSearch = (query: string) => {
+    const q = query.trim();
+    setSearchQuery(q);
+    setShowSuggestions(false);
+
+    if (onSearch) {
+      onSearch(q);
+    } else {
+      // Fallback: navigiert zur Media-Seite und bergibt die Suche als Query
+      const url = q ? `/media?query=${encodeURIComponent(q)}&tab=gallery` : '/media';
+      navigate(url);
+    }
+  };
+
+  const handleQuickAction = (action: 'upload' | 'gallery' | 'stats') => {
+    // Fallback: solange Unterrouten noch nicht existieren, auf /media mit Tab-Param
+    const target =
+      action === 'upload'
+        ? '/media?tab=upload'
+        : action === 'gallery'
+        ? '/media?tab=gallery'
+        : '/media?tab=stats';
+    navigate(target);
+  };
+
+  // Tastatur-Shortcuts (Ctrl+U, Ctrl+G)
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (!e.ctrlKey) return;
+      const key = e.key.toLowerCase();
+      if (key === 'u') {
+        e.preventDefault();
+        handleQuickAction('upload');
+      } else if (key === 'g') {
+        e.preventDefault();
+        handleQuickAction('gallery');
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  // CSS Custom Property typsicher setzen
+  const glowStyle = { ['--glow-intensity' as any]: String(glowIntensity) } as React.CSSProperties;
+
+  return (
+    <header className={`media-header ${className}`} role="banner">
+      {/* Animated Background Layer */}
+      <div className="header-background">
+        <div className="header-glow" style={glowStyle} />
+        <div className="header-particles" />
+      </div>
+
+      <div className="header-content">
+        {/* Logo & Title Section */}
+        <div className="header-brand">
+          <h1 className="header-title">
+            <span className="title-text">MEDIA CENTER</span>
+            <span className="title-glow" aria-hidden="true">MEDIA CENTER</span>
+          </h1>
+          <nav className="breadcrumb" aria-label="Breadcrumb">
+            <span>Home</span>
+            <span className="breadcrumb-separator"></span>
+            <span>Media</span>
+          </nav>
+        </div>
+
+        {/* Global Search */}
+        <div className={`header-search ${isSearchFocused ? 'focused' : ''}`}>
+          <div className="search-container">
+            <span className="search-icon" aria-hidden="true"></span>
+            <input
+              type="search"
+              className="search-input"
+              placeholder="Suche nach Videos, Clips, Screenshots..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => setIsSearchFocused(true)}
+              onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') handleSearch(searchQuery);
+              }}
+              aria-label="Globale Suche"
+              aria-describedby="search-hint"
+              role="combobox"
+              aria-expanded={showSuggestions}
+              aria-autocomplete="list"
+            />
+            <span id="search-hint" className="sr-only">
+              Drcke Enter zum Suchen oder nutze die Vorschlge.
+            </span>
+
+            {showSuggestions && (
+              <div className="search-suggestions" role="listbox" aria-live="polite">
+                {searchSuggestions.map((suggestion, index) => (
+                  <button
+                    key={index}
+                    className="suggestion-item"
+                    onClick={() => handleSearch(suggestion)}
+                    role="option"
+                    aria-selected={false}
+                    type="button"
+                  >
+                    <span className="suggestion-icon"></span>
+                    <span className="suggestion-text">{suggestion}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* User & Actions Section */}
+        <div className="header-actions">
+          {/* Quick Actions */}
+          <div className="quick-actions" aria-label="Schnellaktionen">
             <button
-              key={tab.id}
-              className={`nav-tab ${isActive ? 'active' : ''} ${isLocked ? 'locked' : ''} ${isHovered ? 'hovered' : ''}`}
-              onClick={() => handleTabClick(tab)}
-              onMouseEnter={() => setHoveredTab(tab.id)}
-              onMouseLeave={() => setHoveredTab(null)}
-              onKeyDown={(e) => handleKeyDown(e, tab)}
-              role="tab"
-              aria-selected={isActive}
-              aria-controls={`panel-${tab.id}`}
-              aria-describedby={isLocked ? `lock-${tab.id}` : undefined}
-              tabIndex={0}
-              style={{ animationDelay: `${index * 0.05}s` }}
+              className="quick-action-btn"
+              onClick={() => handleQuickAction('upload')}
+              aria-label="Upload starten"
+              title="Upload starten (Ctrl+U)"
               type="button"
             >
-              {/* Hintergrund-Effekte */}
-              <div className="tab-background">
-                <div className="tab-glow" />
-                <div className="tab-hover-effect" />
-              </div>
-
-              {/* Inhalt */}
-              <div className="tab-content">
-                <span className="tab-icon" aria-hidden="true">
-                  {tab.icon}
-                </span>
-                <span className="tab-title">{tab.title}</span>
-
-                {tab.badge && <span className="tab-badge">{tab.badge}</span>}
-
-                {isLocked && (
-                  <span className="tab-lock" id={`lock-${tab.id}`}>
-                    <span className="lock-icon">ï¿½Y"'</span>
-                    <span className="sr-only">PRO Feature</span>
-                  </span>
-                )}
-              </div>
-
-              {/* Tooltip */}
-              {isHovered && (
-                <div className="tab-tooltip" role="tooltip">
-                  <div className="tooltip-content">
-                    <strong>{tab.title}</strong>
-                    <p>{tab.description}</p>
-                    {isLocked && <p className="tooltip-pro">â­ PRO Feature</p>}
-                    <span className="tooltip-shortcut">Alt + {index + 1}</span>
-                  </div>
-                  <div className="tooltip-arrow" />
-                </div>
-              )}
-
-              {/* Active Indicator */}
-              {isActive && (
-                <div className="tab-active-indicator" aria-hidden="true">
-                  <div className="indicator-line" />
-                  <div className="indicator-glow" />
-                </div>
-              )}
+              <span className="action-icon">?</span>
             </button>
-          );
-        })}
+            <button
+              className="quick-action-btn"
+              onClick={() => handleQuickAction('gallery')}
+              aria-label="Zur Galerie"
+              title="Zur Galerie (Ctrl+G)"
+              type="button"
+            >
+              <span className="action-icon"></span>
+            </button>
+            <button
+              className="quick-action-btn"
+              onClick={() => handleQuickAction('stats')}
+              aria-label="Statistiken"
+              title="Statistiken anzeigen"
+              type="button"
+            >
+              <span className="action-icon"></span>
+            </button>
+          </div>
+
+          {/* User Badge */}
+          <div className="user-badge">
+            <div className="user-avatar">
+              {user?.avatar ? (
+                <img src={user.avatar} alt={user.name ?? 'Avatar'} />
+              ) : (
+                <span className="avatar-placeholder" aria-hidden="true"></span>
+              )}
+            </div>
+            <div className="user-info">
+              <span className="user-name">{user?.name || 'Creator'}</span>
+              {tier === 'PRO' ? (
+                <span className="pro-badge" aria-label="PRO-Status">
+                  <span className="pro-star" aria-hidden="true"></span>
+                  <span className="pro-text">PRO</span>
+                </span>
+              ) : (
+                <span className="free-badge" aria-label="FREE-Status">FREE</span>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Mobile Hinweis */}
-      <div className="nav-scroll-indicator" aria-hidden="true">
-        <span className="scroll-hint">ï¿½?ï¿½ Wischen ï¿½?'</span>
+      {/* Skip Links for Accessibility */}
+      <div className="skip-links">
+        <a href="#main-content" className="skip-link">Zum Hauptinhalt springen</a>
+        <a href="#navigation" className="skip-link">Zur Navigation springen</a>
       </div>
-    </nav>
+    </header>
   );
 };
+
