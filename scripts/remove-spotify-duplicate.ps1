@@ -1,4 +1,4 @@
-﻿Write-Host "Checking for Spotify duplicates..."
+Write-Host "Checking for Spotify duplicates..."
 $path1 = "src\spotify\SpotifyCallback.tsx"
 $path2 = "src\pages\SpotifyCallback.tsx"
 
