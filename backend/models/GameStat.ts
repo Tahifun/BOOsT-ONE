@@ -1,15 +1,15 @@
 // backend/models/GameStat.ts
-// MongooseSchema f�r GameStatistiken (Leaderboard & UserStats)
+// MongooseSchema fr GameStatistiken (Leaderboard & UserStats)
 
 import { Schema, model, Document } from "mongoose";
 
 export interface IGameStat extends Document {
   game: string; // Name oder ID des Games
   userId: string; // Twitch/UserID
-  username: string; // Anzeigename  f�r schnellere LeaderboardAnzeigen gecached
+  username: string; // Anzeigename  fr schnellere LeaderboardAnzeigen gecached
   wins: number;
   played: number;
-  elo: number; // Elo�hnliche RatingZahl (optional)
+  elo: number; // Elohnliche RatingZahl (optional)
   createdAt: Date;
   updatedAt: Date;
 }
