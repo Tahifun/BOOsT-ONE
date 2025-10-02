@@ -18,7 +18,7 @@ class MemoryCache implements Cache {
   }
 }
 
-/** Minimales Redis-Interface, das wir ben�tigen. */
+/** Minimales Redis-Interface, das wir bentigen. */
 interface MinimalRedis {
   set(
     key: string,
@@ -50,7 +50,7 @@ const url = process.env.REDIS_URL || process.env.REDIS_URI;
   try {
     // dynamisch laden; ESM/CJS-agnostisch
     const mod = await import('redis');
-    // `createClient` R�ckgabetyp ist hier egal; wir mappen nur auf unser Minimal-Interface.
+    // `createClient` Rckgabetyp ist hier egal; wir mappen nur auf unser Minimal-Interface.
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
     const clientAny: unknown = mod.createClient({ url });
     const client: MinimalRedis = clientAny as unknown as MinimalRedis;
