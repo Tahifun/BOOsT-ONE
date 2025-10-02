@@ -856,7 +856,7 @@ export const ModerationSection: React.FC = () => {
                     </div>
                     <div style={{ marginLeft: "auto" }}>
                       <span
-                        className={`status-indicator-mod ${
+                        className={`status-indicator-mod ${`}
                           m.online ? "online" : "offline"
                         }`}
                         title={m.online ? "online" : "offline"}
