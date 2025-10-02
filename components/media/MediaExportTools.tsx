@@ -5,14 +5,14 @@ import { MediaItem } from '../../types/mediaTypes';
 import ProFeatureWrapper from '../common/ProFeatureWrapper';
 import "../../styles/media.css";
 
-/** Hilfsfunktion: absolute URL f�r ein Item bauen */
+/** Hilfsfunktion: absolute URL fr ein Item bauen */
 function buildPublicUrl(url: string) {
   try {
     // Wenn bereits absolut, beibehalten
     const u = new URL(url);
     return u.toString();
   } catch {
-    // Relativ -> an Origin anh�ngen
+    // Relativ -> an Origin anhngen
     return `${window.location.origin}${url.startsWith("/") ? "" : "/"}${url}`;
   }
 }
@@ -31,23 +31,23 @@ export const MediaExportTools: React.FC = () => {
       await navigator.clipboard.writeText(link);
       alert(" Link kopiert!");
     } catch {
-      // Fallback f�r Browser ohne Clipboard-API
-      const ok = window.confirm(`Kopieren nicht m�glich.\nLink anzeigen?\n\n${link}`);
+      // Fallback fr Browser ohne Clipboard-API
+      const ok = window.confirm(`Kopieren nicht mglich.\nLink anzeigen?\n\n${link}`);
       if (ok) window.prompt("Link manuell kopieren:", link);
     }
   };
 
-  // Platzhalter-Actions  hier sp�ter Backend/Worker-Export einh�ngen
+  // Platzhalter-Actions  hier spter Backend/Worker-Export einhngen
   const handleExportShort = (item: MediaItem) => {
     // z. B. POST /api/export/short { url, aspect: 9:16, trim, watermark, ... }
-    alert(` TikTok-Short Export gestartet f�r: ${item.name}`);
+    alert(` TikTok-Short Export gestartet fr: ${item.name}`);
   };
   const handleExportStory = (item: MediaItem) => {
-    alert(` Story Export gestartet f�r: ${item.name}`);
+    alert(` Story Export gestartet fr: ${item.name}`);
   };
   const handleAddBranding = (item: MediaItem) => {
-    // z. B. Editor �ffnen / Overlay aus Galerie w�hlen
-    alert(` Branding-Overlay f�r: ${item.name}`);
+    // z. B. Editor ffnen / Overlay aus Galerie whlen
+    alert(` Branding-Overlay fr: ${item.name}`);
   };
 
   return (
@@ -66,7 +66,7 @@ export const MediaExportTools: React.FC = () => {
             <div className="export-title">{item.name}</div>
 
             <div className="export-actions">
-              {/* PRO: Transcoding f�r Export-Short */}
+              {/* PRO: Transcoding fr Export-Short */}
               <ProFeatureWrapper
                 featureName="transcoding"
                 message="Export in vertikales Short-Format (9:16) ist ein PRO-Feature."
@@ -76,7 +76,7 @@ export const MediaExportTools: React.FC = () => {
                 </button>
               </ProFeatureWrapper>
 
-              {/* PRO: Transcoding f�r Story */}
+              {/* PRO: Transcoding fr Story */}
               <ProFeatureWrapper
                 featureName="transcoding"
                 message="Story-Export (10801920) ist ein PRO-Feature."
@@ -97,7 +97,7 @@ export const MediaExportTools: React.FC = () => {
                 message="Eigene Branding-Overlays sind im PRO-Paket enthalten."
               >
                 <button type="button" onClick={() => handleAddBranding(item)}>
-                  Branding hinzuf�gen
+                  Branding hinzufgen
                 </button>
               </ProFeatureWrapper>
             </div>
