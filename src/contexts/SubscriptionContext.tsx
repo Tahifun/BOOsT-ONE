@@ -1,4 +1,4 @@
-﻿// src/contexts/SubscriptionContext.tsx
+// src/contexts/SubscriptionContext.tsx
 import React, {
   createContext,
   useCallback,
