@@ -20,7 +20,7 @@ export function safeParseNullable<T>(raw: string | null | undefined): T | null {
 }
 
 /**
- * Sicheres Response-Parsing f�r Fetch:
+ * Sicheres Response-Parsing fr Fetch:
  * - wirft bei !ok (inkl. Body-Snippet)
  * - 204/empty ? null
  * - JSON via content-type ODER heuristisch
