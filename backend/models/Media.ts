@@ -1,5 +1,5 @@
 // backend/models/Media.ts
-// MongooseSchema f�r hochgeladene Mediendateien
+// MongooseSchema fr hochgeladene Mediendateien
 
 import { Schema, model, Document } from "mongoose";
 
