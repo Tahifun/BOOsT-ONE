@@ -1,4 +1,4 @@
-﻿// src/utils/mediaUtils.ts
+// src/utils/mediaUtils.ts
 
 import React from "react";
 import { MediaType } from '../types/mediaTypes';
