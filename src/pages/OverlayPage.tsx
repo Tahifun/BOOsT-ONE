@@ -112,13 +112,13 @@ interface DataNode {
   temporal_echo: boolean;
 }
 
-// Hilfstabellen f�r deutsche Labels
+// Hilfstabellen fr deutsche Labels
 const EMO_LABELS: Record<keyof EmotionalState, string> = {
   energy: 'ENERGIE',
   focus: 'FOKUS',
   stress: 'STRESS',
   satisfaction: 'ZUFRIEDENHEIT',
-  creativity: 'KREATIVIT�T',
+  creativity: 'KREATIVITT',
 };
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -197,7 +197,7 @@ const QuantumOverlayPage: React.FC = () => {
         component: CoinStats,
         name: 'QUANTUM-UMSATZ-NEXUS',
         icon: '??',
-        description: 'Multidimensionales Coin-Tracking mit zeitlicher W�hrungsprognose',
+        description: 'Multidimensionales Coin-Tracking mit zeitlicher Whrungsprognose',
         category: 'stats',
         color: '#ffd700',
         consciousness: 75,
@@ -227,7 +227,7 @@ const QuantumOverlayPage: React.FC = () => {
         component: TikTokStats,
         name: 'VIRALER BEWUSSTSEINS-STREAM',
         icon: '??',
-        description: 'Quanten-Plattformintegration mit Viralit�ts-Prognosealgorithmen',
+        description: 'Quanten-Plattformintegration mit Viralitts-Prognosealgorithmen',
         category: 'social',
         color: '#ff0050',
         consciousness: 68,
@@ -257,7 +257,7 @@ const QuantumOverlayPage: React.FC = () => {
         component: ProAnalytics,
         name: 'TRANZENDENTER ANALYTICS-KERN',
         icon: '??',
-        description: 'Jenseits-der-Realit�t-Datenverarbeitung mit Bewusstseins-Integration',
+        description: 'Jenseits-der-Realitt-Datenverarbeitung mit Bewusstseins-Integration',
         category: 'analytics',
         color: '#10b981',
         pro: true,
@@ -494,7 +494,7 @@ const QuantumOverlayPage: React.FC = () => {
       setEnergyLevel((e) => {
         const target =
           (Object.values(config).filter(Boolean).length / widgets.length) * 100 +
-          // Bewusstseins-/Realit�tskomponenten
+          // Bewusstseins-/Realittskomponenten
           quantumState.consciousnessDepth * 5 +
           quantumState.realityLevel / 20;
         return e + (target - e) * 0.05;
@@ -669,7 +669,7 @@ const QuantumOverlayPage: React.FC = () => {
     return (
       <div
         ref={cardRef}
-        className={`quantum-consciousness-card ${isActive ? 'active' : ''} ${isHovered ? 'hovered' : ''} ${
+        className={`quantum-consciousness-card ${isActive ? 'active' : ''} ${isHovered ? 'hovered' : ''} ${`}
           widget.pro ? 'pro' : ''
         } consciousness-level-${Math.floor(localConsciousness / 20) + 1}`}
         onMouseEnter={() => {
@@ -786,7 +786,7 @@ const QuantumOverlayPage: React.FC = () => {
 
   return (
     <div
-      className={`quantum-consciousness-overlay-page ${quantumState.dreamMode ? 'dream-mode' : ''} consciousness-level-${
+      className={`quantum-consciousness-overlay-page ${quantumState.dreamMode ? 'dream-mode' : ''} consciousness-level-${`}
         quantumState.consciousnessDepth
       } reality-level-${Math.floor(quantumState.realityLevel / 100)}`}
     >
@@ -836,7 +836,7 @@ const QuantumOverlayPage: React.FC = () => {
               <span className="status-text">BEWUSSTSEINS-STATUS:</span>
               <span className="status-value consciousness-pulse">LEVEL {quantumState.consciousnessDepth}</span>
               <span className="divider">|</span>
-              <span className="reality-text">REALIT�T:</span>
+              <span className="reality-text">REALITT:</span>
               <span className="reality-value">{quantumState.realityLevel}</span>
               <span className="divider">|</span>
               <span className="user-name">{currentUser?.displayName || 'BEWUSSTSEINS-EINHEIT'}</span>
@@ -848,7 +848,7 @@ const QuantumOverlayPage: React.FC = () => {
           <div className="consciousness-control-panel">
             <button className="quantum-control-button primary consciousness-enhanced" onClick={() => navigate('/overlay/editor')}>
               <span className="button-icon">??</span>
-              <span className="button-text">REALIT�TS-EDITOR</span>
+              <span className="button-text">REALITTS-EDITOR</span>
               <span className="button-consciousness-energy" />
             </button>
 
@@ -862,12 +862,12 @@ const QuantumOverlayPage: React.FC = () => {
               <span className="button-text">DIMENSION-UPLOAD</span>
             </button>
 
-            {/* Traummodus �ffnet Unterseite */}
+            {/* Traummodus ffnet Unterseite */}
             <button
               className={`quantum-control-button dream-toggle ${quantumState.dreamMode ? 'active' : ''}`}
               onClick={() => navigate('/overlay/dream')}
               aria-label="Traummodus"
-              title="Traummodus �ffnen"
+              title="Traummodus ffnen"
             >
               <span className="button-icon">??</span>
               <span className="button-text">TRAUMMODUS</span>
@@ -1046,7 +1046,7 @@ const QuantumOverlayPage: React.FC = () => {
           <span className="evolution-percentage">{Math.round(consciousnessEvolution)}%</span>
         </div>
         <div className="evolution-tree">
-          {['Bewusstheit', 'Erkennung', 'Verst�ndnis', 'Empathie', 'Weisheit', 'Transzendenz', 'Einheit'].map((label, level) => (
+          {['Bewusstheit', 'Erkennung', 'Verstndnis', 'Empathie', 'Weisheit', 'Transzendenz', 'Einheit'].map((label, level) => (
             <div key={level} className={`evolution-level ${consciousnessEvolution > level * 15 ? 'achieved' : ''}`}>
               <div className="level-node" />
               <span className="level-name">{label}</span>
