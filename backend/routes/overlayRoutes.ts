@@ -7,7 +7,7 @@ import { RateLimits } from "../middleware/rateLimitMiddleware.js";
 
 const router = Router();
 
-// macht req.user "soft" verf�gbar (kein 401)
+// macht req.user "soft" verfgbar (kein 401)
 router.use(attachUserFromHeaders as any);
 
 /**
@@ -55,7 +55,7 @@ router.get("/", getOverlays);
  * @openapi
  * /api/overlays/categories:
  *   get:
- *     summary: Verf�gbare Kategorien (Demo)
+ *     summary: Verfgbare Kategorien (Demo)
  *     tags: [Overlays]
  *     responses:
  *       200: { description: Kategorien }
