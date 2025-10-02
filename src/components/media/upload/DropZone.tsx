@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { FileValidator } from './FileValidator';
+import { FileValidator } from '../FileValidator';
 import './DropZone.css';
 
 export interface FileWithValidation {
