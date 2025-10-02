@@ -6,7 +6,7 @@ const router = Router();
 
 /**
  * Basen sauber ableiten:
- * - BACKEND_URL: �ffentliche URL deiner API (z. B. https://api.clip-boost.online)
+ * - BACKEND_URL: ffentliche URL deiner API (z. B. https://api.clip-boost.online)
  * - FRONTEND_URL: wohin das Browser-Redirect nach erfolgreichem OAuth gehen soll
  *
  * Fallbacks:
