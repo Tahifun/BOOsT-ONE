@@ -4,7 +4,7 @@ import mongoose, { Schema, type Model } from "mongoose";
 /**
  * Persistentes Mapping userId <-> stripeCustomerId
  * - verhindert E-Mail-Verwechslungen
- * - macht Webhook-Aufl�sung stabil
+ * - macht Webhook-Auflsung stabil
  */
 export interface IStripeCustomer {
   userId: string;               // App-User-ID (unique)
