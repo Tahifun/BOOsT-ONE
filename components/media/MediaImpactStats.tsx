@@ -8,7 +8,7 @@ import "../../styles/media.css";
 export const MediaImpactStats: React.FC = () => {
   const { mediaItems } = useContext(MediaContext);
 
-  // Demo: Z�hle, wie oft jeder Medientyp genutzt wurde
+  // Demo: Zhle, wie oft jeder Medientyp genutzt wurde
   const stats: Record<MediaType, number> = {
     clip: 0,
     screenshot: 0,
@@ -20,7 +20,7 @@ export const MediaImpactStats: React.FC = () => {
     stats[item.type] = (stats[item.type] || 0) + 1;
   });
 
-  // Hier k�nnten sp�ter noch mehr Analysen eingebaut werden (meistgeteilte Clips, beste Sounds etc.)
+  // Hier knnten spter noch mehr Analysen eingebaut werden (meistgeteilte Clips, beste Sounds etc.)
 
   return (
     <div className="media-impact-stats">
@@ -32,7 +32,7 @@ export const MediaImpactStats: React.FC = () => {
         <div>Overlays: <strong>{stats.overlay}</strong></div>
       </div>
       <div style={{ marginTop: 24 }}>
-        {/* Platzhalter f�r: Top-Clips, Top-Sounds, Trends, "Medien-Impact-Analyse" */}
+        {/* Platzhalter fr: Top-Clips, Top-Sounds, Trends, "Medien-Impact-Analyse" */}
         <em>Weitere Auswertungen & Trends folgen hier ...</em>
       </div>
     </div>
