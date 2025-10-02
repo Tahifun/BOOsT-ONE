@@ -1,706 +1,425 @@
-@charset "UTF-8";
-/* Force override any parent layouts */
-body:has(.login-container) {
-  overflow: hidden !important;
-}
+import React, { FormEvent, useState, useEffect } from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import LoginExperience from '../components/LoginExperience';
+import './LoginPage.css';
 
-body:has(.login-container) * {
-  box-sizing: border-box !important;
-}
+// ?? neu: zentraler API-Client (sendet Cookies immer mit)
+import { postLogin, getSession } from '@/services/api';
 
-.login-container {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  z-index: 99999 !important;
-  background: #0b1220 !important;
-}
+// (Optional) Wenn dein globaler Auth-Context noch ein Token erwartet,
+// kannst du ihn weiter nutzen - wir setzen hier ein Dummy-Token nach erfolgreichem Session-Check.
+// Wenn es keinen Context gibt, kannst du die n�chste Zeile l�schen.
+import { useAuth } from '../contexts/AuthContext';
 
-/* src/styles/login/LoginPage.css */
+// Icons als SVG Components
+const LiveIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <circle cx="12" cy="12" r="10"/>
+    <circle cx="12" cy="12" r="3" fill="currentColor"/>
+    <path d="M12 2v6m0 12v-6m10-2h-6m-12 0h6"/>
+  </svg>
+);
+const RocketIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M9.663 17l-4.673 4.25c-.391.355-1.002.114-1.076-.426l-.416-3.042-2.998-.416c-.54-.074-.781-.685-.426-1.076L4.324 11.617M9.663 17l5.378-5.378M9.663 17l-2.315-2.315M21 7.5c0 2.485-4.448 8.017-6 9.5l-2.5-2.5c1.483-1.552 7.015-6 9.5-6zm-3.5 3.5l-2-2"/>
+  </svg>
+);
+const StreamIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+  </svg>
+);
 
-/* ???????????????????????????????????????????????????????????????????
-   CLiP BOOsT - LOGIN PAGE STYLES
-   Next-Level Streaming Experience
-   ??????????????????????????????????????????????????????????????????? */
+export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [pwd, setPwd] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
 
-/* Base Container */
-.login-container {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  padding: 20px;
-  overflow: auto;
-}
+  // Optionaler Auth-Context (s. Kommentar oben)
+  const auth = (() => {
+    try { return useAuth(); } catch { return null as any; }
+  })();
 
-/* Background Gradient Orbs */
-.login-bg-gradient {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  z-index: 2;
-  pointer-events: none;
-}
+  const navigate = useNavigate();
+  const location = useLocation();
 
-.gradient-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.4;
-  animation: float-orb 20s infinite ease-in-out;
-}
+  // Ziel ermitteln
+  const params = new URLSearchParams(location.search);
+  const redirectParam = params.get('redirect');
+  const fromState = (location.state as any)?.from;
+  const from = redirectParam || fromState?.pathname || '/dashboard';
 
-.gradient-orb-1 {
-  width: 600px;
-  height: 600px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  top: -200px;
-  left: -200px;
-  animation-duration: 25s;
-}
+  // Wenn bereits eingeloggt und wir von einer gesch�tzten Seite kamen ? weiter
+  useEffect(() => {
+    // Kein automatischer Redirect ohne echten Session-Check
+    // (Viele Setups hatten hier nur einen Token im LocalStorage - das reicht nicht.)
+  }, []);
 
-.gradient-orb-2 {
-  width: 400px;
-  height: 400px;
-  background: linear-gradient(135deg, #f093fb, #f5576c);
-  bottom: -100px;
-  right: -100px;
-  animation-duration: 20s;
-  animation-delay: -5s;
-}
+  // Hinweis nach E-Mail-Verifizierung
+  useEffect(() => {
+    const p = new URLSearchParams(location.search);
+    if (p.get('verified') === 'true') {
+      setSuccess('?? E-Mail best�tigt! Du kannst dich jetzt einloggen!');
+      setError(null);
+    }
+  }, [location.search]);
 
-.gradient-orb-3 {
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-duration: 30s;
-  animation-delay: -10s;
-}
+  // Sidebar auf Login verstecken
+  useEffect(() => {
+    const sidebar = document.querySelector('.sidebar-container') as HTMLElement | null;
+    const mainView = document.querySelector('.main-view') as HTMLElement | null;
+    const appLayout = document.querySelector('.app-layout') as HTMLElement | null;
 
-@keyframes float-orb {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -30px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-}
+    if (sidebar) sidebar.style.display = 'none';
+    if (mainView) {
+      mainView.style.padding = '0';
+      mainView.style.width = '100vw';
+    }
+    if (appLayout) appLayout.style.display = 'block';
 
-/* Main Login Panel */
-.login-panel {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 32px;
-  padding: 48px 40px;
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.3),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-    0 0 120px rgba(102, 126, 234, 0.1);
-  overflow: hidden;
-}
+    return () => {
+      if (sidebar) sidebar.style.display = '';
+      if (mainView) {
+        mainView.style.padding = '';
+        mainView.style.width = '';
+      }
+      if (appLayout) appLayout.style.display = '';
+    };
+  }, []);
 
-.login-panel::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError(null);
+    setSuccess(null);
+    setLoading(true);
+
+    try {
+      // 1) Login beim Backend (setzt httpOnly-Cookie)
+      await postLogin({ email, password: pwd });
+
+      // 2) Session sofort pr�fen (geht mit Cookie)
+      const s = await getSession();
+
+      if (s?.authenticated) {
+        setSuccess('?? Willkommen zur�ck! Einen Moment...');
+        // (Optional) alten LocalStorage-Token "f�llen", falls andere Teile der App ihn erwarten
+        try { localStorage.setItem('token', 'session'); } catch {}
+
+        // (Optional) globalen Auth-Context informieren
+        if (auth?.login) {
+          try { auth.login('session'); } catch {}
+        }
+
+        setTimeout(() => {
+          navigate(from, { replace: true });
+        }, 500);
+      } else {
+        setError('Anmeldung fehlgeschlagen. Bitte erneut versuchen.');
+        const form = document.querySelector('.login-form');
+        form?.classList.add('shake');
+        setTimeout(() => form?.classList.remove('shake'), 600);
+      }
+    } catch (err: unknown) {
+      setError(err?.message || 'Anmeldung fehlgeschlagen');
+      const form = document.querySelector('.login-form');
+      form?.classList.add('shake');
+      setTimeout(() => form?.classList.remove('shake'), 600);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function resendVerification() {
+    setError(null);
+    setSuccess(null);
+    try {
+      // Wenn du den Endpoint noch nicht hast, kann dieser Button erstmal versteckt werden.
+      const res = await fetch('/api/auth/resend-verification', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ email }),
+        credentials: 'include',
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setSuccess('?? Best�tigungs-E-Mail wurde erneut gesendet!');
+    } catch (err: unknown) {
+      setError(err?.message || 'Fehler beim erneuten Senden');
+    }
+  }
+
+  const floatingVariants = {
+    initial: { y: 0 },
+    animate: {
+      y: [-10, 10, -10],
+      transition: { duration: 6, repeat: Infinity, ease: 'easeInOut' as const }
+    }
+  };
+
+  return (
+    <>
+      <LoginExperience />
+
+      {/* Background Gradient Orbs */}
+      <div className="login-bg-gradient">
+        <div className="gradient-orb gradient-orb-1" />
+        <div className="gradient-orb gradient-orb-2" />
+        <div className="gradient-orb gradient-orb-3" />
+      </div>
+
+      {/* Main Login Container */}
+      <div className="login-container">
+        <motion.div
+          className="login-panel"
+          initial={{ opacity: 0, scale: 0.8, rotateY: -30 }}
+          animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+          transition={{ duration: 1.2, ease: [0.6, -0.05, 0.01, 0.99], delay: 0.5 }}
+        >
+          {/* Logo Section */}
+          <motion.div
+            className="login-logo-section"
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+          >
+            <div className="logo-wrapper">
+              <motion.div
+                className="logo-icon"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+              >
+                <LiveIcon />
+              </motion.div>
+              <h1 className="logo-text">
+                CLiP <span className="gradient-text">BOOsT</span>
+              </h1>
+            </div>
+
+            {/* Animated Tagline */}
+            <motion.div
+              className="tagline-container"
+              variants={floatingVariants}
+              initial="initial"
+              animate="animate"
+            >
+              <p className="tagline">
+                <span className="tag-icon"><StreamIcon /></span>
+                Your Next Level Streaming Experience
+                <span className="tag-icon"><RocketIcon /></span>
+              </p>
+            </motion.div>
+          </motion.div>
+
+          {/* Form Section */}
+          <form onSubmit={onSubmit} className="login-form">
+            <AnimatePresence mode="wait">
+              {loading && (
+                <motion.div
+                  className="loading-overlay"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <div className="loading-spinner" />
+                  <p>Bereite deinen Stream vor...</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Status Messages */}
+            <AnimatePresence>
+              {error && (
+                <motion.div
+                  className="message error-message"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                >
+                  <span className="message-icon">??</span>
+                  {error}
+                </motion.div>
+              )}
+              {success && (
+                <motion.div
+                  className="message success-message"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                >
+                  {success}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Email Field */}
+            <motion.div
+              className={`input-group ${focusedField === 'email' ? 'focused' : ''}`}
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1.0, duration: 0.6 }}
+            >
+              <label htmlFor="email" className="input-label">
+                <span className="label-icon">??</span>
+                E-Mail Adresse
+              </label>
+              <div className="input-wrapper">
+                <input
+                  id="email"
+                  type="email"
+                  className="input-field"
+                  placeholder="streamer@clipboost.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onFocus={() => setFocusedField('email')}
+                  onBlur={() => setFocusedField(null)}
+                  required
+                  disabled={loading}
+                />
+                <div className="input-glow" />
+              </div>
+            </motion.div>
+
+            {/* Password Field */}
+            <motion.div
+              className={`input-group ${focusedField === 'password' ? 'focused' : ''}`}
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1.1, duration: 0.6 }}
+            >
+              <label htmlFor="password" className="input-label">
+                <span className="label-icon">??</span>
+                Passwort
+              </label>
+              <div className="input-wrapper">
+                <input
+                  id="password"
+                  type={showPassword ? 'Hide' : 'Show'}
+                  className="input-field"
+                  placeholder="........"
+                  value={pwd}
+                  onChange={(e) => setPwd(e.target.value)}
+                  onFocus={() => setFocusedField('password')}
+                  onBlur={() => setFocusedField(null)}
+                  required
+                  disabled={loading}
+                />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => setShowPassword(!showPassword)}
+                  tabIndex={-1}
+                >
+                  {showPassword ? 'Hide' : 'Show'}
+                </button>
+                <div className="input-glow" />
+              </div>
+            </motion.div>
+
+            {/* Submit Button */}
+            <motion.button
+              className={`submit-button ${isHovering ? 'hovering' : ''}`}
+              type="submit"
+              disabled={loading}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            >
+              <span className="button-content">
+                {loading ? (
+                  <>
+                    <div className="mini-spinner" />
+                    Verbinde...
+                  </>
+                ) : (
+                  <>
+                    <span className="button-icon">??</span>
+                    Go Live!
+                    <span className="button-arrow">?</span>
+                  </>
+                )}
+              </span>
+              <div className="button-glow" />
+            </motion.button>
+
+            {/* Resend Verification */}
+            {error?.toLowerCase().includes('best�tige') && (
+              <motion.div
+                className="resend-section"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                <button
+                  type="button"
+                  className="resend-button"
+                  onClick={resendVerification}
+                >
+                  ?? Best�tigungs-E-Mail erneut senden
+                </button>
+              </motion.div>
+            )}
+          </form>
+
+          {/* Footer Links */}
+          <motion.div
+            className="login-footer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.4, duration: 0.6 }}
+          >
+            <div className="footer-divider">
+              <span>Neu bei CLiP BOOsT?</span>
+            </div>
+
+            <Link to="/register" className="register-link">
+              <span>Jetzt Account erstellen</span>
+              <span className="link-arrow">?</span>
+            </Link>
+
+            <div className="social-login-hint">
+              <p>Bald verf�gbar:</p>
+              <div className="social-icons">
+                <span className="social-icon tiktok">TikTok</span>
+                <span className="social-icon spotify">Spotify</span>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Floating Elements */}
+        <div className="floating-elements">
+          <motion.div
+            className="float-element float-1"
+            animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            LIVE
+          </motion.div>
+          <motion.div
+            className="float-element float-2"
+            animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+          >
+            PRO
+          </motion.div>
+          <motion.div
+            className="float-element float-3"
+            animate={{ y: [0, -15, 0], x: [0, 10, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+          >
+            ??
+          </motion.div>
+        </div>
+      </div>
+    </>
   );
-  animation: shimmer 3s infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-/* Logo Section */
-.login-logo-section {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.logo-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.logo-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  border-radius: 12px;
-  color: white;
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
-}
-
-.logo-text {
-  font-size: 36px;
-  font-weight: 900;
-  color: white;
-  letter-spacing: -1px;
-  margin: 0;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 3s ease infinite;
-}
-
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* Tagline */
-.tagline-container {
-  margin-bottom: 32px;
-}
-
-.tagline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-.tag-icon {
-  display: inline-flex;
-  color: rgba(255, 255, 255, 0.5);
-  animation: pulse-icon 2s infinite;
-}
-
-@keyframes pulse-icon {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
-/* Form Styles */
-.login-form {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* Loading Overlay */
-.loading-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(4px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  border-radius: 16px;
-  z-index: 100;
-}
-
-.loading-spinner {
-  width: 48px;
-  height: 48px;
-  border: 3px solid rgba(255, 255, 255, 0.1);
-  border-top-color: #667eea;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-.loading-overlay p {
-  color: white;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* Messages */
-.message {
-  padding: 12px 16px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  animation: slide-in 0.3s ease;
-}
-
-@keyframes slide-in {
-  from {
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.error-message {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  color: #f87171;
-}
-
-.success-message {
-  background: rgba(34, 197, 94, 0.1);
-  border: 1px solid rgba(34, 197, 94, 0.2);
-  color: #4ade80;
-}
-
-.message-icon {
-  font-size: 18px;
-}
-
-/* Input Groups */
-.input-group {
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.input-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.label-icon {
-  font-size: 16px;
-}
-
-.input-wrapper {
-  position: relative;
-}
-
-.input-field {
-  width: 100%;
-  padding: 14px 16px;
-  padding-right: 50px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  outline: none;
-}
-
-.input-field::placeholder {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.input-field:focus {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: #667eea;
-  box-shadow: 
-    0 0 0 4px rgba(102, 126, 234, 0.1),
-    0 8px 24px rgba(102, 126, 234, 0.2);
-}
-
-.input-field:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Input Glow Effect */
-.input-glow {
-  position: absolute;
-  inset: -1px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.input-group.focused .input-glow {
-  opacity: 0.3;
-  filter: blur(8px);
-}
-
-/* Password Toggle */
-.password-toggle {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 20px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  padding: 4px;
-}
-
-.password-toggle:hover {
-  color: rgba(255, 255, 255, 0.8);
-  transform: translateY(-50%) scale(1.1);
-}
-
-/* Submit Button */
-.submit-button {
-  position: relative;
-  padding: 16px 24px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  border: none;
-  border-radius: 16px;
-  color: white;
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  margin-top: 8px;
-}
-
-.submit-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transition: left 0.5s ease;
-}
-
-.submit-button:hover::before {
-  left: 100%;
-}
-
-.submit-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 10px 30px rgba(102, 126, 234, 0.4),
-    0 0 60px rgba(102, 126, 234, 0.2);
-}
-
-.submit-button:active {
-  transform: translateY(0);
-}
-
-.submit-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none !important;
-}
-
-.button-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  position: relative;
-  z-index: 1;
-}
-
-.button-icon {
-  font-size: 20px;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-
-.button-arrow {
-  transition: transform 0.3s ease;
-}
-
-.submit-button:hover .button-arrow {
-  transform: translateX(4px);
-}
-
-.button-glow {
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  background: radial-gradient(circle at center, 
-    rgba(102, 126, 234, 0.3),
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.submit-button.hovering .button-glow {
-  opacity: 1;
-  animation: pulse-glow 1.5s ease infinite;
-}
-
-@keyframes pulse-glow {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.05); opacity: 1; }
-}
-
-.mini-spinner {
-  width: 16px;
-  height: 16px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: white;
-  border-radius: 50%;
-  animation: spin 0.6s linear infinite;
-}
-
-/* Resend Section */
-.resend-section {
-  text-align: center;
-  margin-top: 12px;
-}
-
-.resend-button {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.8);
-  padding: 10px 20px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.resend-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #667eea;
-  color: white;
-  transform: translateY(-2px);
-}
-
-/* Footer */
-.login-footer {
-  margin-top: 32px;
-  text-align: center;
-}
-
-.footer-divider {
-  position: relative;
-  margin: 24px 0;
-  text-align: center;
-}
-
-.footer-divider span {
-  position: relative;
-  display: inline-block;
-  padding: 0 16px;
-  background: rgba(0, 0, 0, 0.5);
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 13px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.footer-divider::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  z-index: -1;
-}
-
-.register-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.register-link:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #667eea;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
-}
-
-.link-arrow {
-  transition: transform 0.3s ease;
-}
-
-.register-link:hover .link-arrow {
-  transform: translateX(4px);
-}
-
-/* Social Login Hint */
-.social-login-hint {
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.social-login-hint p {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 12px;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.social-icon {
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.3);
-  cursor: not-allowed;
-}
-
-.social-icon.tiktok {
-  background: linear-gradient(135deg, 
-    rgba(255, 0, 80, 0.1),
-    rgba(0, 242, 234, 0.1)
-  );
-}
-
-.social-icon.spotify {
-  background: rgba(30, 215, 96, 0.1);
-}
-
-/* Floating Elements */
-.floating-elements {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 5;
-}
-
-.float-element {
-  position: absolute;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 24px;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 700;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.float-1 {
-  top: 15%;
-  left: 10%;
-}
-
-.float-2 {
-  bottom: 20%;
-  right: 8%;
-}
-
-.float-3 {
-  top: 60%;
-  right: 15%;
-  font-size: 24px;
-  background: none;
-  border: none;
-}
-
-/* Shake Animation for Errors */
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-  20%, 40%, 60%, 80% { transform: translateX(10px); }
-}
-
-.shake {
-  animation: shake 0.6s ease;
-}
-
-/* Responsive Design */
-@media (max-width: 640px) {
-  .login-panel {
-    padding: 32px 24px;
-    border-radius: 24px;
-  }
-
-  .logo-text {
-    font-size: 28px;
-  }
-
-  .tagline {
-    font-size: 12px;
-  }
-
-  .floating-elements {
-    display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
 }
