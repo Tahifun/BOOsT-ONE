@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '@contexts/AuthContext';
-import { useSubscription } from '@contexts/SubscriptionContext';
+import { useAuth } from '../../contexts/AuthContext';
+import { useSubscription } from '../../contexts/SubscriptionContext';
 import './Header.css';
 
 interface HeaderProps {
@@ -29,15 +29,15 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
     else setGlowIntensity(1);
   }, []);
 
-  // Debounced Search + Demo-Vorschläge
+  // Debounced Search + Demo-Vorschlge
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchQuery.trim().length > 2) {
         setSearchSuggestions([
-          `${searchQuery} �?" Videos`,
-          `${searchQuery} �?" Clips`,
-          `${searchQuery} �?" Screenshots`,
-          `${searchQuery} �?" Sounds`,
+          `${searchQuery}  Videos`,
+          `${searchQuery}  Clips`,
+          `${searchQuery}  Screenshots`,
+          `${searchQuery}  Sounds`,
         ]);
         setShowSuggestions(true);
       } else {
@@ -55,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
     if (onSearch) {
       onSearch(q);
     } else {
-      // Fallback: navigiert zur Media-Seite und übergibt die Suche als Query
+      // Fallback: navigiert zur Media-Seite und bergibt die Suche als Query
       const url = q ? `/media?query=${encodeURIComponent(q)}&tab=gallery` : '/media';
       navigate(url);
     }
@@ -109,7 +109,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
           </h1>
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <span>Home</span>
-            <span className="breadcrumb-separator">�?�</span>
+            <span className="breadcrumb-separator"></span>
             <span>Media</span>
           </nav>
         </div>
@@ -117,7 +117,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
         {/* Global Search */}
         <div className={`header-search ${isSearchFocused ? 'focused' : ''}`}>
           <div className="search-container">
-            <span className="search-icon" aria-hidden="true">�Y"�</span>
+            <span className="search-icon" aria-hidden="true"></span>
             <input
               type="search"
               className="search-input"
@@ -136,7 +136,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
               aria-autocomplete="list"
             />
             <span id="search-hint" className="sr-only">
-              Drücke Enter zum Suchen oder nutze die Vorschläge.
+              Drcke Enter zum Suchen oder nutze die Vorschlge.
             </span>
 
             {showSuggestions && (
@@ -150,7 +150,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
                     aria-selected={false}
                     type="button"
                   >
-                    <span className="suggestion-icon">�Y"Z</span>
+                    <span className="suggestion-icon"></span>
                     <span className="suggestion-text">{suggestion}</span>
                   </button>
                 ))}
@@ -170,7 +170,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
               title="Upload starten (Ctrl+U)"
               type="button"
             >
-              <span className="action-icon">�?️</span>
+              <span className="action-icon">?</span>
             </button>
             <button
               className="quick-action-btn"
@@ -179,7 +179,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
               title="Zur Galerie (Ctrl+G)"
               type="button"
             >
-              <span className="action-icon">�YZ�</span>
+              <span className="action-icon"></span>
             </button>
             <button
               className="quick-action-btn"
@@ -188,7 +188,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
               title="Statistiken anzeigen"
               type="button"
             >
-              <span className="action-icon">�Y"S</span>
+              <span className="action-icon"></span>
             </button>
           </div>
 
@@ -198,14 +198,14 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, className = '' }) => {
               {user?.avatar ? (
                 <img src={user.avatar} alt={user.name ?? 'Avatar'} />
               ) : (
-                <span className="avatar-placeholder" aria-hidden="true">�Y'�</span>
+                <span className="avatar-placeholder" aria-hidden="true"></span>
               )}
             </div>
             <div className="user-info">
               <span className="user-name">{user?.name || 'Creator'}</span>
               {tier === 'PRO' ? (
                 <span className="pro-badge" aria-label="PRO-Status">
-                  <span className="pro-star" aria-hidden="true">�o�</span>
+                  <span className="pro-star" aria-hidden="true"></span>
                   <span className="pro-text">PRO</span>
                 </span>
               ) : (
