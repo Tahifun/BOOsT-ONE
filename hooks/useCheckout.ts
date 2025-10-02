@@ -17,7 +17,7 @@ type UseCheckoutReturn = {
  * useCheckout  kapselt Checkout (PRO/DayPass) + Billing-Portal-Redirect
  * - Nutzt /api/subscription/checkout (POST { plan })
  * - Nutzt /api/billing/create-portal-session (POST)
- * - Optionaler Bearer-Token f�r Header (bis Cookie-Flow final ist)
+ * - Optionaler Bearer-Token fr Header (bis Cookie-Flow final ist)
  */
 export function useCheckout(token?: string): UseCheckoutReturn {
   const [loading, setLoading] = useState<Plan | null>(null);
