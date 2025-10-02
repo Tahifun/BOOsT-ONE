@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 /**
- * Stream Analytics - robuste, lokal speicherbare Analytics f�r den Livestream.
+ * Stream Analytics - robuste, lokal speicherbare Analytics fr den Livestream.
  * Wichtige Fixes:
  * - String-Datumswerte aus localStorage werden mit `toTime()` sicher behandelt.
- * - cleanupOldData() filtert ausschlie�lich via `toTime(...)`, nie via `.getTime()` auf Strings.
+ * - cleanupOldData() filtert ausschlielich via `toTime(...)`, nie via `.getTime()` auf Strings.
  * - Public API/Export-Namen bleiben erhalten (trackStreamStart/End, trackViewerInteraction, trackThemeSwitch,
  *   trackPerformanceMetric, generateStreamReport, exportAnalyticsData, clearAnalyticsData, useStreamAnalytics, streamAnalytics).
  */
@@ -144,7 +144,7 @@ class StreamAnalytics {
     }
   }
 
-  // ------------------- �ffentliche API -------------------
+  // ------------------- ffentliche API -------------------
 
   public trackStreamStart(payload: {
     streamId: string;
@@ -199,7 +199,7 @@ class StreamAnalytics {
       metadata: payload?.reason ? { reason: payload.reason } : undefined,
     });
 
-    // Sessions zur�ckschreiben
+    // Sessions zurckschreiben
     const sessions = this.readJSON<StreamSession[]>("epicstream_sessions", []);
     const idx = sessions.findIndex(
       (s) => s.sessionId === this.currentSession!.sessionId
@@ -237,7 +237,7 @@ class StreamAnalytics {
     switches.push(entry);
     this.writeJSON("epicstream_theme_switches", switches);
 
-    // Auch als allgemeines Ereignis f�hren
+    // Auch als allgemeines Ereignis fhren
     this.addEvent({
       id: "evt_" + Math.random().toString(36).slice(2),
       type: "resume",
@@ -254,7 +254,7 @@ class StreamAnalytics {
     };
     if (this.currentSession) {
       this.currentSession.performance.push(data);
-      // Qualit�t grob nachf�hren (Durchschnittswerte)
+      // Qualitt grob nachfhren (Durchschnittswerte)
       this.recomputeQuality();
     }
     this.eventQueue.push(data);
@@ -319,7 +319,7 @@ class StreamAnalytics {
   }
 
   private appendEventToDailyLog(bucket: "events" | "interactions" | "performance", payload: unknown) {
-    const key = "epicstream_events_" + new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+    const key = "epicstream_events_" + new Date().toISOString().slice(0, 10); // YYYMM-DD
     const day = this.readJSON<{ events: unknown[]; interactions: unknown[]; performance: unknown[] }>(key, {
       events: [],
       interactions: [],
@@ -431,7 +431,7 @@ export function useStreamAnalytics() {
   useEffect(() => {
     // Session-Ref poll (optional)
     const id = window.setInterval(() => {
-      // Hier k�nnten wir die aktuelle Session aus storage neu lesen, falls n�tig
+      // Hier knnten wir die aktuelle Session aus storage neu lesen, falls ntig
       setCurrentSession((prev) => prev ?? null);
     }, 5000);
     return () => window.clearInterval(id);
