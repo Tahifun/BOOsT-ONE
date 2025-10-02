@@ -1,5 +1,5 @@
 // backend/middleware/requireTier.ts
-// -> Vereinheitlicht Tiers (unterst�tzt 'free/pro/enterprise' und 'FREE/PRO/ENTERPRISE')
+// -> Vereinheitlicht Tiers (untersttzt 'free/pro/enterprise' und 'FREE/PRO/ENTERPRISE')
 //    und nutzt die Auth-Types aus ./auth
 
 import type { Response, NextFunction, RequestHandler } from "express";
@@ -31,7 +31,7 @@ export function requireTier(required: AnyTier | AnyTier[]): RequestHandler {
     if (!userTier) return res.status(403).json({ message: "Zugriff verweigert (kein Tier gesetzt)" });
 
     if (allowed.has(userTier)) return next();
-    return res.status(403).json({ message: "Dieses Feature ist f�r dein Tier nicht freigeschaltet" });
+    return res.status(403).json({ message: "Dieses Feature ist fr dein Tier nicht freigeschaltet" });
   };
 }
 
