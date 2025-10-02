@@ -15,7 +15,7 @@ type Track = {
 
 type TrackState =
   | { isPlaying: false }
-  | { isPlaying: true; track: Track | null }; // <- track darf null sein (Backend-Realität)
+  | { isPlaying: true; track: Track | null }; // <- track darf null sein (Backend-Realitt)
 
 const POLL_MS = 15000;
 
@@ -77,7 +77,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
         const res = await getNowPlaying(); // darf null liefern
         if (!mounted) return;
 
-        // null/kaputter Response �?' �?znichts läuft�?o
+        // null/kaputter Response  nichts luft
         setData(res ? normalize(res) : { isPlaying: false });
         setErr(null);
       } catch (e: unknown) {
@@ -101,7 +101,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
   return (
     <div className={`spotify-now-card${loading ? " is-loading" : ""}`} aria-live="polite">
       <div className="sp-header">
-        <div className="sp-badge" aria-hidden title="Spotify">�-�</div>
+        <div className="sp-badge" aria-hidden title="Spotify"></div>
         <h3 style={{ margin: 0, fontWeight: 600 }}>Now Playing</h3>
       </div>
 
@@ -128,7 +128,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
               onError={(e) => ((e.currentTarget as HTMLImageElement).style.display = "none")}
             />
           ) : (
-            <div className="np-cover np-cover--placeholder">�YZ�</div>
+            <div className="np-cover np-cover--placeholder"></div>
           )}
 
           <div style={{ minWidth: 0, width: "100%" }}>
@@ -137,7 +137,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
             </div>
             <div className="np-artist" title={data.track.artist || ""}>
               {(data.track.artist || "Unbekannter Artist") +
-                (data.track.album ? ` �?" ${data.track.album}` : "")}
+                (data.track.album ? `  ${data.track.album}` : "")}
             </div>
 
             <div className="np-progress" aria-label="Fortschritt">
@@ -146,7 +146,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
 
             {data.track.trackUrl && (
               <a href={data.track.trackUrl} target="_blank" rel="noreferrer" className="sp-link">
-                In Spotify öffnen �?-
+                In Spotify ffnen 
               </a>
             )}
           </div>
@@ -154,7 +154,7 @@ const SpotifyNowPlayingCard: React.FC = () => {
       )}
 
       {!loading && !err && !hasTrack(data) && (
-        <div className="sp-muted">Es läuft gerade nichts.</div>
+        <div className="sp-muted">Es luft gerade nichts.</div>
       )}
     </div>
   );
