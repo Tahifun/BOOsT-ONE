@@ -1,6 +1,6 @@
 import logger from '../utils/logger.js'
 ?// backend/services/twitchBotService.ts
-// -> Aufger�umt: sichere Flow-Ladung, keine null-Zuweisungen, saubere Emojis, defensives Handling.
+// -> Aufgerumt: sichere Flow-Ladung, keine null-Zuweisungen, saubere Emojis, defensives Handling.
 
 import QuantumFlow, { type IQuantumFlow } from "../models/QuantumFlow.js";
 
@@ -159,7 +159,7 @@ class TwitchBotService {
   }
 
   private async handleQuantumIntegrationOutput(output: unknown, _context: unknown) {
-    // Platzhalter - hier w�rdest du Integrationen (Webhooks, DB, etc.) anschlie�en
+    // Platzhalter - hier wrdest du Integrationen (Webhooks, DB, etc.) anschlieen
     logger.debug("Quantum integration executed:", output);
   }
 
@@ -217,7 +217,7 @@ class TwitchBotService {
     return { success: true, message: "Plasma field activated" };
   }
 
-  // �ffentliche Message-API (z. B. vom IRC-Client aufzurufen)
+  // ffentliche Message-API (z. B. vom IRC-Client aufzurufen)
   public async handleMessage(channel: string, tags: unknown, message: string, self: boolean) {
     return this.onMessage(channel, tags, message, self);
   }
@@ -258,7 +258,7 @@ class TwitchBotService {
     return { connected: !!this.client, channels: [], uptime: 0 };
   }
 
-  // Platzhalter-Engine: hier w�rdest du die Nodes/Edges deines Flows ausf�hren
+  // Platzhalter-Engine: hier wrdest du die Nodes/Edges deines Flows ausfhren
   private async executeFlow(flow: IQuantumFlow, ctx: unknown) {
     return {
       success: true,
@@ -274,7 +274,7 @@ class TwitchBotService {
     };
   }
 
-  // Platzhalter f�r klassische Bot-Features
+  // Platzhalter fr klassische Bot-Features
   private async updateAutoModeration(_args: unknown) { void _args; return { success: true, message: "Auto moderation updated" }; }
   private async updateWelcomeMessages(_args: unknown) { void _args; return { success: true, message: "Welcome messages updated" }; }
   private async updateTimerMessages(_args: unknown) { void _args; return { success: true, message: "Timer messages updated" }; }
