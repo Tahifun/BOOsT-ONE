@@ -1,9 +1,7 @@
-import React, { useEffect, useMemo, useRef, useState, lazy, Suspense } from "react";
+import React, { useEffect, useMemo, useState, Suspense } from "react";
 import "../styles/media-center.css";
 
-/** 
- *  Tabs
- *   */
+/* Tabs */
 type TabKey =
   | "dashboard"
   | "upload"
@@ -29,27 +27,22 @@ const TABS: { key: TabKey; icon: string; title: string }[] = [
   { key: "ai", icon: "", title: "AI Assistant" },
 ];
 
-/** 
- *  Lazy geladene Container-Komponenten aus deinem Projekt
- *  (Pfad: src/components/media/**)
- *   */
-const MediaUpload = lazy(() => import('../components/media/MediaUpload'));
-const MediaGallery = lazy(() => import('../components/media/MediaGallery'));
-const ClipManager = lazy(() => import('../components/media/ClipManager'));
-const ScreenshotManager = lazy(() => import('../components/media/ScreenshotManager'));
-const SoundboardManager = lazy(() => import('../components/media/SoundboardManager'));
-const OverlayTemplateManager = lazy(() => import('../components/media/OverlayTemplateManager'));
-const MediaExportTools = lazy(() => import('../components/media/MediaExportTools'));
-const MediaImpactStats = lazy(() => import('../components/media/MediaImpactStats'));
-const AIHighlightSuggestions = lazy(() => import('../components/media/AIHighlightSuggestions'));
-// dedizierte AI-Hub-Ansicht
-const AIAssistant = lazy(() => import('../components/media/ai/AIAssistant'));
+/* >>> Adapter statt direkter Imports (fix fr strenge Props) */
+import {
+  LazyMediaUpload as MediaUpload,
+  LazyMediaGallery as MediaGallery,
+  LazyClipManager as ClipManager,
+  LazyScreenshotManager as ScreenshotManager,
+  LazySoundboardManager as SoundboardManager,
+  LazyOverlayTemplateManager as OverlayTemplateManager,
+  LazyMediaExportTools as MediaExportTools,
+  LazyMediaImpactStats as MediaImpactStats,
+  LazyAIHighlightSuggestions as AIHighlightSuggestions,
+  LazyAIAssistant as AIAssistant,
+} from '../components/media/adapters';
 
 type NoticeType = "success" | "error";
 
-/** 
- *  Seite
- *   */
 const MediaCenterPage: React.FC = () => {
   const [active, setActive] = useState<TabKey>("dashboard");
   const [search, setSearch] = useState("");
@@ -59,7 +52,7 @@ const MediaCenterPage: React.FC = () => {
     type: "success",
   });
 
-  // Partikel fr Hintergrund (rein visuell)
+  /* Partikel fr Hintergrund (visuell) */
   const particles = useMemo(
     () =>
       Array.from({ length: 50 }, () => ({
@@ -70,7 +63,7 @@ const MediaCenterPage: React.FC = () => {
     []
   );
 
-  // Sanfte Tageszeit-Anpassung (Lokaler Scope)
+  /* Tageszeit-Feintuning */
   useEffect(() => {
     const hour = new Date().getHours();
     const root = document.querySelector<HTMLElement>(".mc-root");
@@ -79,7 +72,7 @@ const MediaCenterPage: React.FC = () => {
     if (hour >= 18 || hour < 6) root.style.setProperty("--darker", "#000000");
   }, []);
 
-  // Shortcuts (/Ctrl+U = Upload, /Ctrl+G = Galerie, ESC = Hinweis ausblenden)
+  /* Shortcuts */
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const mod = e.ctrlKey || e.metaKey;
@@ -104,7 +97,7 @@ const MediaCenterPage: React.FC = () => {
     window.setTimeout(() => setNotice((n) => ({ ...n, show: false })), 3000);
   };
 
-  // simple Spinner fr Suspense
+  /* Suspense-Spinner */
   const Spinner = () => <div className="mc-spinner" aria-hidden />;
 
   return (
@@ -271,12 +264,20 @@ const MediaCenterPage: React.FC = () => {
       </div>
 
       {/* Floating Action Button */}
-      <button className="mc-fab" onClick={() => setNotice({ show: true, msg: " Quick Action Menu geffnet", type: "success" })} aria-label="Schnellaktion">
+      <button
+        className="mc-fab"
+        onClick={() => setNotice({ show: true, msg: " Quick Action Menu geffnet", type: "success" })}
+        aria-label="Schnellaktion"
+      >
         +
       </button>
 
       {/* Notification */}
-      <div className={`mc-notice mc-notice--${notice.type} ${notice.show ? "is-shown" : ""}`} role="status" aria-live="polite">
+      <div
+        className={`mc-notice mc-notice--${notice.type} ${notice.show ? "is-shown" : ""}`}
+        role="status"
+        aria-live="polite"
+      >
         <h4 className="mc-notice__title">{notice.type === "success" ? " Erfolg!" : "? Hinweis"}</h4>
         <p className="mc-notice__text">{notice.msg}</p>
       </div>
