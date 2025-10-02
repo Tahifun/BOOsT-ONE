@@ -23,7 +23,7 @@ class LiveHub {
     if (type === "status") {
       c.status = data as StreamStatus;
     }
-    // weitere Typen k�nnten hier verarbeitet werden
+    // weitere Typen knnten hier verarbeitet werden
   }
 
   snapshot(creatorId: string) {
