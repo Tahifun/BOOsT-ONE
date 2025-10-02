@@ -25,7 +25,7 @@ export interface MediaUploadResponse {
   };
 }
 
-/** Fehlerobjekt (axios-ähnlich) */
+/** Fehlerobjekt (axios-hnlich) */
 export class HttpError extends Error {
   status: number;
   data: unknown;
@@ -150,13 +150,13 @@ export async function fetchMedia(params?: { type?: MediaType; q?: string }) {
 }
 
 /**
- * Löschen
+ * Lschen
  */
 export async function deleteMedia(id: string) {
   const res = await doRequest(`/media/${encodeURIComponent(id)}`, { method: "DELETE" });
   const data = await safeJson(res);
   if (!res.ok) {
-    throw new HttpError(res.status, data, data?.message || "Löschen fehlgeschlagen.");
+    throw new HttpError(res.status, data, data?.message || "Lschen fehlgeschlagen.");
   }
   return data;
 }
@@ -177,7 +177,7 @@ export async function createMedia(media: Partial<MediaUploadResponse["item"]>) {
 }
 
 /**
- * Fehler-Mapping für UI
+ * Fehler-Mapping fr UI
  */
 export function mapUploadError(err: unknown): string {
   if (!(err instanceof HttpError)) return "Unbekannter Fehler beim Upload.";
@@ -190,22 +190,22 @@ export function mapUploadError(err: unknown): string {
   if (status === 413 || code === "PAYLOAD_TOO_LARGE") {
     const limit = data?.limitMB ?? data?.maxMB;
     return limit
-      ? `Datei zu gro�Y (Limit ${limit} MB).`
-      : "Datei zu gro�Y für den Server.";
+      ? `Datei zu gro (Limit ${limit} MB).`
+      : "Datei zu gro fr den Server.";
   }
   if (status === 415 || code === "unsupported_type") {
     const allowed = Array.isArray(data?.allowed) ? data.allowed.join(", ") : "dieses Format";
-    return `Der Dateityp wird nicht unterstützt (${allowed}).`;
+    return `Der Dateityp wird nicht untersttzt (${allowed}).`;
   }
   if (status === 400) {
-    return data?.message || "Ungültige Eingaben für den Upload.";
+    return data?.message || "Ungltige Eingaben fr den Upload.";
   }
   if (status === 429) {
-    return "Zu viele Anfragen. Bitte später erneut versuchen.";
+    return "Zu viele Anfragen. Bitte spter erneut versuchen.";
   }
   if (status === 401) return "Nicht angemeldet. Bitte erneut einloggen.";
-  if (status === 403) return "Keine Berechtigung für diese Aktion.";
-  if (status >= 500) return "Serverfehler beim Upload. Bitte später erneut versuchen.";
+  if (status === 403) return "Keine Berechtigung fr diese Aktion.";
+  if (status >= 500) return "Serverfehler beim Upload. Bitte spter erneut versuchen.";
 
   return (err as any)?.message || "Unbekannter Fehler beim Upload.";
 }
