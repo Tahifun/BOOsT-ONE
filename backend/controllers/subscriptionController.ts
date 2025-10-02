@@ -6,7 +6,7 @@ import SubscriptionState from "../models/SubscriptionState.js";
 
 /**
  * GET /api/subscription/plans
- * Gibt die �ffentlich nutzbaren Plan-Infos zur�ck (aus ENV).
+ * Gibt die ffentlich nutzbaren Plan-Infos zurck (aus ENV).
  */
 export const listPublicPlans = async (_req: Request, res: Response) => {
   return res.json({
