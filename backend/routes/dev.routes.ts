@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
     const JWT_SECRET = process.env.JWT_SECRET || "";
     if (!JWT_SECRET) return res.status(500).json({ ok: false, error: "JWT_SECRET not set" });
 
-    const sub = (req.body?.sub as string) || crypto.randomBytes(12).toString("hex"); // g�ltige 24-hex ObjectId-Form
+    const sub = (req.body?.sub as string) || crypto.randomBytes(12).toString("hex"); // gltige 24-hex ObjectId-Form
     const email = (req.body?.email as string) || "dev@example.com";
     const tier = (req.body?.tier as string) || "free";
 
@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === "production") {
 
   /**
    * GET /api/dev/whoami
-   * Bearer-Token mitschicken  gibt decoded user zur�ck
+   * Bearer-Token mitschicken  gibt decoded user zurck
    */
   router.get("/dev/whoami", requireAuth, (req, res) => {
     return res.json({ ok: true, user: (req as any).user || null });
