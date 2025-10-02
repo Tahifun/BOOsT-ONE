@@ -229,7 +229,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
         return (
           <div className="preview-audio">
             <div className="audio-visualization">
-              <span className="audio-icon">�YZ�</span>
+              <span className="audio-icon"></span>
               {isPlaying && (
                 <div className="audio-waves">
                   <span className="wave wave-1" />
@@ -253,7 +253,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
       default:
         return (
           <div className="preview-placeholder">
-            <span className="placeholder-icon">�Y""</span>
+            <span className="placeholder-icon"></span>
             <p>{item.name}</p>
           </div>
         );
@@ -268,7 +268,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
-        aria-label={`Vorschau für ${item.name}`}
+        aria-label={`Vorschau fr ${item.name}`}
       >
         {/* Header */}
         <div className={`preview-header ${!showInfo ? 'hidden' : ''}`}>
@@ -280,15 +280,15 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
               aria-label="Aktionen"
               type="button"
             >
-              �<�
+              
             </button>
             <button
               className="header-action close"
               onClick={onClose}
-              aria-label="Schlie�Yen"
+              aria-label="Schlieen"
               type="button"
             >
-              �o-️
+              ?
             </button>
           </div>
         </div>
@@ -298,22 +298,22 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
           <div className="preview-actions-menu">
             {onEdit && (
               <button onClick={() => onEdit(item)} type="button">
-                <span>�o�️</span> Bearbeiten
+                <span>?</span> Bearbeiten
               </button>
             )}
             {onDownload && (
               <button onClick={() => onDownload(item)} type="button">
-                <span>�?️</span> Download
+                <span>?</span> Download
               </button>
             )}
             {onShare && (
               <button onClick={() => onShare(item)} type="button">
-                <span>�Y"-</span> Teilen
+                <span></span> Teilen
               </button>
             )}
             {onDelete && (
               <button onClick={() => onDelete(item)} className="danger" type="button">
-                <span>�Y-'️</span> Löschen
+                <span>?</span> Lschen
               </button>
             )}
           </div>
@@ -334,17 +334,17 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
                 aria-label="Vorheriges"
                 type="button"
               >
-                <span>�?�</span>
+                <span></span>
               </button>
             )}
             {hasNext && (
               <button
                 className="preview-nav next"
                 onClick={onNext}
-                aria-label="Nächstes"
+                aria-label="Nchstes"
                 type="button"
               >
-                <span>�?�</span>
+                <span></span>
               </button>
             )}
           </>
@@ -361,7 +361,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
                 aria-label={isPlaying ? 'Pause' : 'Play'}
                 type="button"
               >
-                {isPlaying ? '⏸️' : '�-�️'}
+                {isPlaying ? '??' : '?'}
               </button>
             </div>
           )}
@@ -376,14 +376,14 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
                 aria-label="Verkleinern"
                 type="button"
               >
-                <span>�^'</span>
+                <span></span>
               </button>
               <span className="zoom-level">{Math.round(zoomLevel * 100)}%</span>
               <button
                 className="control-btn"
                 onClick={handleZoomIn}
                 disabled={zoomLevel >= 3}
-                aria-label="Vergrö�Yern"
+                aria-label="Vergrern"
                 type="button"
               >
                 <span>+</span>
@@ -392,10 +392,10 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
                 className="control-btn"
                 onClick={resetZoom}
                 disabled={zoomLevel === 1}
-                aria-label="Zurücksetzen"
+                aria-label="Zurcksetzen"
                 type="button"
               >
-                <span>�Y�</span>
+                <span></span>
               </button>
             </div>
           )}
@@ -408,7 +408,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
               aria-label={showInfo ? 'Info ausblenden' : 'Info anzeigen'}
               type="button"
             >
-              <span>�"�️</span>
+              <span>?</span>
             </button>
             <button
               className="control-btn"
@@ -416,7 +416,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
               aria-label={isFullscreen ? 'Vollbild verlassen' : 'Vollbild'}
               type="button"
             >
-              <span>{isFullscreen ? '�S�' : '�Sz'}</span>
+              <span>{isFullscreen ? '' : ''}</span>
             </button>
           </div>
         </div>
@@ -433,13 +433,13 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
                 <dt>Typ:</dt>
                 <dd>{item.type}</dd>
                 
-                <dt>Grö�Ye:</dt>
+                <dt>Gre:</dt>
                 <dd>{formatFileSize(item.size)}</dd>
                 
                 {item.dimensions && (
                   <>
                     <dt>Abmessungen:</dt>
-                    <dd>{item.dimensions.width} �- {item.dimensions.height}</dd>
+                    <dd>{item.dimensions.width}  {item.dimensions.height}</dd>
                   </>
                 )}
                 
@@ -453,7 +453,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
                 <dt>Erstellt:</dt>
                 <dd>{formatDate(item.createdAt)}</dd>
                 
-                <dt>Geändert:</dt>
+                <dt>Gendert:</dt>
                 <dd>{formatDate(item.updatedAt)}</dd>
               </dl>
             </div>
@@ -479,14 +479,14 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
                 <div className="info-stats">
                   {item.views !== undefined && (
                     <div className="stat">
-                      <span className="stat-icon">�Y'�️</span>
+                      <span className="stat-icon">?</span>
                       <span className="stat-value">{item.views.toLocaleString()}</span>
                       <span className="stat-label">Aufrufe</span>
                     </div>
                   )}
                   {item.likes !== undefined && (
                     <div className="stat">
-                      <span className="stat-icon">❤️</span>
+                      <span className="stat-icon">??</span>
                       <span className="stat-value">{item.likes.toLocaleString()}</span>
                       <span className="stat-label">Likes</span>
                     </div>
@@ -514,8 +514,8 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({
 
         {/* Keyboard Shortcuts Help */}
         <div className="preview-shortcuts" aria-hidden="true">
-          <span>ESC: Schlie�Yen</span>
-          <span>�?�/�?': Navigation</span>
+          <span>ESC: Schlieen</span>
+          <span>/: Navigation</span>
           <span>F: Vollbild</span>
           <span>I: Info</span>
           {item.type === 'image' && <span>+/-: Zoom</span>}
