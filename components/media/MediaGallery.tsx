@@ -63,7 +63,7 @@ export const MediaGallery: React.FC = () => {
             <div className="media-card-actions">
               <button className="media-card-btn">Vorschau</button>
               <button className="media-card-btn">Teilen</button>
-              <button className="media-card-btn">L�schen</button>
+              <button className="media-card-btn">Lschen</button>
             </div>
           </div>
         ))}
