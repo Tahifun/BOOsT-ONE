@@ -23,7 +23,7 @@ export const ClipManager: React.FC = () => {
               <div className="clip-desc">{clip.description}</div>
               <div className="clip-meta">
                 {clip.duration ? `${clip.duration}s` : null}
-                {" � "}
+                {"  "}
                 {clip.createdAt.substring(0, 10)}
               </div>
             </div>
@@ -31,7 +31,7 @@ export const ClipManager: React.FC = () => {
               <button>Exportieren</button>
               <button>Thumbnail erstellen</button>
               <button>Highlight setzen</button>
-              <button>L�schen</button>
+              <button>Lschen</button>
             </div>
           </div>
         ))}
