@@ -13,7 +13,7 @@ import {
 
 const router = Router();
 
-// req.user verf�gbar machen (optional, tolerant)
+// req.user verfgbar machen (optional, tolerant)
 router.use(attachUserFromHeaders as any);
 
 router.get("/templates", requireAuth, listTemplates);
