@@ -7,8 +7,8 @@ const execFileAsync = promisify(execFile);
 
 /**
  * Scannt (optional) die hochgeladene Datei mit ClamAV.
- * - Deaktivierbar �ber env: CLAMSCAN_DISABLE=1
- * - Pfad anpassbar �ber env: CLAMSCAN_PATH
+ * - Deaktivierbar ber env: CLAMSCAN_DISABLE=1
+ * - Pfad anpassbar ber env: CLAMSCAN_PATH
  */
 export default async function clamScan(req: Request, res: Response, next: NextFunction) {
   try {
