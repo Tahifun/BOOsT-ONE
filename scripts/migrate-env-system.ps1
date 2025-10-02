@@ -1,4 +1,4 @@
-﻿Write-Host "Migrating to unified env system..."
+Write-Host "Migrating to unified env system..."
 $files = Get-ChildItem -Path "backend" -Recurse -Include *.ts,*.js -File | Where-Object {
   Select-String -Path $_.FullName -Pattern "utils\/env\.js" -Quiet
 }
