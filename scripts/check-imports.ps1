@@ -1,4 +1,4 @@
-﻿param(
+param(
   [ValidateSet("backend","frontend")] [string]$Scope = "backend",
   [switch]$Fix
 )
