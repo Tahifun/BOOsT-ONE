@@ -1,4 +1,4 @@
-﻿const fs = require("fs");
+const fs = require("fs");
 
 let globSync;
 try { ({ globSync } = require("glob")); if (typeof globSync !== "function") throw 0; }
