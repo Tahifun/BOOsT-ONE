@@ -79,7 +79,7 @@ type Moderator = {
 };
 
 export const ModerationSection: React.FC = () => {
-  /** �o. Gemeinsamer Settings-State + Presets aus der Hook */
+  /** ·o. Gemeinsamer Settings-State + Presets aus der Hook */
   const { settings: baseSettings, setSettings: setBaseSettings, activePreset, applyPreset } =
     useModerationSettings();
 
@@ -198,7 +198,7 @@ export const ModerationSection: React.FC = () => {
             id: Date.now().toString(),
             type: "warn",
             user: "System",
-            reason: "Raid detected �?' Lockdown preset applied",
+            reason: "Raid detected ·?' Lockdown preset applied",
             moderator: "AutoMod",
             timestamp: Date.now(),
           },
@@ -231,7 +231,7 @@ export const ModerationSection: React.FC = () => {
       message:
         queueMode === "questions"
           ? "Wie funktioniert der Clip-Boost?"
-          : "�YZ� Teilnahme Giveaway",
+          : "·YZ· Teilnahme Giveaway",
       timestamp: Date.now(),
       type: queueMode,
     };
@@ -243,7 +243,7 @@ export const ModerationSection: React.FC = () => {
       {/* ===== Header (benutzt die Styles aus ModerationSection.css) ===== */}
       <div className="moderation-header">
         <div className="header-left">
-          <div className="moderation-icon">�s�</div>
+          <div className="moderation-icon">·s·</div>
           <div>
             <h3 className="moderation-title">Moderation Center</h3>
             <p className="moderation-subtitle">
@@ -254,7 +254,7 @@ export const ModerationSection: React.FC = () => {
 
         <div className="active-mods-count" title="Moderators online">
           <span className="online-dot-mod" />
-          {moderators.filter((m) => m.online).length} Online �?�{" "}
+          {moderators.filter((m) => m.online).length} Online ·?·{" "}
           <span style={{ marginLeft: 6 }}>
             <AlertTriangle className="inline-block" size={14} /> {modActions.length} Actions
           </span>
@@ -426,7 +426,7 @@ export const ModerationSection: React.FC = () => {
                 <div className="whitelist-input">
                   <input
                     type="text"
-                    placeholder="Add URL�?�"
+                    placeholder="Add URL·?·"
                     value={newWhitelistLink}
                     onChange={(e) => setNewWhitelistLink(e.target.value)}
                     onKeyDown={(e) => {
@@ -479,7 +479,7 @@ export const ModerationSection: React.FC = () => {
                           })
                         }
                       >
-                        �-
+                        ·-
                       </button>
                     </div>
                   ))}
@@ -586,7 +586,7 @@ export const ModerationSection: React.FC = () => {
                     <div className="banned-input">
                       <input
                         type="text"
-                        placeholder="Add banned word�?�"
+                        placeholder="Add banned word·?·"
                         value={newBannedWord}
                         onChange={(e) => setNewBannedWord(e.target.value)}
                         onKeyDown={(e) => {
@@ -631,7 +631,7 @@ export const ModerationSection: React.FC = () => {
                               })
                             }
                           >
-                            �-
+                            ·-
                           </button>
                         </div>
                       ))}
@@ -825,7 +825,7 @@ export const ModerationSection: React.FC = () => {
                   <div style={{ display: "flex", flexDirection: "column" }}>
                     <strong className="log-user">@{a.user}</strong>
                     <span style={{ color: "rgba(255,255,255,.8)" }}>
-                      {a.type.toUpperCase()} �?� {a.reason}
+                      {a.type.toUpperCase()} ·?· {a.reason}
                     </span>
                   </div>
                 </div>
@@ -851,7 +851,7 @@ export const ModerationSection: React.FC = () => {
                     <div style={{ display: "flex", flexDirection: "column" }}>
                       <strong>{m.name}</strong>
                       <small style={{ opacity: 0.8 }}>
-                        {m.role.replace("_", " ")} �?� {m.actions} actions
+                        {m.role.replace("_", " ")} ·?· {m.actions} actions
                       </small>
                     </div>
                     <div style={{ marginLeft: "auto" }}>
