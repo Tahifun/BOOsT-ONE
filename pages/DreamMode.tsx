@@ -398,7 +398,7 @@ const DreamMode: React.FC = () => {
               <div className="module-energy">
                 <div className="energy-bar" style={{ width: `${m.energy}%` }} />
               </div>
-              <div className="module-status">{activeModule === m.id ? "ONLINE" : "STANDBY"}</div>
+              <div className="module-status">{activeModule === m.id ? "ONLINE" : "STANDB}</div>
             </div>
           ))}
         </section>
