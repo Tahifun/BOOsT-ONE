@@ -1,4 +1,4 @@
-﻿// src/components/common/ProFeatureWrapper.tsx
+// src/components/common/ProFeatureWrapper.tsx
 import React, { PropsWithChildren } from "react";
 import { FeatureName, useIsProFeatureEnabled } from "@/hooks/useFeature";
 import UpgradePrompt from './UpgradePrompt';
