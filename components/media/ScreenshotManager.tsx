@@ -23,7 +23,7 @@ export const ScreenshotManager: React.FC = () => {
             <div className="screenshot-actions">
               <button>Als Thumbnail nutzen</button>
               <button>Teilen</button>
-              <button>L�schen</button>
+              <button>Lschen</button>
             </div>
           </div>
         ))}
