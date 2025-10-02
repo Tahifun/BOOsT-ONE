@@ -1,4 +1,4 @@
-﻿$markers = "Ã|Â|â€”|â€“|â€œ|â€""|â€˜|â€™|â€¦|ð|âš¡"
+$markers = "Ã|Â|â€”|â€“|â€œ|â€""|â€˜|â€™|â€¦|ð|âš¡"
 $files = Get-ChildItem -Recurse -File -Include *.ts,*.tsx,*.js,*.jsx,*.css,*.html,*.md,*.json,*.yml,*.yaml,*.svg,*.txt `
   | Where-Object { $_.FullName -notmatch "\\node_modules\\|\\dist\\|\\build\\|\\.git\\" }
 
