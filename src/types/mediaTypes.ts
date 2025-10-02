@@ -1,9 +1,9 @@
-// Zentrale Typen & Konstanten f�r Medien
+// Zentrale Typen & Konstanten fr Medien
 
 /** Frontend-weit erlaubte Medientypen */
 export type MediaType = "clip" | "screenshot" | "sound" | "overlay";
 
-/** Maximalgr��en je Typ (in MB) - UI- und Server-Validierung k�nnen sich darauf beziehen */
+/** Maximalgren je Typ (in MB) - UI- und Server-Validierung knnen sich darauf beziehen */
 export const MEDIA_MAX_MB: Readonly<Record<MediaType, number>> = {
   screenshot: 25,
   sound: 40,
@@ -11,7 +11,7 @@ export const MEDIA_MAX_MB: Readonly<Record<MediaType, number>> = {
   overlay: 200,
 } as const;
 
-/** Accept-Strings je Typ (f�r <input type="file">, Drag&Drop-Hinweise etc.) */
+/** Accept-Strings je Typ (fr <input type="file">, Drag&Drop-Hinweise etc.) */
 export const MEDIA_TYPE_ACCEPT: Readonly<Record<MediaType, string>> = {
   clip: "video/*",
   screenshot: "image/*",
@@ -45,7 +45,7 @@ export interface MediaItem {
   updatedAt?: string;          // ISO
 }
 
-/** Standard-API-Antwort f�r Upload */
+/** Standard-API-Antwort fr Upload */
 export interface MediaUploadResponse {
   ok: true;
   item: MediaItem;
@@ -59,7 +59,7 @@ export interface Paginated<T> {
   pageSize: number;
 }
 
-/** (Optional) Filtermodell f�r Abfragen */
+/** (Optional) Filtermodell fr Abfragen */
 export interface MediaFilter {
   type?: MediaType;
   q?: string;
