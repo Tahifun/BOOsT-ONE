@@ -28,7 +28,7 @@ if (import.meta.env.DEV && typeof window !== "undefined") {
 
       const ct = (res.headers.get("content-type") || "").toLowerCase();
 
-      // Nur für unsere Backend-Calls interessant
+      // Nur fr unsere Backend-Calls interessant
       if (url.startsWith("/api/") && !ct.includes("application/json")) {
         const preview = await res.clone().text().catch(() => "");
         // Zeig kurz an, was kam (Status/CT/Anfang vom Body)
@@ -52,7 +52,7 @@ if (!rootEl) {
 
 ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
-    {/* Auth möglichst früh, Router nur einmal */}
+    {/* Auth mglichst frh, Router nur einmal */}
     <AuthProvider>
       <ThemeProvider>
         <OverlayConfigProvider>
