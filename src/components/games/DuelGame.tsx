@@ -40,7 +40,7 @@ const DuelGame: React.FC = () => {
     setWinner(win);
   };
 
-  // Gewinner ermitteln, wenn HP auf 0 fällt
+  // Gewinner ermitteln, wenn HP auf 0 fllt
   useEffect(() => {
     if (playerHP <= 0 && enemyHP <= 0) {
       setWinner("Unentschieden");
@@ -74,13 +74,13 @@ const DuelGame: React.FC = () => {
 
       <div className="flex gap-2 mb-3">
         <Button variant="primary" size="md" onClick={startQuickDuel} disabled={!!winner}>
-          Schnelles Duell (zufällig)
+          Schnelles Duell (zufllig)
         </Button>
         <Button variant="secondary" size="md" onClick={attack} disabled={!!winner || playerHP <= 0 || enemyHP <= 0}>
           Angreifen
         </Button>
         <Button size="md" onClick={resetDuel}>
-          Zurücksetzen
+          Zurcksetzen
         </Button>
       </div>
 
@@ -95,7 +95,7 @@ const DuelGame: React.FC = () => {
 
       {winner && (
         <div style={{ marginTop: 14, color: "#18ffe6", fontWeight: 700 }}>
-          Gewinner: {winner} {winner === "Unentschieden" ? "�Y��" : "�YZ?"}
+          Gewinner: {winner} {winner === "Unentschieden" ? "" : ""}
         </div>
       )}
 
