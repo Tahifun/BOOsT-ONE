@@ -24,7 +24,7 @@ export default function CheckoutButtons({ token, compact }: Props) {
           disabled={loading !== null}
           style={btnStyle(loading === "pro")}
         >
-          {loading === "pro" ? "Weiterleitung�?�" : "Jetzt PRO kaufen"}
+          {loading === "pro" ? "Weiterleitung" : "Jetzt PRO kaufen"}
         </button>
 
         <button
@@ -32,14 +32,14 @@ export default function CheckoutButtons({ token, compact }: Props) {
           disabled={loading !== null}
           style={btnOutlineStyle(loading === "daypass")}
         >
-          {loading === "daypass" ? "Weiterleitung�?�" : "DayPass (24h)"}
+          {loading === "daypass" ? "Weiterleitung" : "DayPass (24h)"}
         </button>
 
         <button
           onClick={openBillingPortal}
           disabled={loading !== null}
           style={btnGhostStyle()}
-          title="Zahlungsmittel ändern / kündigen"
+          title="Zahlungsmittel ndern / kndigen"
         >
           Abo verwalten
         </button>
@@ -63,7 +63,7 @@ export default function CheckoutButtons({ token, compact }: Props) {
 
       {!compact && (
         <p style={{ fontSize: 12, opacity: 0.7 }}>
-          Nach dem Kauf kehrst du automatisch zurück. Dein Status wird unter{" "}
+          Nach dem Kauf kehrst du automatisch zurck. Dein Status wird unter{" "}
           <code>/api/subscription/status</code> aktualisiert.
         </p>
       )}
