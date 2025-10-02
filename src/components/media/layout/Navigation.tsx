@@ -1,7 +1,7 @@
 import { logger } from '@/lib/logger';
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useSubscription } from '../../contexts/SubscriptionContext';
+import { useSubscription } from '@contexts/SubscriptionContext';
 import '../../styles/layout/Navigation.css';
 
 interface NavigationTab {
@@ -23,28 +23,28 @@ const navigationTabs: NavigationTab[] = [
   {
     id: 'dashboard',
     title: 'Dashboard',
-    icon: 'ï¿½Y"S',
+    icon: '📁',
     path: '/media/dashboard',
     description: 'ï¿½obersicht und Statistiken',
   },
   {
     id: 'upload',
     title: 'Upload',
-    icon: 'ï¿½?ï¸',
+    icon: '📁',
     path: '/media/upload',
     description: 'Dateien hochladen',
   },
   {
     id: 'gallery',
     title: 'Galerie',
-    icon: 'ï¿½YZï¿½',
+    icon: '📁',
     path: '/media/gallery',
     description: 'Alle Medien durchsuchen',
   },
   {
     id: 'clips',
     title: 'Clips',
-    icon: 'ï¿½o,ï¸',
+    icon: '📁',
     path: '/media/clips',
     description: 'Videos schneiden',
     requiresPro: true,
@@ -52,14 +52,14 @@ const navigationTabs: NavigationTab[] = [
   {
     id: 'screenshots',
     title: 'Screenshots',
-    icon: 'ï¿½Y"ï¿½',
+    icon: '📁',
     path: '/media/screenshots',
     description: 'Frames extrahieren',
   },
   {
     id: 'soundboard',
     title: 'Soundboard',
-    icon: 'ï¿½Y"S',
+    icon: '📁',
     path: '/media/soundboard',
     description: 'Audio-Bibliothek',
     requiresPro: true,
@@ -67,7 +67,7 @@ const navigationTabs: NavigationTab[] = [
   {
     id: 'overlays',
     title: 'Overlays',
-    icon: 'ï¿½YZï¿½',
+    icon: '📁',
     path: '/media/overlays',
     description: 'Templates verwalten',
     requiresPro: true,
@@ -75,14 +75,14 @@ const navigationTabs: NavigationTab[] = [
   {
     id: 'export',
     title: 'Export',
-    icon: 'ï¿½Y"ï¿½',
+    icon: '📁',
     path: '/media/export',
     description: 'Medien exportieren',
   },
   {
     id: 'stats',
     title: 'Impact Stats',
-    icon: 'ï¿½Y"^',
+    icon: '📁',
     path: '/media/stats',
     description: 'Performance analysieren',
     requiresPro: true,
@@ -90,7 +90,7 @@ const navigationTabs: NavigationTab[] = [
   {
     id: 'ai',
     title: 'AI Assistant',
-    icon: 'ï¿½Yï¿½-',
+    icon: '📁',
     path: '/media/ai',
     description: 'KI-gestÃ¼tzte Features',
     requiresPro: true,
