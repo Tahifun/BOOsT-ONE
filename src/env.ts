@@ -8,7 +8,7 @@ export const API_BASE =
   read("VITE-API-BASE-URL") ??
   "https://api.clip-boost.online/api";
 
-// Kompatibilit�t: alter Name weiter exportiert
+// Kompatibilitt: alter Name weiter exportiert
 export const API_BASE_URL = API_BASE;
 
 export const BACKEND_URL =
@@ -22,11 +22,11 @@ export const SOCKET_URL =
 
 export const SPOTIFY_REDIRECT_URI =
   read("VITE_SPOTIFY_REDIRECT_URI") ??
-  read("VITE-SPOTIFY-REDIRECT-URI");
+  read("VITE-SPOTIFREDIRECT-URI");
 
 export const SPOTIFY_CLIENT_ID =
   read("VITE_SPOTIFY_CLIENT_ID") ??
-  read("VITE-SPOTIFY-CLIENT-ID");
+  read("VITE-SPOTIFCLIENT-ID");
 
 export const TIKTOK_REDIRECT_URI =
   read("VITE_TIKTOK_REDIRECT_URI") ??
