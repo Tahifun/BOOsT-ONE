@@ -29,7 +29,7 @@ const StatsDashboard: React.FC<StatsDashboardProps> = ({ userId }) => {
   const [leaderboard, setLeaderboard] = useState<GameLeaderboardItem[]>([]);
   const [userStats, setUserStats] = useState<UserGameStat[]>([]);
 
-  // Falls keine userId �bergeben wurde, versuche sie aus dem eingeloggten User zu nehmen
+  // Falls keine userId bergeben wurde, versuche sie aus dem eingeloggten User zu nehmen
   const effectiveUserId =
     userId || (currentUser as any)?.id || (currentUser as any)?._id || "";
 
@@ -67,7 +67,7 @@ const StatsDashboard: React.FC<StatsDashboardProps> = ({ userId }) => {
     return (
       <div className="p-4">
         <h2 className="text-xl font-bold"> Statistiken</h2>
-        <p>? L�dt</p>
+        <p>? Ldt</p>
       </div>
     );
   }
