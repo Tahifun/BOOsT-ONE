@@ -2,7 +2,7 @@
 import type { Request, Response } from "express";
 import liveHub from "../services/liveHub.js";
 
-/** SSE-Stream f�r Live-Status (poll-basiert, ohne Redis-Subscribe) */
+/** SSE-Stream fr Live-Status (poll-basiert, ohne Redis-Subscribe) */
 export async function sseStream(req: Request, res: Response) {
   const creatorId =
     (req.query?.creatorId as string | undefined) ??
