@@ -1,4 +1,4 @@
-﻿import { useThemeContext, Theme, ThemePreferences } from '../contexts/ThemeContext';
+import { useThemeContext, Theme, ThemePreferences } from '../contexts/ThemeContext';
 
 export interface UseThemeReturn {
   theme: Theme;
