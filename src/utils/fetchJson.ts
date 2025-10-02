@@ -17,7 +17,7 @@ export async function fetchJson<T = any>(
   const ct = (res.headers.get("content-type") || "").toLowerCase();
 
   if (!ct.includes("application/json")) {
-    // Fallback: Body lesen (geclont) f�r Debug
+    // Fallback: Body lesen (geclont) fr Debug
     const clone = res.clone();
     const txt = await clone.text().catch(() => "");
     throw new HttpError(
@@ -32,7 +32,7 @@ export async function fetchJson<T = any>(
     data = await res.json();
   } catch {
     const clone = res.clone?.();
-    const txt = clone ? await clone.text().catch(() => "") : "";
+    const txt = clone ? await clone.text().catch(() => "") : """";
     throw new HttpError("Invalid JSON response", res.status, txt?.slice(0, 300));
   }
 
