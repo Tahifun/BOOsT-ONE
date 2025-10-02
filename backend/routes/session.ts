@@ -4,8 +4,8 @@ const router = Router();
 
 /**
  * GET /session
- * Gibt den aktuellen Login-Status zur�ck.
- * Liest prim�r aus der Session; wenn eine Upstream-Auth (z. B. Passport) bereits req.user setzt, wird die ebenfalls unterst�tzt.
+ * Gibt den aktuellen Login-Status zurck.
+ * Liest primr aus der Session; wenn eine Upstream-Auth (z. B. Passport) bereits req.user setzt, wird die ebenfalls untersttzt.
  */
 router.get("/session", (req, res) => {
   // 1) aus der Session lesen (Mock-Login schreibt hier rein)
