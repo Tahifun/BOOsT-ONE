@@ -1,4 +1,4 @@
-﻿|   .editorconfig
+|   .editorconfig
 |   .env.example
 |   .env.local
 |   .gitattributes
