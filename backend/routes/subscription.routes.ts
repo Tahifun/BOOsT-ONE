@@ -13,16 +13,16 @@ const router = Router();
 // stellt req.user "weich" bereit
 router.use(attachUserFromHeaders as any);
 
-// �ffentliche Pl�ne (aus ENV)
+// ffentliche Plne (aus ENV)
 router.get("/plans", listPublicPlans);
 
 // Eigener Abo-Status
 router.get("/me", requireAuth, getMySubscription);
 
-// Abo k�ndigen (am Periodenende)
+// Abo kndigen (am Periodenende)
 router.post("/cancel", requireAuth, cancelMySubscription);
 
-// K�ndigung zur�cknehmen
+// Kndigung zurcknehmen
 router.post("/resume", requireAuth, resumeMySubscription);
 
 // (optional) falls Frontend ein "Ping" erwartet:
