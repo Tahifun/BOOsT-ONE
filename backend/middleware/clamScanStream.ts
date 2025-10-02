@@ -3,7 +3,7 @@ import type { Request, Response, NextFunction } from "express";
 
 /**
  * Stream-basierter ClamAV-Scan - hier als No-Op/Fallback.
- * Wenn du sp�ter clamd einh�ngst, pack die Logik hier rein.
+ * Wenn du spter clamd einhngst, pack die Logik hier rein.
  */
 export default async function clamScanStream(
   _req: Request,
