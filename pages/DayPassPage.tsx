@@ -51,7 +51,7 @@ const DayPassPage: React.FC = () => {
         title={!consent ? "Bitte zuerst zustimmen" : "Day-Pass kaufen"}
         style={{ marginTop: 16 }}
       >
-        {pending ? "L�dt" : "Day-Pass kaufen"}
+        {pending ? "Ldt" : "Day-Pass kaufen"}
       </button>
     </div>
   );
