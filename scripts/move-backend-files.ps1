@@ -1,4 +1,4 @@
-﻿Write-Host "Moving misplaced backend files from Frontend..."
+Write-Host "Moving misplaced backend files from Frontend..."
 New-Item -ItemType Directory -Force -Path "tools\dev-server" | Out-Null
 
 if (Test-Path "src\server.mjs") {
