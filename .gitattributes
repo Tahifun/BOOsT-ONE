@@ -1,4 +1,4 @@
-﻿# Always use LF for shell scripts and Husky hooks
+# Always use LF for shell scripts and Husky hooks
 *.sh text eol=lf
 .husky/* text eol=lf
 # Konsistent LF auch für Konfigs
