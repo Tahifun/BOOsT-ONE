@@ -12,7 +12,7 @@ export const getStreamStats = async (req: Request, res: Response) => {
   const userId = getUserId(req);
   if (!userId) return res.status(401).json({ error: "unauthenticated" });
 
-  // Platzhalterwerte - hier k�me echte Aggregation aus DB/Cache
+  // Platzhalterwerte - hier kme echte Aggregation aus DB/Cache
   return res.json({
     ok: true,
     userId,
@@ -53,7 +53,7 @@ export const recordEvent = async (req: Request, res: Response) => {
   const userId = getUserId(req);
   if (!userId) return res.status(401).json({ error: "unauthenticated" });
 
-  // Hier w�rdest du das Event persistieren
+  // Hier wrdest du das Event persistieren
   return res.status(201).json({ ok: true });
 };
 
