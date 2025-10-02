@@ -1,4 +1,4 @@
-﻿// src/pages/OverlayGalleryPage.tsx
+// src/pages/OverlayGalleryPage.tsx
 import React from "react";
 import OverlayGallery from '../components/overlay/OverlayGallery';
 
