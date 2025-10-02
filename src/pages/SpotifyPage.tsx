@@ -1,4 +1,4 @@
-﻿// src/pages/SpotifyPage.tsx
+// src/pages/SpotifyPage.tsx
 import React from "react";
 import SpotifyPlaylists from '../spotify/SpotifyPlaylists';
 
