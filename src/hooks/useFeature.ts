@@ -1,4 +1,4 @@
-﻿// src/hooks/useFeature.ts
+// src/hooks/useFeature.ts
 import { useMemo } from "react";
 import { useSubscription, Tier } from '../contexts/SubscriptionContext';
 
