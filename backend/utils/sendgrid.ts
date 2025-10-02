@@ -1,7 +1,7 @@
 import logger from './logger.js'
 
 // utils/sendgrid.ts
-// Robustes Typing ohne .default-Typabh�ngigkeit
+// Robustes Typing ohne .default-Typabhngigkeit
 import * as sgMail from "@sendgrid/mail";
 
 const API_KEY = process.env.SENDGRID_API_KEY || process.env.SENDGRID_KEY || "";
