@@ -34,7 +34,7 @@ router.get('/export.csv', requireTier('PRO'), async (req: Request, res: Response
   const to = parseISODate(toStr);
 
   if (!from || !to || from > to) {
-    res.status(400).json({ ok: false, error: 'invalid_range', hint: 'Use from=YYYY-MM-DD&to=YYYY-MM-DD' });
+    res.status(400).json({ ok: false, error: 'invalid_range', hint: 'Use from=YYYMM-DD&to=YYYMM-DD' });
     return;
   }
 
