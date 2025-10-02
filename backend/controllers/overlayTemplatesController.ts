@@ -72,7 +72,7 @@ export async function updateTemplate(req: unknown, res: Response) {
     return res.json({ item: doc });
   } catch (e) {
     logger.error("[overlayTemplates] update", e);
-    return res.status(500).json({ message: "Vorlage konnte nicht ge�ndert werden." });
+    return res.status(500).json({ message: "Vorlage konnte nicht gendert werden." });
   }
 }
 
@@ -88,7 +88,7 @@ export async function deleteTemplate(req: unknown, res: Response) {
     return res.json({ ok: true });
   } catch (e) {
     logger.error("[overlayTemplates] delete", e);
-    return res.status(500).json({ message: "Vorlage konnte nicht gel�scht werden." });
+    return res.status(500).json({ message: "Vorlage konnte nicht gelscht werden." });
   }
 }
 
