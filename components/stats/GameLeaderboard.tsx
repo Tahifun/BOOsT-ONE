@@ -25,7 +25,7 @@ const GameLeaderboard: React.FC<Props> = ({ leaderboard }) => {
     return (
       <div className="game-leaderboard p-2">
         <h3 className="text-lg font-semibold mb-2"> Game Leaderboard</h3>
-        <p className="text-sm opacity-70">Keine Eintr�ge vorhanden.</p>
+        <p className="text-sm opacity-70">Keine Eintrge vorhanden.</p>
       </div>
     );
   }
