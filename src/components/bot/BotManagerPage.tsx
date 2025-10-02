@@ -102,7 +102,7 @@ const DEFAULT_COMMANDS: BotCommand[] = [
     id: "seed-welcome",
     name: "Welcome",
     trigger: "!welcome",
-    response: "Welcome to the stream! �YZ?",
+    response: "Welcome to the stream! ",
     cooldown: 30,
     enabled: true,
     usageCount: 0,
@@ -265,7 +265,7 @@ const DEFAULT_COMMANDS: BotCommand[] = [
         method: "PUT",
         headers,
         credentials: "include",
-        body: JSON.stringify({ enabled: true }), // Body egal �?" Backend kann echten Wert setzen
+        body: JSON.stringify({ enabled: true }), // Body egal  Backend kann echten Wert setzen
       },
       null
     );
@@ -312,8 +312,8 @@ const DEFAULT_COMMANDS: BotCommand[] = [
       </div>
 
       {/* Hinweise */}
-      {loading && <div className="banner info">Lade Daten�?�</div>}
-      {offline && <div className="banner warn">Bot-API nicht erreichbar �?" Demo-Daten aktiv.</div>}
+      {loading && <div className="banner info">Lade Daten</div>}
+      {offline && <div className="banner warn">Bot-API nicht erreichbar  Demo-Daten aktiv.</div>}
       {error && (
         <div className="banner error">
           {error}
@@ -611,7 +611,7 @@ const DEFAULT_COMMANDS: BotCommand[] = [
                 <textarea
                   value={form.response}
                   onChange={(e) => setForm((f) => ({ ...f, response: e.target.value }))}
-                  placeholder="Welcome to the stream! �YZ?"
+                  placeholder="Welcome to the stream! "
                 />
               </label>
 
@@ -655,7 +655,7 @@ const BotManagerPage: React.FC = () => (
   <ProFeatureWrapper
     featureName="bot_commands"
     showUpgradePrompt
-    message="Bot & Commands sind Teil von PRO. Hol dir Abo oder Tageskarte (24h) für vollen Zugriff."
+    message="Bot & Commands sind Teil von PRO. Hol dir Abo oder Tageskarte (24h) fr vollen Zugriff."
   >
     <BotManagerPageInner />
   </ProFeatureWrapper>
