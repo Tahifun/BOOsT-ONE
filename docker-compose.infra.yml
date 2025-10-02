@@ -1,4 +1,4 @@
-﻿services:
+services:
   mongodb:
     image: mongo:7
     container_name: clip-boost-mongo
