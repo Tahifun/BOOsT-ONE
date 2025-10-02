@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
-import { useSubscription } from '../../contexts/SubscriptionContext';
+import { useAuth } from '@contexts/AuthContext';
+import { useSubscription } from '@contexts/SubscriptionContext';
 import './Header.css';
 
 interface HeaderProps {
