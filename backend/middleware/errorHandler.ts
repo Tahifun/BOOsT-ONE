@@ -33,7 +33,7 @@ export function errorHandler(
     // Zod-Validierung
     if (isZodError(err)) {
       return res.status(400).json({
-        message: "Ung�ltige Eingabe.",
+        message: "Ungltige Eingabe.",
         issues: err.issues,
       });
     }
@@ -49,13 +49,13 @@ export function errorHandler(
     // JWT
     if (err?.name === "JsonWebTokenError" || err?.name === "TokenExpiredError") {
       return res.status(401).json({
-        message: "Ung�ltiges oder abgelaufenes Token.",
+        message: "Ungltiges oder abgelaufenes Token.",
       });
     }
 
     // Mongoose: CastError / ValidationError
     if (err?.name === "CastError") {
-      return res.status(400).json({ message: "Ung�ltige ID." });
+      return res.status(400).json({ message: "Ungltige ID." });
     }
     if (err?.name === "ValidationError") {
       return res.status(400).json({
