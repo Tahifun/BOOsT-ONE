@@ -74,9 +74,9 @@ const MediaUpload: React.FC<Props> = ({ onUpload }) => {
   };
 
   function validateFile(f: File, type: MediaType): string | null {
-    if (!f) return "Bitte eine Datei ausw�hlen.";
+    if (!f) return "Bitte eine Datei auswhlen.";
     if (f.size > maxBytes) {
-      return `Datei zu gro f�r ${type}. Maximal ${MAX_MB[type]} MB (deine: ${formatBytes(f.size)}).`;
+      return `Datei zu gro fr ${type}. Maximal ${MAX_MB[type]} MB (deine: ${formatBytes(f.size)}).`;
     }
     // Optional: MIME grob checken (Frontend-Selektion begrenzt bereits)
     return null;
@@ -184,7 +184,7 @@ const MediaUpload: React.FC<Props> = ({ onUpload }) => {
           onDrop={onDrop}
           onClick={onBrowse}
           role="button"
-          aria-label="Datei w�hlen oder hier ablegen"
+          aria-label="Datei whlen oder hier ablegen"
           tabIndex={0}
           onKeyDown={(e) => (e.key === "Enter" || e.key === " " ? onBrowse() : null)}
           style={{ marginTop: 12 }}
@@ -193,13 +193,13 @@ const MediaUpload: React.FC<Props> = ({ onUpload }) => {
             <img src={previewUrl} alt="Vorschau" style={{ maxHeight: 160, borderRadius: 8 }} />
           ) : (
             <div style={{ fontWeight: 700, marginBottom: 6 }}>
-              Datei hier ablegen oder klicken zum Ausw�hlen
+              Datei hier ablegen oder klicken zum Auswhlen
             </div>
           )}
           <div style={{ fontSize: 12, opacity: 0.8 }}>
             {file ? (
               <>
-                 <strong>{file.name}</strong> � {formatBytes(file.size)}
+                 <strong>{file.name}</strong>  {formatBytes(file.size)}
               </>
             ) : (
               <>Akzeptiert: {accept}</>
@@ -238,7 +238,7 @@ const MediaUpload: React.FC<Props> = ({ onUpload }) => {
             {loading ? "Hochladen" : "Upload starten"}
           </button>
           <button onClick={resetFile} disabled={loading || !file} type="button">
-            Zur�cksetzen
+            Zurcksetzen
           </button>
         </div>
 
