@@ -22,7 +22,7 @@ envFiles.forEach(file => {
 const parsed = envSchema.safeParse(process.env);
 
 if (!parsed.success) {
-  console.error("�O Environment validation failed:");
+  console.error("O Environment validation failed:");
   console.error(parsed.error.format());
   
   // In Production: Fatal error
@@ -31,7 +31,7 @@ if (!parsed.success) {
   }
   
   // In Development: Warning but continue with defaults
-  console.warn("�s�️ Continuing with default values in development mode");
+  console.warn("s️ Continuing with default values in development mode");
 }
 
 const env = parsed.success ? parsed.data : envSchema.parse({});
@@ -48,18 +48,18 @@ if (env.NODE_ENV === "production") {
   
   const missing = criticalVars.filter(key => !env[key as keyof typeof env]);
   if (missing.length > 0) {
-    console.error(`�O FATAL: Missing critical production variables: ${missing.join(', ')}`);
+    console.error(`O FATAL: Missing critical production variables: ${missing.join(', ')}`);
     process.exit(1);
   }
   
   // Security checks
   if (env.JWT_SECRET.length < 32) {
-    console.error("�O FATAL: JWT_SECRET must be at least 32 characters in production");
+    console.error("O FATAL: JWT_SECRET must be at least 32 characters in production");
     process.exit(1);
   }
   
   if (env.COOKIE_SECRET.length < 32) {
-    console.error("�O FATAL: COOKIE_SECRET must be at least 32 characters in production");
+    console.error("O FATAL: COOKIE_SECRET must be at least 32 characters in production");
     process.exit(1);
   }
 }
