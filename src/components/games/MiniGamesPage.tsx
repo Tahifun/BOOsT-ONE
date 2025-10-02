@@ -12,19 +12,19 @@ import RockPaperScissorsGame from './RockPaperScissorsGame';
 import "../../styles/GamesPanel.css";
 
 /**
- * MiniGamesPage �?" KOMPLETT hinter PRO-Gate.
- * Free-Nutzer sehen eine entsperrte Preview (grau) mit �Y"'-Hinweis
- * über den ProFeatureWrapper (inkl. Upsell-CTA).
+ * MiniGamesPage  KOMPLETT hinter PRO-Gate.
+ * Free-Nutzer sehen eine entsperrte Preview (grau) mit -Hinweis
+ * ber den ProFeatureWrapper (inkl. Upsell-CTA).
  */
 const MiniGamesPage: React.FC = () => {
   return (
     <ProFeatureWrapper
       featureName="mini_games_page"
       showUpgradePrompt
-      message="MiniGames sind Teil von PRO. Hol dir Abo oder Tageskarte (24h) für vollen Zugriff."
+      message="MiniGames sind Teil von PRO. Hol dir Abo oder Tageskarte (24h) fr vollen Zugriff."
     >
       <div className="games-panel">
-        <h2>�YZ� MiniGames</h2>
+        <h2> MiniGames</h2>
         <GameTabNav
           DuelGame={DuelGame}
           SlotsGame={SlotsGame}
