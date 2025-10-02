@@ -40,7 +40,7 @@ export interface RateLimitOptions {
   skip?: (req: Request) => boolean;
   /** Emulation von onLimitReached per custom handler */
   onLimitReached?: (req: Request, res: Response) => void;
-  /** Eigener Handler �berschreibt Emulation */
+  /** Eigener Handler berschreibt Emulation */
   handler?: (request: unknown, response: unknown, next: unknown, options: unknown) => void;
   standardHeaders?: boolean | 'draft-6' | 'draft-7' | 'combined';
   legacyHeaders?: boolean;
@@ -196,7 +196,7 @@ export const createTierBasedRateLimit = (base: {
 }) => {
   return rateLimitMiddleware({
     windowMs: base.windowMs,
-    limit: base.freeMax, // Default (free)  Upgrade-Handling kann sp�ter dynamisch werden
+    limit: base.freeMax, // Default (free)  Upgrade-Handling kann spter dynamisch werden
     message: base.message,
     keyGenerator: (req: unknown) => {
       const tier = req.user?.tier || req.user?.subscriptionTier || 'free';
