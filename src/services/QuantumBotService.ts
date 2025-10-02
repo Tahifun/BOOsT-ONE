@@ -1,4 +1,4 @@
-﻿import { sendBotCommand } from './BotApiService';
+import { sendBotCommand } from './BotApiService';
 
 export interface QuantumNode {
   id: number;
