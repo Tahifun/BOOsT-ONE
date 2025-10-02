@@ -43,7 +43,7 @@ export const envSchema = z.object({
   SPOTIFY_CLIENT_SECRET: z.string().optional(),
 
 }).refine(v => !!(v.MONGODB_URI || v.MONGO_URI), {
-  message: "MONGODB_URI oder MONGO_URI wird ben�tigt."
+  message: "MONGODB_URI oder MONGO_URI wird bentigt."
 }).transform(data => {
   // Normalize MongoDB URI
   if (!data.MONGODB_URI && data.MONGO_URI) {
