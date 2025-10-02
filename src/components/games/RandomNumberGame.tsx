@@ -31,8 +31,8 @@ const RandomNumberGame: React.FC = () => {
     }
     let feedback: string;
     if (g === target) {
-      feedback = "Korrekt! �YZ?";
-      setResult("Korrekt! �YZ?");
+      feedback = "Korrekt! ";
+      setResult("Korrekt! ");
     } else if (g < target) {
       feedback = "Zu niedrig!";
       setResult("Zu niedrig!");
@@ -71,7 +71,7 @@ const RandomNumberGame: React.FC = () => {
             onClick={checkGuess}
             disabled={target === null || !!result?.includes("Korrekt")}
           >
-            Prüfen
+            Prfen
           </Button>
         </div>
         <div className="flex gap-2">
@@ -96,7 +96,7 @@ const RandomNumberGame: React.FC = () => {
               <strong>Verlauf:</strong>
               {history.map((h, i) => (
                 <p key={i}>
-                  {i + 1}. {h.guess} �?" {h.feedback}
+                  {i + 1}. {h.guess}  {h.feedback}
                 </p>
               ))}
             </div>
